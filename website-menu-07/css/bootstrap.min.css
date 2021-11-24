@@ -6643,6 +6643,8 @@ a.close.disabled {
 }
 
 .carousel {
+
+  max-height: 50vh;
   position: relative;
 }
 
@@ -6655,6 +6657,8 @@ a.close.disabled {
   position: relative;
   width: 100%;
   overflow: hidden;
+
+  max-height: 50vh;
 }
 
 .carousel-inner::after {
@@ -6669,6 +6673,7 @@ a.close.disabled {
   float: left;
   width: 100%;
   margin-right: -100%;
+
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-transition: -webkit-transform 0.6s ease-in-out;

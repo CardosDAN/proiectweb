@@ -19,13 +19,14 @@
 
     <title>Home</title>
     <style>
-        #my-image-div{
+        #my-image-div {
             background-image: url("website-menu-07/images/piata.jpg");
             background-size: cover;
             height: 230px;
             width: 100%;
         }
-        #my-image-text{
+
+        #my-image-text {
             position: relative;
             top: 50px;
             width: 500px;
@@ -87,7 +88,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-2">
-                    <h1 class="my-0 site-logo position-absolute"><a href="index.html"><span>Fresh</span>&nbspFood</a>
+                    <h1 class="my-0 site-logo position-absolute"><a href="index.php"><span>Fresh</span>&nbspFood</a>
                     </h1>
                 </div>
                 <div class="col-10">
@@ -135,13 +136,16 @@
     <div id="carouselExampleSlidesOnly" class="hero carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="website-menu-07/images/1.jpg" width="700" height="700" alt="First slide">
+                <img class="d-block w-100" src="website-menu-07/images/1.jpg" width="700" height="700"
+                     alt="First slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="website-menu-07/images/2.jpg" width="700" height="700" alt="Second slide">
+                <img class="d-block w-100" src="website-menu-07/images/2.jpg" width="700" height="700"
+                     alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="website-menu-07/images/3.jpg" width="700" height="700" alt="Third slide">
+                <img class="d-block w-100" src="website-menu-07/images/3.jpg" width="700" height="700"
+                     alt="Third slide">
             </div>
         </div>
     </div>
@@ -182,7 +186,8 @@
             <div class="col-md-7 order-md-2">
                 <blockquote class="blockquote text-center">
                     <p class="mb-0">We are Fresh Food</p>
-                    <footer class="blockquote footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                    <footer class="blockquote footer">Someone famous in <cite title="Source Title">Source Title</cite>
+                    </footer>
                     <div class="row">
                         <div class="col-lg-4">
                             <p class="p3">~~~~~~~~~~~</p>
@@ -203,15 +208,30 @@
         </div>
     </div>
 
-   <div class="container-fluid" style="margin-top: -0.15px">
-       <div id="my-image-div" >
-           <p class="container" id="my-image-text">Our Suppliers</p>
-       </div>
+    <div class="container-fluid" style="margin-top: -0.15px">
+        <div id="my-image-div">
+            <p class="container" id="my-image-text">Our Suppliers</p>
+        </div>
 
-   </div>
-   <div class="container">
-       <p>Text</p>
-   </div>
+    </div>
+    <div class="container">
+        <?php
+        // Include the database configuration file
+        include 'db_actions/db.php';
+
+        // Get images from the database
+        $query = $con->query("SELECT * FROM images ORDER BY uploaded_on DESC");
+
+        if ($query->num_rows > 0) {
+            while ($row = $query->fetch_assoc()) {
+                $imageURL = 'uploads/' . $row["file_name"];
+                ?>
+                <img src="<?php echo $imageURL; ?>" alt=""/>
+            <?php }
+        } else { ?>
+            <p>No image(s) found...</p>
+        <?php } ?>
+    </div>
 </div>
 
 
