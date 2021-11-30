@@ -6644,7 +6644,7 @@ a.close.disabled {
 
 .carousel {
 
-  max-height: 50vh;
+  max-height: 80vh;
   position: relative;
 }
 
@@ -6658,7 +6658,7 @@ a.close.disabled {
   width: 100%;
   overflow: hidden;
 
-  max-height: 50vh;
+  max-height: 80vh;
 }
 
 .carousel-inner::after {

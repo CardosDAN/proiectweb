@@ -1,3 +1,8 @@
+<?php
+//include auth_session.php file on all user panel pages
+include("db_actions/auth_session.php");
+include("db_actions/db.php");
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -144,7 +149,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#about-section" class="nav-link">Store</a></li>
+                                <li><a href="store.php" class="nav-link">Store</a></li>
                                 <li><a href="#events-section" class="nav-link">Events</a></li>
                                 <li><a href="#gallery-section" class="nav-link">Gallery</a></li>
                                 <li><a href="#contact-section" class="nav-link">Contact</a></li>
@@ -178,8 +183,8 @@
         <div class="row">
             <div class="col-12 col-md-4 ">
                 <div class="border rounded" style=" background:white;">
-<!--                    <img src="website-menu-07/images/luxury-fruit-basket-6531-dv-p.jpg"-->
-<!--                         style="height:150px; margin-left: -450%"/>-->
+                    <img src="website-menu-07/images/luxury-fruit-basket-6531-dv-p.jpg"
+                         style="height:150px; margin-left: -450%"/>
                     <div class="col-sm-6 col-md-6 col-xs-6">
                         <div class="thumbnail">
                             <div class="col-sm-6 col-md-6 col-xs-12">
@@ -193,7 +198,7 @@
 
             <div class="col-12 col-md-4">
                 <div class="border rounded" style=" background:white;">
-<!--                    <img src="website-menu-07/images/legume.jpg" style="height:150px; margin-left: -450%"/>-->
+                    <img src="website-menu-07/images/legume.jpg" style="height:150px; margin-left: -450%"/>
                     <div class="col-sm-6 col-md-6 col-xs-6">
                         <div class="thumbnail">
                             <div class="col-sm-6 col-md-6 col-xs-12">
@@ -207,7 +212,7 @@
 
             <div class="col-12 col-md-4">
                 <div class=" border rounded" style=" background:white;">
-<!--                    <img src="website-menu-07/images/cumin-powder-500x500.jpg" style="height:150px; margin-left:-360%"/>-->
+                    <img src="website-menu-07/images/cumin-powder-500x500.jpg" style="height:150px; margin-left:-450%"/>
                     <div class="col-sm-6 col-md-6 col-xs-6">
                         <div class="thumbnail">
                             <div class="col-sm-6 col-md-6 col-xs-12">
@@ -254,18 +259,18 @@
         <div id="my-image-div">
             <div class="container" id="my-image-text">
                 <p style="color: white">Our Suppliers</p>
-                <div class="row">
-                    <div class="col-lg-2">
+                <div class="row ow-cols-4">
+                    <div class="col">
+                        <img src="website-menu-07/images/logo5.jpg">
+                    </div>
+                    <div class="col">
                         <img src="website-menu-07/images/logo4.jpg">
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col">
                         <img src="website-menu-07/images/logo1.jpg">
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col">
                         <img src="website-menu-07/images/logo3.jpg">
-                    </div>
-                    <div class="col-lg-4">
-                        <img src="website-menu-07/images/logo.jpg">
                     </div>
                 </div>
             </div>
@@ -284,12 +289,33 @@
     </blockquote>
     <div class="card-group">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <?php
+
+            // Get images from the database
+            $query = $con->query("SELECT * FROM images ORDER BY uploaded_on DESC");
+
+            if($query->num_rows > 0){
+            while($row = $query->fetch_assoc()){
+            $imageURL = 'uploads/'.$row["file_name"];
+            ?>
+            <img src="<?php echo $imageURL; ?>" alt="" />
+            <?php }
+            }else{ ?>
+            <p>No image(s) found...</p>
+            <?php } ?>
             <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
+                <?php
+                $sql = "SELECT id, titlu FROM anunturi where status='Activ'";
+                $result = mysqli_query($con, $sql);
+                while($row = mysqli_fetch_assoc($result)) { ?>
+                <p class="card-text"><?php echo $row['titlu']; ?></p>
+                <a href="pag2.php?id=<?php echo $row['id']?>" class="btn btn-info" role="button">View</a>
             </div>
         </div>
+        <?php
+        }
+        ?>
+
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="..." alt="Card image cap">
             <div class="card-body">
@@ -359,8 +385,8 @@
 </div>
 
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-dark ">
-    <section id="my-image-div1" class="">
+<footer class="text-center text-lg-start bg-gray-  text-dark ">
+    <section class="">
         <div class="container text-center text-md-start mt-5">
             <!-- Grid row -->
             <div class="row mt-3">
@@ -368,7 +394,7 @@
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Company name
+                        <i class="fas fa-gem me-3"></i>Fresh Food
                     </h6>
                     <p>
                         Here you can use rows and columns to organize your footer content. Lorem ipsum
@@ -388,16 +414,16 @@
                         Useful links
                     </h6>
                     <p>
-                        <a href="#!" class="text-white">About us</a>
+                        <a href="#!" class="text-info">About us</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-white">Settings</a>
+                        <a href="#!" class="text-info">Settings</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-white">Store</a>
+                        <a href="#!" class="text-info">Store</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-white">Help</a>
+                        <a href="#!" class="text-info">Help</a>
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -405,16 +431,20 @@
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Contact
-                    </h6>
-                    <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-                    <p>
-                        <i class="fas fa-envelope me-3"></i>
-                        info@example.com
-                    </p>
-                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    <div class="container">
+
+                        <!-- Call to action -->
+                        <ul class="list-unstyled list-inline text-center py-2">
+                            <li class="list-inline-item">
+                                <h5 class="mb-1">Register for free</h5>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="registration.php" class="btn btn-outline-white btn-rounded">Sign up!</a>
+                            </li>
+                        </ul>
+                        <!-- Call to action -->
+
+                    </div>
                 </div>
                 <!-- Grid column -->
             </div>

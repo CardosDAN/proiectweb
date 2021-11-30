@@ -52,6 +52,14 @@ img {
   clear: both;
   display: table;
 }
+.p1{
+  font-family: "Garamond", serif;
+  font-size: 500%;
+}
+.p2{
+  font-family: "Garamond", serif;
+  font-size: 250%;
+}
 .p3 {
   font-family: "Lucida Handwriting", "Courier New", cursive;
   font-size: 150%;
