@@ -1,7 +1,7 @@
 <?php
 //include auth_session.php file on all user panel pages
-include("../db_actions/auth_session.php");
-include("../db_actions/db.php");
+include("../../db_actions/auth_session.php");
+include("../../db_actions/db.php");
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +27,9 @@ include("../db_actions/db.php");
     <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css"> -->
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/sidebar-themes.css">
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/sidebar-themes.css">
+    <link rel="shortcut icon" type="image/png" href="../img/favicon.png"/>
 </head>
 
 <body>
@@ -38,12 +38,12 @@ include("../db_actions/db.php");
         <div class="sidebar-content">
             <!-- sidebar-brand  -->
             <div class="sidebar-item sidebar-brand">
-                <a href="../home.php">Fresh Food</a>
+                <a href="../../home.php">Fresh Food</a>
             </div>
             <!-- sidebar-header  -->
             <div class="sidebar-item sidebar-header d-flex flex-nowrap">
                 <div class="user-pic">
-                    <img class="img-responsive img-rounded" src="img/user.jpg" alt="User picture">
+                    <img class="img-responsive img-rounded" src="../img/user.jpg" alt="User picture">
                 </div>
                 <div class="user-info">
                         <span class="user-name">Welcome
@@ -136,12 +136,12 @@ include("../db_actions/db.php");
                         <div class="sidebar-submenu">
                             <ul>
                                 <li>
-                                    <a href="users_table.php">Users
+                                    <a href="../users_table.php">Users
 
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="orders_table.php">Orders</a>
+                                    <a href="../orders_table.php">Orders</a>
                                 </li>
                                 <li>
                                     <a href="#">Credit cart</a>
@@ -315,7 +315,7 @@ include("../db_actions/db.php");
                     <a class="dropdown-item" href="#">
                         <div class="message-content">
                             <div class="pic">
-                                <img src="img/user.jpg" alt="">
+                                <img src="../img/user.jpg" alt="">
                             </div>
                             <div class="content">
                                 <div class="message-title">
@@ -331,7 +331,7 @@ include("../db_actions/db.php");
                     <a class="dropdown-item" href="#">
                         <div class="message-content">
                             <div class="pic">
-                                <img src="img/user.jpg" alt="">
+                                <img src="../img/user.jpg" alt="">
                             </div>
                             <div class="content">
                                 <div class="message-title">
@@ -347,7 +347,7 @@ include("../db_actions/db.php");
                     <a class="dropdown-item" href="#">
                         <div class="message-content">
                             <div class="pic">
-                                <img src="img/user.jpg" alt="">
+                                <img src="../img/user.jpg" alt="">
                             </div>
                             <div class="content">
                                 <div class="message-title">
@@ -407,85 +407,47 @@ include("../db_actions/db.php");
                 </div>
             </div>
             <hr>
-            <div class="row">
+            <?php
+            $records = mysqli_query($con, "select * from users"); // fetch data from database
+
+            while ($data = mysqli_fetch_array($records)) {
+            ?>
+            <i class="btn btn-outline-primary bi bi-pencil-square">
+                <a href="../php/edit_users.php?id=<?php echo $data['id']; ?>"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                                                    fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">-->
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd"
+                              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/> </a>
+            </i>
+            <ul class="list-group list-group">
+
+
+                    <li class="list-group list-group-item">Id: <?php echo $data['id']; ?></li>
+                    <li class="list-group list-group-item">Username: <?php echo $data['username']; ?></li>
+                    <li class="list-group list-group-item">Email: <?php echo $data['email']; ?></li>
+                    <li class="list-group list-group-item">Phone: <?php echo $data['phone']; ?></li>
+                    <li class="list-group list-group-item">Password: <?php echo $data['password']; ?></li>
+                    <li class="list-group list-group-item">Status: <?php echo $data['status']; ?></li>
+                    <li class="list-group list-group-item">Create: <?php echo $data['create_datetime']; ?></li>
+                    <li class="list-group list-group-item">Modified: <?php echo $data['modified']; ?></li>
+                    <li class="list-group list-group-item">Adress: <?php echo $data['address']; ?></li>
+                    <!--                        <td><a href="edit.php?id=--><?php //echo $data['id'];
+                    ?><!--">Edit</a></td>-->
+                    <!--                        <td><a href="delete.php?id=--><?php //echo $data['id'];
+                    ?><!--">Delete</a></td>-->
+                    <?php
+                }
+                ?>
+
+            </ul>
+
+
+            <hr>
+            <div class="row ">
                 <div class="form-group col-md-12">
-                    <table class="table table-hover table-dark">
-                        <thead>
-                        <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Password</th>
-                            <th scope="col">Actiuni</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <?php
-
-                        $sql1 = "SELECT * FROM users ORDER BY id DESC";
-                        $result = $con->query($sql1);
-
-                        if ($result->num_rows > 0) {
-                            // output data of each row
-                            while ($row = $result->fetch_assoc()) { ?>
-                                <tr>
-                                    <td> <?php echo $row["id"]; ?> </td>
-                                    <td> <?php echo $row["username"]; ?> </td>
-                                    <td> <?php echo $row["email"]; ?> </td>
-                                    <td> <?php echo $row["password"]; ?> </td>
-                                    <td>
-                                        <i class="btn btn-outline-danger bi bi-trash">
-                                            <a href="php/delete_user.php?id=<?php echo $row['id']; ?>">  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                                                                      fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                    <path fill-rule="evenodd"
-                                                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                </svg></a>
-
-                                        </i>
-                                        <i class="btn btn-outline-info bi bi-eye">
-                                            <a href="php/view_user.php?id=<?php echo $row['id']; ?>">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                     fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                                                </svg>
-                                            </a>
-
-                                        </i>
-                                        <i class="btn btn-outline-primary bi bi-pencil-square">
-                                            <a href="php/edit_users.php?id=<?php echo $row['id']; ?>">  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                                                                             fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">-->
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd"
-                                                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/> </a>
-
-                                        </i>
-                                    </td>
-
-                                </tr>
-                                <?php
-                            }
-                        } else {
-                            echo "0 results";
-                        }
-                        $con->close();
-                        ?>
-                        </tbody>
-                    </table>
 
                 </div>
 
-
-                <hr>
-                <div class="row ">
-                    <div class="form-group col-md-12">
-
-                    </div>
-
-                </div>
             </div>
         </div>
     </main>
@@ -510,7 +472,7 @@ include("../db_actions/db.php");
 <script src="../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script> -->
 
 
-<script src="js/main.js"></script>
+<script src="../js/main.js"></script>
 </body>
 
 </html>
