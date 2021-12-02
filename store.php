@@ -173,7 +173,7 @@ include("db_actions/db.php");
                     while($row = $query->fetch_assoc()){
                         $imageURL = 'uploads/'.$row["file_name"];
                         ?>
-                        <img src="<?php echo $imageURL; ?>" alt="" />
+                        <img src="<?php echo $imageURL; ?>" alt="" width="100" height="100" />
                     <?php }
                 }else{ ?>
                     <p>No image(s) found...</p>
@@ -184,12 +184,28 @@ include("db_actions/db.php");
                     $result = mysqli_query($con, $sql);
                     while($row = mysqli_fetch_assoc($result)) { ?>
                     <p class="card-text"><?php echo $row['titlu']; ?></p>
-                    <a href="pag2.php?id=<?php echo $row['id']?>" class="btn btn-info" role="button">View</a>
+<!--                    <a href="pag2.php?id=--><?php //echo $row['id']?><!--" class="btn btn-info" role="button">View</a>-->
                 </div>
             </div>
             <?php
             }
             ?>
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
             <div class="card">
                 <img class="card-img-top" src="..." alt="Card image cap">
                 <div class="card-body">
