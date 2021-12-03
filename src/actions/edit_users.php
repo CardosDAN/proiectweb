@@ -1,6 +1,6 @@
 <?php
 
-include("../../db_actions/db.php");
+include("../includes/db.php");
 
 $id = $_GET['id']; // get id through query string
 

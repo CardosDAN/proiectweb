@@ -1,5 +1,5 @@
 <?php
-include("../../db_actions/db.php");
+include("../includes/db.php");
 $id = $_GET['id'];
 
 $administrator = mysqli_query($con, "UPDATE users SET status = 'Administrator' where id= '$id'");
@@ -7,7 +7,7 @@ $administrator = mysqli_query($con, "UPDATE users SET status = 'Administrator' w
 if($administrator)
 {
     mysqli_close($con);
-    header("location: ../users_table.php");
+    header("location: ../../users_table.php");
     exit;
 }
 else

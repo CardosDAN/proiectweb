@@ -1,7 +1,7 @@
 <?php
 //include auth_session.php file on all user panel pages
-include("db_actions/auth_session.php");
-include("db_actions/db.php");
+include("src/includes/auth_session.php");
+include("src/includes/db.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,30 +24,6 @@ include("db_actions/db.php");
 
     <title>Home</title>
     <style>
-        #my-image-div {
-            background-image: url("website-menu-07/images/piata.jpg");
-            background-size: cover;
-            height: 230px;
-            width: 100%;
-        }
-
-        #my-image-text {
-            position: relative;
-            top: 50px;
-            width: 500px;
-            color: white;
-            left: 15%;
-            font-family: "Lucida Handwriting", "Courier New", cursive;
-            font-size: 150%;
-        }
-
-        #my-image-div1 {
-            background-image: url("website-menu-07/images/langrau.jpg");
-            background-size: cover;
-            height: 230px;
-            width: 100%;
-        }
-
         a {
             -webkit-transition: color 2s;
             transition: color 2s;
@@ -180,7 +156,7 @@ include("db_actions/db.php");
     </div>
 <div class="container">
     <h6 class="css-nnbf1n-Text eu5v0x0">Dă cât mai multe detalii!</h6>
-    <form action="adaugareanunt.php" method="post" enctype="multipart/form-data">
+    <form action="src/actions/adaugareanunt.php" method="post" enctype="multipart/form-data">
         <div class="col-md-6 form-group">
             <input type="text" name="titlu" placeholder="Titlu....">
         </div>
