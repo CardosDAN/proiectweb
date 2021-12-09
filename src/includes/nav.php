@@ -1,7 +1,9 @@
 <?php
 //include auth_session.php file on all user panel pages
 include("src/includes/auth_session.php");
-include("src/includes/db.php");
+
+?>
+<?php //SELECT `sections`.`nume`, `pages`.`nume` FROM `sections`, `pages` WHERE `pages`.`min_user_level_id` <= 3 AND `sections`.`id` = `pages`.`section_id`;
 ?>
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
@@ -20,14 +22,15 @@ include("src/includes/db.php");
                         </span>
                 <span class="user-role">
                         <?php
-                        $sql = "SELECT * FROM users ORDER BY id DESC";
+                        $loged_id = $_SESSION['id'];
+                        $sql = "SELECT * FROM users where id=$loged_id";
                         $result = $con->query($sql);
 
                         if ($result->num_rows > 0) {
                         // output data of each row
                         while ($row = $result->fetch_assoc()) { ?>
 
-                        <?php echo $row["status"]; ?>
+                        <?php echo "Status: ".$row["user_level_id"]; ?>
                     </span>
                 <?php
                 }
@@ -36,23 +39,35 @@ include("src/includes/db.php");
                 }
                 ?>
                 <span class="user-status">
-                            <i class="fa fa-circle"></i>
-                            <?php
-                            $sql = "SELECT * FROM users ORDER BY id DESC";
-                            $result = $con->query($sql);
+                    <i class="fa fa-circle">
+<!--                        --><?php
+//                        ////// To update session status for plus_login table to get who is online ////////
+//                        $id = $_SESSION['id'];
+//                        if (isset($session_id)) {
+//                            $tm = date("Y-m-d H:i:s");
+//                            $q = "update users set is_active='Online',tm='$tm' where id='$session_id'";
+////                            echo mysqli_error();
+//                        }
+//                        $gap = 10; // change this to change the time in minutes, This is the time for which active users are collected.
+//                        $tm = date("Y-m-d H:i:s", mktime(date("H"), date("i") - $gap, date("s"), date("m"), date("d"), date("Y")));
+//
+//
+//                        $ut = "update users set is_active='Offline' where tm < '$tm'";
+////                        echo mysqli_error();
+//                        /// Now let us collect the userids from table who are online ////////
+//                        $qt = "select is_active from users where tm > '$tm' and is_active='Online'";
+////                        echo mysqli_error();
+//
+//                        while ($nt = mysqli_fetch_array($qt)) {
+//                            echo "$nt[is_active],";
+//                        }
 
-                            if ($result->num_rows > 0) {
-                            // output data of each row
-                            while ($row = $result->fetch_assoc()) { ?>
 
-                    <?php echo $row["is_active"]; ?>
-                        </span>
-            <?php
-            }
-            } else {
-                echo "0 results";
-            }
-            ?>
+                        ?>
+                    </i>
+
+                </span>
+
             </div>
         </div>
         <!-- sidebar-search  -->
@@ -345,7 +360,7 @@ include("src/includes/db.php");
             </div>
         </div>
         <div>
-            <a href="#">
+            <a href="logout.php">
                 <i class="fa fa-power-off"></i>
             </a>
         </div>

@@ -1,7 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
-//include("../../includes/auth_session.php");
-include("src/includes/db.php");
+include("src/includes/auth_session.php");
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +42,7 @@ include("src/includes/db.php");
                     <?php
 
                     // Get images from the database
+
                     $query = $con->query("SELECT * FROM images ORDER BY uploaded_on DESC");
 
                     if ($query->num_rows > 0) {

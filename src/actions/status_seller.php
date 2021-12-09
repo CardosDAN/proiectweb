@@ -2,7 +2,7 @@
 include("../includes/db.php");
 $id = $_GET['id'];
 
-$seller = mysqli_query($con, "UPDATE users SET status = 'Seller' where id= '$id'");
+$seller = mysqli_query($con, "UPDATE users SET user_level_id = 2 where id= '$id'");
 
 if($seller)
 {

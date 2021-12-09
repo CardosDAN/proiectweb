@@ -1,12 +1,12 @@
 <?php
 //include auth_session.php file on all user panel pages
 //include("src/includes/auth_session.php");
-include("src/includes/db.php");
+include("src/includes/auth_session.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
+<?php //TODO: verificare si redirect ?>
 <?php include("src/includes/head.php");?>
 
 <body>
@@ -33,7 +33,8 @@ include("src/includes/db.php");
             </div>
             <hr>
             <?php
-            $records = mysqli_query($con, "select * from users"); // fetch data from database
+            $id = $_GET['id'];
+            $records = mysqli_query($con, "select * from users WHERE id = $id LIMIT $id"); // fetch data from database
 
             while ($data = mysqli_fetch_array($records)) {
             ?>
@@ -51,8 +52,8 @@ include("src/includes/db.php");
                     <li class="list-group list-group-item">Email: <?php echo $data['email']; ?></li>
                     <li class="list-group list-group-item">Phone: <?php echo $data['phone']; ?></li>
                     <li class="list-group list-group-item">Password: <?php echo $data['password']; ?></li>
-                    <li class="list-group list-group-item">Status: <?php echo $data['status']; ?></li>
-                    <li class="list-group list-group-item">Create: <?php echo $data['create_datetime']; ?></li>
+                    <li class="list-group list-group-item">Status: <?php echo $data['user_level_id']; ?></li>
+                    <li class="list-group list-group-item">Create: <?php echo $data['created_at']; ?></li>
                     <li class="list-group list-group-item">Modified: <?php echo $data['modified']; ?></li>
                     <li class="list-group list-group-item">Adress: <?php echo $data['address']; ?></li>
                     <!--                        <td><a href="edit.php?id=--><?php //echo $data['id'];

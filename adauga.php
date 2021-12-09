@@ -1,7 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
 include("src/includes/auth_session.php");
-include("src/includes/db.php");
 ?>
 <!doctype html>
 <html lang="en">

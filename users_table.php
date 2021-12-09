@@ -1,7 +1,7 @@
 <?php
 //include auth_session.php file on all user panel pages
-//include("src/includes/auth_session.php");
-include("src/includes/db.php");
+
+
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +66,7 @@ include("src/includes/db.php");
                                            href="src/actions/delete_user.php?id=<?php echo $row['id']; ?>">
                                             <i class=" bi bi-trash"></i>
                                         </a>
+
                                         <a class="btn btn-outline-info"
                                            href="view_user.php?id=<?php echo $row['id']; ?>">
                                             <i class=" bi bi-eye">
