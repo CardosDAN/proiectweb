@@ -10,12 +10,7 @@ error_reporting(E_ALL);
 
 
 
-// Create connection
-$con = mysqli_connect("localhost","root","","proiectweb");
-// Check connection
-if ($con->connect_error) {
-    die("Connection failed: " . $con->connect_error);
-}
+include("../includes/db.php");
 function upload($files){
     $id = $_GET['id']; // get id through query string
     $statusMsg = '';

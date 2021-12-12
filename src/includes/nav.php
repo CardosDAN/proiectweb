@@ -113,8 +113,8 @@ include("src/includes/auth_session.php");
                 </li>
                 <li class="sidebar-dropdown">
                     <a href="#">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span class="menu-text">E-commerce</span>
+                        <i class="fa fa-table"></i>
+                        <span class="menu-text">Tables</span>
                         <span class="badge badge-pill badge-danger">3</span>
                     </a>
                     <div class="sidebar-submenu">
@@ -196,28 +196,28 @@ include("src/includes/auth_session.php");
                         </ul>
                     </div>
                 </li>
-                <li class="header-menu">
-                    <span>Extra</span>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-book"></i>
-                        <span class="menu-text">Documentation</span>
-                        <span class="badge badge-pill badge-primary">Beta</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-calendar"></i>
-                        <span class="menu-text">Calendar</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-folder"></i>
-                        <span class="menu-text">Examples</span>
-                    </a>
-                </li>
+<!--                <li class="header-menu">-->
+<!--                    <span>Extra</span>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="#">-->
+<!--                        <i class="fa fa-book"></i>-->
+<!--                        <span class="menu-text">Documentation</span>-->
+<!--                        <span class="badge badge-pill badge-primary">Beta</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="#">-->
+<!--                        <i class="fa fa-calendar"></i>-->
+<!--                        <span class="menu-text">Calendar</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="#">-->
+<!--                        <i class="fa fa-folder"></i>-->
+<!--                        <span class="menu-text">Examples</span>-->
+<!--                    </a>-->
+<!--                </li>-->
             </ul>
         </div>
         <!-- sidebar-menu  -->
@@ -354,7 +354,7 @@ include("src/includes/auth_session.php");
                 <span class="badge-sonar"></span>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuMessage">
-                <a class="dropdown-item" href="#">My profile</a>
+                <a class="dropdown-item" href="profil.php">My profile</a>
                 <a class="dropdown-item" href="#">Help</a>
                 <a class="dropdown-item" href="#">Setting</a>
             </div>

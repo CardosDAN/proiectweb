@@ -1,7 +1,7 @@
 <?php
 //include auth_session.php file on all user panel pages
-$file_name = 'orders_table';
-include("src/includes/auth_session.php");
+//$file_name = 'orders_table';
+//include("src/includes/auth_session.php");
 ?>
 
 <!DOCTYPE html>

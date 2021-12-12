@@ -10,17 +10,12 @@ error_reporting(E_ALL);
 
 
 
-// Create connection
-$con = mysqli_connect("localhost","root","","proiectweb");
-// Check connection
-if ($con->connect_error) {
-    die("Connection failed: " . $con->connect_error);
-}
+include("../includes/db.php");
 function upload($files){
     $statusMsg = '';
     global $con;
     // File upload path
-    $targetDir = "uploads/";
+    $targetDir = "../../uploads/";
     $fileName = basename($files["name"]);
     $targetFilePath = $targetDir . $fileName;
     $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
@@ -62,7 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $pret = $_POST["pret"];
     $descriere = $_POST["descriere"];
     $image_id = upload($_FILES["file"]);
-    $sql = "INSERT INTO anunturi (titlu,telefon,adresa,pret,descriere,image_id,user_id) VALUES ('{$titlu}','{$telefon}','{$adresa}','{$pret}','{$descriere}','{$image_id}','12')";
+    session_start();
+    $user_id = $_SESSION['id'];
+    $sql = "INSERT INTO anunturi (titlu,telefon,adresa,pret,descriere,image_id,user_id) VALUES ('{$titlu}','{$telefon}','{$adresa}','{$pret}','{$descriere}','{$image_id}','$user_id')";
     if ($con->query($sql) === TRUE) {
         echo "Record updated successfully";
     } else {

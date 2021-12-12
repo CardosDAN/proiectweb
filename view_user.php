@@ -1,7 +1,7 @@
 <?php
 //include auth_session.php file on all user panel pages
 //include("src/includes/auth_session.php");
-include("src/includes/auth_session.php");
+//include("src/includes/auth_session.php");
 ?>
 
 <!DOCTYPE html>

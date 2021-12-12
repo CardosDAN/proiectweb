@@ -36,6 +36,7 @@ include("src/includes/auth_session.php");
 <body>
 
 
+
 <div class="site-mobile-menu site-navbar-target">
     <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -62,24 +63,14 @@ include("src/includes/auth_session.php");
                 </div>
                 <div class="col-6 text-right">
                     <div class="mr-auto container">
-                        <div style="width: 100%;">
-                            <div style="width: 50%; height: 1px; float: right;">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <img src="website-menu-07/images/palm.png" width="25" height="25">
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <p class="p3">Nature inspired</p>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <img src="website-menu-07/images/palm.png" width="25" height="25">
-                                    </div>
-                                </div>
-                                <!--                                <p class="p3">Nature inspired</p>-->
-                            </div>
-
-                        </div>
-
+                        <a class="btn" href="index.php">
+                            <i class="bi bi-person">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-person" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                </svg>
+                            </i>
+                            My cont </a>
                     </div>
 
 
@@ -106,7 +97,7 @@ include("src/includes/auth_session.php");
                                 </a>
                             </div>
                             <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
-                                <li class="active"><a href="home.php" class="nav-link">Home</a></li>
+                                <li class="active"><a href="#home-section" class="nav-link">Home</a></li>
                                 <li><a href="#classes-section" class="nav-link">About us</a></li>
                                 <li class="has-children">
                                     <a href="#" class="nav-link">Pages</a>
@@ -136,6 +127,7 @@ include("src/includes/auth_session.php");
         </div>
     </div>
 </div>
+
 <div class="main">
     <div id="carouselExampleSlidesOnly" class="hero carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -146,7 +138,7 @@ include("src/includes/auth_session.php");
         </div>
     </div>
 
-    <div class="container text-center " style="margin-top: -20%">
+    <div class="container text-center " style="margin-top: -15%">
         <div class="p1">
             <p style="color: orange ">Fresh Food</p>
         </div>
@@ -168,51 +160,29 @@ include("src/includes/auth_session.php");
                 // Get images from the database
                 $query = $con->query("SELECT * FROM images ORDER BY uploaded_on DESC");
 
-                if($query->num_rows > 0){
-                    while($row = $query->fetch_assoc()){
-                        $imageURL = 'uploads/'.$row["file_name"];
+                if ($query->num_rows > 0) {
+                    while ($row = $query->fetch_assoc()) {
+                        $imageURL = 'uploads/' . $row["file_name"];
                         ?>
-                        <img src="<?php echo $imageURL; ?>" alt="" width="100" height="100" />
+                        <img src="<?php echo $imageURL; ?>" alt="" width="100" height="100"/>
                     <?php }
-                }else{ ?>
+                } else { ?>
                     <p>No image(s) found...</p>
                 <?php } ?>
                 <div class="card-body">
                     <?php
                     $sql = "SELECT id, titlu FROM anunturi where status='Activ'";
                     $result = mysqli_query($con, $sql);
-                    while($row = mysqli_fetch_assoc($result)) { ?>
+                    while ($row = mysqli_fetch_assoc($result)) { ?>
                     <p class="card-text"><?php echo $row['titlu']; ?></p>
-<!--                    <a href="pag2.php?id=--><?php //echo $row['id']?><!--" class="btn btn-info" role="button">View</a>-->
+                    <!--                    <a href="pag2.php?id=-->
+                    <?php //echo $row['id']?><!--" class="btn btn-info" role="button">View</a>-->
                 </div>
             </div>
             <?php
             }
             ?>
-            <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
+
         </div>
     </div>
 
