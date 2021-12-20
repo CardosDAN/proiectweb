@@ -1,6 +1,7 @@
 <?php
 //include auth_session.php file on all user panel pages
 include("src/includes/auth_session.php");
+$anunt_id = $_GET['id'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -62,24 +63,14 @@ include("src/includes/auth_session.php");
                 </div>
                 <div class="col-6 text-right">
                     <div class="mr-auto container">
-                        <div style="width: 100%;">
-                            <div style="width: 50%; height: 1px; float: right;">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <img src="website-menu-07/images/palm.png" width="25" height="25">
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <p class="p3">Nature inspired</p>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <img src="website-menu-07/images/palm.png" width="25" height="25">
-                                    </div>
-                                </div>
-                                <!--                                <p class="p3">Nature inspired</p>-->
-                            </div>
-
-                        </div>
-
+                        <a class="btn" href="index.php">
+                            <i class="bi bi-person">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-person" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                </svg>
+                            </i>
+                            My cont </a>
                     </div>
 
 
@@ -106,27 +97,27 @@ include("src/includes/auth_session.php");
                                 </a>
                             </div>
                             <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
-                                <li class="active"><a href="home.php" class="nav-link">Home</a></li>
+                                <li class="active"><a href="#home-section" class="nav-link">Home</a></li>
                                 <li><a href="#classes-section" class="nav-link">About us</a></li>
-                                <li class="has-children">
-                                    <a href="#" class="nav-link">Pages</a>
-                                    <ul class="dropdown arrow-top">
-                                        <li><a href="#" class="nav-link">Team</a></li>
-                                        <li><a href="#" class="nav-link">Pricing</a></li>
-                                        <li><a href="#" class="nav-link">FAQ</a></li>
-                                        <li class="has-children">
-                                            <a href="#">More Links</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Menu One</a></li>
-                                                <li><a href="#">Menu Two</a></li>
-                                                <li><a href="#">Menu Three</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <!--                                <li class="has-children">-->
+                                <!--                                    <a href="#" class="nav-link">Pages</a>-->
+                                <!--                                    <ul class="dropdown arrow-top">-->
+                                <!--                                        <li><a href="#" class="nav-link">Team</a></li>-->
+                                <!--                                        <li><a href="#" class="nav-link">Pricing</a></li>-->
+                                <!--                                        <li><a href="#" class="nav-link">FAQ</a></li>-->
+                                <!--                                        <li class="has-children">-->
+                                <!--                                            <a href="#">More Links</a>-->
+                                <!--                                            <ul class="dropdown">-->
+                                <!--                                                <li><a href="#">Menu One</a></li>-->
+                                <!--                                                <li><a href="#">Menu Two</a></li>-->
+                                <!--                                                <li><a href="#">Menu Three</a></li>-->
+                                <!--                                            </ul>-->
+                                <!--                                        </li>-->
+                                <!--                                    </ul>-->
+                                <!--                                </li>-->
                                 <li><a href="store.php" class="nav-link">Store</a></li>
-                                <li><a href="#events-section" class="nav-link">Events</a></li>
-                                <li><a href="#gallery-section" class="nav-link">Gallery</a></li>
+                                <li><a href="#events-section" class="nav-link">Blog</a></li>
+                                <!--                                <li><a href="#gallery-section" class="nav-link">Gallery</a></li>-->
                                 <li><a href="#contact-section" class="nav-link">Contact</a></li>
                             </ul>
                         </div>
@@ -150,7 +141,7 @@ include("src/includes/auth_session.php");
     <div class="container text-center " style="margin-top: -12%">
         <div class="p1">
             <p style="color: white ">Product details</p>
-            <h3 style="margin-top: -4%">Home > Product details</h3>
+
         </div>
     </div>
     <br><br><br><br><br><br>
@@ -161,21 +152,34 @@ include("src/includes/auth_session.php");
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                     class="rounded-circle" width="150">
+<!--                                <img class="rounded-circle" width="150" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"-->
+                                <?php
+                                $profile_id = $_GET["id"];
+                                $query = $con->query("SELECT * FROM images, users where users.id={'$profile_id'} and images.id=users.image_id");
+
+                                if($query->num_rows > 0){
+                                    while($row = $query->fetch_assoc()){
+                                        $imageURL = 'uploads/'.$row["file_name"];
+                                        ?>
+                                        <img src="<?php echo $imageURL; ?>" alt="" />
+                                    <?php }
+                                }else{ ?>
+                                    <p>No image(s) found...</p>
+                                <?php } ?>
                                 <div class="mt-3">
                                     <h4><?php echo $_SESSION['username']; ?></h4>
-                                    <p class="text-secondary mb-1"> <?php
-                                        $sql = "SELECT id, create_datetime FROM users";
-                                        $result = mysqli_query($con, $sql);
-                                        while($row = mysqli_fetch_assoc($result)) { ?>
-                                    <p class="card-text">Pe Fresh Food din <?php echo $row['create_datetime']; ?></p>
+                                    <p class="text-secondary mb-1">
+<!--                                        --><?php
+//                                        $sql = "SELECT id, created_at FROM users where id=$anunt_id";
+//                                        $result = mysqli_query($con, $sql);
+//                                        while($row = mysqli_fetch_assoc($result)) { ?>
+<!--                                    <p class="card-text">Pe Fresh Food din --><?php //echo $row['created_at']; ?><!--</p>-->
                                     <button class="btn btn-outline-primary">Message</button>
                                 </div>
                             </div>
-                            <?php
-                            }
-                            ?>
+<!--                            --><?php
+//                            }
+//                            ?>
                         </div>
                     </div>
                 </div>
@@ -190,20 +194,20 @@ include("src/includes/auth_session.php");
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <?php
-
-                                        // Get images from the database
-                                        $query = $con->query("SELECT * FROM images ORDER BY uploaded_on DESC");
-
-                                        if ($query->num_rows > 0) {
-                                            while ($row = $query->fetch_assoc()) {
-                                                $imageURL = 'uploads/' . $row["file_name"];
-                                                ?>
-                                                <img src="<?php echo $imageURL; ?>" alt=""/>
-                                            <?php }
-                                        } else { ?>
-                                            <p>No image(s) found...</p>
-                                        <?php } ?>
+<!--                                        --><?php
+//
+//                                        // Get images from the database
+//                                        $query = $con->query("SELECT * FROM images ORDER BY uploaded_on DESC");
+//
+//                                        if ($query->num_rows > 0) {
+//                                            while ($row = $query->fetch_assoc()) {
+//                                                $imageURL = 'uploads/' . $row["file_name"];
+//                                                ?>
+<!--                                                <img src="--><?php //echo $imageURL; ?><!--" alt=""/>-->
+<!--                                            --><?php //}
+//                                        } else { ?>
+<!--                                            <p>No image(s) found...</p>-->
+<!--                                        --><?php //} ?>
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
                                        data-slide="prev">

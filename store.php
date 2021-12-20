@@ -1,5 +1,5 @@
 <?php
-//include auth_session.php file on all user panel pages
+
 include("src/includes/auth_session.php");
 ?>
 <!doctype html>
@@ -97,27 +97,27 @@ include("src/includes/auth_session.php");
                                 </a>
                             </div>
                             <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
-                                <li class="active"><a href="#home-section" class="nav-link">Home</a></li>
+                                <li class="active"><a href="home.php" class="nav-link">Home</a></li>
                                 <li><a href="#classes-section" class="nav-link">About us</a></li>
-                                <li class="has-children">
-                                    <a href="#" class="nav-link">Pages</a>
-                                    <ul class="dropdown arrow-top">
-                                        <li><a href="#" class="nav-link">Team</a></li>
-                                        <li><a href="#" class="nav-link">Pricing</a></li>
-                                        <li><a href="#" class="nav-link">FAQ</a></li>
-                                        <li class="has-children">
-                                            <a href="#">More Links</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Menu One</a></li>
-                                                <li><a href="#">Menu Two</a></li>
-                                                <li><a href="#">Menu Three</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <!--                                <li class="has-children">-->
+                                <!--                                    <a href="#" class="nav-link">Pages</a>-->
+                                <!--                                    <ul class="dropdown arrow-top">-->
+                                <!--                                        <li><a href="#" class="nav-link">Team</a></li>-->
+                                <!--                                        <li><a href="#" class="nav-link">Pricing</a></li>-->
+                                <!--                                        <li><a href="#" class="nav-link">FAQ</a></li>-->
+                                <!--                                        <li class="has-children">-->
+                                <!--                                            <a href="#">More Links</a>-->
+                                <!--                                            <ul class="dropdown">-->
+                                <!--                                                <li><a href="#">Menu One</a></li>-->
+                                <!--                                                <li><a href="#">Menu Two</a></li>-->
+                                <!--                                                <li><a href="#">Menu Three</a></li>-->
+                                <!--                                            </ul>-->
+                                <!--                                        </li>-->
+                                <!--                                    </ul>-->
+                                <!--                                </li>-->
                                 <li><a href="store.php" class="nav-link">Store</a></li>
-                                <li><a href="#events-section" class="nav-link">Events</a></li>
-                                <li><a href="#gallery-section" class="nav-link">Gallery</a></li>
+                                <li><a href="#events-section" class="nav-link">Blog</a></li>
+                                <!--                                <li><a href="#gallery-section" class="nav-link">Gallery</a></li>-->
                                 <li><a href="#contact-section" class="nav-link">Contact</a></li>
                             </ul>
                         </div>
@@ -153,36 +153,45 @@ include("src/includes/auth_session.php");
                 <a class="blockquote footer" href="#">Vegetable</a>
             </footer>
         </blockquote>
-        <div class="card-deck">
-            <div class="card">
-                <?php
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row ">
 
-                // Get images from the database
-                $query = $con->query("SELECT * FROM images ORDER BY uploaded_on DESC");
+                    <div class="col-md-5 col-sm-12">
+                        <div class="card shadow-sm">
+                            <?php
+                            //            $user_id = $_GET['id'];
+                            $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
 
-                if ($query->num_rows > 0) {
-                    while ($row = $query->fetch_assoc()) {
-                        $imageURL = 'uploads/' . $row["file_name"];
-                        ?>
-                        <img src="<?php echo $imageURL; ?>" alt="" width="100" height="100"/>
-                    <?php }
-                } else { ?>
-                    <p>No image(s) found...</p>
-                <?php } ?>
-                <div class="card-body">
+                            if ($query->num_rows > 0) {
+                                while ($row = $query->fetch_assoc()) {
+                                    $imageURL = 'uploads/' . $row["file_name"];
+                                    ?>
+                                    <img src="<?php echo $imageURL; ?>" />
+                                <?php }
+                            } else { ?>
+                                <p>No image(s) found...</p>
+                            <?php } ?>
+                            <div class="card-body">
+                                <?php
+                                $sql = "SELECT id, titlu FROM anunturi where status='Activ'";
+                                $result = mysqli_query($con, $sql);
+                                while($row = mysqli_fetch_assoc($result)) { ?>
+                                <p  class="card-text"><?php echo $row['titlu']; ?> </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-info" role="button">View</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <?php
-                    $sql = "SELECT id, titlu FROM anunturi where status='Activ'";
-                    $result = mysqli_query($con, $sql);
-                    while ($row = mysqli_fetch_assoc($result)) { ?>
-                    <p class="card-text"><?php echo $row['titlu']; ?></p>
-                    <!--                    <a href="pag2.php?id=-->
-                    <?php //echo $row['id']?><!--" class="btn btn-info" role="button">View</a>-->
+                    }
+                    ?>
                 </div>
             </div>
-            <?php
-            }
-            ?>
-
         </div>
     </div>
 
@@ -198,8 +207,8 @@ include("src/includes/auth_session.php");
                             <i class="fas fa-gem me-3"></i>Fresh Food
                         </h6>
                         <p>
-                            Here you can use rows and columns to organize your footer content. Lorem ipsum
-                            dolor sit amet, consectetur adipisicing elit.
+                            The best online site for you to buy organic and products 100% bio, and for those
+                            who want to sell them fast and at a resonable price
                         </p>
                     </div>
                     <!-- Grid column -->

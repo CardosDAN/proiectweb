@@ -50,6 +50,25 @@ include("src/includes/db.php");
         a:hover {
             color: green;
         }
+
+        .border-choose {
+            background: url(website-menu-07/images/bg-border-choose.png) repeat-x scroll center;
+            margin: auto;
+            max-width: 480px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .images {
+            display: inline-block;
+            width: 45px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .align-center {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -158,7 +177,7 @@ include("src/includes/db.php");
                 <img class="d-block w-100" src="website-menu-07/images/1.jpg" width="700" height="700"
                      alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h1 style="margin-top: -35%" >Fresh Organic Food</h1>
+                    <h1 style="margin-top: -35%">Fresh Organic Food</h1>
                     <p>We get you Organic Fruits And Vegetable from our fields to your home </p>
                 </div>
             </div>
@@ -190,47 +209,22 @@ include("src/includes/db.php");
     </div>
     <div class="container marketing" style="margin-top: -65px">
         <div class="row">
-            <div class="col-12 col-md-4 ">
-                <div class="border rounded" style=" background:white;">
-                    <img src="website-menu-07/images/luxury-fruit-basket-6531-dv-p.jpg"
-                         style="height:150px; margin-left: -450%"/>
-                    <div class="col-sm-6 col-md-6 col-xs-6">
-                        <div class="thumbnail">
-                            <div class="col-sm-6 col-md-6 col-xs-12">
-                                <h3>Organic fruit</h3>
-                                <p style="font-size:15px; color:#03225C;">View more products</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-4 col-sm-4">
+                <a class="hover-images" href="#" title="images">
+                    <img class="img-responsive" src="website-menu-07/images/4.jpg" alt="banner">
+                </a>
             </div>
 
-            <div class="col-12 col-md-4">
-                <div class="border rounded" style=" background:white;">
-                    <img src="website-menu-07/images/legume.jpg" style="height:150px; margin-left: -450%"/>
-                    <div class="col-sm-6 col-md-6 col-xs-6">
-                        <div class="thumbnail">
-                            <div class="col-sm-6 col-md-6 col-xs-12">
-                                <h3>Organic vegetable</h3>
-                                <p style="font-size:15px; color:#03225C;">View more products</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-4 col-sm-4">
+                <a class="hover-images" href="#" title="images">
+                    <img class="img-responsive" src="website-menu-07/images/sus1.jpg" alt="banner">
+                </a>
             </div>
 
-            <div class="col-12 col-md-4">
-                <div class=" border rounded" style=" background:white;">
-                    <img src="website-menu-07/images/cumin-powder-500x500.jpg" style="height:150px; margin-left:-450%"/>
-                    <div class="col-sm-6 col-md-6 col-xs-6">
-                        <div class="thumbnail">
-                            <div class="col-sm-6 col-md-6 col-xs-12">
-                                <h3>Kitchen spices</h3>
-                                <p style="font-size:15px; color:#03225C;">View more products</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-4 col-sm-4">
+                <a class="hover-images" href="#" title="images">
+                    <img class="img-responsive" src="website-menu-07/images/sus2.jpg" alt="banner">
+                </a>
             </div>
 
         </div>
@@ -242,24 +236,48 @@ include("src/includes/db.php");
                 <blockquote class="blockquote text-center">
                     <div class="title-choose align-center">
                         <h3><span>We are </span>FRESH FOOD</h3>
-                        <footer class="blockquote footer">Nature <cite title="Source Title">Inspired</cite> </footer>
-                        <p>The fact of the matter is that you really know something's organic when you find bugs! they obviously wouldn't&nbsp;have made it that far in a non-organic growing environment, so better than any certification or seal on a package,&nbsp;the presence of creatures let you know the plant was healthy and</p>
+                        <footer class="blockquote footer">Nature <cite title="Source Title">Inspired</cite></footer>
+                        <p>The fact of the matter is that you really know something's organic when you find bugs! they
+                            obviously wouldn't&nbsp;have made it that far in a non-organic growing environment, so
+                            better than any certification or seal on a package,&nbsp;the presence of creatures let you
+                            know the plant was healthy and</p>
                     </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <p class="p3">~~~~~~~~~~~</p>
-                            </div>
-                            <div class="col-lg-2">
-                                <img src="website-menu-07/images/coca-leaves.png" width="25" height="25">
-                            </div>
-                            <div class="col-lg-4">
-                                <p class="p3">~~~~~~~~~~~</p>
+                    <div class="align-center border-choose">
+                        <div class="images">
+                            <img src="website-menu-07/images/bg-border-center.png" alt="icon">
+                        </div>
+                    </div>
+                </blockquote>
+                <div class="row">
+                    <div class="col-12 col-md-4 ">
+                        <div class="border rounded" style=" background:white;">
+                            <img class="container" src="website-menu-07/images/icon-shipping-2.png" alt="images"
+                                 style="height:150px; margin-left: -450%"/>
+                            <div class="col-sm-6 col-md-6 col-xs-6">
+                                <div class="thumbnail">
+                                    <div class="col-sm-6 col-md-6 col-xs-12">
+                                        <h3>Support</h3>
+                                        <p>LIFE TIME SUPPORT 24/7</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                </blockquote>
+                    <div class="col-3">
+                        <div class="border">
+                            <img class="container" src="website-menu-07/images/icon-shipping-3.png" alt="images">
+                            <h3>Help Partner</h3>
+                            <p>HELP ALL ASPECTS</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="border">
+                            <img class="container" src="website-menu-07/images/icon-shipping-4.png" alt="images">
+                            <h3>Contact With Us</h3>
+                            <p>+07 (0) 7782 9137</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-5 order-md-1">
                 <img src="website-menu-07/images/Hnet.com-image.jpg">
