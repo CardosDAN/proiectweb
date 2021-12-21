@@ -25,23 +25,6 @@ include("src/includes/db.php");
 
     <title>Home</title>
     <style>
-        #my-image-div {
-            background-image: url("website-menu-07/images/piata.jpg");
-            background-size: cover;
-            height: 230px;
-            width: 100%;
-        }
-
-        #my-image-text {
-            position: relative;
-            top: 50px;
-            width: 500px;
-            color: white;
-            left: 15%;
-            font-family: "Lucida Handwriting", "Courier New", cursive;
-            font-size: 150%;
-        }
-
         a {
             -webkit-transition: color 2s;
             transition: color 2s;
@@ -68,6 +51,43 @@ include("src/includes/db.php");
 
         .align-center {
             text-align: center;
+        }
+
+        .shipping-v2.home3-shiping.home2-shipping {
+            box-shadow: none;
+            margin-top: 30px;
+            padding: 0px;
+            background: none;
+        }
+
+        .bg-slider-one-item.bg-home2-slider {
+            padding: 30px 0px;
+            background: url(website-menu-07/images/7.jpg) no-repeat;
+        }
+
+        .bg-slider-one-item.bg-home2-slider .brand-content {
+            margin-top: 30px;
+        }
+        .title-text-v2 {
+            text-align: center;
+        }
+        ul.tabs.tabs-title {
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        ul.tabs.tabs-title li {
+            display: inline-block;
+            text-align: center;
+            text-transform: uppercase;
+            padding: 0 17px;
+            cursor: pointer;
+            font: 400 16px "Roboto Slab";
+            color: #2b2b2b;
+        }
+        ul.tabs.tabs-title li.active, ul.tabs.tabs-title li:hover {
+            color: #80b435;
         }
     </style>
 </head>
@@ -248,31 +268,24 @@ include("src/includes/db.php");
                         </div>
                     </div>
                 </blockquote>
-                <div class="row">
-                    <div class="col-12 col-md-4 ">
-                        <div class="border rounded" style=" background:white;">
-                            <img class="container" src="website-menu-07/images/icon-shipping-2.png" alt="images"
-                                 style="height:150px; margin-left: -450%"/>
-                            <div class="col-sm-6 col-md-6 col-xs-6">
-                                <div class="thumbnail">
-                                    <div class="col-sm-6 col-md-6 col-xs-12">
-                                        <h3>Support</h3>
-                                        <p>LIFE TIME SUPPORT 24/7</p>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="shipping-v2 home3-shiping home2-shipping row justify-content-around">
+                    <div class="col-md-3 col-sm-5">
+                        <div class="border container" style="width: 140%">
+                            <img src="website-menu-07/images/icon-shipping-2.png" alt="images">
+                            <h3>Support</h3>
+                            <p>LIFE TIME SUPPORT 24/7</p>
                         </div>
                     </div>
-                    <div class="col-3">
-                        <div class="border">
-                            <img class="container" src="website-menu-07/images/icon-shipping-3.png" alt="images">
+                    <div class="col-md-3 col-sm-3">
+                        <div class="border container" style="width: 140%">
+                            <img src="website-menu-07/images/icon-shipping-3.png" alt="images">
                             <h3>Help Partner</h3>
                             <p>HELP ALL ASPECTS</p>
                         </div>
                     </div>
-                    <div class="col-3">
-                        <div class="border">
-                            <img class="container" src="website-menu-07/images/icon-shipping-4.png" alt="images">
+                    <div class="col-md-3 col-sm-3">
+                        <div class="border container" style="width: 140%">
+                            <img src="website-menu-07/images/icon-shipping-4.png" alt="images">
                             <h3>Contact With Us</h3>
                             <p>+07 (0) 7782 9137</p>
                         </div>
@@ -285,39 +298,172 @@ include("src/includes/db.php");
         </div>
     </div>
 
+    <div id="carouselExampleControls" class="carousel slide bg-slider-one-item space-100 bg-home2-slider " data-ride="carousel">
+        <div class="title-text-v2 align-center p4">
+            <p4>Our Suppliers</p4>
+            <br><br>
+        </div>
+        <div class="carousel-inner">
 
-    <div class="container-fluid" style="margin-top: -0.15px">
-        <div id="my-image-div">
-            <div class="container" id="my-image-text">
-                <p style="color: white">Our Suppliers</p>
-                <div class="row ow-cols-4">
-                    <div class="col">
-                        <img src="website-menu-07/images/logo5.jpg">
-                    </div>
-                    <div class="col">
-                        <img src="website-menu-07/images/logo4.jpg">
-                    </div>
-                    <div class="col">
-                        <img src="website-menu-07/images/logo1.jpg">
-                    </div>
-                    <div class="col">
-                        <img src="website-menu-07/images/logo3.jpg">
-                    </div>
+            <div class="carousel-item active">
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-5.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-6.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-1.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-2.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-3.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-5.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-6.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-1.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-2.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-3.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-5.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-6.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-1.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-2.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-3.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
                 </div>
             </div>
         </div>
-
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
+
+
 </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="container">
-    <blockquote class="blockquote text-center">
-        <p class="mb-0">Latest products</p>
-        <footer class="blockquote footer"><a href="#">All products</a>
-            <a class="blockquote footer" href="#">Fruits</a>
-            <a class="blockquote footer" href="#">Vegetable</a>
-        </footer>
-    </blockquote>
+    <div class="title-text-v2">
+        <h3>Lastest Products</h3>
+    </div>
+    <ul class="tabs tabs-title">
+        <li class="item active" rel="tab_1">All Product</li>
+        <li class="item" rel="tab_2">Fruits</li>
+        <li class="item" rel="tab_3">Vegetables</li>
+        <li class="item" rel="tab_4">Nuts</li>
+        <li class="item" rel="tab_5">Other ProDucts</li>
+    </ul>
+    <div class="container">
+        <div class="tab-container space-10">
+            <div id="tab_1" class="tab-content active">
+                <div class="products hover-shadow ver2 border-space-product">
+                    <div class="product">
+                        <div class="product-images">
+                            <a href="#" title="product-images">
+                                <img class="primary_image" src="website-menu-07/images/prune.jpg" alt="">
+                            </a>
+                            <div class="action">
+                                <a class="add-cart" href="#" title="Add to cart"></a>
+                                <a class="wish" href="#" title="Wishlist"></a>
+                                <a class="zoom" href="#" title="Quick view"></a>
+                            </div>
+                            <!-- End action -->
+                        </div>
+                        <a href="#" title="Union Bed"><p class="product-title">BlueBerry</p></a>
+                        <p class="product-price-old">$700.00</p>
+                        <p class="product-price">$350.00</p>
+
+                    </div>
+                </div>
+                <!-- End product-tab-content products -->
+            </div>
+            <!-- End tab-content -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="card" style="width: 18rem;">
+            <a href="#" title="product-images">
+                <img class="primary_image" src="website-menu-07/images/prune.jpg" alt="">
+            </a>
+            <div class="action">
+                <a class="add-cart" href="#" title="Add to cart"></a>
+                <a class="wish" href="#" title="Wishlist"></a>
+                <a class="zoom" href="#" title="Quick view"></a>
+            </div>
+            <div class="card-body">
+                <p class="card-text">BlueBerry
+                    $700.00</p>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 

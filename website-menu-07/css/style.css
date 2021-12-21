@@ -67,6 +67,12 @@ img {
 p {
   color: #b3b3b3;
   font-weight: 300; }
+.p4{
+  font-family: "Lucida Handwriting", "Courier New", cursive;
+  font-size: 150%;
+  color: #b3b3b3;
+  font-weight: 300;
+}
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
