@@ -25,23 +25,6 @@ include("src/includes/db.php");
 
     <title>Home</title>
     <style>
-        #my-image-div {
-            background-image: url("website-menu-07/images/piata.jpg");
-            background-size: cover;
-            height: 230px;
-            width: 100%;
-        }
-
-        #my-image-text {
-            position: relative;
-            top: 50px;
-            width: 500px;
-            color: white;
-            left: 15%;
-            font-family: "Lucida Handwriting", "Courier New", cursive;
-            font-size: 150%;
-        }
-
         a {
             -webkit-transition: color 2s;
             transition: color 2s;
@@ -49,6 +32,99 @@ include("src/includes/db.php");
 
         a:hover {
             color: green;
+        }
+
+        .border-choose {
+            background: url(website-menu-07/images/bg-border-choose.png) repeat-x scroll center;
+            margin: auto;
+            max-width: 480px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .images {
+            display: inline-block;
+            width: 45px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .align-center {
+            text-align: center;
+        }
+
+        .shipping-v2.home3-shiping.home2-shipping {
+            box-shadow: none;
+            margin-top: 30px;
+            padding: 0px;
+            background: none;
+        }
+
+        .bg-slider-one-item.bg-home2-slider {
+            padding: 30px 0px;
+            background: url(website-menu-07/images/7.jpg) no-repeat;
+        }
+
+        .bg-slider-one-item.bg-home2-slider .brand-content {
+            margin-top: 30px;
+        }
+        .title-text-v2 {
+            text-align: center;
+        }
+        ul.tabs.tabs-title {
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        ul.tabs.tabs-title li {
+            display: inline-block;
+            text-align: center;
+            text-transform: uppercase;
+            padding: 0 17px;
+            cursor: pointer;
+            font: 400 16px "Roboto Slab";
+            color: #2b2b2b;
+        }
+        ul.tabs.tabs-title li.active, ul.tabs.tabs-title li:hover {
+            color: #80b435;
+        }
+        element.style {
+            background-image: url(website-menu-07/images/home1-banner1.jpg);
+            background-repeat: no-repeat;
+        }
+        .special.special-v2 {
+            padding-top: 75px;
+        }
+        .box {
+            display: inline-block;
+            width: 100%;
+        }
+        .special.special-v2 .special-content {
+            text-align: center;
+            max-width: 500px;
+            padding-top: 0px;
+        }
+        .p1{
+            font-family: "Garamond", serif;
+            font-size: 350%;
+        }
+        .special-content h3 {
+            font: 300 42px/50px "Roboto Slab";
+            color: #80b435;
+            text-transform: uppercase;
+            vertical-align: bottom;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .special .images-logo {
+            position: relative;
+            z-index: 999;
+        }
+        .footer-inner{
+            height: 150px;
+            width: 100%;
+            background: url(website-menu-07/images/bg-footer.jpg);
         }
     </style>
 </head>
@@ -155,15 +231,15 @@ include("src/includes/db.php");
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="website-menu-07/images/1.jpg" width="700" height="700"
+                <img class="d-block w-100" src="website-menu-07/images/home1-slideshow2.jpg"
                      alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h1 style="margin-top: -35%" >Fresh Organic Food</h1>
+                    <h1 style="margin-top: -35%">Fresh Organic Food</h1>
                     <p>We get you Organic Fruits And Vegetable from our fields to your home </p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="website-menu-07/images/2.jpg" width="700" height="700"
+                <img class="d-block w-100" src="website-menu-07/images/2.jpg"
                      alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>...</h5>
@@ -171,7 +247,7 @@ include("src/includes/db.php");
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="website-menu-07/images/3.jpg" width="700" height="700"
+                <img class="d-block w-100" src="website-menu-07/images/3.jpg"
                      alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h5></h5>
@@ -190,47 +266,22 @@ include("src/includes/db.php");
     </div>
     <div class="container marketing" style="margin-top: -65px">
         <div class="row">
-            <div class="col-12 col-md-4 ">
-                <div class="border rounded" style=" background:white;">
-                    <img src="website-menu-07/images/luxury-fruit-basket-6531-dv-p.jpg"
-                         style="height:150px; margin-left: -450%"/>
-                    <div class="col-sm-6 col-md-6 col-xs-6">
-                        <div class="thumbnail">
-                            <div class="col-sm-6 col-md-6 col-xs-12">
-                                <h3>Organic fruit</h3>
-                                <p style="font-size:15px; color:#03225C;">View more products</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-4 col-sm-4">
+                <a class="hover-images" href="#" title="images">
+                    <img class="img-responsive" src="website-menu-07/images/4.jpg" alt="banner">
+                </a>
             </div>
 
-            <div class="col-12 col-md-4">
-                <div class="border rounded" style=" background:white;">
-                    <img src="website-menu-07/images/legume.jpg" style="height:150px; margin-left: -450%"/>
-                    <div class="col-sm-6 col-md-6 col-xs-6">
-                        <div class="thumbnail">
-                            <div class="col-sm-6 col-md-6 col-xs-12">
-                                <h3>Organic vegetable</h3>
-                                <p style="font-size:15px; color:#03225C;">View more products</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-4 col-sm-4">
+                <a class="hover-images" href="#" title="images">
+                    <img class="img-responsive" src="website-menu-07/images/sus1.jpg" alt="banner">
+                </a>
             </div>
 
-            <div class="col-12 col-md-4">
-                <div class=" border rounded" style=" background:white;">
-                    <img src="website-menu-07/images/cumin-powder-500x500.jpg" style="height:150px; margin-left:-450%"/>
-                    <div class="col-sm-6 col-md-6 col-xs-6">
-                        <div class="thumbnail">
-                            <div class="col-sm-6 col-md-6 col-xs-12">
-                                <h3>Kitchen spices</h3>
-                                <p style="font-size:15px; color:#03225C;">View more products</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-4 col-sm-4">
+                <a class="hover-images" href="#" title="images">
+                    <img class="img-responsive" src="website-menu-07/images/sus2.jpg" alt="banner">
+                </a>
             </div>
 
         </div>
@@ -242,24 +293,41 @@ include("src/includes/db.php");
                 <blockquote class="blockquote text-center">
                     <div class="title-choose align-center">
                         <h3><span>We are </span>FRESH FOOD</h3>
-                        <footer class="blockquote footer">Nature <cite title="Source Title">Inspired</cite> </footer>
-                        <p>The fact of the matter is that you really know something's organic when you find bugs! they obviously wouldn't&nbsp;have made it that far in a non-organic growing environment, so better than any certification or seal on a package,&nbsp;the presence of creatures let you know the plant was healthy and</p>
+                        <footer class="blockquote footer">Nature <cite title="Source Title">Inspired</cite></footer>
+                        <p>The fact of the matter is that you really know something's organic when you find bugs! they
+                            obviously wouldn't&nbsp;have made it that far in a non-organic growing environment, so
+                            better than any certification or seal on a package,&nbsp;the presence of creatures let you
+                            know the plant was healthy and</p>
                     </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <p class="p3">~~~~~~~~~~~</p>
-                            </div>
-                            <div class="col-lg-2">
-                                <img src="website-menu-07/images/coca-leaves.png" width="25" height="25">
-                            </div>
-                            <div class="col-lg-4">
-                                <p class="p3">~~~~~~~~~~~</p>
-                            </div>
+                    <div class="align-center border-choose">
+                        <div class="images">
+                            <img src="website-menu-07/images/bg-border-center.png" alt="icon">
                         </div>
                     </div>
-
                 </blockquote>
+                <div class="shipping-v2 home3-shiping home2-shipping row justify-content-around">
+                    <div class="col-md-3 col-sm-5">
+                        <div class="border container" style="width: 140%">
+                            <img src="website-menu-07/images/icon-shipping-2.png" alt="images">
+                            <h3>Support</h3>
+                            <p>LIFE TIME SUPPORT 24/7</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <div class="border container" style="width: 140%">
+                            <img src="website-menu-07/images/icon-shipping-3.png" alt="images">
+                            <h3>Help Partner</h3>
+                            <p>HELP ALL ASPECTS</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <div class="border container" style="width: 140%">
+                            <img src="website-menu-07/images/icon-shipping-4.png" alt="images">
+                            <h3>Contact With Us</h3>
+                            <p>+07 (0) 7782 9137</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-5 order-md-1">
                 <img src="website-menu-07/images/Hnet.com-image.jpg">
@@ -267,44 +335,221 @@ include("src/includes/db.php");
         </div>
     </div>
 
+    <div id="carouselExampleControls" class="carousel slide bg-slider-one-item space-100 bg-home2-slider " data-ride="carousel">
+        <div class="title-text-v2 align-center p4">
+            <p4>Our Suppliers</p4>
+            <br><br>
+        </div>
+        <div class="carousel-inner">
 
-    <div class="container-fluid" style="margin-top: -0.15px">
-        <div id="my-image-div">
-            <div class="container" id="my-image-text">
-                <p style="color: white">Our Suppliers</p>
-                <div class="row ow-cols-4">
-                    <div class="col">
-                        <img src="website-menu-07/images/logo5.jpg">
-                    </div>
-                    <div class="col">
-                        <img src="website-menu-07/images/logo4.jpg">
-                    </div>
-                    <div class="col">
-                        <img src="website-menu-07/images/logo1.jpg">
-                    </div>
-                    <div class="col">
-                        <img src="website-menu-07/images/logo3.jpg">
-                    </div>
+            <div class="carousel-item active">
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-5.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-6.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-1.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-2.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-3.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-3.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-5.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-6.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-1.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-2.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-3.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-3.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-5.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-6.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-1.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-2.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-3.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-3.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="website-menu-07/images/brand-4.png" alt="Brand"></a>
                 </div>
             </div>
         </div>
-
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
+
+
 </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="container">
-    <blockquote class="blockquote text-center">
-        <p class="mb-0">Latest products</p>
-        <footer class="blockquote footer"><a href="#">All products</a>
-            <a class="blockquote footer" href="#">Fruits</a>
-            <a class="blockquote footer" href="#">Vegetable</a>
-        </footer>
-    </blockquote>
+    <div class="title-text-v2">
+        <h3>Lastest Products</h3>
+    </div>
+    <ul class="tabs tabs-title">
+        <li class="item active" rel="tab_1">All Product</li>
+        <li class="item" rel="tab_2">Fruits</li>
+        <li class="item" rel="tab_3">Vegetables</li>
+        <li class="item" rel="tab_4">Nuts</li>
+        <li class="item" rel="tab_5">Other ProDucts</li>
+    </ul>
+    <div class="container">
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row ">
+
+                    <div class="col-md-5 col-sm-12">
+                        <div class="card shadow-sm">
+                            <?php
+                            //            $user_id = $_GET['id'];
+                            $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
+
+                            if ($query->num_rows > 0) {
+                                while ($row = $query->fetch_assoc()) {
+                                    $imageURL = 'uploads/' . $row["file_name"];
+                                    ?>
+                                    <img src="<?php echo $imageURL; ?>" />
+                                <?php }
+                            } else { ?>
+                                <p>No image(s) found...</p>
+                            <?php } ?>
+                            <div class="card-body">
+                                <?php
+                                $sql = "SELECT id, titlu FROM anunturi where status='Activ'";
+                                $result = mysqli_query($con, $sql);
+                                while($row = mysqli_fetch_assoc($result)) { ?>
+                                <p  class="card-text"><?php echo $row['titlu']; ?> </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-info" role="button">View</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="special bg-images special-v2 box container-fluid" style="background-image:url('website-menu-07/images/home1-banner1.jpg');background-repeat: no-repeat;">
+        <div class="col-md-7 float-left align-right">
+            <img class="images-logo container" src="website-menu-07/images/home1-images-banner1-2.png" alt="images">
+        </div>
+        <!-- End col-md-7 -->
+        <div class="col-md-5 float-right">
+            <div class="special-content align-center">
+                <div class="p1">
+                    <p>Special Offers</p>
+                </div>
+
+                <h3>Get 30% off</h3>
+                <h3>your order of $100 or more</h3>
+                <a class="btn btn-outline-success" href="#" title="shopnow">Shop Now</a>
+            </div>
+        </div>
+        <!-- End col-md-5 -->
+    </div>
 </div>
 
-
+<br><br><br>
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-gray-  text-dark ">
+<footer style="background: gray" class="text-center text-lg-start bg-light text-muted">
+    <!-- Section: Social media -->
+    <section class="footer-inner">
+    </section>
     <section class="">
         <div class="container text-center text-md-start mt-5">
             <!-- Grid row -->
@@ -313,7 +558,7 @@ include("src/includes/db.php");
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Fresh Food
+                        <i class="fas fa-gem me-3" style="color: limegreen">Fresh Food</i>
                     </h6>
                     <p>
                         The best online site for you to buy organic and products 100% bio, and for those
@@ -323,26 +568,43 @@ include("src/includes/db.php");
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4" style="color: limegreen">
+                        Products
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset" >Fruits</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Vegetable</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Nuts</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">OTHER PRODUCTS</a>
+                    </p>
+                </div>
                 <!-- Grid column -->
 
                 <!-- Grid column -->
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4" style="color: limegreen">
                         Useful links
                     </h6>
                     <p>
-                        <a href="#!" class="text-info">About us</a>
+                        <a href="#!" class="text-reset">About us</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-info">Settings</a>
+                        <a href="#!" class="text-reset">Settings</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-info">Store</a>
+                        <a href="#!" class="text-reset">Store</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-info">Help</a>
+                        <a href="#!" class="text-reset">Help</a>
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -350,20 +612,16 @@ include("src/includes/db.php");
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <!-- Links -->
-                    <div class="container">
-
-                        <!-- Call to action -->
-                        <ul class="list-unstyled list-inline text-center py-2">
-                            <li class="list-inline-item">
-                                <h5 class="mb-1">Register for free</h5>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="registration.php" class="btn btn-outline-white btn-rounded">Sign up!</a>
-                            </li>
-                        </ul>
-                        <!-- Call to action -->
-
-                    </div>
+                    <h6 class="text-uppercase fw-bold mb-4" style="color: limegreen">
+                        Contact
+                    </h6>
+                    <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        info@example.com
+                    </p>
+                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
                 </div>
                 <!-- Grid column -->
             </div>
@@ -372,12 +630,6 @@ include("src/includes/db.php");
     </section>
     <!-- Section: Links  -->
 
-    <!-- Copyright -->
-    <!--    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">-->
-    <!--        © 2021 Copyright:-->
-    <!--        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>-->
-    <!--    </div>-->
-    <!-- Copyright -->
 </footer>
 <!-- Footer -->
 
