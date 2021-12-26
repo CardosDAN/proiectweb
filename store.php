@@ -20,19 +20,16 @@ include("src/includes/auth_session.php");
 
     <!-- Style -->
     <link rel="stylesheet" href="website-menu-07/css/style.css">
+    <link rel="stylesheet" href="website-menu-07/css/style_shoppage.css">
 
-    <title>Home</title>
-    <style>
-        a {
-            -webkit-transition: color 2s;
-            transition: color 2s;
-        }
-
-        a:hover {
-            color: green;
-        }
-
-    </style>
+    <title>Store</title>
+<style>
+    .footer-inner{
+        height: 150px;
+        width: 100%;
+        background: url(website-menu-07/images/bg-footer.jpg);
+    }
+</style>
 </head>
 <body>
 
@@ -129,151 +126,254 @@ include("src/includes/auth_session.php");
 </div>
 
 <div class="main">
-    <div class="baner">
-        <img src="website-menu-07/images/banner-catalog1.jpg" alt="Banner-header">
-    </div>
-    <div class="container">
-        <div class="text-center">
-            <h3>Store</h3>
-            <p><a href="#" title="Home">Home</a><i class="bi bi-caret-right-fill"> > </i>Store</p>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="website-menu-07/images/banner-catalog1.jpg" alt="First slide">
+            </div>
         </div>
     </div>
+    <div class="container">
+        <div class="title-text-v2">
+            <h3>Lastest Products</h3>
+        </div>
+        <ul class="tabs tabs-title">
+            <li class="item active" rel="tab_1">All Product</li>
+            <li class="item" rel="tab_2">Fruits</li>
+            <li class="item" rel="tab_3">Vegetables</li>
+            <li class="item" rel="tab_4">Nuts</li>
+            <li class="item" rel="tab_5">Other ProDucts</li>
+        </ul>
+        <div id="secondary" class="widget-area col-xs-12 col-md-3">
+            <aside class="widget widget_product_categories">
+                <h3 class="widget-title">Categories</h3>
+                <ul class="product-categories">
+                    <li class="hassub"><a href="#" title="Men">Men</a><i class="fa fa-caret-right"></i>
+                        <ul class="children" style="display: none;">
+                            <li><a href="#" title="Bag &amp; Luggage">Bag &amp; Luggage</a><i
+                                        class="fa fa-caret-right"></i></li>
+                            <li><a href="#" title="Eyewear">Eyewear</a><i class="fa fa-caret-right"></i></li>
+                            <li><a href="#" title="Jewelry">Jewelry</a><i class="fa fa-caret-right"></i></li>
+                            <li><a href="#" title="Shoes">Shoes</a><i class="fa fa-caret-right"></i></li>
+                            <li><a href="#" title="Skyrts">Skyrts</a><i class="fa fa-caret-right"></i></li>
+                        </ul>
+                    </li>
+                    <li class="hassub"><a href="#" title="woment">woment</a><i class="fa fa-caret-right"></i>
+                        <ul style="display: none;">
+                            <li><a href="#" title="Bag">Bag</a><i class="fa fa-caret-right"></i></li>
+                            <li><a href="#" title="Bed &amp; Bath">Bed &amp; Bath</a><i class="fa fa-caret-right"></i>
+                            </li>
+                            <li><a href="#" title="Sport tops &amp; Vest">Sport tops &amp; Vest</a><i
+                                        class="fa fa-caret-right"></i></li>
+                            <li><a href="#" title="Sport undewear">Sport undewear</a><i class="fa fa-caret-right"></i>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#" title="kids">kids</a></li>
+                    <li><a href="#" title="All Product">All Product</a></li>
+                </ul>
+            </aside>
+            <aside class="widget widget_by_price">
+                <h3 class="widget-title">By Price</h3>
+                <section class="mb-4">
+
+                    <h6 class="font-weight-bold mb-3">Price</h6>
+
+                    <div class="slider-price d-flex align-items-center my-4">
+                        <span class="font-weight-normal small text-muted mr-2">$0</span>
+                        <form class="multi-range-field w-100 mb-1">
+                            <input id="multi" class="multi-range" type="range" />
+                        </form>
+                        <span class="font-weight-normal small text-muted ml-2">$100</span>
+                    </div>
+
+                </section>
+                <a class="link-v1 space-30" href="#" title="fillter">fillter</a>
+            </aside>
+            <aside class="widget widget_link">
+                <h3 class="widget-title">By Brand</h3>
+                <ul>
+                    <li><a href="#" title="Aeccaft">Aeccaft</a><span class="count">(15)</span></li>
+                    <li><a href="#" title="Artek">Artek</a><span class="count">(09)</span></li>
+                    <li><a href="#" title="Bower">Bower</a><span class="count">(12)</span></li>
+                    <li><a href="#" title="Culinarium">Culinarium</a><span class="count">(16)</span></li>
+                    <li><a href="#" title="Desu">Desu</a><span class="count">(16)</span></li>
+                </ul>
+            </aside>
+            <aside class="widget widget_feature">
+                <h3 class="widget-title">Feature Products</h3>
+                <ul>
+                    <li>
+                        <a class="images" href="#" title="images">
+                            <!--                            <img class="img-responsive" src="assets/images/products/furniture/1.jpg" alt="images">-->
+                        </a>
+                        <div class="text">
+                            <h2>
+                                <a href="#" title="Butterfly Bar Stool">Butterfly Bar Stool</a>
+                            </h2>
+                            <p><span class="price-old">$700</span><span>$350</span></p>
+                            <p class="rating">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="images" href="#" title="images">
+                            <!--                            <img class="img-responsive" src="assets/images/products/furniture/2.jpg" alt="">-->
+                        </a>
+                        <div class="text">
+                            <h2>
+                                <a href="#" title="Butterfly Bar Stool">Butterfly Bar Stool</a>
+                            </h2>
+                            <p><span class="price-old">$700</span><span>$350</span></p>
+                            <p class="rating">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="images" href="#" title="images">
+                            <!--                            <img class="img-responsive" src="assets/images/products/furniture/3.jpg" alt="">-->
+                        </a>
+                        <div class="text">
+                            <h2>
+                                <a href="#" title="Butterfly Bar Stool">Butterfly Bar Stool</a>
+                            </h2>
+                            <p><span class="price-old">$700</span><span>$350</span></p>
+                            <p class="rating">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="images" href="#" title="images">
+                            <!--                            <img class="img-responsive" src="assets/images/products/furniture/4.jpg" alt="">-->
+                        </a>
+                        <div class="text">
+                            <h2>
+                                <a href="#" title="Butterfly Bar Stool">Butterfly Bar Stool</a>
+                            </h2>
+                            <p><span class="price-old">$700</span><span>$350</span></p>
+                            <p class="rating">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+da
 </div>
-<!---->
-<!---->
-<!--<div class="container" style="margin-top: -4%">-->
-<!--    <blockquote class="blockquote text-center">-->
-<!--        <p style="color: black" class="mb-0 p2">Latest products</p>-->
-<!--        <footer class="blockquote footer"><a href="#">All products</a>-->
-<!--            <a class="blockquote footer" href="#">Fruits</a>-->
-<!--            <a class="blockquote footer" href="#">Vegetable</a>-->
-<!--        </footer>-->
-<!--    </blockquote>-->
-<!--    <div class="album py-5 bg-light">-->
-<!--        <div class="container">-->
-<!--            <div class="row ">-->
-<!---->
-<!--                <div class="col-md-5 col-sm-12">-->
-<!--                    <div class="card shadow-sm">-->
-<!--                        --><?php
-//                        //            $user_id = $_GET['id'];
-//                        $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
-//
-//                        if ($query->num_rows > 0) {
-//                            while ($row = $query->fetch_assoc()) {
-//                                $imageURL = 'uploads/' . $row["file_name"];
-//                                ?>
-<!--                                <img src="--><?php //echo $imageURL; ?><!--"/>-->
-<!--                            --><?php //}
-//                        } else { ?>
-<!--                            <p>No image(s) found...</p>-->
-<!--                        --><?php //} ?>
-<!--                        <div class="card-body">-->
-<!--                            --><?php
-//                            $sql = "SELECT id, titlu FROM anunturi where status='Activ'";
-//                            $result = mysqli_query($con, $sql);
-//                            while ($row = mysqli_fetch_assoc($result)) { ?>
-<!--                            <p class="card-text">--><?php //echo $row['titlu']; ?><!-- </p>-->
-<!--                            <div class="d-flex justify-content-between align-items-center">-->
-<!--                                <div class="btn-group">-->
-<!--                                    <a href="view_anunt.php?id=--><?php //echo $row['id'] ?><!--" class="btn btn-info"-->
-<!--                                       role="button">View</a>-->
-<!---->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                --><?php
-//                }
-//                ?>
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!---->
-<!--<footer class="text-center text-lg-start bg-gray-  text-dark ">-->
-<!--    <section class="">-->
-<!--        <div class="container text-center text-md-start mt-5">-->
-<!--            <!-- Grid row -->-->
-<!--            <div class="row mt-3">-->
-<!--                <!-- Grid column -->-->
-<!--                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">-->
-<!--                    <!-- Content -->-->
-<!--                    <h6 class="text-uppercase fw-bold mb-4">-->
-<!--                        <i class="fas fa-gem me-3"></i>Fresh Food-->
-<!--                    </h6>-->
-<!--                    <p>-->
-<!--                        The best online site for you to buy organic and products 100% bio, and for those-->
-<!--                        who want to sell them fast and at a resonable price-->
-<!--                    </p>-->
-<!--                </div>-->
-<!--                <!-- Grid column -->-->
-<!---->
-<!--                <!-- Grid column -->-->
-<!---->
-<!--                <!-- Grid column -->-->
-<!---->
-<!--                <!-- Grid column -->-->
-<!--                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">-->
-<!--                    <!-- Links -->-->
-<!--                    <h6 class="text-uppercase fw-bold mb-4">-->
-<!--                        Useful links-->
-<!--                    </h6>-->
-<!--                    <p>-->
-<!--                        <a href="#!" class="text-info">About us</a>-->
-<!--                    </p>-->
-<!--                    <p>-->
-<!--                        <a href="#!" class="text-info">Settings</a>-->
-<!--                    </p>-->
-<!--                    <p>-->
-<!--                        <a href="#!" class="text-info">Store</a>-->
-<!--                    </p>-->
-<!--                    <p>-->
-<!--                        <a href="#!" class="text-info">Help</a>-->
-<!--                    </p>-->
-<!--                </div>-->
-<!--                <!-- Grid column -->-->
-<!---->
-<!--                <!-- Grid column -->-->
-<!--                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">-->
-<!--                    <!-- Links -->-->
-<!--                    <div class="container">-->
-<!---->
-<!--                        <!-- Call to action -->-->
-<!--                        <ul class="list-unstyled list-inline text-center py-2">-->
-<!--                            <li class="list-inline-item">-->
-<!--                                <h5 class="mb-1">Register for free</h5>-->
-<!--                            </li>-->
-<!--                            <li class="list-inline-item">-->
-<!--                                <a href="registration.php" class="btn btn-outline-white btn-rounded">Sign up!</a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                        <!-- Call to action -->-->
-<!---->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <!-- Grid column -->-->
-<!--            </div>-->
-<!--            <!-- Grid row -->-->
-<!--        </div>-->
-<!--    </section>-->
-<!--    <!-- Section: Links  -->-->
-<!---->
-<!--    <!-- Copyright -->-->
-<!--    <!--    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">-->-->
-<!--    <!--        © 2021 Copyright:-->-->
-<!--    <!--        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>-->-->
-<!--    <!--    </div>-->-->
-<!--    <!-- Copyright -->-->
-<!--</footer>-->
-<!--<!-- Footer -->-->
 
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<!-- Footer -->
+<footer style="background: gray" class="text-center text-lg-start bg-light text-muted">
+    <!-- Section: Social media -->
+    <section class="footer-inner">
+    </section>
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class="fas fa-gem me-3" style="color: limegreen">Fresh Food</i>
+                    </h6>
+                    <p>
+                        The best online site for you to buy organic and products 100% bio, and for those
+                        who want to sell them fast and at a resonable price
+                    </p>
+                </div>
+                <!-- Grid column -->
 
-<script src="website-menu-07/js/jquery-3.3.1.min.js"></script>
-<script src="website-menu-07/js/popper.min.js"></script>
-<script src="website-menu-07/js/bootstrap.min.js"></script>
-<script src="website-menu-07/js/jquery.sticky.js"></script>
-<script src="website-menu-07/js/main.js"></script>
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4" style="color: limegreen">
+                        Products
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset" >Fruits</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Vegetable</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Nuts</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">OTHER PRODUCTS</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4" style="color: limegreen">
+                        Useful links
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset">About us</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Settings</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Store</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Help</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4" style="color: limegreen">
+                        Contact
+                    </h6>
+                    <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        info@example.com
+                    </p>
+                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+    </section>
+    <!-- Section: Links  -->
+
+</footer>
+
+    <script src="website-menu-07/js/jquery-3.3.1.min.js"></script>
+    <script src="website-menu-07/js/popper.min.js"></script>
+    <script src="website-menu-07/js/bootstrap.min.js"></script>
+    <script src="website-menu-07/js/jquery.sticky.js"></script>
+    <script src="website-menu-07/js/main.js"></script>
 </body>
 </html>
