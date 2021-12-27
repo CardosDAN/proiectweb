@@ -191,8 +191,8 @@ include("src/includes/db.php");
                                 </a>
                             </div>
                             <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
-                                <li class="active"><a href="#home-section" class="nav-link">Home</a></li>
-                                <li><a href="#classes-section" class="nav-link">About us</a></li>
+                                <li class="active"><a href="home.php" class="nav-link">Home</a></li>
+                                <li><a href="about_us.html" class="nav-link">About us</a></li>
                                 <!--                                <li class="has-children">-->
                                 <!--                                    <a href="#" class="nav-link">Pages</a>-->
                                 <!--                                    <ul class="dropdown arrow-top">-->
