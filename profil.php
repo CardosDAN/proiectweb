@@ -61,7 +61,7 @@ include("src/includes/auth_session.php");
 
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
-                    <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>
+<!--                    <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>-->
                     <li><a href="src/actions/user_edit_info.php"> <i class="fa fa-edit"></i> Edit profile</a></li>
                 </ul>
             </div>
@@ -93,22 +93,22 @@ include("src/includes/auth_session.php");
                             <p><span><?php echo "Username: ".$data['username']; ?> </span> </p>
                         </div>
                         <div class="bio-row">
-                            <p><span><?php echo "Email: ".$data['email']; ?></span>: </p>
+                            <p><span><?php echo "Email: ".$data['email']; ?></span> </p>
                         </div>
                         <div class="bio-row">
-                            <p><span> <?php echo "Phone number: ".$data['phone']; ?></span>: </p>
+                            <p><span> <?php echo "Phone number: ".$data['phone']; ?></span> </p>
                         </div>
                         <div class="bio-row">
-                            <p><span><?php echo "Status: ".$data['user_level_id']; ?></span>: </p>
+                            <p><span><?php echo "Status: ".$data['user_level_id']; ?></span> </p>
                         </div>
                         <div class="bio-row">
-                            <p><span><?php echo "Created: ".$data['created_at']; ?></span>: </p>
+                            <p><span><?php echo "Created: ".$data['created_at']; ?></span> </p>
                         </div>
                         <div class="bio-row">
-                            <p><span><?php echo "Modified: ".$data['modified']; ?> </span>: </p>
+                            <p><span><?php echo "Modified: ".$data['modified']; ?> </span> </p>
                         </div>
                         <div class="bio-row">
-                            <p><span><?php echo "Address: ".$data['address']; ?> </span>: </p>
+                            <p><span><?php echo "Address: ".$data['address']; ?> </span> </p>
                         </div>
                     </div>
                 </div>

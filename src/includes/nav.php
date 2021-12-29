@@ -14,7 +14,39 @@ include("src/includes/auth_session.php");
         <!-- sidebar-header  -->
         <div class="sidebar-item sidebar-header d-flex flex-nowrap">
             <div class="user-pic">
-                <img class="img-responsive img-rounded" src="assets/app/img/user.jpg" alt="User picture">
+                <?php
+                $user_id = $_SESSION['id'];
+                $query = $con->query("SELECT * FROM images,users where users.id='{$user_id}' and images.id=users.image_id ");
+
+                if($query->num_rows > 0){
+                    while($row = $query->fetch_assoc()){
+                        $imageURL = 'uploads/'.$row["file_name"];
+                        ?>
+                        <img src="<?php echo $imageURL; ?>" alt="" />
+                    <?php }
+                }else{ ?>
+                    <p>No image(s) found...</p>
+                <?php } ?>
+                </a>
+                <h1><?php echo $_SESSION['username']; ?></h1>
+                <p>
+                    <?php
+                    $loged_id = $_SESSION['id'];
+                    $sql = "SELECT * FROM users where id=$loged_id";
+                    $result = $con->query($sql);
+
+                    if ($result->num_rows > 0) {
+                    // output data of each row
+                    while ($row = $result->fetch_assoc()) { ?>
+
+                    <?php echo "Status: ".$row["user_level_id"]; ?>
+                </p>
+            <?php
+            }
+            } else {
+                echo "0 results";
+            }
+            ?>
             </div>
             <div class="user-info">
                         <span class="user-name">Welcome
@@ -38,35 +70,7 @@ include("src/includes/auth_session.php");
                     echo "0 results";
                 }
                 ?>
-                <span class="user-status">
-                    <i class="fa fa-circle">
-<!--                        --><?php
-//                        ////// To update session status for plus_login table to get who is online ////////
-//                        $id = $_SESSION['id'];
-//                        if (isset($session_id)) {
-//                            $tm = date("Y-m-d H:i:s");
-//                            $q = "update users set is_active='Online',tm='$tm' where id='$session_id'";
-////                            echo mysqli_error();
-//                        }
-//                        $gap = 10; // change this to change the time in minutes, This is the time for which active users are collected.
-//                        $tm = date("Y-m-d H:i:s", mktime(date("H"), date("i") - $gap, date("s"), date("m"), date("d"), date("Y")));
-//
-//
-//                        $ut = "update users set is_active='Offline' where tm < '$tm'";
-////                        echo mysqli_error();
-//                        /// Now let us collect the userids from table who are online ////////
-//                        $qt = "select is_active from users where tm > '$tm' and is_active='Online'";
-////                        echo mysqli_error();
-//
-//                        while ($nt = mysqli_fetch_array($qt)) {
-//                            echo "$nt[is_active],";
-//                        }
 
-
-                        ?>
-                    </i>
-
-                </span>
 
             </div>
         </div>
@@ -89,28 +93,7 @@ include("src/includes/auth_session.php");
                 <li class="header-menu">
                     <span>General</span>
                 </li>
-                <li class="sidebar-dropdown">
-                    <a href="#">
-                        <i class="fa fa-tachometer-alt"></i>
-                        <span class="menu-text">Dashboard</span>
-                        <span class="badge badge-pill badge-warning">New</span>
-                    </a>
-                    <div class="sidebar-submenu">
-                        <ul>
-                            <li>
-                                <a href="#">Dashboard 1
-                                    <span class="badge badge-pill badge-success">Pro</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">Dashboard 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Dashboard 3</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+
                 <li class="sidebar-dropdown">
                     <a href="#">
                         <i class="fa fa-table"></i>
@@ -129,31 +112,6 @@ include("src/includes/auth_session.php");
                             </li>
                             <li>
                                 <a href="#">Credit cart</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="sidebar-dropdown">
-                    <a href="#">
-                        <i class="far fa-gem"></i>
-                        <span class="menu-text">Components</span>
-                    </a>
-                    <div class="sidebar-submenu">
-                        <ul>
-                            <li>
-                                <a href="#">General</a>
-                            </li>
-                            <li>
-                                <a href="#">Panels</a>
-                            </li>
-                            <li>
-                                <a href="#">Tables</a>
-                            </li>
-                            <li>
-                                <a href="#">Icons</a>
-                            </li>
-                            <li>
-                                <a href="#">Forms</a>
                             </li>
                         </ul>
                     </div>

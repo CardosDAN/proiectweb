@@ -115,7 +115,7 @@ include("src/includes/auth_session.php");
                                 <li><a href="store.php" class="nav-link">Store</a></li>
                                 <li><a href="#events-section" class="nav-link">Blog</a></li>
                                 <!--                                <li><a href="#gallery-section" class="nav-link">Gallery</a></li>-->
-                                <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                                <li><a href="contact_us.html" class="nav-link">Contact</a></li>
                             </ul>
                         </div>
                     </nav>
