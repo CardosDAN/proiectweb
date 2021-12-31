@@ -1,7 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
 include("src/includes/auth_session.php");
-$anunt_id = $_GET['id'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,6 +20,7 @@ $anunt_id = $_GET['id'];
 
     <!-- Style -->
     <link rel="stylesheet" href="website-menu-07/css/style.css">
+    <link rel="stylesheet" href="website-menu-07/css/style_shoppage.css">
 
     <title>Home</title>
     <style>
@@ -31,6 +31,138 @@ $anunt_id = $_GET['id'];
 
         a:hover {
             color: green;
+        }
+
+        @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+        #team {
+            background: white !important;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #108d6f;
+            border-color: #108d6f;
+            box-shadow: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007b5e;
+            border-color: #007b5e;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        section .section-title {
+            text-align: center;
+            color: #007b5e;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        #team .card {
+            border: none;
+            background: #ffffff;
+        }
+
+        .image-flip:hover .backside,
+        .image-flip.hover .backside {
+            -webkit-transform: rotateY(0deg);
+            -moz-transform: rotateY(0deg);
+            -o-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+            border-radius: .25rem;
+        }
+
+        .image-flip:hover .frontside,
+        .image-flip.hover .frontside {
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .mainflip {
+            -webkit-transition: 1s;
+            -webkit-transform-style: preserve-3d;
+            -ms-transition: 1s;
+            -moz-transition: 1s;
+            -moz-transform: perspective(1000px);
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transition: 1s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .frontside {
+            position: relative;
+            -webkit-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            z-index: 2;
+            margin-bottom: 30px;
+        }
+
+        .backside {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: white;
+            -webkit-transform: rotateY(-180deg);
+            -moz-transform: rotateY(-180deg);
+            -o-transform: rotateY(-180deg);
+            -ms-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+            -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+            -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+            box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+        }
+
+        .frontside,
+        .backside {
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transition: 1s;
+            -webkit-transform-style: preserve-3d;
+            -moz-transition: 1s;
+            -moz-transform-style: preserve-3d;
+            -o-transition: 1s;
+            -o-transform-style: preserve-3d;
+            -ms-transition: 1s;
+            -ms-transform-style: preserve-3d;
+            transition: 1s;
+            transform-style: preserve-3d;
+        }
+
+        .frontside .card,
+        .backside .card {
+            min-height: 312px;
+        }
+
+        .backside .card a {
+            font-size: 18px;
+            color: #007b5e !important;
+        }
+
+        .frontside .card .card-title,
+        .backside .card .card-title {
+            color: #007b5e !important;
+        }
+
+        .frontside .card .card-body img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+        }
+        a {
+            -webkit-transition: color 2s;
+            transition: color 2s;
         }
     </style>
 </head>
@@ -127,231 +259,256 @@ $anunt_id = $_GET['id'];
         </div>
     </div>
 </div>
+<div class="banner-header banner-lbook3">
+    <img src="website-menu-07/images/banner-catalog1.jpg" alt="Banner-header">
 
-<div class="main">
-    <div id="carouselExampleSlidesOnly" class="hero carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="website-menu-07/images/orange.jpg" width="700" height="700"
-                     alt="First slide">
-            </div>
-        </div>
-    </div>
+</div>
 
-    <div class="container text-center " style="margin-top: -12%">
-        <div class="p1">
-            <p style="color: white ">Product details</p>
+<div class="main-content">
+    <div class="container">
+        <div class="product-details-content">
+            <div class="col-md-6 col-sm-6 slide-vertical right">
+                <div class="card bg-dark">
+                    <?php
+                    //            $user_id = $_GET['id'];
+                    $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
 
-        </div>
-    </div>
-    <br><br><br><br><br><br>
-    <div class="row container">
-        <div class="col-lg-12">
-            <div class="row gutters-sm">
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex flex-column align-items-center text-center">
-<!--                                <img class="rounded-circle" width="150" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"-->
-                                <?php
-                                $profile_id = $_GET["id"];
-                                $query = $con->query("SELECT * FROM images, users where users.id={'$profile_id'} and images.id=users.image_id");
-
-                                if($query->num_rows > 0){
-                                    while($row = $query->fetch_assoc()){
-                                        $imageURL = 'uploads/'.$row["file_name"];
-                                        ?>
-                                        <img src="<?php echo $imageURL; ?>" alt="" />
-                                    <?php }
-                                }else{ ?>
-                                    <p>No image(s) found...</p>
-                                <?php } ?>
-                                <div class="mt-3">
-                                    <h4><?php echo $_SESSION['username']; ?></h4>
-                                    <p class="text-secondary mb-1">
-<!--                                        --><?php
-//                                        $sql = "SELECT id, created_at FROM users where id=$anunt_id";
-//                                        $result = mysqli_query($con, $sql);
-//                                        while($row = mysqli_fetch_assoc($result)) { ?>
-<!--                                    <p class="card-text">Pe Fresh Food din --><?php //echo $row['created_at']; ?><!--</p>-->
-                                    <button class="btn btn-outline-primary">Message</button>
-                                </div>
-                            </div>
-<!--                            --><?php
-//                            }
-//                            ?>
-                        </div>
-                    </div>
+                    if ($query->num_rows > 0) {
+                        while ($row = $query->fetch_assoc()) {
+                            $imageURL = 'uploads/' . $row["file_name"];
+                            ?>
+                            <img src="<?php echo $imageURL; ?>" width="140%"/>
+                        <?php }
+                    } else { ?>
+                        <p>No image(s) found...</p>
+                    <?php } ?>
                 </div>
-            </div>
 
-        </div>
-        <div class="col-md-6">
-            <div class="card mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-<!--                                        --><?php
-//
-//                                        // Get images from the database
-//                                        $query = $con->query("SELECT * FROM images ORDER BY uploaded_on DESC");
-//
-//                                        if ($query->num_rows > 0) {
-//                                            while ($row = $query->fetch_assoc()) {
-//                                                $imageURL = 'uploads/' . $row["file_name"];
-//                                                ?>
-<!--                                                <img src="--><?php //echo $imageURL; ?><!--" alt=""/>-->
-<!--                                            --><?php //}
-//                                        } else { ?>
-<!--                                            <p>No image(s) found...</p>-->
-<!--                                        --><?php //} ?>
-                                    </div>
-                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                                       data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                                       data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </div>
+            </div>
+            <!-- End col-md-6 -->
+            <div class="col-md-6 col-sm-6">
+                <div class="box-details-info">
+                    <div class="product-name">
+                        <?php
+                        $sql = "SELECT * FROM anunturi where status='Activ'";
+                        $result = mysqli_query($con, $sql);
+                        while ($row = mysqli_fetch_assoc($result)) { ?>
+                        <h1><?php echo $row['titlu']; ?></h1>
+                    </div>
+                    <!-- End product-name -->
+                    <div class="rating">
+                        <div class="overflow-h">
+                            <div class="icon-rating">
+                                <input type="radio" id="star-horizontal-rating-1" name="star-horizontal-rating"
+                                       checked="">
+                                <label for="star-horizontal-rating-1"><i class="fa fa-star-half-o"></i></label>
+                                <input type="radio" id="star-horizontal-rating-2" name="star-horizontal-rating"
+                                       checked="">
+                                <label for="star-horizontal-rating-2"><i class="fa fa-star"></i></label>
+                                <input type="radio" id="star-horizontal-rating-3" name="star-horizontal-rating"
+                                       checked="">
+                                <label for="star-horizontal-rating-3"><i class="fa fa-star"></i></label>
+                                <input type="radio" id="star-horizontal-rating-4" name="star-horizontal-rating">
+                                <label for="star-horizontal-rating-4"><i class="fa fa-star"></i></label>
+                                <input type="radio" id="star-horizontal-rating-5" name="star-horizontal-rating">
+                                <label for="star-horizontal-rating-5"><i class="fa fa-star"></i></label>
                             </div>
                         </div>
                     </div>
+                    <!-- End Rating -->
+                    <div class="wrap-price">
+                        <p class="price"><?php echo $row['pret']; ?></p>
+                    </div>
+                    <!-- End Price -->
                 </div>
+                <!-- End box details info -->
+                <div class="options">
+                    <p><?php echo $row['descriere']; ?></p>
+
+                    <!-- End action -->
+                    <div class="description-lits">
+                        <h3><?php echo $row['adresa']; ?></h3>
+                        google maps aici
+                        <!--                        <ul>-->
+                        <!--                            <li><img src="assets/images/icon-deslist.jpg" alt="icon">100% Organic Food from Farm Hong Quat Packging</li>-->
+                        <!--                            <li><img src="assets/images/icon-deslist.jpg" alt="icon">100% Organic Food</li>-->
+                        <!--                            <li><img src="assets/images/icon-deslist.jpg" alt="icon">100% Fresh Not Chemicals</li>-->
+                        <!--                        </ul>-->
+                    </div>
+                    <!--End Description-->
+                    <div class="box space-30">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="title">
+                                    <h3><?php echo $row['telefon']; ?></h3>
+                                </div>
+                            </div>
+                            <!-- End col-md-6 -->
+                            <!--                            <div class="col-md-5">-->
+                            <!--                                <div class="title">-->
+                            <!--                                    <h3>QUALITY</h3>-->
+                            <!--                                </div>-->
+                            <!--                                <form enctype="multipart/form-data">-->
+                            <!--                                    <input data-step="1" value="1" title="Qty" min="1" size="4" type="number">-->
+                            <!--                                </form>-->
+                            <!--                            </div>-->
+                            <!-- End col-md-5 -->
+                        </div>
+                        <!-- End row -->
+                    </div>
+
+                    <!-- End row -->
+                    <div class="action">
+
+                        <a class="link-v1 wish" title="Wishlist" href="#"><i class="icon icon-heart"></i></a>
+
+                    </div>
+                    <!-- End share -->
+                </div>
+                <!-- End Options -->
             </div>
         </div>
-        <div class="container">
-
-            <br>
-<!--            --><?php //$user_id = $_GET['id'];?>
-            <?php
-//            $sql = "SELECT * FROM anunturi where id='$user_id'";
-            $sql = "SELECT * FROM anunturi";
-            $result = mysqli_query($con, $sql);
-            while($row = mysqli_fetch_assoc($result)) { ?>
-                <div class="descriere">
-                    <text>
-                        <div class="row">
-                            <div class="col-75">
-                                <div class="css-sg1fy9"><h1 data-cy="ad_title" class="css-1oarkq2-Text eu5v0x0"><?php echo $row['titlu']; ?></h1></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-75">
-                                <div data-cy="ad_description" class="css-1m8mzwg"><h3 class="css-emnwzw-Text eu5v0x0">Descriere</h3>
-                                    <div class="css-g5mtbi-Text">
-                                        <?php echo $row['descriere']; ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-75">
-                                <div data-cy="ad_description" class="css-1m8mzwg"><h3 class="css-emnwzw-Text eu5v0x0">Alte informati</h3>
-                                    <div class="css-g5mtbi-Text">
-                                        <label >Telefon: <?php echo $row['telefon']; ?> <br>
-                                            <label >Adresa: <?php echo $row['adresa']; ?> <br>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </text>
+        <!-- End product-details-content -->
+        <div class="hoz-tab-container ver2 space-padding-tb-30">
+            <ul class="tabs center">
+                <li class="item active" rel="description">Description</li>
+                <li class="item" rel="customer">Customer Reviews (15)</li>
+            </ul>
+            <div class="tab-container">
+                <div id="description" class="tab-content active" style="display: block;">
+                    <div class="text center">
+                        <p><?php echo $row['descriere']; ?></p>
+                    </div>
                 </div>
-                <br>
                 <?php
-            }
-            ?>
-    </div>
-
-
-    <footer class="text-center text-lg-start bg-gray-  text-dark ">
-        <section class="">
-            <div class="container text-center text-md-start mt-5">
-                <!-- Grid row -->
-                <div class="row mt-3">
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                        <!-- Content -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            <i class="fas fa-gem me-3"></i>Fresh Food
-                        </h6>
-                        <p>
-                            Here you can use rows and columns to organize your footer content. Lorem ipsum
-                            dolor sit amet, consectetur adipisicing elit.
-                        </p>
+                }
+                ?>
+                <div id="customer" class="tab-content" style="display: none;">
+                    <div class="box border">
+                        <h3>Reviews (0)</h3>
+                        <p>There are no reviews yet.</p>
                     </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Useful links
-                        </h6>
-                        <p>
-                            <a href="#!" class="text-info">About us</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-info">Settings</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-info">Store</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-info">Help</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                        <!-- Links -->
-                        <div class="container">
-
-                            <!-- Call to action -->
-                            <ul class="list-unstyled list-inline text-center py-2">
-                                <li class="list-inline-item">
-                                    <h5 class="mb-1">Register for free</h5>
+                    <form class="form-horizontal">
+                        <h3>Add a Review</h3>
+                        <div class="box">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" control-label" for="inputName">Name *</label>
+                                    <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" control-label" for="inputsumary">Email <span
+                                                class="color">*</span></label>
+                                    <input type="text" class="form-control" id="inputsumary" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box rating">
+                            <p>Your Rating <span class="color">*</span></p>
+                            <ul>
+                                <li>
+                                    <a href="#" title="rating">
+                                        <i class="fa fa-star"></i>
+                                    </a>
                                 </li>
-                                <li class="list-inline-item">
-                                    <a href="registration.php" class="btn btn-outline-white btn-rounded">Sign up!</a>
+                                <li>
+                                    <a class="active" href="#" title="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" title="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" title="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" title="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </a>
                                 </li>
                             </ul>
-                            <!-- Call to action -->
+                        </div>
+                        <div class="form-group">
+                            <label class=" control-label" for="inputReview">Review <span class="color">*</span></label>
+                            <textarea class="form-control" id="inputReview"></textarea>
+                        </div>
+                        <a class="button-v1" href="#" title="add tags">Send review</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- tab-container -->
+        <div class="title-text-v2 space-60">
+            <h3>Related Products</h3>
+        </div>
+        <!-- End title -->
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                <div class="mainflip">
+                    <div class="frontside">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <p> <?php
+                                    //            $user_id = $_GET['id'];
+                                    $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
 
+                                    if ($query->num_rows > 0) {
+                                        while ($row = $query->fetch_assoc()) {
+                                            $imageURL = 'uploads/' . $row["file_name"];
+                                            ?>
+                                            <img src="<?php echo $imageURL; ?>" />
+                                        <?php }
+                                    } else { ?>
+                                <p>No image(s) found...</p>
+                                <?php } ?>
+                                </p>
+                                <?php
+                                $sql = "SELECT * FROM anunturi where status='Activ'";
+                                $result = mysqli_query($con, $sql);
+                                while($row = mysqli_fetch_assoc($result)) { ?>
+                                <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
+                                <p class="card-text"><?php echo $row['adresa']; ?></p>
+                                <!--                                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>-->
+                                <p>aici pun categoria</p>
+                            </div>
                         </div>
                     </div>
-                    <!-- Grid column -->
+                    <div class="backside">
+                        <div class="card">
+                            <div class="card-body text-center mt-4">
+                                <h4 class="card-title"><?php echo $row['telefon']; ?></h4>
+                                <p class="card-text"><?php echo $row['descriere']; ?></p>
+                                <ul class="list-inline">
+                                    <p class="card-text"><?php echo $row['pret']; ?></p>
+                                </ul>
+                                <a href="view_anunt.php?id=<?php echo $row['id']?>" role="button">View details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    ?>
                 </div>
-                <!-- Grid row -->
             </div>
-        </section>
-        <!-- Section: Links  -->
-
-        <!-- Copyright -->
-        <!--    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">-->
-        <!--        © 2021 Copyright:-->
-        <!--        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>-->
-        <!--    </div>-->
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
-
-
-    <script src="website-menu-07/js/jquery-3.3.1.min.js"></script>
-    <script src="website-menu-07/js/popper.min.js"></script>
-    <script src="website-menu-07/js/bootstrap.min.js"></script>
-    <script src="website-menu-07/js/jquery.sticky.js"></script>
-    <script src="website-menu-07/js/main.js"></script>
+        </div>
+    </div>
+</div>
 </body>
 </html>

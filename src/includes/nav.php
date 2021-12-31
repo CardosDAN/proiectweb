@@ -28,7 +28,7 @@ include("src/includes/auth_session.php");
                     <p>No image(s) found...</p>
                 <?php } ?>
                 </a>
-                <h1><?php echo $_SESSION['username']; ?></h1>
+<!--                <h1>--><?php //echo $_SESSION['username']; ?><!--</h1>-->
                 <p>
                     <?php
                     $loged_id = $_SESSION['id'];
@@ -39,7 +39,7 @@ include("src/includes/auth_session.php");
                     // output data of each row
                     while ($row = $result->fetch_assoc()) { ?>
 
-                    <?php echo "Status: ".$row["user_level_id"]; ?>
+<!--                    --><?php //echo "Status: ".$row["user_level_id"]; ?>
                 </p>
             <?php
             }
