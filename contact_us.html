@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Contact us</title>
     <style>
         *{
             margin: 0;
@@ -92,6 +93,13 @@
         }
 
         input[type=text], select, textarea {
+            width: 96.62%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=email], select, textarea {
             width: 96.62%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -226,13 +234,13 @@
     <div class="container">
 
 
-        <form action="/action_page.php">
+        <form action="src/actions/contact_us_database.php" method="post">
             <div class="row">
                 <div class="col-25">
-                    <label for="fname">Name</label>
+                    <label type="text"  for="fname">Name</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="name" name="firstname" placeholder="Your Name">
+                    <input type="text" id="name" name="nume" placeholder="Your Name">
                 </div>
             </div>
             <div class="row">
@@ -240,7 +248,7 @@
                     <label for="lname">E-mail</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="lname" name="lastname" placeholder="Your E-mail">
+                    <input type="email" id="lname" name="email" placeholder="Your E-mail">
                 </div>
             </div>
 
@@ -250,7 +258,7 @@
                     <label for="subject">Message</label>
                 </div>
                 <div class="col-75">
-                    <textarea id="subject" name="subject" placeholder="Your Message" style="height:200px"></textarea>
+                    <textarea id="subject" name="subiect" placeholder="Your Message" style="height:200px"></textarea>
                 </div>
             </div>
             <div class="row">
