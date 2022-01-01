@@ -22,13 +22,8 @@ include("src/includes/db.php");
 
     <!-- Style -->
     <link rel="stylesheet" href="website-menu-07/css/style.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
     <title>Home</title>
     <style>
-        /* FontAwesome for working BootSnippet :> */
 
         @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
         #team {

@@ -23,13 +23,147 @@ include("src/includes/auth_session.php");
     <link rel="stylesheet" href="website-menu-07/css/style_shoppage.css">
 
     <title>Store</title>
-<style>
-    .footer-inner{
-        height: 150px;
-        width: 100%;
-        background: url(website-menu-07/images/bg-footer.jpg);
-    }
-</style>
+    <style>
+        .footer-inner {
+            height: 150px;
+            width: 100%;
+            background: url(website-menu-07/images/bg-footer.jpg);
+        }
+
+        @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+        #team {
+            background: white !important;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #108d6f;
+            border-color: #108d6f;
+            box-shadow: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007b5e;
+            border-color: #007b5e;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        section .section-title {
+            text-align: center;
+            color: #007b5e;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        #team .card {
+            border: none;
+            background: #ffffff;
+        }
+
+        .image-flip:hover .backside,
+        .image-flip.hover .backside {
+            -webkit-transform: rotateY(0deg);
+            -moz-transform: rotateY(0deg);
+            -o-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+            border-radius: .25rem;
+        }
+
+        .image-flip:hover .frontside,
+        .image-flip.hover .frontside {
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .mainflip {
+            -webkit-transition: 1s;
+            -webkit-transform-style: preserve-3d;
+            -ms-transition: 1s;
+            -moz-transition: 1s;
+            -moz-transform: perspective(1000px);
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transition: 1s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .frontside {
+            position: relative;
+            -webkit-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            z-index: 2;
+            margin-bottom: 30px;
+        }
+
+        .backside {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: white;
+            -webkit-transform: rotateY(-180deg);
+            -moz-transform: rotateY(-180deg);
+            -o-transform: rotateY(-180deg);
+            -ms-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+            -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+            -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+            box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+        }
+
+        .frontside,
+        .backside {
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transition: 1s;
+            -webkit-transform-style: preserve-3d;
+            -moz-transition: 1s;
+            -moz-transform-style: preserve-3d;
+            -o-transition: 1s;
+            -o-transform-style: preserve-3d;
+            -ms-transition: 1s;
+            -ms-transform-style: preserve-3d;
+            transition: 1s;
+            transform-style: preserve-3d;
+        }
+
+        .frontside .card,
+        .backside .card {
+            min-height: 312px;
+        }
+
+        .backside .card a {
+            font-size: 18px;
+            color: #007b5e !important;
+        }
+
+        .frontside .card .card-title,
+        .backside .card .card-title {
+            color: #007b5e !important;
+        }
+
+        .frontside .card .card-body img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+        }
+
+        a {
+            -webkit-transition: color 2s;
+            transition: color 2s;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -133,156 +267,158 @@ include("src/includes/auth_session.php");
             </div>
         </div>
     </div>
+    <br><br>
     <div class="container">
-        <div class="title-text-v2">
-            <h3>Lastest Products</h3>
+        <div class="row">
+
+            <div id="secondary" class="widget-area col-xs-12 col-md-3">
+                <aside class="widget widget_product_categories">
+                    <h3 class="widget-title">Categories</h3>
+                    <ul class="product-categories">
+                        <li class="hassub"><a href="#" title="Men">Men</a>
+                        </li>
+                        <li class="hassub"><a href="#" title="woment">woment</a>
+                        </li>
+                        <li><a href="#" title="kids">kids</a></li>
+                        <li><a href="#" title="All Product">All Product</a></li>
+                    </ul>
+                </aside>
+                <aside class="widget widget_by_price">
+                    <h3 class="widget-title">By Price</h3>
+                    <section class="mb-4">
+
+                        <h6 class="font-weight-bold mb-3">Price</h6>
+
+                        <div class="slider-price d-flex align-items-center my-4">
+                            <span class="font-weight-normal small text-muted mr-2">$0</span>
+                            <form class="multi-range-field w-100 mb-1">
+                                <input id="multi" class="multi-range" type="range"/>
+                            </form>
+                            <span class="font-weight-normal small text-muted ml-2">$100</span>
+                        </div>
+
+                    </section>
+                    <a class="link-v1 space-30" href="#" title="fillter">fillter</a>
+                </aside>
+                <aside class="widget widget_link">
+                    <h3 class="widget-title">By Brand</h3>
+                    <ul>
+                        <li><a href="#" title="Aeccaft">Aeccaft</a><span class="count">(15)</span></li>
+                        <li><a href="#" title="Artek">Artek</a><span class="count">(09)</span></li>
+                        <li><a href="#" title="Bower">Bower</a><span class="count">(12)</span></li>
+                        <li><a href="#" title="Culinarium">Culinarium</a><span class="count">(16)</span></li>
+                        <li><a href="#" title="Desu">Desu</a><span class="count">(16)</span></li>
+                    </ul>
+                </aside>
+                <aside class="widget widget_feature">
+                    <h3 class="widget-title">Feature Products</h3>
+                    <ul>
+                        <li>
+                            <a class="images" href="#" title="images">
+                                <?php
+                                //            $user_id = $_GET['id'];
+                                $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
+
+                                if ($query->num_rows > 0) {
+                                    while ($row = $query->fetch_assoc()) {
+                                        $imageURL = 'uploads/' . $row["file_name"];
+                                        ?>
+                                        <img src="<?php echo $imageURL; ?>" class="img-fluid "/>
+                                    <?php }
+                                } else { ?>
+                                    <p>No image(s) found...</p>
+                                <?php } ?>
+                            </a>
+                            <div class="text">
+                                <?php
+                                $sql = "SELECT * FROM anunturi where status='Activ'";
+                                $result = mysqli_query($con, $sql);
+                                while ($row = mysqli_fetch_assoc($result)) { ?>
+                                <h2>
+                                    <a href="#" title="Butterfly Bar Stool"><?php echo $row['titlu']; ?></a>
+                                </h2>
+                                <p class="align-right">
+                                    <span><?php echo $row['pret']; ?></span>
+                                </p>
+
+                            </div>
+                            <?php
+                            }
+                            ?>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="col-xs-12 col-md-9 ">
+                <div class="container">
+                    <section id="team" class="pb-5">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Team member -->
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                        <div class="mainflip">
+                                            <div class="frontside">
+                                                <div class="card">
+                                                    <div class="card-body text-center">
+                                                        <p> <?php
+                                                            //            $user_id = $_GET['id'];
+                                                            $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
+
+                                                            if ($query->num_rows > 0) {
+                                                                while ($row = $query->fetch_assoc()) {
+                                                                    $imageURL = 'uploads/' . $row["file_name"];
+                                                                    ?>
+                                                                    <img src="<?php echo $imageURL; ?>"/>
+                                                                <?php }
+                                                            } else { ?>
+                                                        <p>No image(s) found...</p>
+                                                        <?php } ?>
+                                                        </p>
+                                                        <?php
+                                                        $sql = "SELECT * FROM anunturi where status='Activ'";
+                                                        $result = mysqli_query($con, $sql);
+                                                        while ($row = mysqli_fetch_assoc($result)) { ?>
+                                                        <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
+                                                        <p class="card-text"><?php echo $row['adresa']; ?></p>
+                                                        <!--                                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>-->
+                                                        <p>aici pun categoria</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="backside">
+                                                <div class="card">
+                                                    <div class="card-body text-center mt-4">
+                                                        <h4 class="card-title"><?php echo $row['telefon']; ?></h4>
+                                                        <p class="card-text"><?php echo $row['descriere']; ?></p>
+                                                        <ul class="list-inline">
+                                                            <p class="card-text"><?php echo $row['pret']; ?></p>
+                                                        </ul>
+                                                        <a href="view_anunt.php?id=<?php echo $row['id'] ?>"
+                                                           role="button">View details</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
         </div>
-        <ul class="tabs tabs-title">
-            <li class="item active" rel="tab_1">All Product</li>
-            <li class="item" rel="tab_2">Fruits</li>
-            <li class="item" rel="tab_3">Vegetables</li>
-            <li class="item" rel="tab_4">Nuts</li>
-            <li class="item" rel="tab_5">Other ProDucts</li>
-        </ul>
-        <div id="secondary" class="widget-area col-xs-12 col-md-3">
-            <aside class="widget widget_product_categories">
-                <h3 class="widget-title">Categories</h3>
-                <ul class="product-categories">
-                    <li class="hassub"><a href="#" title="Men">Men</a><i class="fa fa-caret-right"></i>
-                        <ul class="children" style="display: none;">
-                            <li><a href="#" title="Bag &amp; Luggage">Bag &amp; Luggage</a><i
-                                        class="fa fa-caret-right"></i></li>
-                            <li><a href="#" title="Eyewear">Eyewear</a><i class="fa fa-caret-right"></i></li>
-                            <li><a href="#" title="Jewelry">Jewelry</a><i class="fa fa-caret-right"></i></li>
-                            <li><a href="#" title="Shoes">Shoes</a><i class="fa fa-caret-right"></i></li>
-                            <li><a href="#" title="Skyrts">Skyrts</a><i class="fa fa-caret-right"></i></li>
-                        </ul>
-                    </li>
-                    <li class="hassub"><a href="#" title="woment">woment</a><i class="fa fa-caret-right"></i>
-                        <ul style="display: none;">
-                            <li><a href="#" title="Bag">Bag</a><i class="fa fa-caret-right"></i></li>
-                            <li><a href="#" title="Bed &amp; Bath">Bed &amp; Bath</a><i class="fa fa-caret-right"></i>
-                            </li>
-                            <li><a href="#" title="Sport tops &amp; Vest">Sport tops &amp; Vest</a><i
-                                        class="fa fa-caret-right"></i></li>
-                            <li><a href="#" title="Sport undewear">Sport undewear</a><i class="fa fa-caret-right"></i>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#" title="kids">kids</a></li>
-                    <li><a href="#" title="All Product">All Product</a></li>
-                </ul>
-            </aside>
-            <aside class="widget widget_by_price">
-                <h3 class="widget-title">By Price</h3>
-                <section class="mb-4">
 
-                    <h6 class="font-weight-bold mb-3">Price</h6>
-
-                    <div class="slider-price d-flex align-items-center my-4">
-                        <span class="font-weight-normal small text-muted mr-2">$0</span>
-                        <form class="multi-range-field w-100 mb-1">
-                            <input id="multi" class="multi-range" type="range" />
-                        </form>
-                        <span class="font-weight-normal small text-muted ml-2">$100</span>
-                    </div>
-
-                </section>
-                <a class="link-v1 space-30" href="#" title="fillter">fillter</a>
-            </aside>
-            <aside class="widget widget_link">
-                <h3 class="widget-title">By Brand</h3>
-                <ul>
-                    <li><a href="#" title="Aeccaft">Aeccaft</a><span class="count">(15)</span></li>
-                    <li><a href="#" title="Artek">Artek</a><span class="count">(09)</span></li>
-                    <li><a href="#" title="Bower">Bower</a><span class="count">(12)</span></li>
-                    <li><a href="#" title="Culinarium">Culinarium</a><span class="count">(16)</span></li>
-                    <li><a href="#" title="Desu">Desu</a><span class="count">(16)</span></li>
-                </ul>
-            </aside>
-            <aside class="widget widget_feature">
-                <h3 class="widget-title">Feature Products</h3>
-                <ul>
-                    <li>
-                        <a class="images" href="#" title="images">
-                            <!--                            <img class="img-responsive" src="assets/images/products/furniture/1.jpg" alt="images">-->
-                        </a>
-                        <div class="text">
-                            <h2>
-                                <a href="#" title="Butterfly Bar Stool">Butterfly Bar Stool</a>
-                            </h2>
-                            <p><span class="price-old">$700</span><span>$350</span></p>
-                            <p class="rating">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="images" href="#" title="images">
-                            <!--                            <img class="img-responsive" src="assets/images/products/furniture/2.jpg" alt="">-->
-                        </a>
-                        <div class="text">
-                            <h2>
-                                <a href="#" title="Butterfly Bar Stool">Butterfly Bar Stool</a>
-                            </h2>
-                            <p><span class="price-old">$700</span><span>$350</span></p>
-                            <p class="rating">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="images" href="#" title="images">
-                            <!--                            <img class="img-responsive" src="assets/images/products/furniture/3.jpg" alt="">-->
-                        </a>
-                        <div class="text">
-                            <h2>
-                                <a href="#" title="Butterfly Bar Stool">Butterfly Bar Stool</a>
-                            </h2>
-                            <p><span class="price-old">$700</span><span>$350</span></p>
-                            <p class="rating">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="images" href="#" title="images">
-                            <!--                            <img class="img-responsive" src="assets/images/products/furniture/4.jpg" alt="">-->
-                        </a>
-                        <div class="text">
-                            <h2>
-                                <a href="#" title="Butterfly Bar Stool">Butterfly Bar Stool</a>
-                            </h2>
-                            <p><span class="price-old">$700</span><span>$350</span></p>
-                            <p class="rating">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </aside>
-        </div>
     </div>
-da
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br>
 <!-- Footer -->
 <footer style="background: gray" class="text-center text-lg-start bg-light text-muted">
     <!-- Section: Social media -->
@@ -312,7 +448,7 @@ da
                         Products
                     </h6>
                     <p>
-                        <a href="#!" class="text-reset" >Fruits</a>
+                        <a href="#!" class="text-reset">Fruits</a>
                     </p>
                     <p>
                         <a href="#!" class="text-reset">Vegetable</a>
@@ -370,10 +506,10 @@ da
 
 </footer>
 
-    <script src="website-menu-07/js/jquery-3.3.1.min.js"></script>
-    <script src="website-menu-07/js/popper.min.js"></script>
-    <script src="website-menu-07/js/bootstrap.min.js"></script>
-    <script src="website-menu-07/js/jquery.sticky.js"></script>
-    <script src="website-menu-07/js/main.js"></script>
+<script src="website-menu-07/js/jquery-3.3.1.min.js"></script>
+<script src="website-menu-07/js/popper.min.js"></script>
+<script src="website-menu-07/js/bootstrap.min.js"></script>
+<script src="website-menu-07/js/jquery.sticky.js"></script>
+<script src="website-menu-07/js/main.js"></script>
 </body>
 </html>
