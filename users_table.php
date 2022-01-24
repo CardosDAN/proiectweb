@@ -1,6 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
-//$file_name = 'users_table';
+$file_name = 'users_table';
 
 ?>
 

@@ -10,18 +10,17 @@ if (isset($_SESSION['user_level_id'])) {
 
 
     $p = "1";
-    if(isset($file_name)){
+    if(isset($file_name) || true){
         $qPermission = mysqli_query($con, "select min_user_level_id from pages WHERE nume='$file_name'");
         if ($permission = mysqli_fetch_assoc($qPermission)) {
-            $p = $permission[$user_level_id];
+            $p = $permission["min_user_level_id"];
         }
     }
-
 }
 
 
 // Check if the user is logged in, if not then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $p !== "1") {
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $p > $user_level_id) {
     header("location: login.php");
     exit;
 }
