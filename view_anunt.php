@@ -1,6 +1,7 @@
 <?php
 //include auth_session.php file on all user panel pages
 include("src/includes/auth_session.php");
+$product_id = $_GET['id'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,7 +15,9 @@ include("src/includes/auth_session.php");
     <link rel="stylesheet" href="website-menu-07/fonts/icomoon/style.css">
 
     <link rel="stylesheet" href="website-menu-07/css/owl.carousel.min.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
+          integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="website-menu-07/css/bootstrap.min.css">
 
@@ -160,9 +163,17 @@ include("src/includes/auth_session.php");
             height: 120px;
             border-radius: 50%;
         }
+
         a {
             -webkit-transition: color 2s;
             transition: color 2s;
+        }
+
+        .avatar {
+            vertical-align: middle;
+            width: 90px;
+            height: 90px;
+            border-radius: 90%;
         }
     </style>
 </head>
@@ -266,56 +277,75 @@ include("src/includes/auth_session.php");
 
 <div class="main-content">
     <div class="container">
-        <div class="product-details-content">
-            <div class="col-md-6 col-sm-6 slide-vertical right">
-                <div class="card bg-dark">
+        <div class="product-details-content row justify-content-between">
+            <div class="col-md-5">
+                <div class="card mb-lg-3">
                     <?php
-                    //            $user_id = $_GET['id'];
+
                     $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
 
                     if ($query->num_rows > 0) {
                         while ($row = $query->fetch_assoc()) {
                             $imageURL = 'uploads/' . $row["file_name"];
                             ?>
-                            <img src="<?php echo $imageURL; ?>" width="140%"/>
+                            <img src="<?php echo $imageURL; ?>" style="height: 325px;"/>
                         <?php }
                     } else { ?>
                         <p>No image(s) found...</p>
                     <?php } ?>
+                    <div class="card-body">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <?php
+                                    $query = $con->query("SELECT * FROM images,users where users.image_id=image_id and images.id=users.image_id limit 1");
+
+                                    if ($query->num_rows > 0) {
+                                        while ($row = $query->fetch_assoc()) {
+                                            $imageURL = 'uploads/' . $row["file_name"];
+                                            ?>
+                                            <img class=" avatar" src="<?php echo $imageURL; ?>"
+                                                 data-holder-rendered="true"/>
+                                        <?php }
+                                    } else { ?>
+                                        <p>No image(s) found...</p>
+                                    <?php } ?>
+                                </div>
+                                <div class="col">
+                                    <?php $id_anunt = $_GET['id']; ?>
+                                    <?php
+                                    $sql = "SELECT * FROM anunturi,users where anunturi.id='$id_anunt' and users.id=anunturi.user_id";
+                                    $result = mysqli_query($con, $sql);
+                                    while ($row = mysqli_fetch_assoc($result)) { ?>
+                                    <?php echo $row["username"]; ?>
+                                    <p class="card-text"><small
+                                                class="text-muted"> <?php echo "Pe Fresh Food din " . $row["created_at"]; ?></small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
+                <?php
+                }
+                ?>
 
             </div>
             <!-- End col-md-6 -->
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-6 ">
                 <div class="box-details-info">
                     <div class="product-name">
                         <?php
-                        $sql = "SELECT * FROM anunturi where status='Activ'";
+
+                        $sql = "SELECT * FROM anunturi where status='Activ' and id=".$product_id;
                         $result = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($result)) { ?>
                         <h1><?php echo $row['titlu']; ?></h1>
                     </div>
                     <!-- End product-name -->
-                    <div class="rating">
-                        <div class="overflow-h">
-                            <div class="icon-rating">
-                                <input type="radio" id="star-horizontal-rating-1" name="star-horizontal-rating"
-                                       checked="">
-                                <label for="star-horizontal-rating-1"><i class="fa fa-star-half-o"></i></label>
-                                <input type="radio" id="star-horizontal-rating-2" name="star-horizontal-rating"
-                                       checked="">
-                                <label for="star-horizontal-rating-2"><i class="fa fa-star"></i></label>
-                                <input type="radio" id="star-horizontal-rating-3" name="star-horizontal-rating"
-                                       checked="">
-                                <label for="star-horizontal-rating-3"><i class="fa fa-star"></i></label>
-                                <input type="radio" id="star-horizontal-rating-4" name="star-horizontal-rating">
-                                <label for="star-horizontal-rating-4"><i class="fa fa-star"></i></label>
-                                <input type="radio" id="star-horizontal-rating-5" name="star-horizontal-rating">
-                                <label for="star-horizontal-rating-5"><i class="fa fa-star"></i></label>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Rating -->
+
                     <div class="wrap-price">
                         <p class="price"><?php echo $row['pret']; ?></p>
                     </div>
@@ -329,11 +359,7 @@ include("src/includes/auth_session.php");
                     <div class="description-lits">
                         <h3><?php echo $row['adresa']; ?></h3>
                         google maps aici
-                        <!--                        <ul>-->
-                        <!--                            <li><img src="assets/images/icon-deslist.jpg" alt="icon">100% Organic Food from Farm Hong Quat Packging</li>-->
-                        <!--                            <li><img src="assets/images/icon-deslist.jpg" alt="icon">100% Organic Food</li>-->
-                        <!--                            <li><img src="assets/images/icon-deslist.jpg" alt="icon">100% Fresh Not Chemicals</li>-->
-                        <!--                        </ul>-->
+
                     </div>
                     <!--End Description-->
                     <div class="box space-30">
@@ -343,16 +369,6 @@ include("src/includes/auth_session.php");
                                     <h3><?php echo $row['telefon']; ?></h3>
                                 </div>
                             </div>
-                            <!-- End col-md-6 -->
-                            <!--                            <div class="col-md-5">-->
-                            <!--                                <div class="title">-->
-                            <!--                                    <h3>QUALITY</h3>-->
-                            <!--                                </div>-->
-                            <!--                                <form enctype="multipart/form-data">-->
-                            <!--                                    <input data-step="1" value="1" title="Qty" min="1" size="4" type="number">-->
-                            <!--                                </form>-->
-                            <!--                            </div>-->
-                            <!-- End col-md-5 -->
                         </div>
                         <!-- End row -->
                     </div>
@@ -372,7 +388,7 @@ include("src/includes/auth_session.php");
         <div class="hoz-tab-container ver2 space-padding-tb-30">
             <ul class="tabs center">
                 <li class="item active" rel="description">Description</li>
-                <li class="item" rel="customer">Customer Reviews (15)</li>
+
             </ul>
             <div class="tab-container">
                 <div id="description" class="tab-content active" style="display: block;">
@@ -383,132 +399,136 @@ include("src/includes/auth_session.php");
                 <?php
                 }
                 ?>
-                <div id="customer" class="tab-content" style="display: none;">
+                <ul class="tabs center">
+
+                    <li class="item active" rel="customer">Customer Reviews</li>
+
+                </ul>
+
+                <div id="customer" class="tab-content" style="display: block;">
                     <div class="box border">
-                        <h3>Reviews (0)</h3>
-                        <p>There are no reviews yet.</p>
+                        <?php
+
+                        $sql = "SELECT * FROM anunturi,product_rating where status='Activ' and anunturi.id=".$product_id;
+                        $result = mysqli_query($con, $sql);
+                        while ($row = mysqli_fetch_assoc($result)) { ?>
+                        <h1><?php echo $row['titlu']; ?></h1>
+                        <h3>Reviews</h3>
+                        <p></p>
                     </div>
-                    <form class="form-horizontal">
-                        <h3>Add a Review</h3>
-                        <div class="box">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class=" control-label" for="inputName">Name *</label>
-                                    <input type="text" class="form-control" id="inputName" placeholder="Name">
+                    <?php } ?>
+                    <div class="container">
+
+                        <form action="src/actions/review.php" method="post">
+                            <div class="rateyo" id="rating"
+                                 data-rateyo-rating="4"
+                                 data-rateyo-num-stars="5"
+                                 data-rateyo-score="3">
+                            </div>
+
+                            <span class='result'>Rating: 0</span>
+                            <input type="hidden" name="rating">
+                            <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
+
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" name="name" class="form-control" placeholder="Name">
+                                </div>
+                                <div class="col">
+                                    <input type="email" name="email" class="form-control" placeholder="Email">
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class=" control-label" for="inputsumary">Email <span
-                                                class="color">*</span></label>
-                                    <input type="text" class="form-control" id="inputsumary" placeholder="Email">
-                                </div>
+                            <br><br>
+                            <div>
+                                <textarea class="form-control" type="text" name="review"
+                                          id="exampleFormControlTextarea1" placeholder="Review" rows="3"></textarea>
                             </div>
-                        </div>
-                        <div class="box rating">
-                            <p>Your Rating <span class="color">*</span></p>
-                            <ul>
-                                <li>
-                                    <a href="#" title="rating">
-                                        <i class="fa fa-star"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="active" href="#" title="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="form-group">
-                            <label class=" control-label" for="inputReview">Review <span class="color">*</span></label>
-                            <textarea class="form-control" id="inputReview"></textarea>
-                        </div>
-                        <a class="button-v1" href="#" title="add tags">Send review</a>
+                            <br>
+                            <button type="submit" class="btn btn-primary" name="add">Post review</button>
+                        </form>
+                    </div>
+
+
                     </form>
                 </div>
             </div>
-        </div>
-        <!-- tab-container -->
-        <div class="title-text-v2 space-60">
-            <h3>Related Products</h3>
-        </div>
-        <!-- End title -->
-        <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                <div class="mainflip">
-                    <div class="frontside">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <p> <?php
-                                    //            $user_id = $_GET['id'];
-                                    $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 
-                                    if ($query->num_rows > 0) {
-                                        while ($row = $query->fetch_assoc()) {
-                                            $imageURL = 'uploads/' . $row["file_name"];
-                                            ?>
-                                            <img src="<?php echo $imageURL; ?>" />
-                                        <?php }
-                                    } else { ?>
-                                <p>No image(s) found...</p>
-                                <?php } ?>
-                                </p>
-                                <?php
-                                $sql = "SELECT * FROM anunturi where status='Activ'";
-                                $result = mysqli_query($con, $sql);
-                                while($row = mysqli_fetch_assoc($result)) { ?>
-                                <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
-                                <p class="card-text"><?php echo $row['adresa']; ?></p>
-                                <!--                                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>-->
-                                <p>aici pun categoria</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="backside">
-                        <div class="card">
-                            <div class="card-body text-center mt-4">
-                                <h4 class="card-title"><?php echo $row['telefon']; ?></h4>
-                                <p class="card-text"><?php echo $row['descriere']; ?></p>
-                                <ul class="list-inline">
-                                    <p class="card-text"><?php echo $row['pret']; ?></p>
-                                </ul>
-                                <a href="view_anunt.php?id=<?php echo $row['id']?>" role="button">View details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-                    }
-                    ?>
-                </div>
-            </div>
+            <script>
+
+
+                $(function () {
+                    $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+                        var rating = data.rating;
+                        $(this).parent().find('.score').text('score :' + $(this).attr('data-rateyo-score'));
+                        $(this).parent().find('.result').text('rating :' + rating);
+                        $(this).parent().find('input[name=rating]').val(rating); //add rating value to input field
+                    });
+                });
+
+            </script>
+
+
+
         </div>
     </div>
 </div>
+<!-- tab-container -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="title-text-v2 space-60">
+    <h3>Related Products</h3>
+</div>
+<!-- End title -->
+<div class="col-xs-12 col-sm-6 col-md-3 container">
+    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+        <div class="mainflip">
+            <div class="frontside">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <p> <?php
+                            //            $user_id = $_GET['id'];
+                            $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
+
+                            if ($query->num_rows > 0) {
+                                while ($row = $query->fetch_assoc()) {
+                                    $imageURL = 'uploads/' . $row["file_name"];
+                                    ?>
+                                    <img src="<?php echo $imageURL; ?>"/>
+                                <?php }
+                            } else { ?>
+                        <p>No image(s) found...</p>
+                        <?php } ?>
+                        </p>
+                        <?php
+                        $sql = "SELECT * FROM anunturi where status='Activ'";
+                        $result = mysqli_query($con, $sql);
+                        while ($row = mysqli_fetch_assoc($result)) { ?>
+                        <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
+                        <p class="card-text"><?php echo $row['adresa']; ?></p>
+                        <!--                                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>-->
+                        <p>aici pun categoria</p>
+                    </div>
+                </div>
+            </div>
+            <div class="backside">
+                <div class="card">
+                    <div class="card-body text-center mt-4">
+                        <h4 class="card-title"><?php echo $row['telefon']; ?></h4>
+                        <p class="card-text"><?php echo $row['descriere']; ?></p>
+                        <ul class="list-inline">
+                            <p class="card-text"><?php echo $row['pret']; ?></p>
+                        </ul>
+                        <a href="view_anunt.php?id=<?php echo $row['id'] ?>" role="button">View details</a>
+                    </div>
+                </div>
+            </div>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
