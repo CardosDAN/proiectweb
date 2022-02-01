@@ -175,6 +175,22 @@ $product_id = $_GET['id'];
             height: 90px;
             border-radius: 90%;
         }
+
+        .date {
+            font-size: 11px
+        }
+
+        .comment-text {
+            font-size: 12px
+        }
+
+
+
+        .name {
+            color: green;
+        }
+
+
     </style>
 </head>
 <body>
@@ -282,7 +298,7 @@ $product_id = $_GET['id'];
                 <div class="card mb-lg-3">
                     <?php
 
-                    $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
+                    $query = $con->query("SELECT * FROM images,anunturi where  images.id=anunturi.image_id and anunturi.id=".$product_id);
 
                     if ($query->num_rows > 0) {
                         while ($row = $query->fetch_assoc()) {
@@ -407,21 +423,44 @@ $product_id = $_GET['id'];
 
                 <div id="customer" class="tab-content" style="display: block;">
                     <div class="box border">
-                        <?php
+                        <div class="container mt-5">
+                            <div class="d-flex justify-content row">
+                                <div class="col-md-8">
+                                    <div class="d-flex flex-column comment-section">
+                                        <?php
+                                        $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=".$product_id;
+                                        $result = mysqli_query($con, $sql);
+                                        while ($row = mysqli_fetch_assoc($result)) { ?>
+                                        <div class="bg-white p-2">
 
-                        $sql = "SELECT * FROM anunturi,product_rating where status='Activ' and anunturi.id=".$product_id;
-                        $result = mysqli_query($con, $sql);
-                        while ($row = mysqli_fetch_assoc($result)) { ?>
-                        <h1><?php echo $row['titlu']; ?></h1>
-                        <h3>Reviews</h3>
-                        <p></p>
+
+                                            <div class="d-flex flex-row user-info">
+                                                <div class="d-flex flex-column justify-content-start ml-2">
+                                                    <span class="d-block font-weight-bold name"><?php echo $row['name']; ?></span>
+                                                    <span class="date text-black-50"><?php echo $row['email']; ?></span>
+                                                </div>
+                                                <div class="rateyo" id="rating"
+                                                     data-rateyo-rating="<?php echo $row['rate']; ?>">
+                                                </div>
+                                                <!--                                                <img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40">-->
+
+                                            </div>
+                                            <div class="mt-2">
+                                                <p class="comment-text"><?php echo $row['review']; ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <?php } ?>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                     <div class="container">
 
                         <form action="src/actions/review.php" method="post">
                             <div class="rateyo" id="rating"
-                                 data-rateyo-rating="4"
+                                 data-rateyo-rating="0"
                                  data-rateyo-num-stars="5"
                                  data-rateyo-score="3">
                             </div>
@@ -452,6 +491,7 @@ $product_id = $_GET['id'];
                     </form>
                 </div>
             </div>
+
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 
