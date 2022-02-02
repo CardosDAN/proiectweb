@@ -420,15 +420,16 @@ $product_id = $_GET['id'];
                     <li class="item active" rel="customer">Customer Reviews</li>
 
                 </ul>
-
-                <div id="customer" class="tab-content" style="display: block;">
+                <div id="customer" class=" container-fluid" style="display: block;">
                     <div class="box border">
                         <div class="container mt-5">
                             <div class="d-flex justify-content row">
                                 <div class="col-md-8">
                                     <div class="d-flex flex-column comment-section">
                                         <?php
-                                        $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=".$product_id;
+                                        $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=product_rating.product_id and product_rating.product_id=".$product_id;
+                                        //                                        ;
+                                        //                                        SELECT * FROM anunturi,product_rating  where anunturi.id=".$product_id." LIMIT 6
                                         $result = mysqli_query($con, $sql);
                                         while ($row = mysqli_fetch_assoc($result)) { ?>
                                         <div class="bg-white p-2">
@@ -442,7 +443,7 @@ $product_id = $_GET['id'];
                                                 <div class="rateyo" id="rating"
                                                      data-rateyo-rating="<?php echo $row['rate']; ?>">
                                                 </div>
-                                                <!--                                                <img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40">-->
+
 
                                             </div>
                                             <div class="mt-2">
@@ -455,9 +456,8 @@ $product_id = $_GET['id'];
                             </div>
                         </div>
                     </div>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <div class="container">
 
+                    <div class="container ">
                         <form action="src/actions/review.php" method="post">
                             <div class="rateyo" id="rating"
                                  data-rateyo-rating="0"
@@ -515,7 +515,7 @@ $product_id = $_GET['id'];
     </div>
 </div>
 <!-- tab-container -->
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 <div class="title-text-v2 space-60">
     <h3>Related Products</h3>
 </div>
@@ -526,9 +526,9 @@ $product_id = $_GET['id'];
             <div class="frontside">
                 <div class="card">
                     <div class="card-body text-center">
-                        <p> <?php
-                            //            $user_id = $_GET['id'];
-                            $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
+                        <p>
+                            <?php
+                            $query = $con->query("SELECT * FROM images,anunturi where  images.id=anunturi.image_id and anunturi.id=".$product_id);
 
                             if ($query->num_rows > 0) {
                                 while ($row = $query->fetch_assoc()) {
@@ -546,7 +546,6 @@ $product_id = $_GET['id'];
                         while ($row = mysqli_fetch_assoc($result)) { ?>
                         <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
                         <p class="card-text"><?php echo $row['adresa']; ?></p>
-                        <!--                                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>-->
                         <p>aici pun categoria</p>
                     </div>
                 </div>
