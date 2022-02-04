@@ -185,7 +185,6 @@ $product_id = $_GET['id'];
         }
 
 
-
         .name {
             color: green;
         }
@@ -303,6 +302,7 @@ $product_id = $_GET['id'];
                     if ($query->num_rows > 0) {
                         while ($row = $query->fetch_assoc()) {
                             $imageURL = 'uploads/' . $row["file_name"];
+                            $user_id = $row["user_id"];
                             ?>
                             <img src="<?php echo $imageURL; ?>" style="height: 325px;"/>
                         <?php }
@@ -314,7 +314,7 @@ $product_id = $_GET['id'];
                             <div class="row">
                                 <div class="col-md-3">
                                     <?php
-                                    $query = $con->query("SELECT * FROM images,users where users.image_id=image_id and images.id=users.image_id limit 1");
+                                    $query = $con->query("SELECT * FROM images,users where users.id='{$user_id}' and images.id=users.image_id ");
 
                                     if ($query->num_rows > 0) {
                                         while ($row = $query->fetch_assoc()) {
@@ -355,9 +355,11 @@ $product_id = $_GET['id'];
                     <div class="product-name">
                         <?php
 
-                        $sql = "SELECT * FROM anunturi where status='Activ' and id=".$product_id;
+                        $sql = "SELECT * FROM anunturi where status='Activ' and id=" . $product_id;
                         $result = mysqli_query($con, $sql);
-                        while ($row = mysqli_fetch_assoc($result)) { ?>
+                        while ($row = mysqli_fetch_assoc($result)) {
+                        $product_category_id = $row['category_id'];
+                        ?>
                         <h1><?php echo $row['titlu']; ?></h1>
                     </div>
                     <!-- End product-name -->
@@ -427,7 +429,7 @@ $product_id = $_GET['id'];
                                 <div class="col-md-8">
                                     <div class="d-flex flex-column comment-section">
                                         <?php
-                                        $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=product_rating.product_id and product_rating.product_id=".$product_id;
+                                        $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=product_rating.product_id and product_rating.product_id=" . $product_id;
                                         //                                        ;
                                         //                                        SELECT * FROM anunturi,product_rating  where anunturi.id=".$product_id." LIMIT 6
                                         $result = mysqli_query($con, $sql);
@@ -510,64 +512,59 @@ $product_id = $_GET['id'];
             </script>
 
 
-
         </div>
     </div>
 </div>
-<!-- tab-container -->
 
 <div class="title-text-v2 space-60">
     <h3>Related Products</h3>
 </div>
-<!-- End title -->
-<div class="col-xs-12 col-sm-6 col-md-3 container">
-    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-        <div class="mainflip">
-            <div class="frontside">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <p>
-                            <?php
-                            $query = $con->query("SELECT * FROM images,anunturi where  images.id=anunturi.image_id and anunturi.id=".$product_id);
 
-                            if ($query->num_rows > 0) {
-                                while ($row = $query->fetch_assoc()) {
-                                    $imageURL = 'uploads/' . $row["file_name"];
-                                    ?>
-                                    <img src="<?php echo $imageURL; ?>"/>
-                                <?php }
-                            } else { ?>
-                        <p>No image(s) found...</p>
-                        <?php } ?>
-                        </p>
-                        <?php
-                        $sql = "SELECT * FROM anunturi where status='Activ'";
-                        $result = mysqli_query($con, $sql);
-                        while ($row = mysqli_fetch_assoc($result)) { ?>
-                        <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
-                        <p class="card-text"><?php echo $row['adresa']; ?></p>
-                        <p>aici pun categoria</p>
+
+<div class="container">
+    <div class="row">
+        <?php
+        $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.category_id=". $product_category_id);
+        while ($row = $query->fetch_assoc()) { ?>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p>
+                                        <?php
+                                        $imageURL = 'uploads/' . $row["file_name"];
+                                        ?>
+                                        <img src="<?php echo $imageURL; ?>"/>
+
+                                    </p>
+                                    <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
+                                    <p class="card-text"><?php echo $row['adresa']; ?></p>
+                                    <p>aici pun categoria</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title"><?php echo $row['telefon']; ?></h4>
+                                    <p class="card-text"><?php echo $row['descriere']; ?></p>
+                                    <ul class="list-inline">
+                                        <p class="card-text"><?php echo $row['pret']; ?></p>
+                                    </ul>
+                                    <a href="view_anunt.php?id=<?php echo $row['id'] ?>" role="button">View details</a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="backside">
-                <div class="card">
-                    <div class="card-body text-center mt-4">
-                        <h4 class="card-title"><?php echo $row['telefon']; ?></h4>
-                        <p class="card-text"><?php echo $row['descriere']; ?></p>
-                        <ul class="list-inline">
-                            <p class="card-text"><?php echo $row['pret']; ?></p>
-                        </ul>
-                        <a href="view_anunt.php?id=<?php echo $row['id'] ?>" role="button">View details</a>
-                    </div>
-                </div>
-            </div>
-            <?php
-            }
-            ?>
-        </div>
+        <?php } ?>
     </div>
 </div>
+
 
 </body>
 </html>

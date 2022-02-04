@@ -1,185 +1,92 @@
 <?php
 //include auth_session.php file on all user panel pages
-include("src/includes/auth_session.php");
+$file_name = '';
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
-    <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title>user profile bio graph and total sales - Bootdey.com</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-</head>
+
+
+<?php include("src/includes/head.php"); ?>
+
 <body>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container bootstrap snippets bootdey">
-    <div class="row">
-        <div class="profile-nav col-md-3">
-            <div class="panel">
-                <div class="user-heading round">
-                    <a href="#">
-<!--                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">-->
-                        <?php
-                        $user_id = $_SESSION['id'];
-                        $query = $con->query("SELECT * FROM images,users where users.id='{$user_id}' and images.id=users.image_id ");
+<div class="page-wrapper default-theme sidebar-bg bg1 toggled">
+    <?php include("src/includes/nav.php"); ?>
+    <!-- page-content  -->
+    <main class="page-content pt-2">
+        <div id="overlay" class="overlay"></div>
+        <div class="container-fluid p-5">
+            <div class="row">
+                <div class="form-group col-md-12">
 
-                        if($query->num_rows > 0){
-                            while($row = $query->fetch_assoc()){
-                                $imageURL = 'uploads/'.$row["file_name"];
-                                ?>
-                                <img src="<?php echo $imageURL; ?>" alt="" />
-                            <?php }
-                        }else{ ?>
-                            <p>No image(s) found...</p>
-                        <?php } ?>
-                    </a>
-                    <h1><?php echo $_SESSION['username']; ?></h1>
-                    <p>
-                        <?php
-                        $loged_id = $_SESSION['id'];
-                        $sql = "SELECT * FROM users where id=$loged_id";
-                        $result = $con->query($sql);
-
-                        if ($result->num_rows > 0) {
-                        // output data of each row
-                        while ($row = $result->fetch_assoc()) { ?>
-
-                        <?php echo "Status: ".$row["user_level_id"]; ?>
-                    </p>
-                    <?php
-                    }
-                    } else {
-                        echo "0 results";
-                    }
-                    ?>
                 </div>
 
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
-<!--                    <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>-->
-                    <li><a href="src/actions/user_edit_info.php"> <i class="fa fa-edit"></i> Edit profile</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="profile-info col-md-9">
-            <div class="panel">
-                <form action="src/actions/upload.php" method="post" enctype="multipart/form-data">
-                    <label for="formFileSm" class="form-label">Select Image File to Upload for youre profile picture:</label>
-                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="file">
-                    <input type="submit" name="submit" value="Upload">
-                </form>
-            </div>
-            <div class="panel">
-                <div class="bio-graph-heading">
-                    Youre info
+                <div class="form-group col-md-12">
+                    <ul class="nav nav-pills nav-stacked">
+                        <!--                    <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>-->
+                        <a href="src/actions/user_edit_info.php"> <i class="fa fa-edit"></i> Edit profile</a>
+                    </ul>
                 </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <div class="input-group">
 
-                <div class="panel-body bio-graph-info">
-                    <?php
-//                    session_start();
-                    $id = $_SESSION['id'];
-//                    $id = isset($_GET['id']) ? $_GET['id'] : '';
-                    $sql = "select * from users WHERE id = $id LIMIT $id";
-                    $result = mysqli_query($con, $sql);
-                    while($data = mysqli_fetch_array($result)) { ?>
-                    <h1>Bio Graph</h1>
-                    <div class="row">
-                        <div class="bio-row">
-                            <p><span><?php echo "Username: ".$data['username']; ?> </span> </p>
-                        </div>
-                        <div class="bio-row">
-                            <p><span><?php echo "Email: ".$data['email']; ?></span> </p>
-                        </div>
-                        <div class="bio-row">
-                            <p><span> <?php echo "Phone number: ".$data['phone']; ?></span> </p>
-                        </div>
-                        <div class="bio-row">
-                            <p><span><?php echo "Status: ".$data['user_level_id']; ?></span> </p>
-                        </div>
-                        <div class="bio-row">
-                            <p><span><?php echo "Created: ".$data['created_at']; ?></span> </p>
-                        </div>
-                        <div class="bio-row">
-                            <p><span><?php echo "Modified: ".$data['modified']; ?> </span> </p>
-                        </div>
-                        <div class="bio-row">
-                            <p><span><?php echo "Address: ".$data['address']; ?> </span> </p>
-                        </div>
+                        <form action="src/actions/upload.php" method="post" enctype="multipart/form-data">
+                            <label for="formFileSm" class="form-label">Select Image File to Upload for youre profile picture:</label>
+                            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="file" aria-label="Upload">
+                            <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
+                        </form>
                     </div>
                 </div>
-                <?php
-                }
-                ?>
-            </div>
-<!--            <div>-->
-<!--                <div class="row">-->
-<!--                    <div class="col-md-6">-->
-<!--                        <div class="panel">-->
-<!--                            <div class="panel-body">-->
-<!--                                <div class="bio-chart">-->
-<!--                                    <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="35" data-fgcolor="#e06b7d" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(224, 107, 125); padding: 0px; -webkit-appearance: none; background: none;"></div>-->
-<!--                                </div>-->
-<!--                                <div class="bio-desk">-->
-<!--                                    <h4 class="red">Envato Website</h4>-->
-<!--                                    <p>Started : 15 July</p>-->
-<!--                                    <p>Deadline : 15 August</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-md-6">-->
-<!--                        <div class="panel">-->
-<!--                            <div class="panel-body">-->
-<!--                                <div class="bio-chart">-->
-<!--                                    <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="63" data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(76, 197, 205); padding: 0px; -webkit-appearance: none; background: none;"></div>-->
-<!--                                </div>-->
-<!--                                <div class="bio-desk">-->
-<!--                                    <h4 class="terques">ThemeForest CMS </h4>-->
-<!--                                    <p>Started : 15 July</p>-->
-<!--                                    <p>Deadline : 15 August</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-md-6">-->
-<!--                        <div class="panel">-->
-<!--                            <div class="panel-body">-->
-<!--                                <div class="bio-chart">-->
-<!--                                    <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="75" data-fgcolor="#96be4b" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(150, 190, 75); padding: 0px; -webkit-appearance: none; background: none;"></div>-->
-<!--                                </div>-->
-<!--                                <div class="bio-desk">-->
-<!--                                    <h4 class="green">VectorLab Portfolio</h4>-->
-<!--                                    <p>Started : 15 July</p>-->
-<!--                                    <p>Deadline : 15 August</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-md-6">-->
-<!--                        <div class="panel">-->
-<!--                            <div class="panel-body">-->
-<!--                                <div class="bio-chart">-->
-<!--                                    <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="50" data-fgcolor="#cba4db" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(203, 164, 219); padding: 0px; -webkit-appearance: none; background: none;"></div>-->
-<!--                                </div>-->
-<!--                                <div class="bio-desk">-->
-<!--                                    <h4 class="purple">Adobe Muse Template</h4>-->
-<!--                                    <p>Started : 15 July</p>-->
-<!--                                    <p>Deadline : 15 August</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-        </div>
-    </div>
-</div>
 
+
+                <hr>
+                <div class="row ">
+                    <div class="form-group col-md-12">
+                        <div class="panel">
+                            <div class="panel-body bio-graph-info">
+                                <?php
+                                $id = $_SESSION['id'];
+                                $sql = "select * from users WHERE id = $id LIMIT $id";
+                                $result = mysqli_query($con, $sql);
+                                while($data = mysqli_fetch_array($result)) { ?>
+                                <h1>Bio Graph</h1>
+                                <div class="row">
+                                    <div class="bio-row">
+                                        <p><span><?php echo "Username: ".$data['username']; ?> </span> </p>
+                                    </div>
+                                    <div class="bio-row">
+                                        <p><span><?php echo "Email: ".$data['email']; ?></span> </p>
+                                    </div>
+                                    <div class="bio-row">
+                                        <p><span> <?php echo "Phone number: ".$data['phone']; ?></span> </p>
+                                    </div>
+                                    <div class="bio-row">
+                                        <p><span><?php echo "Status: ".$data['user_level_id']; ?></span> </p>
+                                    </div>
+                                    <div class="bio-row">
+                                        <p><span><?php echo "Created: ".$data['created_at']; ?></span> </p>
+                                    </div>
+                                    <div class="bio-row">
+                                        <p><span><?php echo "Address: ".$data['address']; ?> </span> </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- page-content" -->
+</div>
 <style type="text/css">
     body {
         color: #797979;
@@ -558,9 +465,15 @@ include("src/includes/auth_session.php");
         margin-right: 0px;
     }
 </style>
-
-<script type="text/javascript">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
 </script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+</script>
+<script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/app/js/main.js"></script>
 </body>
+
 </html>

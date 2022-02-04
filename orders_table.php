@@ -34,6 +34,14 @@ $file_name = 'orders_table';
             <hr>
             <div class="row">
                 <div class="form-group col-md-12">
+                    <form action="" method="get">
+                        <div class="input-group mb-3">
+                            <input type="text" name="search" value="<?php if (isset($_GET['search'])) {
+                                echo $_GET['search'];
+                            } ?>" class="form-control" placeholder="Search orders">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </form>
                     <table class="table table-hover table-dark">
                         <thead>
                         <tr>
@@ -42,7 +50,6 @@ $file_name = 'orders_table';
                             <th scope="col">Phone</th>
                             <th scope="col">Description</th>
                             <th scope="col">Address</th>
-                            <th scope="col">Owner</th>
                             <th scope="col">Actions</th>
 
                         </tr>
@@ -50,27 +57,31 @@ $file_name = 'orders_table';
                         <tbody>
 
                         <?php
+                        if (isset($_GET['search']))
+                        {
+                        $filtervalues = $_GET['search'];
+                        $query = "SELECT * FROM anunturi where CONCAT(titlu) LIKE '%$filtervalues%'";
+                        $query_run = mysqli_query($con, $query);
 
-                        $sql1 = "SELECT * FROM anunturi ORDER BY id DESC";
-                        $result = $con->query($sql1);
+                        if (mysqli_num_rows($query_run)) {
+                            foreach ($query_run as $row) {
+                                ?>
 
-                        if ($result->num_rows > 0) {
-                            // output data of each row
-                            while ($row = $result->fetch_assoc()) { ?>
                                 <tr>
                                     <td> <?php echo $row["id"]; ?> </td>
                                     <td> <?php echo $row["titlu"]; ?> </td>
                                     <td> <?php echo $row["telefon"]; ?> </td>
                                     <td> <?php echo $row["descriere"]; ?> </td>
                                     <td> <?php echo $row["adresa"]; ?> </td>
-                                    <td> <?php echo $row["user_id"]; ?> </td>
+
                                     <td>
 
                                         <a class="btn btn-outline-danger"
                                            href="src/actions/delete_orders.php?id=<?php echo $row['id']; ?>">
                                             <i class=" bi bi-trash"></i>
                                         </a>
-                                        <a class="btn btn-outline-info" href="view_orders.php?id=<?php echo $row['id']; ?>">
+                                        <a class="btn btn-outline-info"
+                                           href="view_anunt.php?id=<?php echo $row['id']; ?>">
                                             <i class=" bi bi-eye"></i>
                                         </a>
                                         <a class="btn btn-outline-primary"
@@ -89,7 +100,7 @@ $file_name = 'orders_table';
                         ?>
                         </tbody>
                     </table>
-
+<?php } ?>
                 </div>
 
 
