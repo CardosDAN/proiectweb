@@ -394,8 +394,7 @@ $product_id = $_GET['id'];
                     <!-- End row -->
                     <div class="action">
 
-                        <a class="link-v1 wish" title="Wishlist" href="#"><i class="icon icon-heart"></i></a>
-
+                        <a href="#" onclick="wishlist_toggle()" class="link-v1 wish" title="Wishlist"><i class="icon icon-heart"></i></a>
                     </div>
                     <!-- End share -->
                 </div>
@@ -524,7 +523,7 @@ $product_id = $_GET['id'];
 <div class="container">
     <div class="row">
         <?php
-        $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.category_id=". $product_category_id);
+        $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.category_id=".$product_category_id);
         while ($row = $query->fetch_assoc()) { ?>
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
@@ -541,7 +540,6 @@ $product_id = $_GET['id'];
                                     </p>
                                     <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
                                     <p class="card-text"><?php echo $row['adresa']; ?></p>
-                                    <p>aici pun categoria</p>
                                 </div>
                             </div>
                         </div>
@@ -564,7 +562,12 @@ $product_id = $_GET['id'];
         <?php } ?>
     </div>
 </div>
-
-
+<script src="website-menu-07/js/jquery-3.3.1.min.js"></script>
+<script>
+    function wishlist_toggle() {
+        console.log("merge");
+        $.get("src/actions/wishlist_toggle.php",{product_id:"32"})
+    }
+</script>
 </body>
 </html>

@@ -2,7 +2,6 @@
 //include auth_session.php file on all user panel pages
 $file_name = 'home';
 include("src/includes/auth_session.php");
-include("src/includes/db.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,6 +25,7 @@ include("src/includes/db.php");
     <style>
 
         @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
         #team {
             background: white !important;
         }
@@ -152,6 +152,7 @@ include("src/includes/db.php");
             height: 120px;
             border-radius: 50%;
         }
+
         a {
             -webkit-transition: color 2s;
             transition: color 2s;
@@ -195,15 +196,18 @@ include("src/includes/db.php");
         .bg-slider-one-item.bg-home2-slider .brand-content {
             margin-top: 30px;
         }
+
         .title-text-v2 {
             text-align: center;
         }
+
         ul.tabs.tabs-title {
             width: 100%;
             display: inline-block;
             text-align: center;
             margin-bottom: 30px;
         }
+
         ul.tabs.tabs-title li {
             display: inline-block;
             text-align: center;
@@ -213,29 +217,36 @@ include("src/includes/db.php");
             font: 400 16px "Roboto Slab";
             color: #2b2b2b;
         }
+
         ul.tabs.tabs-title li.active, ul.tabs.tabs-title li:hover {
             color: #80b435;
         }
+
         element.style {
             background-image: url(website-menu-07/images/home1-banner1.jpg);
             background-repeat: no-repeat;
         }
+
         .special.special-v2 {
             padding-top: 75px;
         }
+
         .box {
             display: inline-block;
             width: 100%;
         }
+
         .special.special-v2 .special-content {
             text-align: center;
             max-width: 500px;
             padding-top: 0px;
         }
-        .p1{
+
+        .p1 {
             font-family: "Garamond", serif;
             font-size: 350%;
         }
+
         .special-content h3 {
             font: 300 42px/50px "Roboto Slab";
             color: #80b435;
@@ -244,11 +255,13 @@ include("src/includes/db.php");
             display: inline-block;
             margin-left: 10px;
         }
+
         .special .images-logo {
             position: relative;
             z-index: 999;
         }
-        .footer-inner{
+
+        .footer-inner {
             height: 150px;
             width: 100%;
             background: url(website-menu-07/images/bg-footer.jpg);
@@ -462,7 +475,8 @@ include("src/includes/db.php");
         </div>
     </div>
 
-    <div id="carouselExampleControls" class="carousel slide bg-slider-one-item space-100 bg-home2-slider " data-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide bg-slider-one-item space-100 bg-home2-slider "
+         data-ride="carousel">
         <div class="title-text-v2 align-center p4">
             <p4>Our Suppliers</p4>
             <br><br>
@@ -601,44 +615,41 @@ include("src/includes/db.php");
     <div class="title-text-v2">
         <h3>Lastest Products</h3>
     </div>
-    <ul class="tabs tabs-title">
-        <li class="item active" rel="tab_1">All Product</li>
-        <li class="item" rel="tab_2">Fruits</li>
-        <li class="item" rel="tab_3">Vegetables</li>
-        <li class="item" rel="tab_4">Nuts</li>
-        <li class="item" rel="tab_5">Other ProDucts</li>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#vegetables" role="tab"
+               aria-controls="vegetables" aria-selected="true">Vegetables</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#fruits" role="tab" aria-controls="fruits"
+               aria-selected="false">Fruits</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#nuts" role="tab" aria-controls="nuts"
+               aria-selected="false">Nuts</a>
+        </li>
     </ul>
-    <div class="container">
-        <section id="team" class="pb-5">
-            <?php
-            $sql = "SELECT * FROM anunturi where status='Activ'";
-            $result = mysqli_query($con, $sql);
-            while($row = mysqli_fetch_assoc($result)) { ?>
-            <div class="container">
-                <div class="row">
-                    <!-- Team member -->
-                    <div class="col-xs-12 col-sm-6 col-md-4 row">
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="vegetables" role="tabpanel" aria-labelledby="vegetables-tab">
+            <div class="row">
+                <?php
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.category_id=1 limit 4");
+                while ($row = $query->fetch_assoc()) { ?>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                             <div class="mainflip">
                                 <div class="frontside">
                                     <div class="card">
                                         <div class="card-body text-center">
-<!--                                            <p> --><?php
-//                                                $query = $con->query("SELECT * FROM images,anunturi where anunturi.image_id=image_id and images.id=anunturi.image_id ");
-//                                                if ($query->num_rows > 0) {
-//                                                    while ($row = $query->fetch_assoc()) {
-//                                                        $imageURL = 'uploads/' . $row["file_name"];
-//                                                        ?>
-<!--                                                        <img src="--><?php //echo $imageURL; ?><!--" />-->
-<!--                                                    --><?php //}
-//                                                } else { ?>
-<!--                                            <p>No image(s) found...</p>-->
-<!--                                            --><?php //} ?>
-                                            </p>
+                                            <p>
+                                                <?php
+                                                $imageURL = 'uploads/' . $row["file_name"];
+                                                ?>
+                                                <img src="<?php echo $imageURL; ?>"/>
 
+                                            </p>
                                             <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
                                             <p class="card-text"><?php echo $row['adresa']; ?></p>
-                                            <p>aici pun categoria</p>
                                         </div>
                                     </div>
                                 </div>
@@ -650,7 +661,8 @@ include("src/includes/db.php");
                                             <ul class="list-inline">
                                                 <p class="card-text"><?php echo $row['pret']; ?></p>
                                             </ul>
-                                            <a href="view_anunt.php?id=<?php echo $row['id']?>" role="button">View details</a>
+                                            <a href="view_anunt.php?id=<?php echo $row['id'] ?>" role="button">View
+                                                details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -658,15 +670,101 @@ include("src/includes/db.php");
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
+        </div>
+        <div class="tab-pane fade" id="fruits" role="tabpanel" aria-labelledby="fruits-tab">
+            <div class="row">
                 <?php
-            }
-            ?>
-        </section>
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.category_id=2 limit 4");
+                while ($row = $query->fetch_assoc()) { ?>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                            <div class="mainflip">
+                                <div class="frontside">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <p>
+                                                <?php
+                                                $imageURL = 'uploads/' . $row["file_name"];
+                                                ?>
+                                                <img src="<?php echo $imageURL; ?>"/>
+
+                                            </p>
+                                            <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
+                                            <p class="card-text"><?php echo $row['adresa']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="backside">
+                                    <div class="card">
+                                        <div class="card-body text-center mt-4">
+                                            <h4 class="card-title"><?php echo $row['telefon']; ?></h4>
+                                            <p class="card-text"><?php echo $row['descriere']; ?></p>
+                                            <ul class="list-inline">
+                                                <p class="card-text"><?php echo $row['pret']; ?></p>
+                                            </ul>
+                                            <a href="view_anunt.php?id=<?php echo $row['id'] ?>" role="button">View
+                                                details</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nuts" role="tabpanel" aria-labelledby="nuts-tab">
+            <div class="row">
+                <?php
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.category_id=3 limit 4");
+                while ($row = $query->fetch_assoc()) { ?>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                            <div class="mainflip">
+                                <div class="frontside">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <p>
+                                                <?php
+                                                $imageURL = 'uploads/' . $row["file_name"];
+                                                ?>
+                                                <img src="<?php echo $imageURL; ?>"/>
+
+                                            </p>
+                                            <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
+                                            <p class="card-text"><?php echo $row['adresa']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="backside">
+                                    <div class="card">
+                                        <div class="card-body text-center mt-4">
+                                            <h4 class="card-title"><?php echo $row['telefon']; ?></h4>
+                                            <p class="card-text"><?php echo $row['descriere']; ?></p>
+                                            <ul class="list-inline">
+                                                <p class="card-text"><?php echo $row['pret']; ?></p>
+                                            </ul>
+                                            <a href="view_anunt.php?id=<?php echo $row['id'] ?>" role="button">View
+                                                details</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
     </div>
+
+
     <br><br>
-    <div class="special bg-images special-v2 box container-fluid" style="background-image:url('website-menu-07/images/home1-banner1.jpg');background-repeat: no-repeat;">
+    <div class="special bg-images special-v2 box container-fluid"
+         style="background-image:url('website-menu-07/images/home1-banner1.jpg');background-repeat: no-repeat;">
         <div class="col-md-7 float-left align-right">
             <img class="images-logo container" src="website-menu-07/images/home1-images-banner1-2.png" alt="images">
         </div>
@@ -716,7 +814,7 @@ include("src/includes/db.php");
                         Products
                     </h6>
                     <p>
-                        <a href="#!" class="text-reset" >Fruits</a>
+                        <a href="#!" class="text-reset">Fruits</a>
                     </p>
                     <p>
                         <a href="#!" class="text-reset">Vegetable</a>
@@ -775,7 +873,7 @@ include("src/includes/db.php");
 </footer>
 <!-- Footer -->
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="website-menu-07/js/jquery-3.3.1.min.js"></script>
 <script src="website-menu-07/js/popper.min.js"></script>
 <script src="website-menu-07/js/bootstrap.min.js"></script>
