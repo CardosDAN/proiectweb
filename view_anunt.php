@@ -297,7 +297,7 @@ $product_id = $_GET['id'];
                 <div class="card mb-lg-3">
                     <?php
 
-                    $query = $con->query("SELECT * FROM images,anunturi where  images.id=anunturi.image_id and anunturi.id=".$product_id);
+                    $query = $con->query("SELECT * FROM images,anunturi where  images.id=anunturi.image_id and anunturi.id=" . $product_id);
 
                     if ($query->num_rows > 0) {
                         while ($row = $query->fetch_assoc()) {
@@ -375,9 +375,11 @@ $product_id = $_GET['id'];
 
                     <!-- End action -->
                     <div class="description-lits">
-                        <h3><?php echo $row['adresa']; ?></h3>
-                        google maps aici
 
+                        <h3><?php echo $row['adresa']; ?></h3>
+                        <?php
+                        $address = $row['adresa'];;
+                        echo '<iframe frameborder="0" src="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=' . str_replace(",", "", str_replace(" ", "+", $address)) . '&z=14&output=embed"></iframe>'; ?>
                     </div>
                     <!--End Description-->
                     <div class="box space-30">
@@ -394,7 +396,8 @@ $product_id = $_GET['id'];
                     <!-- End row -->
                     <div class="action">
 
-                        <a href="#" onclick="wishlist_toggle()" class="link-v1 wish" title="Wishlist"><i class="icon icon-heart"></i></a>
+                        <a href="#" onclick="wishlist_toggle()" class="link-v1 wish" title="Wishlist"><i
+                                    class="icon icon-heart"></i></a>
                     </div>
                     <!-- End share -->
                 </div>
@@ -523,7 +526,7 @@ $product_id = $_GET['id'];
 <div class="container">
     <div class="row">
         <?php
-        $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.category_id=".$product_category_id);
+        $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.category_id=" . $product_category_id);
         while ($row = $query->fetch_assoc()) { ?>
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
@@ -566,7 +569,7 @@ $product_id = $_GET['id'];
 <script>
     function wishlist_toggle() {
         console.log("merge");
-        $.get("src/actions/wishlist_toggle.php",{product_id:"32"})
+        $.get("src/actions/wishlist_toggle.php", {product_id: "<?php echo $product_id?>"})
     }
 </script>
 </body>
