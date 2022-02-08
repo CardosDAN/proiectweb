@@ -450,7 +450,7 @@ include("src/includes/auth_session.php");
                         <div class="border container" style="width: 140%">
                             <img src="website-menu-07/images/icon-shipping-2.png" alt="images">
                             <h3>Support</h3>
-                            <p>LIFE TIME SUPPORT 24/7</p>
+                            <p>SUPPORT 24/7</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3">
@@ -615,16 +615,16 @@ include("src/includes/auth_session.php");
     <div class="title-text-v2">
         <h3>Lastest Products</h3>
     </div>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#vegetables" role="tab"
+    <ul class="nav nav-tabs tabs tabs-title" id="myTab" role="tablist" >
+        <li class="nav-item" rel="tab_1" role="presentation">
+            <a class="nav-link  active" id="home-tab" data-bs-toggle="tab" href="#vegetables" role="tab"
                aria-controls="vegetables" aria-selected="true">Vegetables</a>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" rel="tab_2" role="presentation">
             <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#fruits" role="tab" aria-controls="fruits"
                aria-selected="false">Fruits</a>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" rel="tab_3" role="presentation">
             <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#nuts" role="tab" aria-controls="nuts"
                aria-selected="false">Nuts</a>
         </li>
