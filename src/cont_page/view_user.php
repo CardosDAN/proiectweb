@@ -6,12 +6,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<?php //TODO: verificare si redirect ?>
-<?php include("src/includes/head.php");?>
+
+<?php include("../includes/head.php"); ?>
 
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
-    <?php include("src/includes/nav.php");?>
+    <?php include("../includes/nav.php");?>
     <!-- page-content  -->
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
@@ -38,7 +38,7 @@
 
             while ($data = mysqli_fetch_array($records)) {
             ?>
-            <a class="btn btn-outline-primary" href="src/actions/edit_users.php?id=<?php echo $data['id']; ?>">
+            <a class="btn btn-outline-primary" href="../actions/edit_users.php?id=<?php echo $data['id']; ?>">
                 <i class="bi bi-pencil-square">
 
                 </i>
@@ -97,7 +97,7 @@
 <script src="../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script> -->
 
 
-<script src="assets/app/js/main.js"></script>
+<script src="../../assets/app/js/main.js"></script>
 </body>
 
 </html>

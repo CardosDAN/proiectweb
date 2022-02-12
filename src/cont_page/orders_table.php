@@ -1,18 +1,17 @@
 <?php
 //include auth_session.php file on all user panel pages
-$file_name = 'users_table';
-
+$file_name = 'orders_table';
+//include("src/includes/auth_session.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-
-<?php include("src/includes/head.php"); ?>
+<?php include("../includes/head.php"); ?>
 
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
-    <?php include("src/includes/nav.php"); ?>
+    <?php include("../includes/nav.php"); ?>
     <!-- page-content  -->
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
@@ -35,45 +34,58 @@ $file_name = 'users_table';
             <hr>
             <div class="row">
                 <div class="form-group col-md-12">
+                    <form action="" method="get">
+                        <div class="input-group mb-3">
+                            <input type="text" name="search" value="<?php if (isset($_GET['search'])) {
+                                echo $_GET['search'];
+                            } ?>" class="form-control" placeholder="Search orders">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </form>
                     <table class="table table-hover table-dark">
                         <thead>
                         <tr>
                             <th scope="col">id</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Password</th>
-                            <th scope="col">Actiuni</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Actions</th>
 
                         </tr>
                         </thead>
                         <tbody>
 
                         <?php
+                        if (isset($_GET['search']))
+                        {
+                        $filtervalues = $_GET['search'];
+                        $query = "SELECT * FROM anunturi where CONCAT(titlu) LIKE '%$filtervalues%'";
+                        $query_run = mysqli_query($con, $query);
 
-                        $sql1 = "SELECT * FROM users ORDER BY id DESC";
-                        $result = $con->query($sql1);
+                        if (mysqli_num_rows($query_run)) {
+                            foreach ($query_run as $row) {
+                                ?>
 
-                        if ($result->num_rows > 0) {
-                            // output data of each row
-                            while ($row = $result->fetch_assoc()) { ?>
                                 <tr>
                                     <td> <?php echo $row["id"]; ?> </td>
-                                    <td> <?php echo $row["username"]; ?> </td>
-                                    <td> <?php echo $row["email"]; ?> </td>
-                                    <td> <?php echo $row["password"]; ?> </td>
+                                    <td> <?php echo $row["titlu"]; ?> </td>
+                                    <td> <?php echo $row["telefon"]; ?> </td>
+                                    <td> <?php echo $row["descriere"]; ?> </td>
+                                    <td> <?php echo $row["adresa"]; ?> </td>
+
                                     <td>
+
                                         <a class="btn btn-outline-danger"
-                                           href="src/actions/delete_user.php?id=<?php echo $row['id']; ?>">
+                                           href="../actions/delete_orders.php?id=<?php echo $row['id']; ?>">
                                             <i class=" bi bi-trash"></i>
                                         </a>
-
                                         <a class="btn btn-outline-info"
-                                           href="view_user.php?id=<?php echo $row['id']; ?>">
-                                            <i class=" bi bi-eye">
-                                            </i>
+                                           href="../front_pages/view_anunt.php?id=<?php echo $row['id']; ?>">
+                                            <i class=" bi bi-eye"></i>
                                         </a>
                                         <a class="btn btn-outline-primary"
-                                           href="src/actions/edit_users.php?id=<?php echo $row['id']; ?>">
+                                           href="../actions/edit_orders.php?id=<?php echo $row['id']; ?>">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
                                     </td>
@@ -88,7 +100,7 @@ $file_name = 'users_table';
                         ?>
                         </tbody>
                     </table>
-
+<?php } ?>
                 </div>
 
 
@@ -123,7 +135,7 @@ $file_name = 'users_table';
 <script src="../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script> -->
 
 
-<script src="assets/app/js/main.js"></script>
+<script src="../../assets/app/js/main.js"></script>
 </body>
 
 </html>

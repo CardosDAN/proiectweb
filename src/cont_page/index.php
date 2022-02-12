@@ -8,37 +8,21 @@ $file_name = 'dashbaord';
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include("src/includes/head.php"); ?>
+<?php include("../includes/head.php"); ?>
 
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
-    <?php include("src/includes/nav.php"); ?>
+    <?php include("../includes/nav.php"); ?>
     <!-- page-content  -->
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
         <div class="container-fluid p-5">
             <div class="row">
                 <div class="form-group col-md-12">
-
-                </div>
-
-                <div class="form-group col-md-12">
-                    <i class="bi bi-arrow-bar-right" id="toggle-sidebar" href="#">
-                        <span>Toggle Sidebar</span></i>
-                    <!--                        <a id="pin-sidebar" class="btn btn-outline-secondary rounded-0" href="#">-->
-                    <!--                            <span>Pin Sidebar</span>-->
-                    <!--                        </a>-->
-
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="form-group col-md-12">
                     <h3>Themes</h3>
                     <p>Here are more themes that you can use</p>
                 </div>
             </div>
-
             <div class="row">
                 <div class="form-group col-md-12">
                     <a href="#" data-theme="default-theme" class="theme default-theme selected"></a>
@@ -70,21 +54,9 @@ $file_name = 'dashbaord';
                         <label class="custom-control-label" for="toggle-border-radius">Border radius</label>
                     </div>
                 </div>
-
-            </div>
-
-
-            <hr>
-            <div class="row ">
-                <div class="form-group col-md-12">
-
-                </div>
-
             </div>
         </div>
-</div>
-</main>
-<!-- page-content" -->
+    </main>
 </div>
 <!-- page-wrapper -->
 
@@ -105,7 +77,7 @@ $file_name = 'dashbaord';
 <script src="../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script> -->
 
 
-<script src="assets/app/js/main.js"></script>
+<script src="../../assets/app/js/main.js"></script>
 </body>
 
 </html>

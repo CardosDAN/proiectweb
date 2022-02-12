@@ -66,7 +66,7 @@ if (isset($_POST['update'])) // when click on Update button
             <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
         </div>
         <input class="btn btn-outline-success" type="submit" name="update" value="Update">
-        <a class="btn btn-outline-danger" href="../../profil.php">Back</a>
+        <a class="btn btn-outline-danger" href="../cont_page/profil.php">Back</a>
     </form>
 
 </div>

@@ -8,11 +8,11 @@ $file_name = '';
 <html lang="en">
 
 
-<?php include("src/includes/head.php"); ?>
+<?php include("../includes/head.php"); ?>
 
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
-    <?php include("src/includes/nav.php"); ?>
+    <?php include("../includes/nav.php"); ?>
     <!-- page-content  -->
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
@@ -25,7 +25,7 @@ $file_name = '';
                 <div class="form-group col-md-12">
                     <ul class="nav nav-pills nav-stacked">
                         <!--                    <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>-->
-                        <a href="src/actions/user_edit_info.php"> <i class="fa fa-edit"></i> Edit profile</a>
+                        <a href="../actions/user_edit_info.php"> <i class="fa fa-edit"></i> Edit profile</a>
                     </ul>
                 </div>
             </div>
@@ -34,7 +34,7 @@ $file_name = '';
                 <div class="form-group col-md-12">
                     <div class="input-group">
 
-                        <form action="src/actions/upload.php" method="post" enctype="multipart/form-data">
+                        <form action="../actions/upload.php" method="post" enctype="multipart/form-data">
                             <label for="formFileSm" class="form-label">Select Image File to Upload for youre profile picture:</label>
                             <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="file" aria-label="Upload">
                             <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
@@ -473,7 +473,7 @@ $file_name = '';
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
 </script>
 <script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="assets/app/js/main.js"></script>
+<script src="../../assets/app/js/main.js"></script>
 </body>
 
 </html>

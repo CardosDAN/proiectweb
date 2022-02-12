@@ -1,6 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
-include("src/includes/auth_session.php");
+include("auth_session.php");
 
 ?>
 <?php //SELECT `sections`.`nume`, `pages`.`nume` FROM `sections`, `pages` WHERE `pages`.`min_user_level_id` <= 3 AND `sections`.`id` = `pages`.`section_id`;
@@ -9,7 +9,7 @@ include("src/includes/auth_session.php");
     <div class="sidebar-content">
         <!-- sidebar-brand  -->
         <div class="sidebar-item sidebar-brand">
-            <a href="home.php">Fresh Food</a>
+            <a href="../front_pages/home.php">Fresh Food</a>
         </div>
         <!-- sidebar-header  -->
         <div class="sidebar-item sidebar-header d-flex flex-nowrap">
@@ -20,7 +20,7 @@ include("src/includes/auth_session.php");
 
                 if($query->num_rows > 0){
                     while($row = $query->fetch_assoc()){
-                        $imageURL = 'uploads/'.$row["file_name"];
+                        $imageURL = '../../../uploads/'.$row["file_name"];
                         ?>
                         <img src="<?php echo $imageURL; ?>" alt="" />
                     <?php }
@@ -103,12 +103,12 @@ include("src/includes/auth_session.php");
                     <div class="sidebar-submenu">
                         <ul>
                             <li>
-                                <a href="users_table.php">Users
+                                <a href="../cont_page/users_table.php">Users
 
                                 </a>
                             </li>
                             <li>
-                                <a href="orders_table.php">Orders</a>
+                                <a href="../cont_page/orders_table.php">Orders</a>
                             </li>
                             <li>
                                 <a href="#">Credit cart</a>
@@ -312,13 +312,13 @@ include("src/includes/auth_session.php");
                 <span class="badge-sonar"></span>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuMessage">
-                <a class="dropdown-item" href="profil.php">My profile</a>
+                <a class="dropdown-item" href="../cont_page/profil.php">My profile</a>
                 <a class="dropdown-item" href="#">Help</a>
                 <a class="dropdown-item" href="#">Setting</a>
             </div>
         </div>
         <div>
-            <a href="logout.php">
+            <a href="../../logout.php">
                 <i class="fa fa-power-off"></i>
             </a>
         </div>

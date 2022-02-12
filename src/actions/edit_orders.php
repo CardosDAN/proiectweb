@@ -99,7 +99,7 @@ if (isset($_POST['update']))  {
         </div>
         <input type="file" value="<?php echo $row['image_id'] ?>" name="file">
         <button  type="submit" class="btn btn-primary">Edit</button>
-        <a type="button" class="btn btn-danger" href="home.php">Anulează</a>
+        <a type="button" class="btn btn-danger" href="../front_pages/home.php">Anulează</a>
     </form>
     <!--    <form action="upload.php" method="post" enctype="multipart/form-data">-->
     <!--        Select Image File to Upload:-->

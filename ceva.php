@@ -157,7 +157,7 @@ include("src/includes/db.php");
                 </div>
                 <div class="col-6 text-right">
                     <div class="mr-auto container">
-                        <a class="btn" href="index.php">
+                        <a class="btn" href="src/cont_page/index.php">
                             <i class="bi bi-person">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-person" viewBox="0 0 16 16">
@@ -177,7 +177,7 @@ include("src/includes/db.php");
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-2">
-                    <h1 class="my-0 site-logo position-absolute"><a href="index.php"><span>Fresh</span>&nbspFood</a>
+                    <h1 class="my-0 site-logo position-absolute"><a href="src/cont_page/index.php"><span>Fresh</span>&nbspFood</a>
                     </h1>
 
                 </div>
@@ -209,7 +209,7 @@ include("src/includes/db.php");
                                 <!--                                        </li>-->
                                 <!--                                    </ul>-->
                                 <!--                                </li>-->
-                                <li><a href="store.php" class="nav-link">Store</a></li>
+                                <li><a href="src/front_pages/store.php" class="nav-link">Store</a></li>
                                 <li><a href="#events-section" class="nav-link">Blog</a></li>
                                 <!--                                <li><a href="#gallery-section" class="nav-link">Gallery</a></li>-->
                                 <li><a href="#contact-section" class="nav-link">Contact</a></li>
@@ -509,7 +509,7 @@ include("src/includes/db.php");
                                 <p  class="card-text"><?php echo $row['titlu']; ?> </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-info" role="button">View</a>
+                                        <a href="src/front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-info" role="button">View</a>
 
                                     </div>
                                 </div>

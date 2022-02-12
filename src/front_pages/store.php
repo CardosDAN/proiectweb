@@ -11,23 +11,23 @@ include("src/includes/auth_session.php");
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="website-menu-07/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../../website-menu-07/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="website-menu-07/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../website-menu-07/css/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="website-menu-07/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../website-menu-07/css/bootstrap.min.css">
 
     <!-- Style -->
-    <link rel="stylesheet" href="website-menu-07/css/style.css">
-    <link rel="stylesheet" href="website-menu-07/css/style_shoppage.css">
+    <link rel="stylesheet" href="../../website-menu-07/css/style.css">
+    <link rel="stylesheet" href="../../website-menu-07/css/style_shoppage.css">
 
     <title>Store</title>
     <style>
         .footer-inner {
             height: 150px;
             width: 100%;
-            background: url(website-menu-07/images/bg-footer.jpg);
+            background: url(../../website-menu-07/images/bg-footer.jpg);
         }
 
         @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
@@ -194,7 +194,7 @@ include("src/includes/auth_session.php");
                 </div>
                 <div class="col-6 text-right">
                     <div class="mr-auto container">
-                        <a class="btn" href="index.php">
+                        <a class="btn" href="../cont_page/index.php">
                             <i class="bi bi-person">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-person" viewBox="0 0 16 16">
@@ -214,7 +214,7 @@ include("src/includes/auth_session.php");
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-2">
-                    <h1 class="my-0 site-logo position-absolute"><a href="index.php"><span>Fresh</span>&nbspFood</a>
+                    <h1 class="my-0 site-logo position-absolute"><a href="../cont_page/index.php"><span>Fresh</span>&nbspFood</a>
                     </h1>
 
                 </div>
@@ -229,7 +229,7 @@ include("src/includes/auth_session.php");
                             </div>
                             <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
                                 <li class="active"><a href="home.php" class="nav-link">Home</a></li>
-                                <li><a href="about_us.html" class="nav-link">About us</a></li>
+                                <li><a href="about_us.php" class="nav-link">About us</a></li>
                                 <!--                                <li class="has-children">-->
                                 <!--                                    <a href="#" class="nav-link">Pages</a>-->
                                 <!--                                    <ul class="dropdown arrow-top">-->
@@ -249,7 +249,7 @@ include("src/includes/auth_session.php");
                                 <li><a href="store.php" class="nav-link">Store</a></li>
                                 <li><a href="#events-section" class="nav-link">Blog</a></li>
                                 <!--                                <li><a href="#gallery-section" class="nav-link">Gallery</a></li>-->
-                                <li><a href="contact_us.html" class="nav-link">Contact</a></li>
+                                <li><a href="contact_us.php" class="nav-link">Contact</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -263,7 +263,7 @@ include("src/includes/auth_session.php");
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="website-menu-07/images/banner-catalog1.jpg" alt="First slide">
+                <img class="d-block w-100" src="../../website-menu-07/images/banner-catalog1.jpg" alt="First slide">
             </div>
         </div>
     </div>
@@ -482,10 +482,10 @@ include("src/includes/auth_session.php");
 
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="website-menu-07/js/jquery-3.3.1.min.js"></script>
-<script src="website-menu-07/js/popper.min.js"></script>
-<script src="website-menu-07/js/bootstrap.min.js"></script>
-<script src="website-menu-07/js/jquery.sticky.js"></script>
-<script src="website-menu-07/js/main.js"></script>
+<script src="../../website-menu-07/js/jquery-3.3.1.min.js"></script>
+<script src="../../website-menu-07/js/popper.min.js"></script>
+<script src="../../website-menu-07/js/bootstrap.min.js"></script>
+<script src="../../website-menu-07/js/jquery.sticky.js"></script>
+<script src="../../website-menu-07/js/main.js"></script>
 </body>
 </html>

@@ -70,7 +70,7 @@ if (isset($_POST['update'])) // when click on Update button
             <a class="btn btn-info" href="status_admin.php?id=<?php echo $row['id']; ?>">Admin</a>
         </div>
         <input class="btn btn-outline-success" type="submit" name="update" value="Update">
-        <a class="btn btn-outline-danger" href="../../users_table.php">Back</a>
+        <a class="btn btn-outline-danger" href="../cont_page/users_table.php">Back</a>
     </form>
 
 </div>
