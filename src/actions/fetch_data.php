@@ -283,7 +283,7 @@ if (isset($_POST["action"])) {
             <div class="row">
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <img src="../uploads/' . $row["file_name"] . '" class="card-img-top" alt="...">
+                        <img src="../../uploads/' . $row["file_name"] . '" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="clearfix mb-3"><span
                                class="float-start badge rounded-pill bg-success">' . $row['titlu'] . '</span> <span

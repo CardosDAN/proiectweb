@@ -127,7 +127,7 @@ $con = new PDO("mysql:host=localhost;dbname=proiect_licenta", "root", "");
     #loading
     {
         text-align:center;
-        background: url('loader.gif') no-repeat center;
+        background: url('src/front_pages/loader.gif') no-repeat center;
         height: 150px;
     }
 </style>
