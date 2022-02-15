@@ -31,135 +31,109 @@ include "../includes/auth_session.php";
         a:hover {
             color: green;
         }
+
+        body {
+            margin: 0px;
+            height: 100vh;
+        }
+        .form-input {
+            width: 350px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377),
+            3px 3px 7px rgba(94, 104, 121, 0.377);
+        }
+
+        .form-input input {
+            display: none;
+
+        }
+
+        .form-input label {
+            display: block;
+            width: 45%;
+            height: 45px;
+            margin-left: 25%;
+            line-height: 50px;
+            text-align: center;
+            background: limegreen;
+
+            color: #fff;
+            font-size: 15px;
+            font-family: "Open Sans", sans-serif;
+            text-transform: Uppercase;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-input img {
+            width: 100%;
+            display: none;
+
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 <body>
 
 
-<?php include "../includes/nav_front.php"?>
-<div class="main">
-    <div id="carouselExampleSlidesOnly" class="hero carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="../../website-menu-07/images/1.jpg" width="700" height="700"
-                     alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="../../website-menu-07/images/2.jpg" width="700" height="700"
-                     alt="Second slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="../../website-menu-07/images/3.jpg" width="700" height="700"
-                     alt="Third slide">
-            </div>
+<?php include "../includes/nav_front.php" ?>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="../../website-menu-07/images/banner-catalog1.jpg" alt="First slide">
         </div>
     </div>
-<div class="container">
-    <h6 class="css-nnbf1n-Text eu5v0x0">Dă cât mai multe detalii!</h6>
-    <form action="../actions/adaugareanunt.php" method="post" enctype="multipart/form-data">
-        <div class="col-md-6 form-group">
-            <input type="text" name="titlu" placeholder="Titlu....">
-        </div>
-        <div class="col-md-6 form-group">
-            <input type="number" name="telefon" placeholder="07********">
-        </div>
-        <div class="col-md-6 form-group">
-            <input type="number" name="pret" placeholder="Pret">
-        </div>
-        <div class="col-md-6 form-group">
-            <input type="text" name="adresa" placeholder="Adresa...">
-        </div>
-        <div class="col-md-6 form-group">
-            <textarea name="descriere" placeholder="Scrie ceva...." ></textarea>
-        </div>
-        <input type="file" name="file">
-        <button  type="submit"  class="btn btn-primary">Adauga</button>
-        <a type="button" class="btn btn-danger" href="home.php">Anulează</a>
-    </form>
-<!--    <form action="upload.php" method="post" enctype="multipart/form-data">-->
-<!--        Select Image File to Upload:-->
-<!--        <input type="file" name="file">-->
-<!--        <input type="submit" name="submit" value="Upload">-->
-<!--    </form>-->
 </div>
 
 
-<footer class="text-center text-lg-start bg-gray-  text-dark ">
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-            <!-- Grid row -->
-            <div class="row mt-3">
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <!-- Content -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Fresh Food
-                    </h6>
-                    <p>
-                        Here you can use rows and columns to organize your footer content. Lorem ipsum
-                        dolor sit amet, consectetur adipisicing elit.
-                    </p>
+<div class="container m-4">
+    <form action="../actions/adaugareanunt.php" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Title</label>
+                    <input type="text" name="titlu" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Useful links
-                    </h6>
-                    <p>
-                        <a href="#!" class="text-info">About us</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-info">Settings</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-info">Store</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-info">Help</a>
-                    </p>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Phone</label>
+                    <input type="number" name="telefon" class="form-control" id="exampleInputPassword1">
                 </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                    <!-- Links -->
-                    <div class="container">
-
-                        <!-- Call to action -->
-                        <ul class="list-unstyled list-inline text-center py-2">
-                            <li class="list-inline-item">
-                                <h5 class="mb-1">Register for free</h5>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="../../registration.php" class="btn btn-outline-white btn-rounded">Sign up!</a>
-                            </li>
-                        </ul>
-                        <!-- Call to action -->
-
-                    </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Price</label>
+                    <input type="number" name="pret" class="form-control" id="exampleInputPassword1">
                 </div>
-                <!-- Grid column -->
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Address</label>
+                    <input type="text" name="adresa" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Description</label>
+                    <textarea type="text" name="descriere" class="form-control" id="exampleInputPassword1"></textarea>
+                </div>
             </div>
-            <!-- Grid row -->
+            <div class="col">
+                <div class="form-input">
+                    <div class="preview">
+                        <img id="file-ip-1-preview">
+                    </div>
+                    <label for="file-ip-1">Upload Image</label>
+                    <input type="file" id="file-ip-1" name="file" accept="image/*" onchange="showPreview(event);">
+                </div>
+            </div>
         </div>
-    </section>
-    <!-- Section: Links  -->
+        <button type="submit" class="btn btn-primary">Adauga</button>
+        <a type="button" class="btn btn-danger" href="home.php">Anulează</a>
+    </form>
+</div>
 
-    <!-- Copyright -->
-    <!--    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">-->
-    <!--        © 2021 Copyright:-->
-    <!--        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>-->
-    <!--    </div>-->
-    <!-- Copyright -->
-</footer>
-<!-- Footer -->
+
+<div class="m-4">
+    <!-- Footer -->
+    <?php include "../includes/footer_front.php" ?>
+    <!-- Footer -->
+</div>
 
 
 <script src="../../website-menu-07/js/jquery-3.3.1.min.js"></script>
@@ -167,5 +141,15 @@ include "../includes/auth_session.php";
 <script src="../../website-menu-07/js/bootstrap.min.js"></script>
 <script src="../../website-menu-07/js/jquery.sticky.js"></script>
 <script src="../../website-menu-07/js/main.js"></script>
+<script type="text/javascript">
+    function showPreview(event) {
+        if (event.target.files.length > 0) {
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("file-ip-1-preview");
+            preview.src = src;
+            preview.style.display = "block";
+        }
+    }
+</script>
 </body>
 </html>

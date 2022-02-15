@@ -245,69 +245,6 @@ include("auth_session.php");
         </div>
         <div class="dropdown">
             <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-envelope"></i>
-                <span class="badge badge-pill badge-success notification">7</span>
-            </a>
-            <div class="dropdown-menu messages" aria-labelledby="dropdownMenuMessage">
-                <div class="messages-header">
-                    <i class="fa fa-envelope"></i>
-                    Messages
-                </div>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                    <div class="message-content">
-                        <div class="pic">
-                            <img src="assets/app/img/user.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="message-title">
-                                <strong> Jhon doe</strong>
-                            </div>
-                            <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. In totam explicabo
-                            </div>
-                        </div>
-                    </div>
-
-                </a>
-                <a class="dropdown-item" href="#">
-                    <div class="message-content">
-                        <div class="pic">
-                            <img src="assets/app/img/user.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="message-title">
-                                <strong> Jhon doe</strong>
-                            </div>
-                            <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. In totam explicabo
-                            </div>
-                        </div>
-                    </div>
-
-                </a>
-                <a class="dropdown-item" href="#">
-                    <div class="message-content">
-                        <div class="pic">
-                            <img src="assets/app/img/user.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="message-title">
-                                <strong> Jhon doe</strong>
-                            </div>
-                            <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. In totam explicabo
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-center" href="#">View all messages</a>
-
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-cog"></i>
                 <span class="badge-sonar"></span>
             </a>

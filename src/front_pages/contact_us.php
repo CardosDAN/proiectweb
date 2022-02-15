@@ -10,7 +10,14 @@
 </head>
 <body>
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
+<?php include "../includes/nav_front.php"; ?>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="../../website-menu-07/images/banner-catalog1.jpg" alt="First slide">
+        </div>
+    </div>
+</div>
 <br>
 <div class="container">
     <div id="googleMap">

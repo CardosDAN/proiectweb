@@ -23,8 +23,10 @@ include('../actions/database_connection.php');
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../website-menu-07/css/bootstrap.min.css">
 
-    <link href = "../../assets/app/css/jquery-ui.css" rel = "stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../assets/app/css/jquery-ui.css" rel="stylesheet">
+    <link href="../../assets/app/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Style -->
     <link rel="stylesheet" href="../../website-menu-07/css/style.css">
@@ -33,9 +35,29 @@ include('../actions/database_connection.php');
     <title>Store</title>
 
 </head>
+<style>
+    .img-responsive {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
 
+    .widget ul li {
+        position: relative;
+        line-height: 30px;
+        padding: 5px 0px;
+    }
+
+    img {
+        vertical-align: middle;
+    }
+
+    .widget.widget_feature .text {
+        padding-top: 18px;
+    }
+</style>
 <body>
-<?php include "../includes/nav_front.php";?>
+<?php include "../includes/nav_front.php"; ?>
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -51,8 +73,8 @@ include('../actions/database_connection.php');
             <div class="list-group">
                 <aside class="widget widget_by_price">
                     <h3 class="widget-title">By Price</h3>
-                    <input type="hidden" id="hidden_minimum_price" value="0" />
-                    <input type="hidden" id="hidden_maximum_price" value="65000" />
+                    <input type="hidden" id="hidden_minimum_price" value="0"/>
+                    <input type="hidden" id="hidden_maximum_price" value="65000"/>
                     <p id="price_show">0 - 65000</p>
                     <div id="price_range"></div>
                 </aside>
@@ -68,11 +90,11 @@ include('../actions/database_connection.php');
                         $statement = $connect->prepare($query);
                         $statement->execute();
                         $result = $statement->fetchAll();
-                        foreach($result as $row)
-                        {
+                        foreach ($result as $row) {
                             ?>
                             <div class="list-group-item checkbox overflow-control-input">
-                                <label><input type="checkbox" class="common_selector brand" value="<?php echo $row['brand']; ?>"  > <?php echo $row['brand']; ?></label>
+                                <label><input type="checkbox" class="common_selector brand"
+                                              value="<?php echo $row['brand']; ?>"> <?php echo $row['brand']; ?></label>
                             </div>
                             <?php
                         }
@@ -80,7 +102,29 @@ include('../actions/database_connection.php');
                         ?>
                     </div>
                 </aside>
+                <aside class="widget widget_feature">
+                    <h3 class="widget-title">Other Products</h3>
+                    <ul>
+                        <?php include "../includes/db.php"; ?>
+                        <?php
+                        $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' limit 4");
+                        while ($row = $query->fetch_assoc()) { ?>
+                            <li>
+                                <a class="images" href="#" title="images">
+                                    <?php $imageURL = '../../uploads/' . $row["file_name"]; ?>
+                                    <img  class="img-responsive" src="<?php echo $imageURL; ?>" alt="images">
+                                </a>
+                                <div class=" align-right">
+                                    <h2>
+                                        <a href="view_anunt.php?id=<?php echo $row['id']?>" ><?php echo $row['titlu']; ?></a>
+                                    </h2>
+                                    <p><span><?php echo $row['pret']; ?></span></p>
+                                </div>
+                            </li>
+                        <?php } ?>
+                    </ul>
 
+                </aside>
             </div>
 
             <!--				<div class="list-group">-->
@@ -97,7 +141,8 @@ include('../actions/database_connection.php');
             //                    {
             //                    ?>
             <!--                    <div class="list-group-item checkbox">-->
-            <!--                        <label><input type="checkbox" class="common_selector ram" value="--><?php //echo $row['product_ram']; ?><!--" > --><?php //echo $row['product_ram']; ?><!-- GB</label>-->
+            <!--                        <label><input type="checkbox" class="common_selector ram" value="-->
+            <?php //echo $row['product_ram']; ?><!--" > --><?php //echo $row['product_ram']; ?><!-- GB</label>-->
             <!--                    </div>-->
             <!--                    --><?php //
             //                    }
@@ -118,7 +163,9 @@ include('../actions/database_connection.php');
             //                    {
             //                    ?>
             <!--                    <div class="list-group-item checkbox">-->
-            <!--                        <label><input type="checkbox" class="common_selector storage" value="--><?php //echo $row['product_storage']; ?><!--"  > --><?php //echo $row['product_storage']; ?><!-- GB</label>-->
+            <!--                        <label><input type="checkbox" class="common_selector storage" value="-->
+            <?php //echo $row['product_storage']; ?><!--"  > -->
+            <?php //echo $row['product_storage']; ?><!-- GB</label>-->
             <!--                    </div>-->
             <!--                    --><?php
             //                    }
@@ -135,24 +182,22 @@ include('../actions/database_connection.php');
 </div>
 
 <!-- Footer -->
-<?php  include "../includes/footer_front.php"?>
+<?php // include "../includes/footer_front.php"?>
 <!-- Footer -->
 <style>
-    #loading
-    {
-        text-align:center;
+    #loading {
+        text-align: center;
         background: url('loader.gif') no-repeat center;
         height: 150px;
     }
 </style>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
 
         filter_data();
 
-        function filter_data()
-        {
+        function filter_data() {
             $('.filter_data').html('<div id="loading" style="" ></div>');
             var action = 'fetch_data';
             var minimum_price = $('#hidden_minimum_price').val();
@@ -161,36 +206,34 @@ include('../actions/database_connection.php');
             // var ram = get_filter('ram');
             // var storage = get_filter('storage');
             $.ajax({
-                url:"../actions/fetch_data.php",
-                method:"POST",
-                data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price, brand:brand}, //, ram:ram, storage:storage
-                success:function(data){
+                url: "../actions/fetch_data.php",
+                method: "POST",
+                data: {action: action, minimum_price: minimum_price, maximum_price: maximum_price, brand: brand}, //, ram:ram, storage:storage
+                success: function (data) {
                     $('.filter_data').html(data);
                 }
             });
         }
 
-        function get_filter(class_name)
-        {
+        function get_filter(class_name) {
             var filter = [];
-            $('.'+class_name+':checked').each(function(){
+            $('.' + class_name + ':checked').each(function () {
                 filter.push($(this).val());
             });
             return filter;
         }
 
-        $('.common_selector').click(function(){
+        $('.common_selector').click(function () {
             filter_data();
         });
 
         $('#price_range').slider({
-            range:true,
-            min:0,
-            max:65000,
-            values:[0, 65000],
-            step:5,
-            stop:function(event, ui)
-            {
+            range: true,
+            min: 0,
+            max: 65000,
+            values: [0, 65000],
+            step: 5,
+            stop: function (event, ui) {
                 $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
                 $('#hidden_minimum_price').val(ui.values[0]);
                 $('#hidden_maximum_price').val(ui.values[1]);
@@ -199,6 +242,21 @@ include('../actions/database_connection.php');
         });
 
     });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+<script>
+
+
+    $(function () {
+        $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+            var rating = data.rating;
+            $(this).parent().find('.score').text('score :' + $(this).attr('data-rateyo-score'));
+            $(this).parent().find('.result').text('rating :' + rating);
+            $(this).parent().find('input[name=rating]').val(rating); //add rating value to input field
+        });
+    });
+
 </script>
 </body>
 </html>

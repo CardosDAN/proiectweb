@@ -343,8 +343,6 @@ $product_id = $_GET['id'];
                                     <div class="d-flex flex-column comment-section">
                                         <?php
                                         $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=product_rating.product_id and product_rating.product_id=" . $product_id;
-                                        //                                        ;
-                                        //                                        SELECT * FROM anunturi,product_rating  where anunturi.id=".$product_id." LIMIT 6
                                         $result = mysqli_query($con, $sql);
                                         while ($row = mysqli_fetch_assoc($result)) { ?>
                                         <div class="bg-white p-2">

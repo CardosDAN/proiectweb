@@ -44,7 +44,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-2">
-                    <h1 class="my-0 site-logo position-absolute"><a href="../cont_page/index.php"><span>Fresh</span>&nbspFood</a>
+                    <h1 class="my-0 site-logo position-absolute"><a href="../front_pages/home.php"><span>Fresh</span>&nbspFood</a>
                     </h1>
 
                 </div>
