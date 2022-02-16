@@ -55,6 +55,12 @@ include('../actions/database_connection.php');
     .widget.widget_feature .text {
         padding-top: 18px;
     }
+    .ui-slider-handle{
+        background: limegreen !important;
+    }
+    .ui-slider-range{
+        background: lawngreen !important;
+    }
 </style>
 <body>
 <?php include "../includes/nav_front.php"; ?>
@@ -75,8 +81,8 @@ include('../actions/database_connection.php');
                     <h3 class="widget-title">By Price</h3>
                     <input type="hidden" id="hidden_minimum_price" value="0"/>
                     <input type="hidden" id="hidden_maximum_price" value="65000"/>
-                    <p id="price_show">0 - 65000</p>
-                    <div id="price_range"></div>
+                    <p id="price_show">0 - 650</p>
+                    <div style="color: #1e7e34" id="price_range"></div>
                 </aside>
 
             </div>
@@ -87,7 +93,7 @@ include('../actions/database_connection.php');
                         <?php
 
                         $query = "SELECT DISTINCT(brand) FROM anunturi WHERE status = 'Activ' ORDER BY id DESC";
-                        $statement = $connect->prepare($query);
+                        $statement = $con->prepare($query);
                         $statement->execute();
                         $result = $statement->fetchAll();
                         foreach ($result as $row) {
@@ -112,11 +118,11 @@ include('../actions/database_connection.php');
                             <li>
                                 <a class="images" href="#" title="images">
                                     <?php $imageURL = '../../uploads/' . $row["file_name"]; ?>
-                                    <img  class="img-responsive" src="<?php echo $imageURL; ?>" alt="images">
+                                    <img class="img-responsive" src="<?php echo $imageURL; ?>" alt="images">
                                 </a>
                                 <div class=" align-right">
                                     <h2>
-                                        <a href="view_anunt.php?id=<?php echo $row['id']?>" ><?php echo $row['titlu']; ?></a>
+                                        <a href="view_anunt.php?id=<?php echo $row['id'] ?>"><?php echo $row['titlu']; ?></a>
                                     </h2>
                                     <p><span><?php echo $row['pret']; ?></span></p>
                                 </div>
@@ -175,88 +181,94 @@ include('../actions/database_connection.php');
 
         <div class="col-md-9">
             <div class="row filter_data">
+                <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+                    <div class="row">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-</div>
-
-<!-- Footer -->
-<?php // include "../includes/footer_front.php"?>
-<!-- Footer -->
-<style>
-    #loading {
-        text-align: center;
-        background: url('loader.gif') no-repeat center;
-        height: 150px;
-    }
-</style>
-
-<script>
-    $(document).ready(function () {
-
-        filter_data();
-
-        function filter_data() {
-            $('.filter_data').html('<div id="loading" style="" ></div>');
-            var action = 'fetch_data';
-            var minimum_price = $('#hidden_minimum_price').val();
-            var maximum_price = $('#hidden_maximum_price').val();
-            var brand = get_filter('brand');
-            // var ram = get_filter('ram');
-            // var storage = get_filter('storage');
-            $.ajax({
-                url: "../actions/fetch_data.php",
-                method: "POST",
-                data: {action: action, minimum_price: minimum_price, maximum_price: maximum_price, brand: brand}, //, ram:ram, storage:storage
-                success: function (data) {
-                    $('.filter_data').html(data);
-                }
-            });
-        }
-
-        function get_filter(class_name) {
-            var filter = [];
-            $('.' + class_name + ':checked').each(function () {
-                filter.push($(this).val());
-            });
-            return filter;
-        }
-
-        $('.common_selector').click(function () {
-            filter_data();
-        });
-
-        $('#price_range').slider({
-            range: true,
-            min: 0,
-            max: 65000,
-            values: [0, 65000],
-            step: 5,
-            stop: function (event, ui) {
-                $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
-                $('#hidden_minimum_price').val(ui.values[0]);
-                $('#hidden_maximum_price').val(ui.values[1]);
-                filter_data();
+        <!-- Footer -->
+        <?php // include "../includes/footer_front.php"?>
+        <!-- Footer -->
+        <style>
+            #loading {
+                text-align: center;
+                background: url('loader.gif') no-repeat center;
+                height: 150px;
             }
-        });
+        </style>
 
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+        <script>
+            $(document).ready(function () {
 
-<script>
+                filter_data();
+
+                function filter_data() {
+                    $('.filter_data').html('<div id="loading" style="" ></div>');
+                    var action = 'fetch_data';
+                    var minimum_price = $('#hidden_minimum_price').val();
+                    var maximum_price = $('#hidden_maximum_price').val();
+                    var brand = get_filter('brand');
+                    // var ram = get_filter('ram');
+                    // var storage = get_filter('storage');
+                    $.ajax({
+                        url: "../actions/fetch_data.php",
+                        method: "POST",
+                        data: {
+                            action: action,
+                            minimum_price: minimum_price,
+                            maximum_price: maximum_price,
+                            brand: brand
+                        }, //, ram:ram, storage:storage
+                        success: function (data) {
+                            $('.filter_data').html(data);
+                        }
+                    });
+                }
+
+                function get_filter(class_name) {
+                    var filter = [];
+                    $('.' + class_name + ':checked').each(function () {
+                        filter.push($(this).val());
+                    });
+                    return filter;
+                }
+
+                $('.common_selector').click(function () {
+                    filter_data();
+                });
+
+                $('#price_range').slider({
+                    range: true,
+                    min: 0,
+                    max: 650,
+                    values: [0, 650],
+                    step: 5,
+                    stop: function (event, ui) {
+                        $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
+                        $('#hidden_minimum_price').val(ui.values[0]);
+                        $('#hidden_maximum_price').val(ui.values[1]);
+                        filter_data();
+                    }
+                });
+
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+        <script>
 
 
-    $(function () {
-        $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
-            var rating = data.rating;
-            $(this).parent().find('.score').text('score :' + $(this).attr('data-rateyo-score'));
-            $(this).parent().find('.result').text('rating :' + rating);
-            $(this).parent().find('input[name=rating]').val(rating); //add rating value to input field
-        });
-    });
+            $(function () {
+                $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+                    var rating = data.rating;
+                    $(this).parent().find('.score').text('score :' + $(this).attr('data-rateyo-score'));
+                    $(this).parent().find('.result').text('rating :' + rating);
+                    $(this).parent().find('input[name=rating]').val(rating); //add rating value to input field
+                });
+            });
 
-</script>
+        </script>
 </body>
 </html>

@@ -110,7 +110,7 @@
         font-size: 1rem;
         font-weight: 500;
         text-transform: uppercase;
-        padding: 5px 50px 5px 50px
+        padding: 15px 50px 5px 50px
     }
 
     .box .btn {
@@ -119,13 +119,13 @@
 
     @media (max-width: 1025px) {
         .btn {
-            padding: 5px 40px 5px 40px
+            padding: 15px 40px 5px 40px
         }
     }
 
     @media (max-width: 250px) {
         .btn {
-            padding: 5px 30px 5px 30px
+            padding: 15px 30px 5px 30px
         }
     }
 
@@ -236,8 +236,9 @@
 </style>
 
 <?php
-
-include('database_connection.php');
+//include "../includes/db.php";
+include "../actions/database_connection.php";
+//include('database_connection.php');
 
 if (isset($_POST["action"])) {
     $query = "
@@ -269,19 +270,22 @@ if (isset($_POST["action"])) {
 //		";
 //	}
 
-    $statement = $connect->prepare($query);
+    $statement = $con->prepare($query);
     $statement->execute();
+
+//    $resultSet = $statement->get_result();
+//
+//
+//    $result = $resultSet->fetch_all();
     $result = $statement->fetchAll();
+
+//    $total_row = $statement->num_rows;
     $total_row = $statement->rowCount();
     $output = '';
     if ($total_row > 0) {
-
         foreach ($result as $row) {
             $output .= '
-<main class="col-md-auto">
-    <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
-            <div class="row">
-                <div class="col">
+                <div class="col-xl-4 py-1">
                     <div class="card h-100 shadow-sm">
                         <img src="../../uploads/' . $row["file_name"] . '" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -289,13 +293,14 @@ if (isset($_POST["action"])) {
                                class="float-start badge rounded-pill bg-success">' . $row['titlu'] . '</span> <span
                                 class="float-end price-hp">' . $row['pret'] . '</span></div>
                                         <h5 class="card-title">' . $row['descriere'] . '</h5>
-                            <div class="text-center my-4"><a href="src/front_pages/view_anunt.php?id= ' . $row['id'] . '" class="btn btn-warning">Check offer</a></div>
+                            <div class="container">
+                                <a href="../front_pages/view_anunt.php?id='.$row['0'].'" class="btn btn-warning ">Check offer</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
     </div>
-</main>
 
 			
 			';

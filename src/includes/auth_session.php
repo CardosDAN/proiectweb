@@ -1,7 +1,7 @@
 <?php
 // Initialize the session
 include "db.php";
-
+//include "../actions/database_connection.php";
 session_start();
 
 // Check if the user is logged in, if not then redirect him to login page
