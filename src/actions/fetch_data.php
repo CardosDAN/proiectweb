@@ -249,10 +249,10 @@ if (isset($_POST["action"])) {
 		 AND pret BETWEEN '" . $_POST["minimum_price"] . "' AND '" . $_POST["maximum_price"] . "'
 		";
     }
-    if (isset($_POST["brand"])) {
-        $brand_filter = implode("','", $_POST["brand"]);
+    if (isset($_POST["category_id"])) {
+        $brand_filter = implode("','", $_POST["category_id"]);
         $query .= "
-		 AND brand IN('" . $brand_filter . "')
+		 AND category_id IN('" . $brand_filter . "')
 		";
     }
 //	if(isset($_POST["ram"]))

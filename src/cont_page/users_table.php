@@ -135,7 +135,7 @@ $file_name = 'users_table';
                             <div class="card-content">
                                 <div class="card-body">
                                     <?php
-                                    $result = $con->query("SELECT DISTINCT brand FROM anunturi ORDER BY brand");
+                                    $result = $con->query("SELECT DISTINCT category_id FROM anunturi ORDER BY category_id");
                                     $row_cnt = $result->num_rows;
                                     ?>
                                     <div class="media d-flex">

@@ -25,117 +25,7 @@ include "../includes/auth_session.php";
     <title>Home</title>
     <style>
         @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-        section {
-            padding: 60px 0;
-        }
-        section .section-title {
-            text-align: center;
-            color: #007b5e;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-        }
-        #team .card {
-            border: none;
-            background: #ffffff;
-        }
 
-        .image-flip:hover .backside,
-        .image-flip.hover .backside {
-            -webkit-transform: rotateY(0deg);
-            -moz-transform: rotateY(0deg);
-            -o-transform: rotateY(0deg);
-            -ms-transform: rotateY(0deg);
-            transform: rotateY(0deg);
-            border-radius: .25rem;
-        }
-
-        .image-flip:hover .frontside,
-        .image-flip.hover .frontside {
-            -webkit-transform: rotateY(180deg);
-            -moz-transform: rotateY(180deg);
-            -o-transform: rotateY(180deg);
-            transform: rotateY(180deg);
-        }
-
-        .mainflip {
-            -webkit-transition: 1s;
-            -webkit-transform-style: preserve-3d;
-            -ms-transition: 1s;
-            -moz-transition: 1s;
-            -moz-transform: perspective(1000px);
-            -moz-transform-style: preserve-3d;
-            -ms-transform-style: preserve-3d;
-            transition: 1s;
-            transform-style: preserve-3d;
-            position: relative;
-        }
-
-        .frontside {
-            position: relative;
-            -webkit-transform: rotateY(0deg);
-            -ms-transform: rotateY(0deg);
-            z-index: 2;
-            margin-bottom: 30px;
-        }
-
-        .backside {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: white;
-            -webkit-transform: rotateY(-180deg);
-            -moz-transform: rotateY(-180deg);
-            -o-transform: rotateY(-180deg);
-            -ms-transform: rotateY(-180deg);
-            transform: rotateY(-180deg);
-            -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-            -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-            box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-        }
-
-        .frontside,
-        .backside {
-            -webkit-backface-visibility: hidden;
-            -moz-backface-visibility: hidden;
-            -ms-backface-visibility: hidden;
-            backface-visibility: hidden;
-            -webkit-transition: 1s;
-            -webkit-transform-style: preserve-3d;
-            -moz-transition: 1s;
-            -moz-transform-style: preserve-3d;
-            -o-transition: 1s;
-            -o-transform-style: preserve-3d;
-            -ms-transition: 1s;
-            -ms-transform-style: preserve-3d;
-            transition: 1s;
-            transform-style: preserve-3d;
-        }
-
-        .frontside .card,
-        .backside .card {
-            min-height: 312px;
-        }
-
-        .backside .card a {
-            font-size: 18px;
-            color: #007b5e !important;
-        }
-
-        .frontside .card .card-title,
-        .backside .card .card-title {
-            color: #007b5e !important;
-        }
-
-        .frontside .card .card-body img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-        }
-
-        a {
-            -webkit-transition: color 2s;
-            transition: color 2s;
-        }
 
         a:hover {
             color: green;
@@ -242,6 +132,7 @@ include "../includes/auth_session.php";
 
 
     </style>
+
 </head>
 <body>
 
@@ -503,55 +394,37 @@ include "../includes/auth_session.php";
     <ul class="nav nav-tabs tabs tabs-title" id="myTab" role="tablist" >
         <li class="nav-item" rel="tab_1" role="presentation">
             <a class="nav-link  active" id="home-tab" data-bs-toggle="tab" href="#vegetables" role="tab"
-               aria-controls="vegetables" aria-selected="true">Vegetables</a>
+               aria-controls="vegetables" aria-selected="true">Legume</a>
         </li>
         <li class="nav-item" rel="tab_2" role="presentation">
             <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#fruits" role="tab" aria-controls="fruits"
-               aria-selected="false">Fruits</a>
+               aria-selected="false">Fructe</a>
         </li>
         <li class="nav-item" rel="tab_3" role="presentation">
             <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#nuts" role="tab" aria-controls="nuts"
-               aria-selected="false">Nuts</a>
+               aria-selected="false">Lactate</a>
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="vegetables" role="tabpanel" aria-labelledby="vegetables-tab">
+            <link rel="stylesheet" href="../../assets/app/css/card.css">
             <div class="row">
                 <?php
-                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.category_id=1 limit 4");
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.category_id=1");
                 while ($row = $query->fetch_assoc()) { ?>
-                    <div class="col-xs-12 col-sm-6 col-md-3">
-                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                            <div class="mainflip">
-                                <div class="frontside">
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <p>
-                                                <?php
-                                                $imageURL = '../../uploads/' . $row["file_name"];
-                                                ?>
-                                                <img src="<?php echo $imageURL; ?>"/>
-
-                                            </p>
-                                            <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
-                                            <p class="card-text"><?php echo $row['adresa']; ?></p>
-                                        </div>
-                                    </div>
+                    <div class="col-xl-4 py-1">
+                        <div class="card h-100 shadow-sm">
+                            <?php
+                            $imageURL = '../../../uploads/' . $row["file_name"];?>
+                            <img src="<?php echo $imageURL; ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <div class="clearfix mb-3"><span
+                                            class="float-start badge rounded-pill bg-success"><?php echo $row['titlu']?></span> <span
+                                            class="float-end price-hp"><?php echo $row['pret']?></span></div>
+                                <h5 class="card-title"><?php echo $row['descriere']?></h5>
+                                <div class="container">
+                                    <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning ">Check offer</a>
                                 </div>
-                                <div class="backside">
-                                    <div class="card">
-                                        <div class="card-body text-center mt-4">
-                                            <h4 class="card-title"><?php echo $row['telefon']; ?></h4>
-                                            <p class="card-text"><?php echo $row['descriere']; ?></p>
-                                            <ul class="list-inline">
-                                                <p class="card-text"><?php echo $row['pret']; ?></p>
-                                            </ul>
-                                            <a href="view_anunt.php?id=<?php echo $row['id'] ?>" role="button">View
-                                                details</a>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -561,40 +434,21 @@ include "../includes/auth_session.php";
         <div class="tab-pane fade" id="fruits" role="tabpanel" aria-labelledby="fruits-tab">
             <div class="row">
                 <?php
-                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.category_id=2 limit 4");
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.category_id=2");
                 while ($row = $query->fetch_assoc()) { ?>
-                    <div class="col-xs-12 col-sm-6 col-md-3">
-                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                            <div class="mainflip">
-                                <div class="frontside">
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <p>
-                                                <?php
-                                                $imageURL = 'uploads/' . $row["file_name"];
-                                                ?>
-                                                <img src="<?php echo $imageURL; ?>"/>
-
-                                            </p>
-                                            <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
-                                            <p class="card-text"><?php echo $row['adresa']; ?></p>
-                                        </div>
-                                    </div>
+                    <div class="col-xl-4 py-1">
+                        <div class="card h-100 shadow-sm">
+                            <?php
+                            $imageURL = '../../../uploads/' . $row["file_name"];?>
+                            <img src="<?php echo $imageURL; ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <div class="clearfix mb-3"><span
+                                            class="float-start badge rounded-pill bg-success"><?php echo $row['titlu']?></span> <span
+                                            class="float-end price-hp"><?php echo $row['pret']?></span></div>
+                                <h5 class="card-title"><?php echo $row['descriere']?></h5>
+                                <div class="container">
+                                    <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning ">Check offer</a>
                                 </div>
-                                <div class="backside">
-                                    <div class="card">
-                                        <div class="card-body text-center mt-4">
-                                            <h4 class="card-title"><?php echo $row['telefon']; ?></h4>
-                                            <p class="card-text"><?php echo $row['descriere']; ?></p>
-                                            <ul class="list-inline">
-                                                <p class="card-text"><?php echo $row['pret']; ?></p>
-                                            </ul>
-                                            <a href="view_anunt.php?id=<?php echo $row['id'] ?>" role="button">View
-                                                details</a>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -604,40 +458,21 @@ include "../includes/auth_session.php";
         <div class="tab-pane fade" id="nuts" role="tabpanel" aria-labelledby="nuts-tab">
             <div class="row">
                 <?php
-                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.category_id=3 limit 4");
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.category_id=4");
                 while ($row = $query->fetch_assoc()) { ?>
-                    <div class="col-xs-12 col-sm-6 col-md-3">
-                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                            <div class="mainflip">
-                                <div class="frontside">
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <p>
-                                                <?php
-                                                $imageURL = 'uploads/' . $row["file_name"];
-                                                ?>
-                                                <img src="<?php echo $imageURL; ?>"/>
-
-                                            </p>
-                                            <h4 class="card-title"><?php echo $row['titlu']; ?></h4>
-                                            <p class="card-text"><?php echo $row['adresa']; ?></p>
-                                        </div>
-                                    </div>
+                    <div class="col-xl-4 py-1">
+                        <div class="card h-100 shadow-sm">
+                            <?php
+                            $imageURL = '../../../uploads/' . $row["file_name"];?>
+                            <img src="<?php echo $imageURL; ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <div class="clearfix mb-3"><span
+                                            class="float-start badge rounded-pill bg-success"><?php echo $row['titlu']?></span> <span
+                                            class="float-end price-hp"><?php echo $row['pret']?></span></div>
+                                <h5 class="card-title"><?php echo $row['descriere']?></h5>
+                                <div class="container">
+                                    <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning ">Check offer</a>
                                 </div>
-                                <div class="backside">
-                                    <div class="card">
-                                        <div class="card-body text-center mt-4">
-                                            <h4 class="card-title"><?php echo $row['telefon']; ?></h4>
-                                            <p class="card-text"><?php echo $row['descriere']; ?></p>
-                                            <ul class="list-inline">
-                                                <p class="card-text"><?php echo $row['pret']; ?></p>
-                                            </ul>
-                                            <a href="view_anunt.php?id=<?php echo $row['id'] ?>" role="button">View
-                                                details</a>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>

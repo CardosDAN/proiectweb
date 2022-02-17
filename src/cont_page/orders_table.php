@@ -135,7 +135,7 @@ $file_name = 'users_table';
                             <div class="card-content">
                                 <div class="card-body">
                                     <?php
-                                    $result = $con->query("SELECT DISTINCT brand FROM anunturi ORDER BY brand");
+                                    $result = $con->query("SELECT DISTINCT category_id FROM anunturi ORDER BY category_id");
                                     $row_cnt = $result->num_rows;
                                     ?>
                                     <div class="media d-flex">
@@ -173,7 +173,6 @@ $file_name = 'users_table';
                                     <th>id</th>
                                     <th>Titlu</th>
                                     <th>Nr telefon</th>
-                                    <th>Descriere</th>
                                     <th>Adresa</th>
                                     <th>Status</th>
                                     <th>Categorie</th>
@@ -183,7 +182,7 @@ $file_name = 'users_table';
                                 <tbody>
                                 <?php
                                 include "../includes/db.php";
-                                $sql = "Select * from anunturi";
+                                $sql = "SELECT DISTINCT(anunturi.category_id), product_categories.*,anunturi.* FROM anunturi,product_categories WHERE  product_categories.id=anunturi.category_id";
                                 $res = $con->query($sql);
                                 while ($row = $res->fetch_assoc()) {
                                     ?>
@@ -191,10 +190,9 @@ $file_name = 'users_table';
                                         <td><?php echo $row["id"] ?></td>
                                         <td><?php echo $row["titlu"] ?></td>
                                         <td><?php echo $row["telefon"] ?></td>
-                                        <td><?php echo $row["descriere"] ?></td>
                                         <td><?php echo $row["adresa"] ?></td>
                                         <td><?php echo $row["status"] ?></td>
-                                        <td><?php echo $row["brand"] ?></td>
+                                        <td><?php echo $row["name"] ?></td>
                                         <td>
 
                                             <a class="btn btn-outline-danger"
@@ -231,7 +229,6 @@ $file_name = 'users_table';
                     })
                 </script>
             </div>
-
 
 
             <div class="row ">

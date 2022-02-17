@@ -92,15 +92,15 @@ include('../actions/database_connection.php');
                     <div style="height: 180px; overflow-y: auto; overflow-x: hidden;">
                         <?php
 
-                        $query = "SELECT DISTINCT(brand) FROM anunturi WHERE status = 'Activ' ORDER BY id DESC";
+                        $query = "SELECT DISTINCT(anunturi.category_id), product_categories.name FROM anunturi,product_categories WHERE anunturi.status = 'Activ' and product_categories.id=anunturi.category_id  ORDER BY anunturi.id DESC;";
                         $statement = $con->prepare($query);
                         $statement->execute();
                         $result = $statement->fetchAll();
                         foreach ($result as $row) {
                             ?>
                             <div class="list-group-item checkbox overflow-control-input">
-                                <label><input type="checkbox" class="common_selector brand"
-                                              value="<?php echo $row['brand']; ?>"> <?php echo $row['brand']; ?></label>
+                                <label><input type="checkbox" class="common_selector category_id"
+                                              value="<?php echo $row['name']; ?>"> <?php echo $row['name']; ?></label>
                             </div>
                             <?php
                         }
@@ -209,7 +209,7 @@ include('../actions/database_connection.php');
                     var action = 'fetch_data';
                     var minimum_price = $('#hidden_minimum_price').val();
                     var maximum_price = $('#hidden_maximum_price').val();
-                    var brand = get_filter('brand');
+                    var category_id = get_filter('category_id');
                     // var ram = get_filter('ram');
                     // var storage = get_filter('storage');
                     $.ajax({
@@ -219,7 +219,7 @@ include('../actions/database_connection.php');
                             action: action,
                             minimum_price: minimum_price,
                             maximum_price: maximum_price,
-                            brand: brand
+                            category_id: category_id
                         }, //, ram:ram, storage:storage
                         success: function (data) {
                             $('.filter_data').html(data);

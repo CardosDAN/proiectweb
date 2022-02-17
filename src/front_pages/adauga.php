@@ -126,15 +126,15 @@ include "../includes/auth_session.php";
                 <div class="m-3">
                     <h1>Alege categoria pentru anunt</h1>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="brand" value="Legume" id="inlineRadio1">
+                        <input class="form-check-input" type="radio" name="category_id" value="1" id="inlineRadio1">
                         <label  class="form-check-label" for="inlineRadio1">Legume</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="brand" value="Fructe" id="inlineRadio1">
+                        <input class="form-check-input" type="radio" name="category_id" value="2" id="inlineRadio1">
                         <label  class="form-check-label" for="inlineRadio1">Fructe</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="brand" value="Lactate" id="inlineRadio1">
+                        <input class="form-check-input" type="radio" name="category_id" value="4" id="inlineRadio1">
                         <label  class="form-check-label" for="inlineRadio1">Lactate</label>
                     </div>
                 </div>

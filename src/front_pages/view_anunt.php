@@ -502,7 +502,7 @@ $product_id = $_GET['id'];
                     <div class="product-name">
                         <?php
 
-                        $sql = "SELECT * FROM anunturi where status='Activ' and id=" . $product_id;
+                        $sql = "SELECT * FROM anunturi where  id=" . $product_id;
                         $result = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($result)) {
                         $product_category_id = $row['category_id'];
@@ -671,8 +671,7 @@ $product_id = $_GET['id'];
 <div class="container">
     <div class="row">
         <?php
-//        $produse = "Select distinct brand from anunturi where brand=$product_id";
-        $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.category_id=". $product_category_id);
+        $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.category_id=". $product_category_id);
         while ($row = $query->fetch_assoc()) { ?>
             <div class="col-xl-4 py-1">
                 <div class="card h-100 shadow-sm">
