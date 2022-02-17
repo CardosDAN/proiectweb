@@ -17,11 +17,11 @@ include "../includes/auth_session.php";
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../website-menu-07/css/bootstrap.min.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Style -->
     <link rel="stylesheet" href="../../website-menu-07/css/style.css">
 
-    <title>Home</title>
+    <title>Adauga un anunt</title>
     <style>
         a {
             -webkit-transition: color 2s;
@@ -36,7 +36,14 @@ include "../includes/auth_session.php";
             margin: 0px;
             height: 100vh;
         }
-        .form-input {
+        .center {
+            height:100%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+        }
+        .form-input  {
             width: 350px;
             padding: 20px;
             background: #fff;
@@ -94,7 +101,8 @@ include "../includes/auth_session.php";
             <div class="col">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Title</label>
-                    <input type="text" name="titlu" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="text" name="titlu" class="form-control" id="exampleInputEmail1"
+                           aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Phone</label>
@@ -112,15 +120,34 @@ include "../includes/auth_session.php";
                     <label for="exampleInputPassword1" class="form-label">Description</label>
                     <textarea type="text" name="descriere" class="form-control" id="exampleInputPassword1"></textarea>
                 </div>
+
             </div>
             <div class="col">
-                <div class="form-input">
-                    <div class="preview">
-                        <img id="file-ip-1-preview">
+                <div class="m-3">
+                    <h1>Alege categoria pentru anunt</h1>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="brand" value="Legume" id="inlineRadio1">
+                        <label  class="form-check-label" for="inlineRadio1">Legume</label>
                     </div>
-                    <label for="file-ip-1">Upload Image</label>
-                    <input type="file" id="file-ip-1" name="file" accept="image/*" onchange="showPreview(event);">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="brand" value="Fructe" id="inlineRadio1">
+                        <label  class="form-check-label" for="inlineRadio1">Fructe</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="brand" value="Lactate" id="inlineRadio1">
+                        <label  class="form-check-label" for="inlineRadio1">Lactate</label>
+                    </div>
                 </div>
+                <div class="center">
+                    <div class="form-input">
+                        <div class="preview">
+                            <img id="file-ip-1-preview">
+                            <label for="file-ip-1">Upload Image</label>
+                            <input type="file" id="file-ip-1" name="file" accept="image/*" onchange="showPreview(event);">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Adauga</button>

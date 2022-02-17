@@ -103,12 +103,12 @@ include("auth_session.php");
                     <div class="sidebar-submenu">
                         <ul>
                             <li>
-                                <a href="../cont_page/users_table.php">Users
+                                <a href="../cont_page/users_table.php?search=#">Users
 
                                 </a>
                             </li>
                             <li>
-                                <a href="../cont_page/orders_table.php">Orders</a>
+                                <a href="../cont_page/orders_table.php?search=#">Orders</a>
                             </li>
                             <li>
                                 <a href="#">Credit cart</a>

@@ -1,12 +1,37 @@
 <?php
 //include auth_session.php file on all user panel pages
-$file_name = 'orders_table';
-//include("src/includes/auth_session.php");
+$file_name = 'users_table';
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css"/>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+<style>
+    /*.grey-bg {*/
+    /*    background-color: #F5F7FA;*/
+    /*}*/
+
+
+</style>
 <?php include("../includes/head.php"); ?>
 
 <body>
@@ -15,111 +40,212 @@ $file_name = 'orders_table';
     <!-- page-content  -->
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
+        <div class="grey-bg container-fluid">
+            <section id="minimal-statistics">
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <?php
+
+                                    $sql1 = "SELECT * FROM users ORDER BY id DESC limit 1";
+                                    $result = $con->query($sql1);
+
+                                    if ($result->num_rows > 0) {
+                                        // output data of each row
+                                        while ($row = $result->fetch_assoc()) { ?>
+                                            <div class="media d-flex">
+                                                <div class="media-body text-left">
+                                                    <h3 class="success"><?php echo $row["id"]; ?></h3>
+                                                    <span>Users</span>
+                                                </div>
+                                                <div class="align-self-center">
+                                                    <i class="icon-user success font-large-2 float-right"></i>
+                                                </div>
+                                            </div>
+                                        <?php }
+                                    } ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <?php
+
+                                    $sql1 = "SELECT * FROM anunturi ORDER BY id DESC limit 1";
+                                    $result = $con->query($sql1);
+
+                                    if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    while ($row = $result->fetch_assoc()) { ?>
+                                    <div class="media d-flex">
+                                        <div class="align-self-center">
+                                            <i class="icon-speech warning font-large-2 float-left"></i>
+                                        </div>
+                                        <div class="media-body text-right">
+                                            <h3><?php echo $row["id"]; ?></h3>
+                                            <span>Anunturi</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php }
+                                } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <?php
+
+                                    $sql1 = "SELECT * FROM product_rating ORDER BY id DESC limit 1";
+                                    $result = $con->query($sql1);
+
+                                    if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    while ($row = $result->fetch_assoc()) { ?>
+                                    <div class="media d-flex">
+                                        <div class="media-body text-left">
+                                            <h3 class="warning"><?php echo $row["id"]; ?></h3>
+                                            <span>Rating anunturi</span>
+                                        </div>
+                                        <div class="align-self-center">
+                                            <i class="icon-bubbles warning font-large-2 float-right"></i>
+                                        </div>
+                                    </div>
+                                    <div class="progress mt-1 mb-0" style="height: 7px;">
+                                        <div class="progress-bar bg-warning" role="progressbar"
+                                             style="width: <?php echo $row["id"]; ?>%"
+                                             aria-valuenow="<?php echo $row["id"]; ?>" aria-valuemin="0"
+                                             aria-valuemax="10000"></div>
+                                    </div>
+                                </div>
+                                <?php }
+                                } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <?php
+                                    $result = $con->query("SELECT DISTINCT brand FROM anunturi ORDER BY brand");
+                                    $row_cnt = $result->num_rows;
+                                    ?>
+                                    <div class="media d-flex">
+                                        <div class="media-body text-left">
+                                            <h3 class="primary"><?php printf($row_cnt); ?></h3>
+                                            <span>Categorii anunturi</span>
+                                        </div>
+                                        <div class="align-self-center">
+                                            <i class="icon-book-open primary font-large-2 float-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
         <div class="container-fluid p-5">
+
             <div class="row">
-                <div class="form-group col-md-12">
-
+                <div class="col">
+                    <h2 class="h4">User List</h2>
                 </div>
-
-                <div class="form-group col-md-12">
-                    <a id="toggle-sidebar" class="btn btn-secondary rounded-0" href="#">
-                        <span>Toggle Sidebar</span>
-                    </a>
-                    <a id="pin-sidebar" class="btn btn-outline-secondary rounded-0" href="#">
-                        <span>Pin Sidebar</span>
-                    </a>
-
-                </div>
+                new user +
             </div>
             <hr>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="form-group col-md-12">
-                    <form action="" method="get">
-                        <div class="input-group mb-3">
-                            <input type="text" name="search" value="<?php if (isset($_GET['search'])) {
-                                echo $_GET['search'];
-                            } ?>" class="form-control" placeholder="Search orders">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                        </div>
-                    </form>
-                    <table class="table table-hover table-dark">
-                        <thead>
-                        <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Actions</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <?php
-                        if (isset($_GET['search']))
-                        {
-                        $filtervalues = $_GET['search'];
-                        $query = "SELECT * FROM anunturi where CONCAT(titlu) LIKE '%$filtervalues%'";
-                        $query_run = mysqli_query($con, $query);
-
-                        if (mysqli_num_rows($query_run)) {
-                            foreach ($query_run as $row) {
-                                ?>
-
+                    <div class="container-fluid ">
+                        <div class=" bg-light rounded my-2 py-2">
+                            <table class="table table-bordered">
+                                <thead>
                                 <tr>
-                                    <td> <?php echo $row["id"]; ?> </td>
-                                    <td> <?php echo $row["titlu"]; ?> </td>
-                                    <td> <?php echo $row["telefon"]; ?> </td>
-                                    <td> <?php echo $row["descriere"]; ?> </td>
-                                    <td> <?php echo $row["adresa"]; ?> </td>
-
-                                    <td>
-
-                                        <a class="btn btn-outline-danger"
-                                           href="../actions/delete_orders.php?id=<?php echo $row['id']; ?>">
-                                            <i class=" bi bi-trash"></i>
-                                        </a>
-                                        <a class="btn btn-outline-info"
-                                           href="../front_pages/view_anunt.php?id=<?php echo $row['id']; ?>">
-                                            <i class=" bi bi-eye"></i>
-                                        </a>
-                                        <a class="btn btn-outline-primary"
-                                           href="../actions/edit_orders.php?id=<?php echo $row['id']; ?>">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </a>
-                                    </td>
-
+                                    <th>id</th>
+                                    <th>Titlu</th>
+                                    <th>Nr telefon</th>
+                                    <th>Descriere</th>
+                                    <th>Adresa</th>
+                                    <th>Status</th>
+                                    <th>Categorie</th>
+                                    <th>Actiuni</th>
                                 </tr>
+                                </thead>
+                                <tbody>
                                 <?php
-                            }
-                        } else {
-                            echo "0 results";
-                        }
-                        $con->close();
-                        ?>
-                        </tbody>
-                    </table>
-<?php } ?>
-                </div>
+                                include "../includes/db.php";
+                                $sql = "Select * from anunturi";
+                                $res = $con->query($sql);
+                                while ($row = $res->fetch_assoc()) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $row["id"] ?></td>
+                                        <td><?php echo $row["titlu"] ?></td>
+                                        <td><?php echo $row["telefon"] ?></td>
+                                        <td><?php echo $row["descriere"] ?></td>
+                                        <td><?php echo $row["adresa"] ?></td>
+                                        <td><?php echo $row["status"] ?></td>
+                                        <td><?php echo $row["brand"] ?></td>
+                                        <td>
 
-
-                <hr>
-                <div class="row ">
-                    <div class="form-group col-md-12">
-
+                                            <a class="btn btn-outline-danger"
+                                               href="../actions/delete_orders.php?id=<?php echo $row['id']; ?>">
+                                                <i class=" bi bi-trash"></i>
+                                            </a>
+                                            <a class="btn btn-outline-info"
+                                               href="../front_pages/view_anunt.php?id=<?php echo $row['id']; ?>">
+                                                <i class=" bi bi-eye"></i>
+                                            </a>
+                                            <a class="btn btn-outline-primary"
+                                               href="../actions/edit_orders.php?id=<?php echo $row['id']; ?>">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <a class="btn btn-outline-warning"
+                                               href="../actions/add_on.php?id=<?php echo $row['id']; ?>">
+                                                <i class="bi bi-toggle-on"></i>
+                                            </a>
+                                            <a class="btn btn-outline-warning"
+                                               href="../actions/add_off.php?id=<?php echo $row['id']; ?>">
+                                                <i class="bi bi-toggle-off"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('table').DataTable();
+                    })
+                </script>
+            </div>
+
+
+
+            <div class="row ">
+                <div class="form-group col-md-12">
 
                 </div>
+
             </div>
         </div>
-    </main>
-    <!-- page-content" -->
 </div>
+
 <!-- page-wrapper -->
 
-<!-- using online scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
 </script>
@@ -127,14 +253,6 @@ $file_name = 'orders_table';
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
 </script>
 <script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-
-<!-- using local scripts -->
-<!-- <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script> -->
-
-
 <script src="../../assets/app/js/main.js"></script>
 </body>
 
