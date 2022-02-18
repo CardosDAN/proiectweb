@@ -543,7 +543,8 @@ $product_id = $_GET['id'];
                     <!-- End row -->
                     <div class="action">
 
-                        <a class="link-v1 wish" title="Wishlist" href="#"><i class="icon icon-heart"></i></a>
+                        <a href="#" onclick="wishlist_toggle()" class="link-v1 wish" title="Wishlist"><i
+                                    class="icon icon-heart"></i></a>
 
                     </div>
                     <!-- End share -->
@@ -644,6 +645,12 @@ $product_id = $_GET['id'];
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 
+            <script>
+                function wishlist_toggle() {
+                    console.log("merge");
+                    $.get("../actions/wishlist_toggle.php", {product_id: "<?php echo $product_id?>"})
+                }
+            </script>
             <script>
 
 
