@@ -60,22 +60,22 @@
                             <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
                                 <li class="active"><a href="home.php" class="nav-link">Home</a></li>
                                 <li><a href="about_us.php" class="nav-link">About us</a></li>
-                                <!--                                <li class="has-children">-->
-                                <!--                                    <a href="#" class="nav-link">Pages</a>-->
-                                <!--                                    <ul class="dropdown arrow-top">-->
-                                <!--                                        <li><a href="#" class="nav-link">Team</a></li>-->
-                                <!--                                        <li><a href="#" class="nav-link">Pricing</a></li>-->
-                                <!--                                        <li><a href="#" class="nav-link">FAQ</a></li>-->
-                                <!--                                        <li class="has-children">-->
-                                <!--                                            <a href="#">More Links</a>-->
-                                <!--                                            <ul class="dropdown">-->
-                                <!--                                                <li><a href="#">Menu One</a></li>-->
-                                <!--                                                <li><a href="#">Menu Two</a></li>-->
-                                <!--                                                <li><a href="#">Menu Three</a></li>-->
-                                <!--                                            </ul>-->
-                                <!--                                        </li>-->
-                                <!--                                    </ul>-->
-                                <!--                                </li>-->
+                                <li class="has-children">
+                                    <a href="#" class="nav-link">Pages</a>
+                                    <ul class="dropdown arrow-top">
+                                        <li><a href="wishlist.php" class="nav-link">Wishlist</a></li>
+                                        <li><a href="#" class="nav-link">Pricing</a></li>
+                                        <li><a href="#" class="nav-link">FAQ</a></li>
+<!--                                        <li class="has-children">-->
+<!--                                            <a href="#">More Links</a>-->
+<!--                                            <ul class="dropdown">-->
+<!--                                                <li><a href="#">Menu One</a></li>-->
+<!--                                                <li><a href="#">Menu Two</a></li>-->
+<!--                                                <li><a href="#">Menu Three</a></li>-->
+<!--                                            </ul>-->
+<!--                                        </li>-->
+                                    </ul>
+                                </li>
                                 <li><a href="store.php" class="nav-link">Store</a></li>
                                 <li><a href="#events-section" class="nav-link">Blog</a></li>
                                 <!--                                <li><a href="#gallery-section" class="nav-link">Gallery</a></li>-->
