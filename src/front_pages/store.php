@@ -78,7 +78,7 @@ include('../actions/database_connection.php');
         <div id="secondary" class="widget-area col-xs-12 col-md-3">
             <div class="list-group">
                 <aside class="widget widget_by_price">
-                    <h3 class="widget-title">By Price</h3>
+                    <h3 class="widget-title">După preț</h3>
                     <input type="hidden" id="hidden_minimum_price" value="0"/>
                     <input type="hidden" id="hidden_maximum_price" value="65000"/>
                     <p id="price_show">0 - 650</p>
@@ -88,19 +88,19 @@ include('../actions/database_connection.php');
             </div>
             <div class="list-group">
                 <aside class="widget widget_product_categories">
-                    <h3 class="widget-title">Categories</h3>
-                    <div style="height: 180px; overflow-y: auto; overflow-x: hidden;">
+                    <h3 class="widget-title">Categorii</h3>
+                    <div >
                         <?php
 
-                        $query = "SELECT DISTINCT(anunturi.category_id), product_categories.name FROM anunturi,product_categories WHERE anunturi.status = 'Activ' and product_categories.id=anunturi.category_id  ORDER BY anunturi.id DESC;";
+                        $query = "SELECT DISTINCT(brand) FROM anunturi WHERE status = 'Activ' ORDER BY id DESC";
                         $statement = $con->prepare($query);
                         $statement->execute();
                         $result = $statement->fetchAll();
                         foreach ($result as $row) {
                             ?>
-                            <div class="list-group-item checkbox overflow-control-input">
-                                <label><input type="checkbox" class="common_selector category_id"
-                                              value="<?php echo $row['name']; ?>"> <?php echo $row['name']; ?></label>
+                            <div class="p3">
+                                <label><input type="checkbox" class="common_selector brand"
+                                              value="<?php echo $row['brand']; ?>"> <?php echo $row['brand']; ?></label>
                             </div>
                             <?php
                         }
@@ -109,7 +109,7 @@ include('../actions/database_connection.php');
                     </div>
                 </aside>
                 <aside class="widget widget_feature">
-                    <h3 class="widget-title">Other Products</h3>
+                    <h3 class="widget-title">Alte produse</h3>
                     <ul>
                         <?php include "../includes/db.php"; ?>
                         <?php
@@ -209,7 +209,7 @@ include('../actions/database_connection.php');
                     var action = 'fetch_data';
                     var minimum_price = $('#hidden_minimum_price').val();
                     var maximum_price = $('#hidden_maximum_price').val();
-                    var category_id = get_filter('category_id');
+                    var brand = get_filter('brand');
                     // var ram = get_filter('ram');
                     // var storage = get_filter('storage');
                     $.ajax({
@@ -219,7 +219,7 @@ include('../actions/database_connection.php');
                             action: action,
                             minimum_price: minimum_price,
                             maximum_price: maximum_price,
-                            category_id: category_id
+                            brand: brand
                         }, //, ram:ram, storage:storage
                         success: function (data) {
                             $('.filter_data').html(data);

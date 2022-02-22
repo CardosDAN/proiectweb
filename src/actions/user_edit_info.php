@@ -14,10 +14,8 @@ if (isset($_POST['update'])) // when click on Update button
     $username = $_POST['username'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $password = $_POST['password'];
 
-
-    $edit = mysqli_query($con, "update users set username='{$username}', email='{$email}', phone='{$phone}', password='{$password}' where id='{$id}'");
+    $edit = mysqli_query($con, "update users set username='{$username}', email='{$email}', phone='{$phone}' where id='{$id}'");
 
     if ($edit) {
         mysqli_close($con); // Close connection
@@ -59,11 +57,6 @@ if (isset($_POST['update'])) // when click on Update button
         <div class="form-group">
             <label for="exampleInputEmail1">Phone number</label>
             <input type="number" class="form-control" name="phone" value="<?php echo $row['phone'] ?>" placeholder="Enter Phone" Required>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Password</label>
-            <input type="password" class="form-control" name="password" value="<?php echo $row['password'] ?>" placeholder="Enter Password" Required>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
         </div>
         <input class="btn btn-outline-success" type="submit" name="update" value="Update">
         <a class="btn btn-outline-danger" href="../cont_page/profil.php">Back</a>

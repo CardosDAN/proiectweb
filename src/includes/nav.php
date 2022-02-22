@@ -74,26 +74,14 @@ include("auth_session.php");
 
             </div>
         </div>
-        <!-- sidebar-search  -->
-        <div class="sidebar-item sidebar-search">
-            <div>
-                <div class="input-group">
-                    <input type="text" class="form-control search-menu" placeholder="Search...">
-                    <div class="input-group-append">
-                                <span class="input-group-text">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <!-- sidebar-menu  -->
         <div class=" sidebar-item sidebar-menu">
             <ul>
                 <li class="header-menu">
                     <span>General</span>
                 </li>
-
+                <?php if($_SESSION['user_level_id'] == "3"): ?>
                 <li class="sidebar-dropdown">
                     <a href="#">
                         <i class="fa fa-table"></i>
@@ -111,11 +99,13 @@ include("auth_session.php");
                                 <a href="../cont_page/orders_table.php?search=#">Orders</a>
                             </li>
                             <li>
-                                <a href="#">Credit cart</a>
+                                <a href="../cont_page/contact_us.php">Contact us</a>
                             </li>
                         </ul>
                     </div>
                 </li>
+                <?php endif ?>
+
                 <li class="sidebar-dropdown">
                     <a href="#">
                         <i class="fa fa-chart-line"></i>
@@ -179,6 +169,7 @@ include("auth_session.php");
             </ul>
         </div>
         <!-- sidebar-menu  -->
+
     </div>
     <!-- sidebar-footer  -->
     <div class="sidebar-footer">
@@ -250,8 +241,8 @@ include("auth_session.php");
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuMessage">
                 <a class="dropdown-item" href="../cont_page/profil.php">My profile</a>
-                <a class="dropdown-item" href="#">Help</a>
-                <a class="dropdown-item" href="#">Setting</a>
+                <a class="dropdown-item" href="../actions/user_edit_info.php">Editează profilul</a>
+                <a class="dropdown-item" href="../cont_page/settings.php">Setting</a>
             </div>
         </div>
         <div>

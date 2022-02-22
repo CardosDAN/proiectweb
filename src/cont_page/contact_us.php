@@ -156,7 +156,7 @@ $file_name = 'users_table';
 
             <div class="row">
                 <div class="col">
-                    <h2 class="h4">Lista de utilizatori</h2>
+                    <h2 class="h4">Lista de contactari</h2>
                 </div>
 
             </div>
@@ -169,39 +169,28 @@ $file_name = 'users_table';
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Username</th>
-                                    <th>Telefon</th>
+                                    <th>Nume</th>
                                     <th>Email</th>
-                                    <th>Level</th>
+                                    <th>Subiect</th>
                                     <th>Actiuni</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 include "../includes/db.php";
-                                $sql = "Select * from users";
+                                $sql = "Select * from contact_us";
                                 $res = $con->query($sql);
                                 while ($row = $res->fetch_assoc()) {
                                     ?>
                                     <tr>
                                         <td><?php echo $row["id"] ?></td>
-                                        <td><?php echo $row["username"] ?></td>
-                                        <td><?php echo $row["phone"] ?></td>
+                                        <td><?php echo $row["nume"] ?></td>
                                         <td><?php echo $row["email"] ?></td>
-                                        <td><?php echo $row["user_level_id"] ?></td>
+                                        <td><?php echo $row["subiect"] ?></td>
                                         <td>
-
                                             <a class="btn btn-outline-danger"
-                                               href="../actions/delete_user.php?id=<?php echo $row['id']; ?>">
+                                               href="../actions/delete_sub.php?id=<?php echo $row['id']; ?>">
                                                 <i class=" bi bi-trash"></i>
-                                            </a>
-                                            <a class="btn btn-outline-info"
-                                               href="view_user.php/?id=<?php echo $row['id']; ?>">
-                                                <i class=" bi bi-eye"></i>
-                                            </a>
-                                            <a class="btn btn-outline-primary"
-                                               href="../actions/edit_users.php?id=<?php echo $row['id']; ?>">
-                                                <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </td>
                                     </tr>

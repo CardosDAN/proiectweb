@@ -5,8 +5,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../../website-menu-07/css/style.css">
+    <link rel="stylesheet" href="../../website-menu-07/fonts/icomoon/style.css">
     <link rel="stylesheet" href="../../website-menu-07/css/style_shoppage.css">
-    <title>Contact us</title>
+    <title>Contactează-ne</title>
 </head>
 <body>
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -58,8 +59,8 @@
                     </i>
                 </div>
                 <div class="text">
-                    <p>www.xanadu.com</p>
-                    <p>hello@xanadu.com</p>
+                    <p>www.FreshFood.com</p>
+                    <p>hello@FreshFood.com</p>
                 </div>
             </div>
             <!-- End item -->
@@ -74,7 +75,7 @@
                     </i>
                 </div>
                 <div class="text">
-                    <p>Hotline: (+1) 866-540-3229</p>
+                    <p>Mobil: (+07) 8665403229</p>
                     <p>Fax: (+1) 866-540-3229</p>
                 </div>
             </div>
@@ -82,20 +83,20 @@
         </div>
         <!-- End head -->
         <div class="content-text center">
-            <h3>CONTACT US</h3>
-            <p>Leave A Message</p>
-            <form class="form-horizontal space-50">
+            <h3>Contactează-ne</h3>
+            <p>Lasă un mesaj</p>
+            <form class="form-horizontal space-50" action="../actions/contact_us_database.php">
                 <div class="form-group col-md-12">
                     <input type="text" placeholder="Email*" id="inputsumary" class="form-control">
                 </div>
                 <div class="form-group col-md-12">
-                    <input type="text" placeholder="Name" id="inputemail" class="form-control">
+                    <input type="text" placeholder="Nume" id="inputemail" class="form-control">
                 </div>
                 <div class="form-group">
                     <textarea placeholder="Comment" name="Comment" id="message" class="form-control"></textarea>
                 </div>
                 <div class="box align-left">
-                    <a title="add tags" href="#" class="link-v1 rt">Send message</a>
+                    <a title="add tags" href="#" class="link-v1 rt">Trimite mesaj</a>
                 </div>
             </form>
         </div>

@@ -21,8 +21,7 @@
                         <i class=" me-3" style="color: limegreen">Fresh Food</i>
                     </h6>
                     <p>
-                        The best online site for you to buy organic and products 100% bio, and for those
-                        who want to sell them fast and at a resonable price
+                        Cel mai bun site online pentru tine sa cumperi bio si produse 100% bio, si pentru cei care vor sa le vanda rapid si la un pret rezonabil
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -34,16 +33,13 @@
                         Products
                     </h6>
                     <p>
-                        <a href="#!" class="text-reset">Fruits</a>
+                        <a href="../front_pages/store.php" class="text-reset">Fructe</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Vegetable</a>
+                        <a href="../front_pages/store.php" class="text-reset">Legume</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Nuts</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">OTHER PRODUCTS</a>
+                        <a href="../front_pages/store.php" class="text-reset">Lactate</a>
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -55,13 +51,13 @@
                         Useful links
                     </h6>
                     <p>
-                        <a href="#!" class="text-reset">About us</a>
+                        <a href="../front_pages/about_us.php" class="text-reset">About us</a>
                     </p>
                     <p>
                         <a href="#!" class="text-reset">Settings</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Store</a>
+                        <a href="../front_pages/store.php" class="text-reset">Store</a>
                     </p>
                     <p>
                         <a href="#!" class="text-reset">Help</a>
@@ -75,10 +71,10 @@
                     <h6 class="text-uppercase fw-bold mb-4" style="color: limegreen">
                         Contact
                     </h6>
-                    <p><i class=" me-3"></i> New York, NY 10012, US</p>
+                    <p><i class=" me-3"></i> Jibou, Strada Garoafelor 234, Salaj</p>
                     <p>
                         <i class=" me-3"></i>
-                        info@example.com
+                        info@FreshFood.com
                     </p>
                     <p><i class=" me-3"></i> + 01 234 567 88</p>
                     <p><i class=" me-3"></i> + 01 234 567 89</p>

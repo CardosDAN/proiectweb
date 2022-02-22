@@ -1,5 +1,6 @@
 <?php
 include "../includes/auth_session.php";
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -146,28 +147,29 @@ include "../includes/auth_session.php";
         <table class="table cart-table space-80">
             <thead>
             <tr>
-                <th class="product-photo"></th>
-                <th class="product-name"></th>
+                <th class="product-photo">Produsul</th>
+                <th class="product-name"> </th>
                 <th class="produc-price">Preț</th>
-                <th class="add-cart">Numele Produsului</th>
+                <th class="add-cart">Actiuni</th>
             </tr>
             </thead>
             <tbody>
             <?php
             $user_id = $_SESSION["id"];
-            $sql = "SELECT * FROM wishlist,anunturi,images where wishlist.user_id='$user_id' and images.id=anunturi.image_id and anunturi.id=wishlist.product_id and anunturi.status='Activ' ";
+            $sql = "SELECT *,anunturi.id FROM wishlist,anunturi,images where wishlist.user_id='$user_id' and images.id=anunturi.image_id and anunturi.id=wishlist.product_id and anunturi.status='Activ' ";
             $result = $con->query($sql);
-
             if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) { ?>
             <tr class="item_cart">
                 <?php $imageURL = '../../../uploads/' . $row["file_name"]; ?>
                 <td class="product-photo"><img src="<?php echo $imageURL; ?>" alt="Futurelife"></td>
-                <td class="produc-name"><a href="#" title=""></a></td>
+                <td class="produc-name"><a href="view_anunt.php?id=<?php echo $row['id']?>" title="">&ensp;&ensp;<?php echo $row['titlu']; ?></a></td>
                 <td class="produc-price"><input value="<?php echo $row['pret']; ?>" size="4" type="text"></td>
-                <td class="add-cart"><a class="link-v1 lh-50 rt" href="view_anunt.php?id=<?php echo $row['id']?>" title="Add to cart"><i
-                                class="fa fa-shopping-cart"></i><?php echo $row['titlu']; ?></a></td>
+                <td class="add-cart">
+<!--                    <a href="#" onclick="wishlist_toggle()" class="link-v1 wish" title="Wishlist"><i-->
+<!--                                class="icon icon-heart"></i></a>-->
+                </td>
             </tr>
             <?php }
             } ?>
@@ -177,14 +179,19 @@ include "../includes/auth_session.php";
     </div>
     <!-- End container -->
 </div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <!-- Footer -->
 <div class="align-items-xl-end">
     <?php include "../includes/footer_front.php" ?>
     <!-- Footer -->
 </div>
 
-
+<script>
+    //function wishlist_toggle() {
+    //    console.log("merge");
+    //    $.get("../actions/wishlist_toggle.php", {product_id: "<?php //echo $product_id?>//"})
+    //}
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../website-menu-07/js/jquery-3.3.1.min.js"></script>
 <script src="../../website-menu-07/js/popper.min.js"></script>

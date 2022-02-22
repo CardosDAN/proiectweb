@@ -7,11 +7,14 @@ $administrator = mysqli_query($con, "UPDATE users SET user_level_id = 3 where id
 if($administrator)
 {
     mysqli_close($con);
-    header("location: ../../users_table.php");
+    header("location: ../cont_page/users_table.php");
     exit;
 }
+
 else
 {
     echo "Error deleting record";
 }
+
 ?>
+

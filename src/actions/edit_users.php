@@ -43,28 +43,28 @@ if (isset($_POST['update'])) // when click on Update button
     <link rel="stylesheet" href="../../website-menu-07/css/style.css">
 </head>
 <div class="container">
-    <h3>Update Data</h3>
+    <h3>Editează</h3>
     <form method="POST">
         <div class="form-group">
             <label for="exampleInputEmail1">Username</label>
             <input type="text" name="username" class="form-control" value="<?php echo $row['username'] ?>" placeholder="Enter Full Name" Required>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label for="exampleInputEmail1">Email</label>
             <input type="email" class="form-control" name="email" value="<?php echo $row['email'] ?>" placeholder="Enter Email" Required>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="emailHelp" class="form-text text-muted">Nu vom împărtăși niciodată e-mailul dvs. cu nimeni altcineva.</small>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Phone number</label>
+            <label for="exampleInputEmail1">Numarul de telefon</label>
             <input type="number" class="form-control" name="phone" value="<?php echo $row['phone'] ?>" placeholder="Enter Phone" Required>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Password</label>
+            <label for="exampleInputEmail1">Parola</label>
             <input type="password" class="form-control" name="password" value="<?php echo $row['password'] ?>" placeholder="Enter Password" Required>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
+            <small id="emailHelp" class="form-text text-muted">Nu vom împărtăși niciodată parola dvs. cu nimeni altcineva.</small>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Change Status</label>
+            <label for="exampleInputEmail1">Schimbă statusul</label>
             <a class="btn btn-info" href="status_user.php?id=<?php echo $row['id']; ?>">User</a>
             <a class="btn btn-info" href="status_seller.php?id=<?php echo $row['id']; ?>">Seller</a>
             <a class="btn btn-info" href="status_admin.php?id=<?php echo $row['id']; ?>">Admin</a>

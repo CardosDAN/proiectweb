@@ -25,6 +25,9 @@ $product_id = $_GET['id'];
     <link rel="stylesheet" href="../../website-menu-07/css/style.css">
     <link rel="stylesheet" href="../../website-menu-07/css/style_shoppage.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/owlcarousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/owlcarousel/css/styles.css">
     <title>Home</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -261,6 +264,11 @@ $product_id = $_GET['id'];
             height: 80px;
             color: #fff
         }
+
+        .cr {
+            font-size: 250%;
+        !important;
+        }
     </style>
     <style>
         a {
@@ -431,7 +439,7 @@ $product_id = $_GET['id'];
 <body>
 
 
-<?php include "../includes/nav_front.php"?>
+<?php include "../includes/nav_front.php" ?>
 <div class="banner-header banner-lbook3">
     <img src="../../website-menu-07/images/banner-catalog1.jpg" alt="Banner-header">
 
@@ -444,7 +452,7 @@ $product_id = $_GET['id'];
                 <div class="card mb-lg-3">
                     <?php
 
-                    $query = $con->query("SELECT * FROM images,anunturi where  images.id=anunturi.image_id and anunturi.id=".$product_id);
+                    $query = $con->query("SELECT * FROM images,anunturi where  images.id=anunturi.image_id and anunturi.id=" . $product_id);
 
                     if ($query->num_rows > 0) {
                         while ($row = $query->fetch_assoc()) {
@@ -484,6 +492,13 @@ $product_id = $_GET['id'];
                                     <p class="card-text"><small
                                                 class="text-muted"> <?php echo "Pe Fresh Food din " . $row["created_at"]; ?></small>
                                     </p>
+                                    <div class="title align-right">
+                                        <i class="bi bi-telephone">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green"
+                                                 class="bi bi-telephone" viewBox="0 0 16 16">
+                                                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                            </svg><?php echo $row['telefon']; ?></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -505,7 +520,7 @@ $product_id = $_GET['id'];
                         $sql = "SELECT * FROM anunturi where  id=" . $product_id;
                         $result = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($result)) {
-                        $product_category_id = $row['category_id'];
+                        $brand = $row['brand'];
                         ?>
                         <h1><?php echo $row['titlu']; ?></h1>
                     </div>
@@ -514,6 +529,7 @@ $product_id = $_GET['id'];
                     <div class="wrap-price">
                         <p class="price"><?php echo $row['pret']; ?></p>
                     </div>
+
                     <!-- End Price -->
                 </div>
                 <!-- End box details info -->
@@ -521,185 +537,206 @@ $product_id = $_GET['id'];
                     <p><?php echo $row['descriere']; ?></p>
 
                     <!-- End action -->
-                    <div class="description-lits">
-                        <h3><?php echo $row['adresa']; ?></h3>
-                        <?php
-                        $address = $row['adresa'];;
-                        echo '<iframe frameborder="0" src="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=' . str_replace(",", "", str_replace(" ", "+", $address)) . '&z=14&output=embed"></iframe>'; ?>
-
-                    </div>
-                    <!--End Description-->
-                    <div class=" space-30">
+                    <div class="description-lits align-self-auto ">
                         <div class="row">
-                            <div class="col-md-5">
-                                <div class="title">
-                                    <h3><?php echo $row['telefon']; ?></h3>
+                            <div class="col-sm-3">
+                                <i class="bi bi-geo-alt">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green"
+                                         class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                    </svg><?php echo "Locatie " . $row['adresa']; ?> </i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <?php
+                                $address = $row['adresa'];;
+                                echo '<iframe frameborder="0" src="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=' . str_replace(",", "", str_replace(" ", "+", $address)) . '&z=14&output=embed"></iframe>'; ?>
+                            </div>
+                            <div class="align-right">
+                                <div class="action">
+
+                                    <a href="#" onclick="wishlist_toggle()" class="link-v1 wish" title="Wishlist"><i
+                                                class="icon icon-heart"></i></a>
+
                                 </div>
                             </div>
                         </div>
-                        <!-- End row -->
-                    </div>
 
-                    <!-- End row -->
-                    <div class="action">
-
-                        <a href="#" onclick="wishlist_toggle()" class="link-v1 wish" title="Wishlist"><i
-                                    class="icon icon-heart"></i></a>
 
                     </div>
-                    <!-- End share -->
                 </div>
-                <!-- End Options -->
+                <!--End Description-->
+                <!-- End row -->
+                <!-- End share -->
             </div>
-        </div>
-        <!-- End product-details-content -->
-        <div class="hoz-tab-container ver2 space-padding-tb-30">
-            <ul class="tabs center">
-                <li class="item active" rel="description">Description</li>
-
-            </ul>
-            <div class="tab-container">
-                <div id="description" class="tab-content active" style="display: block;">
-                    <div class="text center">
-                        <p><?php echo $row['descriere']; ?></p>
-                    </div>
-                </div>
-                <?php
-                }
-                ?>
-                <ul class="tabs center">
-
-                    <li class="item active" rel="customer">Customer Reviews</li>
-
-                </ul>
-                <div id="customer" class=" container-fluid" style="display: block;">
-                    <div class="box border">
-                        <div class="container mt-5">
-                            <div class="d-flex justify-content row">
-                                <div class="col-md-8">
-                                    <div class="d-flex flex-column comment-section">
-                                        <?php
-                                        $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=product_rating.product_id and product_rating.product_id=" . $product_id;
-                                        $result = mysqli_query($con, $sql);
-                                        while ($row = mysqli_fetch_assoc($result)) { ?>
-                                        <div class="bg-white p-2">
-
-
-                                            <div class="d-flex flex-row user-info">
-                                                <div class="d-flex flex-column justify-content-start ml-2">
-                                                    <span class="d-block font-weight-bold name"><?php echo $row['name']; ?></span>
-                                                    <span class="date text-black-50"><?php echo $row['email']; ?></span>
-                                                </div>
-                                                <div class="rateyo" id="rating"
-                                                     data-rateyo-rating="<?php echo $row['rate']; ?>">
-                                                </div>
-
-
-                                            </div>
-                                            <div class="mt-2">
-                                                <p class="comment-text"><?php echo $row['review']; ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="container ">
-                        <form action="../actions/review.php" method="post">
-                            <div class="rateyo" id="rating"
-                                 data-rateyo-rating="0"
-                                 data-rateyo-num-stars="5"
-                                 data-rateyo-score="3">
-                            </div>
-
-                            <span class='result'>Rating: 0</span>
-                            <input type="hidden" name="rating">
-                            <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
-
-                            <div class="row">
-                                <div class="col">
-                                    <input type="text" name="name" class="form-control" placeholder="Name">
-                                </div>
-                                <div class="col">
-                                    <input type="email" name="email" class="form-control" placeholder="Email">
-                                </div>
-                            </div>
-                            <br><br>
-                            <div>
-                                <textarea class="form-control" type="text" name="review"
-                                          id="exampleFormControlTextarea1" placeholder="Review" rows="3"></textarea>
-                            </div>
-                            <br>
-                            <button type="submit" class="btn btn-primary" name="add">Post review</button>
-                        </form>
-                    </div>
-
-
-                    </form>
-                </div>
-            </div>
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
-
-            <script>
-                function wishlist_toggle() {
-                    console.log("merge");
-                    $.get("../actions/wishlist_toggle.php", {product_id: "<?php echo $product_id?>"})
-                }
-            </script>
-            <script>
-
-
-                $(function () {
-                    $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
-                        var rating = data.rating;
-                        $(this).parent().find('.score').text('score :' + $(this).attr('data-rateyo-score'));
-                        $(this).parent().find('.result').text('rating :' + rating);
-                        $(this).parent().find('input[name=rating]').val(rating); //add rating value to input field
-                    });
-                });
-
-            </script>
-
-
+            <!-- End Options -->
         </div>
     </div>
+    <!-- End product-details-content -->
+    <div class="hoz-tab-container ver2 space-padding-tb-30">
+        <ul class="tabs center">
+            <li class="item active" rel="description">Descriere</li>
+
+        </ul>
+        <div class="tab-container">
+            <div id="description" class="tab-content active" style="display: block;">
+                <div class="text center">
+                    <p><?php echo $row['descriere']; ?></p>
+                </div>
+            </div>
+            <?php
+            }
+            ?>
+            <ul class="tabs center">
+
+                <li class="item active" rel="customer">Recenzii</li>
+
+            </ul>
+            <div id="customer" class=" container-fluid" style="display: block;">
+                <div class="box border">
+                    <div class="container mt-5">
+                        <div class="d-flex justify-content row">
+                            <div class="col-md-8">
+                                <div class="d-flex flex-column comment-section">
+                                    <?php
+                                    $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=product_rating.product_id and product_rating.product_id=" . $product_id;
+                                    $result = mysqli_query($con, $sql);
+                                    while ($row = mysqli_fetch_assoc($result)) { ?>
+                                    <div class="bg-white p-2">
+
+
+                                        <div class="d-flex flex-row user-info">
+                                            <div class="d-flex flex-column justify-content-start ml-2">
+                                                <span class="d-block font-weight-bold name"><?php echo $row['name']; ?></span>
+                                                <span class="date text-black-50"><?php echo $row['email']; ?></span>
+                                            </div>
+                                            <div class="rateyo" id="rating"
+                                                 data-rateyo-rating="<?php echo $row['rate']; ?>">
+                                            </div>
+
+
+                                        </div>
+                                        <div class="mt-2">
+                                            <p class="comment-text"><?php echo $row['review']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container ">
+                    <form action="../actions/review.php" method="post">
+                        <div class="rateyo" id="rating"
+                             data-rateyo-rating="0"
+                             data-rateyo-num-stars="5"
+                             data-rateyo-score="3">
+                        </div>
+
+                        <span class='result'>Rating: 0</span>
+                        <input type="hidden" name="rating">
+                        <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
+
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="name" class="form-control" placeholder="Name">
+                            </div>
+                            <div class="col">
+                                <input type="email" name="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <br><br>
+                        <div>
+                                <textarea class="form-control" type="text" name="review"
+                                          id="exampleFormControlTextarea1" placeholder="Review" rows="3"></textarea>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary" name="add">Post review</button>
+                    </form>
+                </div>
+
+
+                </form>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+        <script>
+            function wishlist_toggle() {
+                console.log("merge");
+                $.get("../actions/wishlist_toggle.php", {product_id: "<?php echo $product_id?>"})
+            }
+        </script>
+        <script>
+
+
+            $(function () {
+                $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+                    var rating = data.rating;
+                    $(this).parent().find('.score').text('score :' + $(this).attr('data-rateyo-score'));
+                    $(this).parent().find('.result').text('rating :' + rating);
+                    $(this).parent().find('input[name=rating]').val(rating); //add rating value to input field
+                });
+            });
+
+        </script>
+
+
+    </div>
+</div>
 </div>
 
 <div class="title-text-v2 space-60">
-    <h3>Related Products</h3>
+    <h3>Produse din aceiasi categorie</h3>
 </div>
 
 
-<div class="container">
-    <div class="row">
-        <?php
-        $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.category_id=". $product_category_id);
-        while ($row = $query->fetch_assoc()) { ?>
-            <div class="col-xl-4 py-1">
-                <div class="card h-100 shadow-sm">
-                    <?php
-                    $imageURL = '../../../uploads/' . $row["file_name"];?>
-                    <img src="<?php echo $imageURL; ?>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div class="clearfix mb-3"><span
-                                    class="float-start badge rounded-pill bg-success"><?php echo $row['titlu']?></span> <span
-                                    class="float-end price-hp"><?php echo $row['pret']?></span></div>
-                        <h5 class="card-title"><?php echo $row['descriere']?></h5>
-                        <div class="container">
-                            <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning ">Check offer</a>
+
+<section id="slider" class="pt-5">
+    <div class="container">
+        <div class="slider">
+            <div class="owl-carousel">
+                <?php
+                $query = $con->query("SELECT distinct (anunturi.brand),anunturi.*,images.* FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.brand='$brand'   ");
+                while ($row = $query->fetch_assoc()) { ?>
+                    <div class=" slider-card">
+                        <div class="card h-100 shadow-sm">
+                            <?php
+                            $imageURL = '../../../uploads/' . $row["file_name"]; ?>
+                            <img src="<?php echo $imageURL; ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <div class="clearfix mb-3"><span
+                                            class="float-start badge rounded-pill bg-success"><?php echo $row['titlu'] ?></span>
+                                    <span
+                                            class="float-end price-hp"><?php echo $row['pret'] ?></span></div>
+                                <h5 class="card-title"><?php echo $row['descriere'] ?></h5>
+                                <div class="container">
+                                    <a href="../front_pages/view_anunt.php?id=<?php echo $row['id'] ?>"
+                                       class="btn btn-warning ">Check offer</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
-        <?php } ?>
+        </div>
     </div>
+</section>
+
+<div class="">
+    <?php include "../includes/footer_front.php";?>
 </div>
 
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+<script src="../../assets/owlcarousel/js/owl.carousel.min.js"></script>
+<script src="../../assets/owlcarousel/js/script.js"></script>
 </body>
 </html>

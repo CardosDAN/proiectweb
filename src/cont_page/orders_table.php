@@ -1,6 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
-$file_name = 'users_table';
+$file_name = 'orders_table';
 
 ?>
 
@@ -40,6 +40,10 @@ $file_name = 'users_table';
     <!-- page-content  -->
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
+        <a id="toggle-sidebar" class="btn btn-secondary rounded-0 sticky-top" href="#">
+            <span><i class="bi bi-list"></i></span>
+        </a>
+        <br>
         <div class="grey-bg container-fluid">
             <section id="minimal-statistics">
                 <div class="row">
@@ -118,12 +122,6 @@ $file_name = 'users_table';
                                             <i class="icon-bubbles warning font-large-2 float-right"></i>
                                         </div>
                                     </div>
-                                    <div class="progress mt-1 mb-0" style="height: 7px;">
-                                        <div class="progress-bar bg-warning" role="progressbar"
-                                             style="width: <?php echo $row["id"]; ?>%"
-                                             aria-valuenow="<?php echo $row["id"]; ?>" aria-valuemin="0"
-                                             aria-valuemax="10000"></div>
-                                    </div>
                                 </div>
                                 <?php }
                                 } ?>
@@ -158,9 +156,8 @@ $file_name = 'users_table';
 
             <div class="row">
                 <div class="col">
-                    <h2 class="h4">User List</h2>
+                    <h2 class="h4">Anunturi</h2>
                 </div>
-                new user +
             </div>
             <hr>
             <div class="row justify-content-center">

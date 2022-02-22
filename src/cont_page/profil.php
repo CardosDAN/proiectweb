@@ -16,453 +16,508 @@ $file_name = '';
     <!-- page-content  -->
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
-        <div class="container-fluid p-5">
+        <a id="toggle-sidebar" class="btn btn-secondary rounded-0 sticky-top" href="#">
+            <span><i class="bi bi-list"></i></span>
+        </a>
+        <br>
+        <div class="container-fluid">
             <div class="row">
                 <div class="form-group col-md-12">
 
-                </div>
+                    <section class="section about-section gray-bg" id="about">
+                        <div class="container">
+                            <?php
+                            $id = $_SESSION['id'];
+                            $sql = "select * from users WHERE id = $id LIMIT $id";
+                            $result = mysqli_query($con, $sql);
+                            while ($data = mysqli_fetch_array($result)) { ?>
+                            <div class="row  flex-row-reverse">
+                                <div class="col-lg-6">
+                                    <div class="about-text go-to">
+                                        <h3 class="dark-color">Bio Graph</h3>
+                                        <div class="row about-list">
+                                            <div class="col-md-6">
+                                                <div class="media">
+                                                    <label>Username</label>
+                                                    <p><?php echo $data["username"]?></p>
+                                                </div>
+                                                <div class="media">
+                                                    <label>E-mail</label>
+                                                    <p><?php echo $data["email"]?></p>
+                                                </div>
+                                                <div class="media">
+                                                <label>Numar de telefon</label>
+                                                <p><?php echo $data["phone"]?></p>
+                                            </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="media">
+                                                    <label>Status</label>
+                                                    <p><?php echo $data["user_level_id"]?></p>
+                                                </div>
+                                                <div class="media">
+                                                    <label>Pe Fresh Food</label>
+                                                    <p><?php echo $data["created_at"]?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                <div class="form-group col-md-12">
-                    <ul class="nav nav-pills nav-stacked">
-                        <!--                    <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>-->
-                        <a href="../actions/user_edit_info.php"> <i class="fa fa-edit"></i> Edit profile</a>
-                    </ul>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="form-group col-md-12">
-                    <div class="input-group">
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="about-avatar">
+                                        <?php
+                                        $user_id = $_SESSION["id"];
+                                        $query = $con->query("SELECT * FROM images,users where users.id='{$user_id}' and images.id=users.image_id ");
 
-                        <form action="../actions/upload.php" method="post" enctype="multipart/form-data">
-                            <label for="formFileSm" class="form-label">Select Image File to Upload for youre profile picture:</label>
-                            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="file" aria-label="Upload">
-                            <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
-                        </form>
-                    </div>
-                </div>
+                                        if ($query->num_rows > 0) {
+                                            while ($row = $query->fetch_assoc()) {
+                                                $imageURL = '../../../uploads/' . $row["file_name"];
+                                                ?>
+                                                <img title="" alt="" src="<?php echo $imageURL; ?>"
+                                                     data-holder-rendered="true"/>
+                                            <?php }
+                                        } else { ?>
+                                            <p>No image(s) found...</p>
+                                        <?php } ?>
 
-
-                <hr>
-                <div class="row ">
-                    <div class="form-group col-md-12">
-                        <div class="panel">
-                            <div class="panel-body bio-graph-info">
-                                <?php
-                                $id = $_SESSION['id'];
-                                $sql = "select * from users WHERE id = $id LIMIT $id";
-                                $result = mysqli_query($con, $sql);
-                                while($data = mysqli_fetch_array($result)) { ?>
-                                <h1>Bio Graph</h1>
-                                <div class="row">
-                                    <div class="bio-row">
-                                        <p><span><?php echo "Username: ".$data['username']; ?> </span> </p>
-                                    </div>
-                                    <div class="bio-row">
-                                        <p><span><?php echo "Email: ".$data['email']; ?></span> </p>
-                                    </div>
-                                    <div class="bio-row">
-                                        <p><span> <?php echo "Phone number: ".$data['phone']; ?></span> </p>
-                                    </div>
-                                    <div class="bio-row">
-                                        <p><span><?php echo "Status: ".$data['user_level_id']; ?></span> </p>
-                                    </div>
-                                    <div class="bio-row">
-                                        <p><span><?php echo "Created: ".$data['created_at']; ?></span> </p>
-                                    </div>
-                                    <div class="bio-row">
-                                        <p><span><?php echo "Address: ".$data['address']; ?> </span> </p>
                                     </div>
                                 </div>
                             </div>
-                            <?php
+                                <?php
                             }
                             ?>
+                            <main>
+                                <br>
+                                <h5>Anunturile tale</h5>
+                                <?php
+                                $user_id = $_SESSION["id"];
+                                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.user_id='$user_id'");
+                                while ($row = $query->fetch_assoc()) { ?>
+                                <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+
+                                    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+
+                                        <div class="col">
+
+                                            <?php
+                                            $imageURL = '../../../uploads/' . $row["file_name"];?>
+                                            <div class="card h-100 shadow-sm">
+                                                <h5 class="card-title container"><?php echo $row['status']?></h5>
+                                                <img src="<?php echo $imageURL; ?>" class="card-img-top" alt="...">
+
+                                                <div class="card-body">
+                                                    <div class="clearfix mb-3"> <span class="float-start badge rounded-pill bg-success"><?php echo $row['titlu']?></span> <span class="float-end"><a href="#"><?php echo $row['pret']?></a></span> </div>
+                                                    <h5 class="card-title"><?php echo $row['descriere']?></h5>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="d-grid gap-2 my-4"> <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning">Vezi oferta</a> </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="d-grid gap-2 my-4"> <a href="../actions/edit_orders.php?id=<?php echo $row['id']?>" class="btn btn-warning">Editează</a> </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <?php } ?>
+                            </main>
                         </div>
-                    </div>
+
+                    </section>
 
                 </div>
+
             </div>
         </div>
-    </main>
-    <!-- page-content" -->
 </div>
-<style type="text/css">
+</main>
+<!-- page-content" -->
+</div>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+    :root {
+        --font1: 'Heebo', sans-serif;
+        --font2: 'Fira Sans Extra Condensed', sans-serif;
+        --font3: 'Roboto', sans-serif
+    }
+
     body {
-        color: #797979;
-        background: #f1f2f7;
-        font-family: 'Open Sans', sans-serif;
-        padding: 0px !important;
-        margin: 0px !important;
-        font-size: 13px;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-font-smoothing: antialiased;
+        font-family: var(--font3);
+        background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)
     }
 
-    .profile-nav, .profile-info{
-        margin-top:30px;
+    h2 {
+        font-weight: 900
     }
 
-    .profile-nav .user-heading {
-        background: green;
+    .container-fluid {
+        max-width: 1200px
+    }
+
+    .card {
+        background: #fff;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+        transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+        border: 0;
+        border-radius: 1rem
+    }
+
+    .card-img,
+    .card-img-top {
+        border-top-left-radius: calc(1rem - 1px);
+        border-top-right-radius: calc(1rem - 1px)
+    }
+
+    .card h5 {
+        overflow: hidden;
+        height: 56px;
+        font-weight: 900;
+        font-size: 1rem
+    }
+
+    .card-img-top {
+        width: 100%;
+        max-height: 180px;
+        object-fit: contain;
+        padding: 30px
+    }
+
+    .card h2 {
+        font-size: 1rem
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)
+    }
+
+    .label-top {
+        position: absolute;
+        background-color: #8bc34a;
         color: #fff;
-        border-radius: 4px 4px 0 0;
-        -webkit-border-radius: 4px 4px 0 0;
-        padding: 30px;
-        text-align: center;
+        top: 8px;
+        right: 8px;
+        padding: 5px 10px 5px 10px;
+        font-size: .7rem;
+        font-weight: 600;
+        border-radius: 3px;
+        text-transform: uppercase
     }
 
-    .profile-nav .user-heading.round a  {
+    .top-right {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        width: 90px;
+        height: 90px;
         border-radius: 50%;
-        -webkit-border-radius: 50%;
-        border: 10px solid rgba(255,255,255,0.3);
-        display: inline-block;
-    }
-
-    .profile-nav .user-heading a img {
-        width: 112px;
-        height: 112px;
-        border-radius: 50%;
-        -webkit-border-radius: 50%;
-    }
-
-    .profile-nav .user-heading h1 {
-        font-size: 22px;
-        font-weight: 300;
-        margin-bottom: 5px;
-    }
-
-    .profile-nav .user-heading p {
-        font-size: 12px;
-    }
-
-    .profile-nav ul {
-        margin-top: 1px;
-    }
-
-    .profile-nav ul > li {
-        border-bottom: 1px solid #ebeae6;
-        margin-top: 0;
-        line-height: 30px;
-    }
-
-    .profile-nav ul > li:last-child {
-        border-bottom: none;
-    }
-
-    .profile-nav ul > li > a {
-        border-radius: 0;
-        -webkit-border-radius: 0;
-        color: #89817f;
-        border-left: 5px solid #fff;
-    }
-
-    .profile-nav ul > li > a:hover, .profile-nav ul > li > a:focus, .profile-nav ul li.active  a {
-        background: #f8f7f5 !important;
-        border-left: 5px solid green;
-        color: #89817f !important;
-    }
-
-    .profile-nav ul > li:last-child > a:last-child {
-        border-radius: 0 0 4px 4px;
-        -webkit-border-radius: 0 0 4px 4px;
-    }
-
-    .profile-nav ul > li > a > i{
-        font-size: 16px;
-        padding-right: 10px;
-        color: #bcb3aa;
-    }
-
-    .r-activity {
-        margin: 6px 0 0;
-        font-size: 12px;
-    }
-
-
-    .p-text-area, .p-text-area:focus {
-        border: none;
-        font-weight: 300;
-        box-shadow: none;
-        color: #c3c3c3;
-        font-size: 16px;
-    }
-
-    .profile-info .panel-footer {
-        background-color:#f8f7f5 ;
-        border-top: 1px solid #e7ebee;
-    }
-
-    .profile-info .panel-footer ul li a {
-        color: #7a7a7a;
-    }
-
-    .bio-graph-heading {
-        background: green;
-        color: #fff;
+        font-size: 1rem;
+        font-weight: 900;
+        background: #ff5722;
+        line-height: 90px;
         text-align: center;
-        font-style: italic;
-        padding: 40px 110px;
-        border-radius: 4px 4px 0 0;
-        -webkit-border-radius: 4px 4px 0 0;
-        font-size: 16px;
-        font-weight: 300;
+        color: white
     }
 
-    .bio-graph-info {
-        color: #89817e;
-    }
-
-    .bio-graph-info h1 {
-        font-size: 22px;
-        font-weight: 300;
-        margin: 0 0 20px;
-    }
-
-    .bio-row {
-        width: 50%;
-        float: left;
-        margin-bottom: 10px;
-        padding:0 15px;
-    }
-
-    .bio-row p span {
-        width: 100px;
+    .top-right span {
         display: inline-block;
+        vertical-align: middle
     }
 
-    .bio-chart, .bio-desk {
-        float: left;
+    @media (max-width: 768px) {
+        .card-img-top {
+            max-height: 250px
+        }
     }
 
-    .bio-chart {
-        width: 40%;
+    .over-bg {
+        background: rgba(53, 53, 53, 0.85);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(0.0px);
+        -webkit-backdrop-filter: blur(0.0px);
+        border-radius: 10px
     }
 
-    .bio-desk {
-        width: 60%;
-    }
-
-    .bio-desk h4 {
-        font-size: 15px;
-        font-weight:400;
-    }
-
-    .bio-desk h4.terques {
-        color: #4CC5CD;
-    }
-
-    .bio-desk h4.red {
-        color: #e26b7f;
-    }
-
-    .bio-desk h4.green {
-        color: #97be4b;
-    }
-
-    .bio-desk h4.purple {
-        color: #caa3da;
-    }
-
-    .file-pos {
-        margin: 6px 0 10px 0;
-    }
-
-    .profile-activity h5 {
-        font-weight: 300;
-        margin-top: 0;
-        color: #c3c3c3;
-    }
-
-    .summary-head {
-        background: #ee7272;
-        color: #fff;
-        text-align: center;
-        border-bottom: 1px solid #ee7272;
-    }
-
-    .summary-head h4 {
-        font-weight: 300;
+    .btn {
+        font-size: 1rem;
+        font-weight: 500;
         text-transform: uppercase;
-        margin-bottom: 5px;
+        padding: 5px 50px 5px 50px
     }
 
-    .summary-head p {
-        color: rgba(255,255,255,0.6);
+    .box .btn {
+        font-size: 1.5rem
     }
 
-    ul.summary-list {
+    @media (max-width: 1025px) {
+        .btn {
+            padding: 5px 40px 5px 40px
+        }
+    }
+
+    @media (max-width: 250px) {
+        .btn {
+            padding: 5px 30px 5px 30px
+        }
+    }
+
+    .btn-warning {
+        background: none #f7810a;
+        color: #ffffff;
+        fill: #ffffff;
+        border: none;
+        text-decoration: none;
+        outline: 0;
+        box-shadow: -1px 6px 19px rgba(247, 129, 10, 0.25);
+        border-radius: 100px
+    }
+
+    .btn-warning:hover {
+        background: none #ff962b;
+        color: #ffffff;
+        box-shadow: -1px 6px 13px rgba(255, 150, 43, 0.35)
+    }
+
+    .bg-success {
+        font-size: 1rem;
+        background-color: #f7810a !important
+    }
+
+    .bg-danger {
+        font-size: 1rem
+    }
+
+    .price-hp {
+        font-size: 1rem;
+        font-weight: 600;
+        color: darkgray
+    }
+
+    .amz-hp {
+        font-size: .7rem;
+        font-weight: 600;
+        color: darkgray
+    }
+
+    .fa-question-circle:before {
+        color: darkgray
+    }
+
+    .fa-plus:before {
+        color: darkgray
+    }
+
+    .box {
+        border-radius: 1rem;
+        background: #fff;
+        box-shadow: 0 6px 10px rgb(0 0 0 / 8%), 0 0 6px rgb(0 0 0 / 5%);
+        transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12)
+    }
+
+    .box-img {
+        max-width: 300px
+    }
+
+    .thumb-sec {
+        max-width: 300px
+    }
+
+    @media (max-width: 576px) {
+        .box-img {
+            max-width: 200px
+        }
+
+        .thumb-sec {
+            max-width: 200px
+        }
+    }
+
+    .inner-gallery {
+        width: 60px;
+        height: 60px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        margin: 1px;
         display: inline-block;
-        padding-left:0 ;
-        width: 100%;
-        margin-bottom: 0;
+        overflow: hidden;
+        -o-object-fit: cover;
+        object-fit: cover
     }
 
-    ul.summary-list > li {
-        display: inline-block;
-        width: 19.5%;
-        text-align: center;
+    @media (max-width: 370px) {
+        .box .btn {
+            padding: 5px 40px 5px 40px;
+            font-size: 1rem
+        }
     }
 
-    ul.summary-list > li > a > i {
-        display:block;
+    .disclaimer {
+        font-size: .9rem;
+        color: darkgray
+    }
+
+    .related h3 {
+        font-weight: 900
+    }
+
+    footer {
+        background: #212529;
+        height: 80px;
+        color: #fff
+    }
+    body {
+        color: #6F8BA4;
+        margin-top: 20px;
+    }
+
+    .section {
+        padding: 100px 0;
+        position: relative;
+    }
+
+    .gray-bg {
+        background-color: #f5f5f5;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+    }
+
+    /* About Me
+    ---------------------*/
+    .about-text h3 {
+        font-size: 45px;
+        font-weight: 700;
+        margin: 0 0 6px;
+    }
+
+    @media (max-width: 767px) {
+        .about-text h3 {
+            font-size: 35px;
+        }
+    }
+
+    .about-text h6 {
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    @media (max-width: 767px) {
+        .about-text h6 {
+            font-size: 18px;
+        }
+    }
+
+    .about-text p {
         font-size: 18px;
-        padding-bottom: 5px;
+        max-width: 450px;
     }
 
-    ul.summary-list > li > a {
-        padding: 10px 0;
-        display: inline-block;
-        color: #818181;
+    .about-text p mark {
+        font-weight: 600;
+        color: #20247b;
     }
 
-    ul.summary-list > li  {
-        border-right: 1px solid #eaeaea;
+    .about-list {
+        padding-top: 10px;
     }
 
-    ul.summary-list > li:last-child  {
-        border-right: none;
+    .about-list .media {
+        padding: 5px 0;
     }
 
-    .activity {
-        width: 100%;
-        float: left;
-        margin-bottom: 10px;
-    }
-
-    .activity.alt {
-        width: 100%;
-        float: right;
-        margin-bottom: 10px;
-    }
-
-    .activity span {
-        float: left;
-    }
-
-    .activity.alt span {
-        float: right;
-    }
-    .activity span, .activity.alt span {
-        width: 45px;
-        height: 45px;
-        line-height: 45px;
-        border-radius: 50%;
-        -webkit-border-radius: 50%;
-        background: #eee;
-        text-align: center;
-        color: #fff;
-        font-size: 16px;
-    }
-
-    .activity.terques span {
-        background: #8dd7d6;
-    }
-
-    .activity.terques h4 {
-        color: #8dd7d6;
-    }
-    .activity.purple span {
-        background: #b984dc;
-    }
-
-    .activity.purple h4 {
-        color: #b984dc;
-    }
-    .activity.blue span {
-        background: #90b4e6;
-    }
-
-    .activity.blue h4 {
-        color: #90b4e6;
-    }
-    .activity.green span {
-        background: #aec785;
-    }
-
-    .activity.green h4 {
-        color: #aec785;
-    }
-
-    .activity h4 {
-        margin-top:0 ;
-        font-size: 16px;
-    }
-
-    .activity p {
-        margin-bottom: 0;
-        font-size: 13px;
-    }
-
-    .activity .activity-desk i, .activity.alt .activity-desk i {
-        float: left;
-        font-size: 18px;
-        margin-right: 10px;
-        color: #bebebe;
-    }
-
-    .activity .activity-desk {
-        margin-left: 70px;
+    .about-list label {
+        color: #20247b;
+        font-weight: 600;
+        width: 88px;
+        margin: 0;
         position: relative;
     }
 
-    .activity.alt .activity-desk {
-        margin-right: 70px;
-        position: relative;
-    }
-
-    .activity.alt .activity-desk .panel {
-        float: right;
-        position: relative;
-    }
-
-    .activity-desk .panel {
-        background: #F4F4F4 ;
-        display: inline-block;
-    }
-
-
-    .activity .activity-desk .arrow {
-        border-right: 8px solid #F4F4F4 !important;
-    }
-    .activity .activity-desk .arrow {
-        border-bottom: 8px solid transparent;
-        border-top: 8px solid transparent;
-        display: block;
-        height: 0;
-        left: -7px;
+    .about-list label:after {
+        content: "";
         position: absolute;
-        top: 13px;
-        width: 0;
+        top: 0;
+        bottom: 0;
+        right: 11px;
+        width: 1px;
+        height: 12px;
+        background: #20247b;
+        -moz-transform: rotate(15deg);
+        -o-transform: rotate(15deg);
+        -ms-transform: rotate(15deg);
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg);
+        margin: auto;
+        opacity: 0.5;
     }
 
-    .activity-desk .arrow-alt {
-        border-left: 8px solid #F4F4F4 !important;
+    .about-list p {
+        margin: 0;
+        font-size: 15px;
     }
 
-    .activity-desk .arrow-alt {
-        border-bottom: 8px solid transparent;
-        border-top: 8px solid transparent;
-        display: block;
-        height: 0;
-        right: -7px;
-        position: absolute;
-        top: 13px;
-        width: 0;
+    @media (max-width: 991px) {
+        .about-avatar {
+            margin-top: 30px;
+        }
     }
 
-    .activity-desk .album {
-        display: inline-block;
+    .about-section .counter {
+        padding: 22px 20px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+    }
+
+    .about-section .counter .count-data {
         margin-top: 10px;
+        margin-bottom: 10px;
     }
 
-    .activity-desk .album a{
-        margin-right: 10px;
+    .about-section .counter .count {
+        font-weight: 700;
+        color: #20247b;
+        margin: 0 0 5px;
     }
 
-    .activity-desk .album a:last-child{
-        margin-right: 0px;
+    .about-section .counter p {
+        font-weight: 600;
+        margin: 0;
+    }
+
+    mark {
+        background-image: linear-gradient(rgba(252, 83, 86, 0.6), rgba(252, 83, 86, 0.6));
+        background-size: 100% 3px;
+        background-repeat: no-repeat;
+        background-position: 0 bottom;
+        background-color: transparent;
+        padding: 0;
+        color: currentColor;
+    }
+
+    .theme-color {
+        color: #fc5356;
+    }
+
+    .dark-color {
+        color: #20247b;
     }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

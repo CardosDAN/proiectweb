@@ -18,6 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     $con->close();
 
-    header("location: ../../contact_us.php");
+    header("location: ../front_pages/contact_us.php");
 
 }

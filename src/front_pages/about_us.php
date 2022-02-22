@@ -23,13 +23,6 @@ include("../includes/auth_session.php");
     <link rel="stylesheet" href="../../website-menu-07/css/style_shoppage.css">
 
     <title>Store</title>
-    <style>
-        .footer-inner {
-            height: 150px;
-            width: 100%;
-            background: url(../../website-menu-07/images/bg-footer.jpg);
-        }
-    </style>
 </head>
 <body>
 
@@ -44,8 +37,8 @@ include("../includes/auth_session.php");
         <div class="container container-ver2 space-100 head-about">
             <div class="choose-us">
                 <div class="title-choose align-center about">
-                    <h4>Welcome to Fresh Food</h4>
-                    <h3>A LITTLE STORY ABOUT US</h3>
+                    <h4>Bun venit la Fresh Food</h4>
+                    <h3>O MICĂ POVESTE DESPRE NOI</h3>
                     <div class="align-center border-choose">
                         <div class="images ">
                             <img src="../../website-menu-07/images/bg-border-center.png" alt="icon">
@@ -62,7 +55,7 @@ include("../includes/auth_session.php");
                 </div>
                 <!--End col-md-6-->
                 <div class="col-md-6 pd-left-10">
-                    <h3>A FRIENDLY ONLINE STORY</h3>
+                    <h3>O POVESTE ONLINE PRIETENOSĂ</h3>
                     <p>Lorem ipsum dolor sit ameconsecteturadipiscingelit. Curabiturutiaculis arcu. Proin tincidunt,
                         ipsum nec vehicula euismnequnibhpretiumlorem at ornare risus sem et risus.</p>
                     <p>Curabitur pulvinar dui viverra liberlobortis in dictum velit luctus. Donec imperdiet tincidunt

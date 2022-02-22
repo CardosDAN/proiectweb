@@ -31,7 +31,7 @@ function upload($files){
             // Upload file to server
             if(move_uploaded_file($files["tmp_name"], $targetFilePath)){
                 // Insert image file name into database
-                $insert = $con->query("UPDATE  images set file_name='$file_name', uploaded_on ='$uploaded_on' VALUES ('".$fileName."', NOW())");
+                $insert = $con->query("Insert into  images set file_name='$file_name', uploaded_on ='$uploaded_on' VALUES ('".$fileName."', NOW())");
                 if($insert){
                     return $con->insert_id;
                     #return $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
@@ -101,9 +101,4 @@ if (isset($_POST['update']))  {
         <button  type="submit" class="btn btn-primary">Edit</button>
         <a type="button" class="btn btn-danger" href="../front_pages/home.php">Anulează</a>
     </form>
-    <!--    <form action="upload.php" method="post" enctype="multipart/form-data">-->
-    <!--        Select Image File to Upload:-->
-    <!--        <input type="file" name="file">-->
-    <!--        <input type="submit" name="submit" value="Upload">-->
-    <!--    </form>-->
 </div>

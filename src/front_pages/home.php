@@ -150,8 +150,8 @@ include "../includes/auth_session.php";
                 <img class="d-block w-100" src="../../website-menu-07/images/home1-slideshow2.jpg"
                      alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h1 style="margin-top: -35%">Fresh Organic Food</h1>
-                    <p>We get you Organic Fruits And Vegetable from our fields to your home </p>
+                    <h1 style="margin-top: -35%">Alimente organice proaspete</h1>
+                    <p>Vă aducem fructe și legume organice de pe câmpurile noastre până acasă </p>
                 </div>
             </div>
             <div class="carousel-item">
@@ -208,12 +208,10 @@ include "../includes/auth_session.php";
             <div class="col-md-7 order-md-2">
                 <blockquote class="blockquote text-center">
                     <div class="title-choose align-center">
-                        <h3><span>We are </span>FRESH FOOD</h3>
-                        <footer class="blockquote footer">Nature <cite title="Source Title">Inspired</cite></footer>
-                        <p>The fact of the matter is that you really know something's organic when you find bugs! they
-                            obviously wouldn't&nbsp;have made it that far in a non-organic growing environment, so
-                            better than any certification or seal on a package,&nbsp;the presence of creatures let you
-                            know the plant was healthy and</p>
+                        <h3><span>Noi suntem </span>FRESH FOOD</h3>
+                        <footer class="blockquote footer">Inspirat  <cite title="Source Title">în natură</cite></footer>
+                        <p>Adevărul este că știi cu adevărat că ceva este organic atunci când găsești bug-uri! evident că nu ar fi ajuns atât de departe într-un mediu de creștere non-organic, așa că mai bine decât orice certificare sau sigiliu pe un ambalaj, prezența unor creaturi vă permite să știți că planta este sănătoasă și 100% bio.
+                           </p>
                     </div>
                     <div class="align-center border-choose">
                         <div class="images">
@@ -222,7 +220,7 @@ include "../includes/auth_session.php";
                     </div>
                 </blockquote>
                 <div class="shipping-v2 home3-shiping home2-shipping row justify-content-around">
-                    <div class="col-md-3 col-sm-5">
+                    <div class="col-md-3 ">
                         <div class="border container" style="width: 140%">
                             <img src="../../website-menu-07/images/icon-shipping-2.png" alt="images">
                             <h3>Support</h3>
@@ -254,7 +252,7 @@ include "../includes/auth_session.php";
     <div id="carouselExampleControls" class="carousel slide bg-slider-one-item space-100 bg-home2-slider "
          data-ride="carousel">
         <div class="title-text-v2 align-center p4">
-            <p4>Our Suppliers</p4>
+            <p4>Furnizorii noștri</p4>
             <br><br>
         </div>
         <div class="carousel-inner">
@@ -389,7 +387,7 @@ include "../includes/auth_session.php";
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="container">
     <div class="title-text-v2">
-        <h3>Lastest Products</h3>
+        <h3>Cele mai recente produse</h3>
     </div>
     <ul class="nav nav-tabs tabs tabs-title" id="myTab" role="tablist" >
         <li class="nav-item" rel="tab_1" role="presentation">
@@ -410,7 +408,7 @@ include "../includes/auth_session.php";
             <link rel="stylesheet" href="../../assets/app/css/card.css">
             <div class="row">
                 <?php
-                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.category_id=1");
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.brand='Legume' and anunturi.status='Activ' limit 6");
                 while ($row = $query->fetch_assoc()) { ?>
                     <div class="col-xl-4 py-1">
                         <div class="card h-100 shadow-sm">
@@ -434,7 +432,7 @@ include "../includes/auth_session.php";
         <div class="tab-pane fade" id="fruits" role="tabpanel" aria-labelledby="fruits-tab">
             <div class="row">
                 <?php
-                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.category_id=2");
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.brand='Fructe' and anunturi.status='Activ' limit 6");
                 while ($row = $query->fetch_assoc()) { ?>
                     <div class="col-xl-4 py-1">
                         <div class="card h-100 shadow-sm">
@@ -458,7 +456,7 @@ include "../includes/auth_session.php";
         <div class="tab-pane fade" id="nuts" role="tabpanel" aria-labelledby="nuts-tab">
             <div class="row">
                 <?php
-                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.category_id=4");
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.brand='Lactate' and anunturi.status='Activ' limit 6");
                 while ($row = $query->fetch_assoc()) { ?>
                     <div class="col-xl-4 py-1">
                         <div class="card h-100 shadow-sm">
@@ -492,7 +490,7 @@ include "../includes/auth_session.php";
         <div class="col-md-5 float-right">
             <div class="special-content align-center">
                 <div class="p1">
-                    <p>Special Offers</p>
+                    <p>Oferte speciale</p>
                 </div>
 
                 <h3>Get 30% off</h3>
