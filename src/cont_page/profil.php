@@ -31,116 +31,115 @@ $file_name = '';
                             $sql = "select * from users WHERE id = $id LIMIT $id";
                             $result = mysqli_query($con, $sql);
                             while ($data = mysqli_fetch_array($result)) { ?>
-                            <div class="row  flex-row-reverse">
-                                <div class="col-lg-6">
-                                    <div class="about-text go-to">
-                                        <h3 class="dark-color">Bio Graph</h3>
-                                        <div class="row about-list">
-                                            <div class="col-md-6">
-                                                <div class="media">
-                                                    <label>Username</label>
-                                                    <p><?php echo $data["username"]?></p>
+                                <div class="row  flex-row-reverse">
+                                    <div class="col-lg-6">
+                                        <div class="about-text go-to">
+                                            <h3 class="dark-color">Bio Graph</h3>
+                                            <div class="row about-list">
+                                                <div class="col-md-6">
+                                                    <div class="media">
+                                                        <label>Username</label>
+                                                        <p><?php echo $data["username"] ?></p>
+                                                    </div>
+                                                    <div class="media">
+                                                        <label>E-mail</label>
+                                                        <p><?php echo $data["email"] ?></p>
+                                                    </div>
+                                                    <div class="media">
+                                                        <label>Numar de telefon</label>
+                                                        <p><?php echo $data["phone"] ?></p>
+                                                    </div>
                                                 </div>
-                                                <div class="media">
-                                                    <label>E-mail</label>
-                                                    <p><?php echo $data["email"]?></p>
-                                                </div>
-                                                <div class="media">
-                                                <label>Numar de telefon</label>
-                                                <p><?php echo $data["phone"]?></p>
-                                            </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="media">
-                                                    <label>Status</label>
-                                                    <p><?php echo $data["user_level_id"]?></p>
-                                                </div>
-                                                <div class="media">
-                                                    <label>Pe Fresh Food</label>
-                                                    <p><?php echo $data["created_at"]?></p>
+                                                <div class="col-md-6">
+                                                    <div class="media">
+                                                        <label>Status</label>
+                                                        <p><?php echo $data["user_level_id"] ?></p>
+                                                    </div>
+                                                    <div class="media">
+                                                        <label>Pe Fresh Food</label>
+                                                        <p><?php echo $data["created_at"] ?></p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="about-avatar">
-                                        <?php
-                                        $user_id = $_SESSION["id"];
-                                        $query = $con->query("SELECT * FROM images,users where users.id='{$user_id}' and images.id=users.image_id ");
-
-                                        if ($query->num_rows > 0) {
-                                            while ($row = $query->fetch_assoc()) {
-                                                $imageURL = '../../../uploads/' . $row["file_name"];
-                                                ?>
-                                                <img title="" alt="" src="<?php echo $imageURL; ?>"
-                                                     data-holder-rendered="true"/>
-                                            <?php }
-                                        } else { ?>
-                                            <p>No image(s) found...</p>
-                                        <?php } ?>
 
                                     </div>
+                                    <div class="col-lg-6">
+                                        <div class="about-avatar">
+                                            <?php
+                                            $user_id = $_SESSION["id"];
+                                            $query = $con->query("SELECT * FROM images,users where users.id='{$user_id}' and images.id=users.image_id ");
+
+                                            if ($query->num_rows > 0) {
+                                                while ($row = $query->fetch_assoc()) {
+                                                    $imageURL = '../../../uploads/' . $row["file_name"];
+                                                    ?>
+                                                    <img title="" alt="" src="<?php echo $imageURL; ?>"
+                                                         data-holder-rendered="true"/>
+                                                <?php }
+                                            } else { ?>
+                                                <p>No image(s) found...</p>
+                                            <?php } ?>
+
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
                                 <?php
                             }
                             ?>
-                            <main>
-                                <br>
-                                <h5>Anunturile tale</h5>
-                                <?php
-                                $user_id = $_SESSION["id"];
-                                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.user_id='$user_id'");
-                                while ($row = $query->fetch_assoc()) { ?>
-                                <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
-
-                                    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-
-                                        <div class="col">
-
-                                            <?php
-                                            $imageURL = '../../../uploads/' . $row["file_name"];?>
-                                            <div class="card h-100 shadow-sm">
-                                                <h5 class="card-title container"><?php echo $row['status']?></h5>
-                                                <img src="<?php echo $imageURL; ?>" class="card-img-top" alt="...">
-
-                                                <div class="card-body">
-                                                    <div class="clearfix mb-3"> <span class="float-start badge rounded-pill bg-success"><?php echo $row['titlu']?></span> <span class="float-end"><a href="#"><?php echo $row['pret']?></a></span> </div>
-                                                    <h5 class="card-title"><?php echo $row['descriere']?></h5>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="d-grid gap-2 my-4"> <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning">Vezi oferta</a> </div>
-                                                        </div>
-                                                        <div class="col">
-                                                            <div class="d-grid gap-2 my-4"> <a href="../actions/edit_orders.php?id=<?php echo $row['id']?>" class="btn btn-warning">Editează</a> </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <?php } ?>
-                            </main>
                         </div>
-
                     </section>
-
                 </div>
 
             </div>
+            <br>
+            <h5>Anunturile tale</h5>
+
+            <div class="row">
+                <?php
+                $user_id = $_SESSION["id"];
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.user_id='$user_id'");
+                while ($row = $query->fetch_assoc()) { ?>
+                    <div class="col-md-4 p-2">
+
+                        <?php
+                        $imageURL = '../../../uploads/' . $row["file_name"]; ?>
+                        <div class="card h-100 shadow-sm">
+                            <h5 class="card-title container"><?php echo $row['status'] ?></h5>
+                            <img src="<?php echo $imageURL; ?>" class="card-img-top" alt="...">
+
+                            <div class="card-body">
+                                <div class="clearfix mb-3"><span
+                                            class="float-start badge rounded-pill bg-success"><?php echo $row['titlu'] ?>
+                                        <span class="float-end"><a
+                                                    href="#"><?php echo $row['pret'] ?></a></span>
+                                </div>
+                                <h5 class="card-title"><?php echo $row['descriere'] ?></h5>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="d-grid gap-2 my-4"><a
+                                                    href="../front_pages/view_anunt.php?id=<?php echo $row['id'] ?>"
+                                                    class="btn btn-warning">Vezi oferta</a>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="d-grid gap-2 my-4"><a
+                                                    href="../actions/edit_orders.php?id=<?php echo $row['id'] ?>"
+                                                    class="btn btn-warning">Editează</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                <?php } ?>
+            </div>
         </div>
+
+    </main>
 </div>
-</main>
-<!-- page-content" -->
-</div>
+
+
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
@@ -376,6 +375,7 @@ $file_name = '';
         height: 80px;
         color: #fff
     }
+
     body {
         color: #6F8BA4;
         margin-top: 20px;

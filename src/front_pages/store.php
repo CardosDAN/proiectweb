@@ -92,15 +92,36 @@ include('../actions/database_connection.php');
                     <div >
                         <?php
 
-                        $query = "SELECT DISTINCT(brand) FROM anunturi WHERE status = 'Activ' ORDER BY id DESC";
+                        $query = "SELECT DISTINCT(categorie) FROM anunturi WHERE status = 'Activ' ORDER BY id DESC";
                         $statement = $con->prepare($query);
                         $statement->execute();
                         $result = $statement->fetchAll();
                         foreach ($result as $row) {
                             ?>
                             <div class="p3">
-                                <label><input type="checkbox" class="common_selector brand"
-                                              value="<?php echo $row['brand']; ?>"> <?php echo $row['brand']; ?></label>
+                                <label><input type="checkbox" class="common_selector categorie"
+                                              value="<?php echo $row['categorie']; ?>"> <?php echo $row['categorie']; ?></label>
+                            </div>
+                            <?php
+                        }
+
+                        ?>
+                    </div>
+                </aside>
+                <aside class="widget widget_product_categories">
+                    <h3 class="widget-title">Sub Categorii</h3>
+                    <div >
+                        <?php
+
+                        $query = "SELECT DISTINCT(sub_categorie) FROM anunturi WHERE status = 'Activ' ORDER BY id DESC";
+                        $statement = $con->prepare($query);
+                        $statement->execute();
+                        $result = $statement->fetchAll();
+                        foreach ($result as $row) {
+                            ?>
+                            <div class="p3">
+                                <label><input type="checkbox" class="common_selector sub_categorie"
+                                              value="<?php echo $row['sub_categorie']; ?>"> <?php echo $row['sub_categorie']; ?></label>
                             </div>
                             <?php
                         }
@@ -209,8 +230,8 @@ include('../actions/database_connection.php');
                     var action = 'fetch_data';
                     var minimum_price = $('#hidden_minimum_price').val();
                     var maximum_price = $('#hidden_maximum_price').val();
-                    var brand = get_filter('brand');
-                    // var ram = get_filter('ram');
+                    var categorie = get_filter('categorie');
+                    var sub_categorie = get_filter('sub_categorie');
                     // var storage = get_filter('storage');
                     $.ajax({
                         url: "../actions/fetch_data.php",
@@ -219,7 +240,8 @@ include('../actions/database_connection.php');
                             action: action,
                             minimum_price: minimum_price,
                             maximum_price: maximum_price,
-                            brand: brand
+                            categorie: categorie,
+                            sub_categorie: sub_categorie
                         }, //, ram:ram, storage:storage
                         success: function (data) {
                             $('.filter_data').html(data);

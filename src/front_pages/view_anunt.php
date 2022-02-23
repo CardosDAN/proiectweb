@@ -520,7 +520,7 @@ $product_id = $_GET['id'];
                         $sql = "SELECT * FROM anunturi where  id=" . $product_id;
                         $result = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($result)) {
-                        $brand = $row['brand'];
+                        $categorie = $row['categorie'];
                         ?>
                         <h1><?php echo $row['titlu']; ?></h1>
                     </div>
@@ -703,7 +703,7 @@ $product_id = $_GET['id'];
         <div class="slider">
             <div class="owl-carousel">
                 <?php
-                $query = $con->query("SELECT distinct (anunturi.brand),anunturi.*,images.* FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.brand='$brand'   ");
+                $query = $con->query("SELECT distinct (anunturi.categorie),anunturi.*,images.* FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.id != '$product_id'  and anunturi.categorie='$categorie'   ");
                 while ($row = $query->fetch_assoc()) { ?>
                     <div class=" slider-card">
                         <div class="card h-100 shadow-sm">

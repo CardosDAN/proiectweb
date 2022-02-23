@@ -249,19 +249,19 @@ if (isset($_POST["action"])) {
 		 AND pret BETWEEN '" . $_POST["minimum_price"] . "' AND '" . $_POST["maximum_price"] . "'
 		";
     }
-    if (isset($_POST["brand"])) {
-        $brand_filter = implode("','", $_POST["brand"]);
+    if (isset($_POST["categorie"])) {
+        $categorie_filter = implode("','", $_POST["categorie"]);
         $query .= "
-		 AND brand IN('" . $brand_filter . "')
+		 AND categorie IN('" . $categorie_filter . "')
 		";
     }
-//	if(isset($_POST["ram"]))
-//	{
-//		$ram_filter = implode("','", $_POST["ram"]);
-//		$query .= "
-//		 AND product_ram IN('".$ram_filter."')
-//		";
-//	}
+	if(isset($_POST["sub_categorie"]))
+	{
+		$sub_categorie_filter = implode("','", $_POST["sub_categorie"]);
+		$query .= "
+		 AND sub_categorie IN('".$sub_categorie_filter."')
+		";
+	}
 //	if(isset($_POST["storage"]))
 //	{
 //		$storage_filter = implode("','", $_POST["storage"]);

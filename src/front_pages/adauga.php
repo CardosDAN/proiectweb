@@ -37,7 +37,7 @@ include "../includes/auth_session.php";
             height: 100vh;
         }
         .center {
-            height:100%;
+            height:50%;
             display:flex;
             align-items:center;
             justify-content:center;
@@ -99,64 +99,98 @@ include "../includes/auth_session.php";
     <form action="../actions/adaugareanunt.php" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Title</label>
-                    <input type="text" name="titlu" class="form-control" id="exampleInputEmail1"
-                           aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Phone</label>
-                    <input type="number" name="telefon" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Price</label>
-                    <input type="number" name="pret" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Address</label>
-                    <input type="text" name="adresa" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Description</label>
-                    <textarea type="text" name="descriere" class="form-control" id="exampleInputPassword1"></textarea>
-                </div>
-
-            </div>
-            <div class="col">
-                <div class="m-3">
-                    <h1>Alege categoria pentru anunt</h1>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="brand" value="Fructe" id="inlineRadio1">
-                        <label  class="form-check-label" for="inlineRadio1">Legume</label>
+                <div class="form-row">
+                    <div class="col-7">
+                        <input type="text" name="titlu" class="form-control" placeholder="Titlul anuntului">
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="brand" value="Legume" id="inlineRadio1">
-                        <label  class="form-check-label" for="inlineRadio1">Fructe</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="brand" value="Lactate" id="inlineRadio1">
-                        <label  class="form-check-label" for="inlineRadio1">Lactate</label>
+                    <div class="col">
+                        <input type="number" name="telefon" class="form-control" placeholder="Numarul de telefon">
                     </div>
                 </div>
-                <div class="center">
-                    <div class="form-input">
-                        <div class="preview">
-                            <img id="file-ip-1-preview">
-                            <label for="file-ip-1">Upload Image</label>
-                            <input type="file" id="file-ip-1" name="file" accept="image/*" onchange="showPreview(event);">
+                <br>
+                <div class="mb-3">
+                    <div class="form-row">
+                        <div class="col-5">
+                            <input type="text" name="adresa" class="form-control" placeholder="Adresa">
+                        </div>
+                        <div class="col">
+                            <input type="number" name="pret" class="form-control" placeholder="Pret">
                         </div>
                     </div>
                 </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Dă cât mai multe detali..</label>
+                    <textarea type="text" name="descriere" class="form-control" id="exampleInputPassword1"></textarea>
+                </div>
+                <div class="container ">
+                    <div class="center">
+                        <div class="form-input">
+                            <div class="preview">
+                                <img id="file-ip-1-preview">
+                                <label for="file-ip-1">Upload Image</label>
+                                <input type="file" id="file-ip-1" name="file" accept="image/*" onchange="showPreview(event);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col">
+                <div class="m-3">
+                    <script>
+                        function populate(brand,sub_brand){
+                            var brand = document.getElementById(brand);
+                            var sub_brand = document.getElementById(sub_brand);
+                            sub_brand.innerHTML = "";
+                            if(brand.value == "Fructe"){
+                                var optionArray = ["|","mere|Mere","pere|Pere","prune|Prune"];
+                            } else if(brand.value == "Legume"){
+                                var optionArray = ["|","ceapa|Ceapa","morcov|Morcov","varza|Varza"];
+                            } else if(brand.value == "Lactate"){
+                                var optionArray = ["|","lapte|Lapte","branza|Branza"];
+                            }
+                            for(var option in optionArray){
+                                var pair = optionArray[option].split("|");
+                                var newOption = document.createElement("option");
+                                newOption.value = pair[0];
+                                newOption.innerHTML = pair[1];
+                                sub_brand.options.add(newOption);
+                            }
+                        }
+                    </script>
+                    <div class="card">
+                        <div class="card-header">
+                            Alege categoria pentru anunt
+                        </div>
+                        <div class="card-body">
+                            Categoria:
+                            <select class="form-select" id="brand" name="brand" onchange="populate(this.id,'sub_brand')">
+                                <option value=""></option>
+                                <option value="Fructe">Fructe</option>
+                                <option value="Legume">Legume</option>
+                                <option value="Lactate">Lactate</option>
+                            </select>
+                            <hr />
+                            Sub categoria
+                            <select class="form-select" id="sub_brand" name="sub_brand">
+                                <option value=""></option>
+                            </select>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <div class="align-right">
+                    <button type="submit" class="btn btn-success">Adauga</button>
+                    <a type="button" class="btn btn-danger" href="home.php">Anulează</a>
+                </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Adauga</button>
-        <a type="button" class="btn btn-danger" href="home.php">Anulează</a>
+
     </form>
 </div>
 
 
-<div class="m-4">
+<div class="footer">
     <!-- Footer -->
     <?php include "../includes/footer_front.php" ?>
     <!-- Footer -->

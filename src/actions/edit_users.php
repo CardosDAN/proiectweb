@@ -16,11 +16,11 @@ if (isset($_POST['update'])) // when click on Update button
     $password = $_POST['password'];
     $user_level_id = $_POST['user_level_id'];
 
-    $edit = mysqli_query($con, "update users set username='{$username}', email='{$email}', phone='{$phone}', password='{$password}' where id='{$id}'");
+    $edit = mysqli_query($con, "update users set username='{$username}', email='{$email}', phone='{$phone}', password='{$password}', user_level_id='{$user_level_id}' where id='{$id}'");
 
     if ($edit) {
-        mysqli_close($con); // Close connection
-        header("location:../../users_table.php"); // redirects to all records page
+        $_SESSION["user_level_id"] = $user_level_id;
+        header("location:../cont_page/users_table.php"); // redirects to all records page
         exit;
     } else {
         echo mysqli_error();
@@ -38,7 +38,7 @@ if (isset($_POST['update'])) // when click on Update button
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../website-menu-07/css/bootstrap.min.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Style -->
     <link rel="stylesheet" href="../../website-menu-07/css/style.css">
 </head>
@@ -64,10 +64,20 @@ if (isset($_POST['update'])) // when click on Update button
             <small id="emailHelp" class="form-text text-muted">Nu vom împărtăși niciodată parola dvs. cu nimeni altcineva.</small>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Schimbă statusul</label>
-            <a class="btn btn-info" href="status_user.php?id=<?php echo $row['id']; ?>">User</a>
-            <a class="btn btn-info" href="status_seller.php?id=<?php echo $row['id']; ?>">Seller</a>
-            <a class="btn btn-info" href="status_admin.php?id=<?php echo $row['id']; ?>">Admin</a>
+            <label for="exampleInputEmail1"></label>
+            <div class="card">
+                <div class="card-header">
+                    Schimbă statusul
+                </div>
+                <div class="card-body">
+                    <select class="form-select" name="user_level_id" aria-label="Default select example">
+                        <option selected><?php echo $row['user_level_id'];?></option>
+                        <option value="1">User</option>
+                        <option value="2">Seller</option>
+                        <option value="3">Admin</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <input class="btn btn-outline-success" type="submit" name="update" value="Update">
         <a class="btn btn-outline-danger" href="../cont_page/users_table.php">Back</a>

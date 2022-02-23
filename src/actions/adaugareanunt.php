@@ -58,9 +58,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $descriere = $_POST["descriere"];
     $image_id = upload($_FILES["file"]);
     $brand = $_POST['brand'];
+    $sub_brand = $_POST['sub_brand'];
     session_start();
     $user_id = $_SESSION['id'];
-    $sql = "INSERT INTO anunturi (titlu,telefon,adresa,pret,descriere,image_id,user_id,brand) VALUES ('{$titlu}','{$telefon}','{$adresa}','{$pret}','{$descriere}','{$image_id}','$user_id','$brand')";
+    $sql = "INSERT INTO anunturi (titlu,telefon,adresa,pret,descriere,image_id,user_id,brand,sub_brand) VALUES ('{$titlu}','{$telefon}','{$adresa}','{$pret}','{$descriere}','{$image_id}','$user_id','$brand','$sub_brand')";
     if ($con->query($sql) === TRUE) {
         echo "Record updated successfully";
     } else {
