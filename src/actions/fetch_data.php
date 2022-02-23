@@ -242,7 +242,7 @@ include "../actions/database_connection.php";
 
 if (isset($_POST["action"])) {
     $query = "
-		SELECT * FROM anunturi,images WHERE images.id=anunturi.image_id and anunturi.status='Activ'
+		SELECT * FROM anunturi,images WHERE images.id=anunturi.image_id and anunturi.status='Activ' 
 	";
     if (isset($_POST["minimum_price"], $_POST["maximum_price"]) && !empty($_POST["minimum_price"]) && !empty($_POST["maximum_price"])) {
         $query .= "
@@ -255,31 +255,28 @@ if (isset($_POST["action"])) {
 		 AND categorie IN('" . $categorie_filter . "')
 		";
     }
-	if(isset($_POST["sub_categorie"]))
-	{
-		$sub_categorie_filter = implode("','", $_POST["sub_categorie"]);
-		$query .= "
+    if(isset($_POST["sub_categorie"]))
+    {
+        $sub_categorie_filter = implode("','", $_POST["sub_categorie"]);
+        $query .= "
 		 AND sub_categorie IN('".$sub_categorie_filter."')
 		";
-	}
-//	if(isset($_POST["storage"]))
-//	{
-//		$storage_filter = implode("','", $_POST["storage"]);
-//		$query .= "
-//		 AND product_storage IN('".$storage_filter."')
-//		";
-//	}
-
+    }
+    if(isset($_POST["record_limit"]))
+    {
+        $query .= "LIMIT ".$_POST["record_limit"];
+    }
+    if(isset($_POST["page"])){
+        $record_limit = 10;
+        if(isset($_POST["record_limit"]))
+        {
+            $record_limit = $_POST["record_limit"];
+        }
+        $query .= " OFFSET ".($_POST["page"]-1) * $_POST["record_limit"];
+    }
     $statement = $con->prepare($query);
     $statement->execute();
-
-//    $resultSet = $statement->get_result();
-//
-//
-//    $result = $resultSet->fetch_all();
     $result = $statement->fetchAll();
-
-//    $total_row = $statement->num_rows;
     $total_row = $statement->rowCount();
     $output = '';
     if ($total_row > 0) {
@@ -299,9 +296,6 @@ if (isset($_POST["action"])) {
                         </div>
                     </div>
                 </div>
-  
-
-			
 			';
         }
     } else {

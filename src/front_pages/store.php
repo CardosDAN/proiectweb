@@ -1,6 +1,28 @@
 <?php
+include ("../includes/auth_session.php");
 include('../actions/database_connection.php');
 
+// Set session
+//session_start();
+if(isset($_POST['records-limit'])){
+    $_SESSION['records-limit'] = $_POST['records-limit'];
+}
+
+$limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 5;
+$page = (isset($_GET['page']) && is_numeric($_GET['page']) ) ? $_GET['page'] : 1;
+$paginationStart = ($page - 1) * $limit;
+$students = $con->query("SELECT * FROM anunturi LIMIT $paginationStart, $limit")->fetchAll();
+
+// Get total records
+$sql = $con->query("SELECT count(id) AS id FROM anunturi")->fetchAll();
+$allRecrods = $sql[0]['id'];
+
+// Calculate total pages
+$totoalPages = ceil($allRecrods / $limit);
+
+// Prev + Next
+$prev = $page - 1;
+$next = $page + 1;
 ?>
 
 <!DOCTYPE html>
@@ -55,10 +77,12 @@ include('../actions/database_connection.php');
     .widget.widget_feature .text {
         padding-top: 18px;
     }
-    .ui-slider-handle{
+
+    .ui-slider-handle {
         background: limegreen !important;
     }
-    .ui-slider-range{
+
+    .ui-slider-range {
         background: lawngreen !important;
     }
 </style>
@@ -74,6 +98,22 @@ include('../actions/database_connection.php');
 <!-- Page Content -->
 <br><br>
 <div class="container">
+    <!-- Select dropdown -->
+    <div class="d-flex flex-row-reverse bd-highlight mb-3">
+        <form action="store.php" method="post">
+            <select name="records-limit" id="records-limit" class="custom-select">
+                <option disabled selected>Records Limit</option>
+                <?php foreach([2,4,5,12] as $limit) : ?>
+                    <option
+                        <?php if(isset($_SESSION['records-limit']) && $_SESSION['records-limit'] == $limit) echo 'selected'; ?>
+                            value="<?= $limit; ?>">
+                        <?= $limit; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </form>
+    </div>
+
     <div class="row">
         <div id="secondary" class="widget-area col-xs-12 col-md-3">
             <div class="list-group">
@@ -89,7 +129,7 @@ include('../actions/database_connection.php');
             <div class="list-group">
                 <aside class="widget widget_product_categories">
                     <h3 class="widget-title">Categorii</h3>
-                    <div >
+                    <div>
                         <?php
 
                         $query = "SELECT DISTINCT(categorie) FROM anunturi WHERE status = 'Activ' ORDER BY id DESC";
@@ -100,7 +140,8 @@ include('../actions/database_connection.php');
                             ?>
                             <div class="p3">
                                 <label><input type="checkbox" class="common_selector categorie"
-                                              value="<?php echo $row['categorie']; ?>"> <?php echo $row['categorie']; ?></label>
+                                              value="<?php echo $row['categorie']; ?>"> <?php echo $row['categorie']; ?>
+                                </label>
                             </div>
                             <?php
                         }
@@ -110,7 +151,7 @@ include('../actions/database_connection.php');
                 </aside>
                 <aside class="widget widget_product_categories">
                     <h3 class="widget-title">Sub Categorii</h3>
-                    <div >
+                    <div>
                         <?php
 
                         $query = "SELECT DISTINCT(sub_categorie) FROM anunturi WHERE status = 'Activ' ORDER BY id DESC";
@@ -121,7 +162,8 @@ include('../actions/database_connection.php');
                             ?>
                             <div class="p3">
                                 <label><input type="checkbox" class="common_selector sub_categorie"
-                                              value="<?php echo $row['sub_categorie']; ?>"> <?php echo $row['sub_categorie']; ?></label>
+                                              value="<?php echo $row['sub_categorie']; ?>"> <?php echo $row['sub_categorie']; ?>
+                                </label>
                             </div>
                             <?php
                         }
@@ -153,51 +195,6 @@ include('../actions/database_connection.php');
 
                 </aside>
             </div>
-
-            <!--				<div class="list-group">-->
-            <!--					<h3>RAM</h3>-->
-            <!--                    --><?php
-            //
-            //                    $query = "
-            //                    SELECT DISTINCT(product_ram) FROM product WHERE product_status = '1' ORDER BY product_ram DESC
-            //                    ";
-            //                    $statement = $connect->prepare($query);
-            //                    $statement->execute();
-            //                    $result = $statement->fetchAll();
-            //                    foreach($result as $row)
-            //                    {
-            //                    ?>
-            <!--                    <div class="list-group-item checkbox">-->
-            <!--                        <label><input type="checkbox" class="common_selector ram" value="-->
-            <?php //echo $row['product_ram']; ?><!--" > --><?php //echo $row['product_ram']; ?><!-- GB</label>-->
-            <!--                    </div>-->
-            <!--                    --><?php //
-            //                    }
-            //
-            //                    ?>
-            <!--                </div>-->
-            <!--				-->
-            <!--				<div class="list-group">-->
-            <!--					<h3>Internal Storage</h3>-->
-            <!--					--><?php
-            //                    $query = "
-            //                    SELECT DISTINCT(product_storage) FROM product WHERE product_status = '1' ORDER BY product_storage DESC
-            //                    ";
-            //                    $statement = $connect->prepare($query);
-            //                    $statement->execute();
-            //                    $result = $statement->fetchAll();
-            //                    foreach($result as $row)
-            //                    {
-            //                    ?>
-            <!--                    <div class="list-group-item checkbox">-->
-            <!--                        <label><input type="checkbox" class="common_selector storage" value="-->
-            <?php //echo $row['product_storage']; ?><!--"  > -->
-            <?php //echo $row['product_storage']; ?><!-- GB</label>-->
-            <!--                    </div>-->
-            <!--                    --><?php
-            //                    }
-            //                    ?><!--	-->
-            <!--                </div>-->
         </div>
 
         <div class="col-md-9">
@@ -208,89 +205,108 @@ include('../actions/database_connection.php');
                 </div>
             </div>
         </div>
+        <!-- Pagination -->
+        <div class="container">
+            <nav aria-label="Page navigation example mt-5">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item <?php if($page <= 1){ echo 'disabled'; } ?>">
+                        <a class="page-link"
+                           href="<?php if($page <= 1){ echo '#'; } else { echo "?page=" . $prev; } ?>">Previous</a>
+                    </li>
 
-        <!-- Footer -->
-        <?php // include "../includes/footer_front.php"?>
-        <!-- Footer -->
-        <style>
-            #loading {
-                text-align: center;
-                background: url('loader.gif') no-repeat center;
-                height: 150px;
-            }
-        </style>
+                    <?php for($i = 1; $i <= $totoalPages; $i++ ): ?>
+                        <li class="page-item <?php if($page == $i) {echo 'active'; } ?>">
+                            <a class="page-link" href="store.php?page=<?= $i; ?>"> <?= $i; ?> </a>
+                        </li>
+                    <?php endfor; ?>
 
-        <script>
-            $(document).ready(function () {
+                    <li class="page-item <?php if($page >= $totoalPages) { echo 'disabled'; } ?>">
+                        <a class="page-link"
+                           href="<?php if($page >= $totoalPages){ echo '#'; } else {echo "?page=". $next; } ?>">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#records-limit').change(function () {
+            $('form').submit();
+        })
+    });
+</script>
+<style>
+    #loading {
+        text-align: center;
+        background: url('../front_pages/loader.gif') no-repeat center;
+        height: 150px;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+
+        filter_data();
+
+        function filter_data() {
+            $('.filter_data').html('<div id="loading" style="" ></div>');
+            var action = 'fetch_data';
+            var minimum_price = $('#hidden_minimum_price').val();
+            var maximum_price = $('#hidden_maximum_price').val();
+            var categorie = get_filter('categorie');
+            var sub_categorie = get_filter('sub_categorie');
+            var record_limit = $('#records-limit').val();
+            var page = <?= isset($_GET['page']) ? $_GET['page'] : 1  ?>
+            // var storage = get_filter('storage');
+            $.ajax({
+                url: "../actions/fetch_data.php",
+                method: "POST",
+                data: {
+                    action: action,
+                    minimum_price: minimum_price,
+                    maximum_price: maximum_price,
+                    categorie: categorie,
+                    sub_categorie: sub_categorie,
+                    record_limit: record_limit,
+                    page:page
+                },
+                success: function (data) {
+                    $('.filter_data').html(data);
+                }
+            });
+        }
+
+        function get_filter(class_name) {
+            var filter = [];
+            $('.' + class_name + ':checked').each(function () {
+                filter.push($(this).val());
+            });
+            return filter;
+        }
+
+        $('.common_selector').click(function () {
+            filter_data();
+        });
+
+        $('#price_range').slider({
+            range: true,
+            min: 0,
+            max: 650,
+            values: [0, 650],
+            step: 5,
+            stop: function (event, ui) {
+                $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
+                $('#hidden_minimum_price').val(ui.values[0]);
+                $('#hidden_maximum_price').val(ui.values[1]);
                 filter_data();
+            }
+        });
 
-                function filter_data() {
-                    $('.filter_data').html('<div id="loading" style="" ></div>');
-                    var action = 'fetch_data';
-                    var minimum_price = $('#hidden_minimum_price').val();
-                    var maximum_price = $('#hidden_maximum_price').val();
-                    var categorie = get_filter('categorie');
-                    var sub_categorie = get_filter('sub_categorie');
-                    // var storage = get_filter('storage');
-                    $.ajax({
-                        url: "../actions/fetch_data.php",
-                        method: "POST",
-                        data: {
-                            action: action,
-                            minimum_price: minimum_price,
-                            maximum_price: maximum_price,
-                            categorie: categorie,
-                            sub_categorie: sub_categorie
-                        }, //, ram:ram, storage:storage
-                        success: function (data) {
-                            $('.filter_data').html(data);
-                        }
-                    });
-                }
+    });
+</script>
 
-                function get_filter(class_name) {
-                    var filter = [];
-                    $('.' + class_name + ':checked').each(function () {
-                        filter.push($(this).val());
-                    });
-                    return filter;
-                }
-
-                $('.common_selector').click(function () {
-                    filter_data();
-                });
-
-                $('#price_range').slider({
-                    range: true,
-                    min: 0,
-                    max: 650,
-                    values: [0, 650],
-                    step: 5,
-                    stop: function (event, ui) {
-                        $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
-                        $('#hidden_minimum_price').val(ui.values[0]);
-                        $('#hidden_maximum_price').val(ui.values[1]);
-                        filter_data();
-                    }
-                });
-
-            });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
-
-        <script>
-
-
-            $(function () {
-                $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
-                    var rating = data.rating;
-                    $(this).parent().find('.score').text('score :' + $(this).attr('data-rateyo-score'));
-                    $(this).parent().find('.result').text('rating :' + rating);
-                    $(this).parent().find('input[name=rating]').val(rating); //add rating value to input field
-                });
-            });
-
-        </script>
 </body>
 </html>
