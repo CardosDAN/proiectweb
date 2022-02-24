@@ -11,16 +11,16 @@ include("../includes/auth_session.php");
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../website-menu-07/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../../assets/sty/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="../../website-menu-07/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../assets/sty/css/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../website-menu-07/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/sty/css/bootstrap.min.css">
 
     <!-- Style -->
-    <link rel="stylesheet" href="../../website-menu-07/css/style.css">
-    <link rel="stylesheet" href="../../website-menu-07/css/style_shoppage.css">
+    <link rel="stylesheet" href="../../assets/sty/css/style.css">
+    <link rel="stylesheet" href="../../assets/sty/css/style_shoppage.css">
 
     <title>Store</title>
 </head>
@@ -31,7 +31,7 @@ include("../includes/auth_session.php");
 
 <div class="main-content">
     <div class="banner-header banner-lbook3 space-70">
-        <img src="../../website-menu-07/images/banner-blog.jpg" alt="Banner-header">
+        <img src="../../assets/sty/images/banner-blog.jpg" alt="Banner-header">
     </div>
     <div class="page-about">
         <div class="container container-ver2 space-100 head-about">
@@ -41,7 +41,7 @@ include("../includes/auth_session.php");
                     <h3>O MICĂ POVESTE DESPRE NOI</h3>
                     <div class="align-center border-choose">
                         <div class="images ">
-                            <img src="../../website-menu-07/images/bg-border-center.png" alt="icon">
+                            <img src="../../assets/sty/images/bg-border-center.png" alt="icon">
                         </div>
                         <!--End images-->
                     </div>
@@ -51,16 +51,15 @@ include("../includes/auth_session.php");
             <!--End choose-us-->
             <div class="row">
                 <div class="col-md-6">
-                    <img class="img-responsive" src="../../website-menu-07/images/about-head1.jpg" alt="images">
+                    <img class="img-responsive" src="../../assets/sty/images/about-head1.jpg" alt="images">
                 </div>
                 <!--End col-md-6-->
                 <div class="col-md-6 pd-left-10">
                     <h3>O POVESTE ONLINE PRIETENOSĂ</h3>
-                    <p>Lorem ipsum dolor sit ameconsecteturadipiscingelit. Curabiturutiaculis arcu. Proin tincidunt,
-                        ipsum nec vehicula euismnequnibhpretiumlorem at ornare risus sem et risus.</p>
-                    <p>Curabitur pulvinar dui viverra liberlobortis in dictum velit luctus. Donec imperdiet tincidunt
-                        interdum. Duultricies condimentum interdum. Vestibulum ante ipsum primis in faucibus orci luctus
-                        et ultrices posuere cubilia Curae</p>
+                    <p>Având în vedere că cât mai puțină lume cultivă legume și fructe bio românești noi
+                    venim cu produse de calitate cultivate în grădina noastră.</p>
+                    <p>Roșiile noastre, castraveți, ardei , ceapa, sunt produse din sămânța romaneasca și au un gust
+                    aparte. Îngrășămintele folosite pentru fertilizarea solului sunt naturale, nu folosim ingrasaminte foliale și ierbicide.</p>
                     <div class="slider-about owl-carousel owl-loaded owl-drag">
 
                         <!--End items-->
@@ -74,49 +73,49 @@ include("../includes/auth_session.php");
                                 <div class="owl-item cloned" style="width: 278.667px; margin-right: 10px;">
                                     <div class="items">
                                         <a href="#" title="post-item">
-                                            <img src="../../website-menu-07/images/about-blog-2.jpg" alt="images">
+                                            <img src="../../assets/sty/images/about-blog-2.jpg" alt="images">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="owl-item cloned" style="width: 278.667px; margin-right: 10px;">
                                     <div class="items">
                                         <a href="#" title="post-item">
-                                            <img src="../../website-menu-07/images/about-blog-3.jpg" alt="images">
+                                            <img src="../../assets/sty/images/about-blog-3.jpg" alt="images">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="owl-item active" style="width: 278.667px; margin-right: 10px;">
                                     <div class="items">
                                         <a href="#" title="post-item">
-                                            <img src="../../website-menu-07/images/about-blog-1.jpg" alt="images">
+                                            <img src="../../assets/sty/images/about-blog-1.jpg" alt="images">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="owl-item" style="width: 278.667px; margin-right: 10px;">
                                     <div class="items">
                                         <a href="#" title="post-item">
-                                            <img src="../../website-menu-07/images/about-blog-2.jpg" alt="images">
+                                            <img src="../../assets/sty/images/about-blog-2.jpg" alt="images">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="owl-item" style="width: 278.667px; margin-right: 10px;">
                                     <div class="items">
                                         <a href="#" title="post-item">
-                                            <img src="../../website-menu-07/images/about-blog-3.jpg" alt="images">
+                                            <img src="../../assets/sty/images/about-blog-3.jpg" alt="images">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="owl-item cloned" style="width: 278.667px; margin-right: 10px;">
                                     <div class="items">
                                         <a href="#" title="post-item">
-                                            <img src="../../website-menu-07/images/about-blog-1.jpg" alt="images">
+                                            <img src="../../assets/sty/images/about-blog-1.jpg" alt="images">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="owl-item cloned" style="width: 278.667px; margin-right: 10px;">
                                     <div class="items">
                                         <a href="#" title="post-item">
-                                            <img src="../../website-menu-07/images/about-blog-2.jpg" alt="images">
+                                            <img src="../../assets/sty/images/about-blog-2.jpg" alt="images">
                                         </a>
                                     </div>
                                 </div>
@@ -147,7 +146,7 @@ include("../includes/auth_session.php");
                         <h3>Why Choose Us?</h3>
                         <div class="align-center border-choose">
                             <div class="images">
-                                <img src="../../website-menu-07/images/bg-border-center.png" alt="icon">
+                                <img src="../../assets/sty/images/bg-border-center.png" alt="icon">
                             </div>
                             <!--End images-->
                         </div>
@@ -159,7 +158,7 @@ include("../includes/auth_session.php");
                             <div class="col-md-4 col-sm-4 align-left">
                                 <div class="items">
                                     <div class="icon">
-                                        <img src="../../website-menu-07/images/icon-about1.png" alt="icon">
+                                        <img src="../../assets/sty/images/icon-about1.png" alt="icon">
                                     </div>
                                     <div class="text">
                                         <h3>Always Fresh</h3>
@@ -169,7 +168,7 @@ include("../includes/auth_session.php");
                                 <!--End items-->
                                 <div class="items">
                                     <div class="icon">
-                                        <img src="../../website-menu-07/images/icon-about2.png" alt="icon">
+                                        <img src="../../assets/sty/images/icon-about2.png" alt="icon">
                                     </div>
                                     <div class="text">
                                         <h3>Keep You Healthy </h3>
@@ -179,7 +178,7 @@ include("../includes/auth_session.php");
                                 <!--End items-->
                                 <div class="items">
                                     <div class="icon">
-                                        <img src="../../website-menu-07/images/icon-about3.png" alt="icon">
+                                        <img src="../../assets/sty/images/icon-about3.png" alt="icon">
                                     </div>
                                     <div class="text">
                                         <h3>Healthy Cooking </h3>
@@ -190,13 +189,13 @@ include("../includes/auth_session.php");
                             </div>
                             <!--End col-md-3-->
                             <div class="col-md-4 col-sm-4">
-                                <img class="img-responsive" src="../../website-menu-07/images/images-choose1.jpg" alt="banner">
+                                <img class="img-responsive" src="../../assets/sty/images/images-choose1.jpg" alt="banner">
                             </div>
                             <!--End col-md-6-->
                             <div class="col-md-4 align-left col-sm-4">
                                 <div class="items">
                                     <div class="icon">
-                                        <img src="../../website-menu-07/images/icon-about4.png" alt="icon">
+                                        <img src="../../assets/sty/images/icon-about4.png" alt="icon">
                                     </div>
                                     <div class="text">
                                         <h3>Always Fresh</h3>
@@ -206,7 +205,7 @@ include("../includes/auth_session.php");
                                 <!--End items-->
                                 <div class="items">
                                     <div class="icon">
-                                        <img src="../../website-menu-07/images/icon-about5.png" alt="icon">
+                                        <img src="../../assets/sty/images/icon-about5.png" alt="icon">
                                     </div>
                                     <div class="text">
                                         <h3>Always Fresh</h3>
@@ -216,7 +215,7 @@ include("../includes/auth_session.php");
                                 <!--End items-->
                                 <div class="items">
                                     <div class="icon">
-                                        <img src="../../website-menu-07/images/icon-about6.png" alt="icon">
+                                        <img src="../../assets/sty/images/icon-about6.png" alt="icon">
                                     </div>
                                     <div class="text">
                                         <h3>Always Fresh</h3>
@@ -243,7 +242,7 @@ include("../includes/auth_session.php");
                         <h3>FRESH FOOD’S FARMERS</h3>
                         <div class="align-center border-choose">
                             <div class="images">
-                                <img src="../../website-menu-07/images/bg-border-center.png" alt="icon">
+                                <img src="../../assets/sty/images/bg-border-center.png" alt="icon">
                             </div>
                             <!--End images-->
                         </div>
@@ -255,7 +254,7 @@ include("../includes/auth_session.php");
                     <div class="col-md-4 col-sm-4 space-30">
                         <div class="interactive-banner interactive-banner-v1 center">
                             <div class="interactive-banner-body">
-                                <img class="img-responsive" src="../../website-menu-07/images/user1.jpg" alt="images">
+                                <img class="img-responsive" src="../../assets/sty/images/user1.jpg" alt="images">
                             </div>
                         </div>
                         <div class="banner-title">
@@ -276,7 +275,7 @@ include("../includes/auth_session.php");
                     <div class="col-md-4 col-sm-4 space-30">
                         <div class="interactive-banner interactive-banner-v1 center">
                             <div class="interactive-banner-body">
-                                <img class="img-responsive" src="../../website-menu-07/images/user2.jpg" alt="images">
+                                <img class="img-responsive" src="../../assets/sty/images/user2.jpg" alt="images">
 
                             </div>
                         </div>
@@ -298,7 +297,7 @@ include("../includes/auth_session.php");
                     <div class="col-md-4 col-sm-4 space-30">
                         <div class="interactive-banner interactive-banner-v1 center">
                             <div class="interactive-banner-body">
-                                <img class="img-responsive" src="../../website-menu-07/images/user3.jpg" alt="images">
+                                <img class="img-responsive" src="../../assets/sty/images/user3.jpg" alt="images">
                             </div>
                         </div>
                         <div class="banner-title">
@@ -329,10 +328,10 @@ include("../includes/auth_session.php");
 <!-- Footer -->
 <?php include "../includes/footer_front.php" ?>
 
-<script src="../../website-menu-07/js/jquery-3.3.1.min.js"></script>
-<script src="../../website-menu-07/js/popper.min.js"></script>
-<script src="../../website-menu-07/js/bootstrap.min.js"></script>
-<script src="../../website-menu-07/js/jquery.sticky.js"></script>
-<script src="../../website-menu-07/js/main.js"></script>
+<script src="../../assets/sty/js/jquery-3.3.1.min.js"></script>
+<script src="../../assets/sty/js/popper.min.js"></script>
+<script src="../../assets/sty/js/bootstrap.min.js"></script>
+<script src="../../assets/sty/js/jquery.sticky.js"></script>
+<script src="../../assets/sty/js/main.js"></script>
 </body>
 </html>

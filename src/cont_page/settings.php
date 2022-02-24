@@ -1,7 +1,7 @@
 <?php
 //include auth_session.php file on all user panel pages
-$file_name = '';
-// Define variables and initialize with empty values
+$file_name = 'settings';
+
 $new_password = $confirm_password = "";
 $new_password_err = $confirm_password_err = "";
 

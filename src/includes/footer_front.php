@@ -2,7 +2,7 @@
     .footer-inner {
         height: 150px;
         width: 100%;
-        background: url(../../website-menu-07/images/bg-footer.jpg);
+        background: url(../../assets/sty/images/bg-footer.jpg);
     }
 </style>
 

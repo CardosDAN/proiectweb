@@ -1,4 +1,5 @@
 <?php
+$file_name = "view_anunt";
 //include auth_session.php file on all user panel pages
 include "../includes/auth_session.php";
 $product_id = $_GET['id'];
@@ -12,18 +13,18 @@ $product_id = $_GET['id'];
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../website-menu-07/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../../assets/sty/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="../../website-menu-07/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../assets/sty/css/owl.carousel.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
           integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../website-menu-07/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/sty/css/bootstrap.min.css">
 
     <!-- Style -->
-    <link rel="stylesheet" href="../../website-menu-07/css/style.css">
-    <link rel="stylesheet" href="../../website-menu-07/css/style_shoppage.css">
+    <link rel="stylesheet" href="../../assets/sty/css/style.css">
+    <link rel="stylesheet" href="../../assets/sty/css/style_shoppage.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../../assets/owlcarousel/css/owl.carousel.min.css">
@@ -441,7 +442,7 @@ $product_id = $_GET['id'];
 
 <?php include "../includes/nav_front.php" ?>
 <div class="banner-header banner-lbook3">
-    <img src="../../website-menu-07/images/banner-catalog1.jpg" alt="Banner-header">
+    <img src="../../assets/sty/images/banner-catalog1.jpg" alt="Banner-header">
 
 </div>
 
@@ -732,8 +733,6 @@ $product_id = $_GET['id'];
 <div class="">
     <?php include "../includes/footer_front.php";?>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 <script src="../../assets/owlcarousel/js/owl.carousel.min.js"></script>

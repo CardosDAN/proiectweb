@@ -133,7 +133,7 @@ $file_name = 'users_table';
                             <div class="card-content">
                                 <div class="card-body">
                                     <?php
-                                    $result = $con->query("SELECT DISTINCT brand FROM anunturi ORDER BY brand");
+                                    $result = $con->query("SELECT DISTINCT categorie FROM anunturi ORDER BY categorie");
                                     $row_cnt = $result->num_rows;
                                     ?>
                                     <div class="media d-flex">
@@ -194,10 +194,6 @@ $file_name = 'users_table';
                                             <a class="btn btn-outline-danger"
                                                href="../actions/delete_user.php?id=<?php echo $row['id']; ?>">
                                                 <i class=" bi bi-trash"></i>
-                                            </a>
-                                            <a class="btn btn-outline-info"
-                                               href="view_user.php/?id=<?php echo $row['id']; ?>">
-                                                <i class=" bi bi-eye"></i>
                                             </a>
                                             <a class="btn btn-outline-primary"
                                                href="../actions/edit_users.php?id=<?php echo $row['id']; ?>">

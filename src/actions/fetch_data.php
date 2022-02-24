@@ -9,10 +9,10 @@
         --font3: 'Roboto', sans-serif
     }
 
-    body {
-        font-family: var(--font3);
-        background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)
-    }
+    /*body {*/
+    /*    font-family: var(--font3);*/
+    /*    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)*/
+    /*}*/
 
     h2 {
         font-weight: 900

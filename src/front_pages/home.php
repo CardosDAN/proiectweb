@@ -1,6 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
-$file_name = 'home';
+
 include "../includes/auth_session.php";
 
 ?>
@@ -13,15 +13,15 @@ include "../includes/auth_session.php";
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../website-menu-07/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../../assets/sty/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="../../website-menu-07/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../assets/sty/css/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../website-menu-07/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/sty/css/bootstrap.min.css">
 
     <!-- Style -->
-    <link rel="stylesheet" href="../../website-menu-07/css/style.css">
+    <link rel="stylesheet" href="../../assets/sty/css/style.css">
     <title>Home</title>
     <style>
         @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
@@ -32,7 +32,7 @@ include "../includes/auth_session.php";
         }
 
         .border-choose {
-            background: url(../../website-menu-07/images/bg-border-choose.png) repeat-x scroll center;
+            background: url(../../assets/sty/images/bg-border-choose.png) repeat-x scroll center;
             margin: auto;
             max-width: 480px;
             text-align: center;
@@ -59,7 +59,7 @@ include "../includes/auth_session.php";
 
         .bg-slider-one-item.bg-home2-slider {
             padding: 30px 0px;
-            background: url(../../website-menu-07/images/7.jpg) no-repeat;
+            background: url(../../assets/sty/images/7.jpg) no-repeat;
         }
 
         .bg-slider-one-item.bg-home2-slider .brand-content {
@@ -92,7 +92,7 @@ include "../includes/auth_session.php";
         }
 
         element.style {
-            background-image: url(../../website-menu-07/images/home1-banner1.jpg);
+            background-image: url(../../assets/sty/images/home1-banner1.jpg);
             background-repeat: no-repeat;
         }
 
@@ -147,7 +147,7 @@ include "../includes/auth_session.php";
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="../../website-menu-07/images/home1-slideshow2.jpg"
+                <img class="d-block w-100" src="../../assets/sty/images/home1-slideshow2.jpg"
                      alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h1 style="margin-top: -35%">Alimente organice proaspete</h1>
@@ -155,7 +155,7 @@ include "../includes/auth_session.php";
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="../../website-menu-07/images/2.jpg"
+                <img class="d-block w-100" src="../../assets/sty/images/2.jpg"
                      alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>...</h5>
@@ -163,7 +163,7 @@ include "../includes/auth_session.php";
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="../../website-menu-07/images/3.jpg"
+                <img class="d-block w-100" src="../../assets/sty/images/3.jpg"
                      alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h5></h5>
@@ -184,19 +184,19 @@ include "../includes/auth_session.php";
         <div class="row">
             <div class="col-md-4 col-sm-4">
                 <a class="hover-images" href="#" title="images">
-                    <img class="img-responsive" src="../../website-menu-07/images/4.jpg" alt="banner">
+                    <img class="img-responsive" src="../../assets/sty/images/4.jpg" alt="banner">
                 </a>
             </div>
 
             <div class="col-md-4 col-sm-4">
                 <a class="hover-images" href="#" title="images">
-                    <img class="img-responsive" src="../../website-menu-07/images/sus1.jpg" alt="banner">
+                    <img class="img-responsive" src="../../assets/sty/images/sus1.jpg" alt="banner">
                 </a>
             </div>
 
             <div class="col-md-4 col-sm-4">
                 <a class="hover-images" href="#" title="images">
-                    <img class="img-responsive" src="../../website-menu-07/images/sus2.jpg" alt="banner">
+                    <img class="img-responsive" src="../../assets/sty/images/sus2.jpg" alt="banner">
                 </a>
             </div>
 
@@ -215,28 +215,28 @@ include "../includes/auth_session.php";
                     </div>
                     <div class="align-center border-choose">
                         <div class="images">
-                            <img src="../../website-menu-07/images/bg-border-center.png" alt="icon">
+                            <img src="../../assets/sty/images/bg-border-center.png" alt="icon">
                         </div>
                     </div>
                 </blockquote>
                 <div class="shipping-v2 home3-shiping home2-shipping row justify-content-around">
                     <div class="col-md-3 ">
                         <div class="border container" style="width: 140%">
-                            <img src="../../website-menu-07/images/icon-shipping-2.png" alt="images">
+                            <img src="../../assets/sty/images/icon-shipping-2.png" alt="images">
                             <h3>Support</h3>
                             <p>SUPPORT 24/7</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3">
                         <div class="border container" style="width: 140%">
-                            <img src="../../website-menu-07/images/icon-shipping-3.png" alt="images">
+                            <img src="../../assets/sty/images/icon-shipping-3.png" alt="images">
                             <h3>Help Partner</h3>
                             <p>HELP ALL ASPECTS</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3">
                         <div class="border container" style="width: 140%">
-                            <img src="../../website-menu-07/images/icon-shipping-4.png" alt="images">
+                            <img src="../../assets/sty/images/icon-shipping-4.png" alt="images">
                             <h3>Contact With Us</h3>
                             <p>+07 (0) 7782 9137</p>
                         </div>
@@ -244,7 +244,7 @@ include "../includes/auth_session.php";
                 </div>
             </div>
             <div class="col-md-5 order-md-1">
-                <img src="../../website-menu-07/images/Hnet.com-image.jpg">
+                <img src="../../assets/sty/images/Hnet.com-image.jpg">
             </div>
         </div>
     </div>
@@ -260,115 +260,115 @@ include "../includes/auth_session.php";
             <div class="carousel-item active">
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-4.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-5.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-5.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-6.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-6.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-1.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-1.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-2.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-2.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-3.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-3.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-4.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-3.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-3.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-4.png" alt="Brand"></a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-4.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-5.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-6.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-1.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-2.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-3.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-4.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-3.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-4.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-4.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-5.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-5.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-6.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-6.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-1.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-1.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-2.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-2.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-3.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-3.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-4.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-3.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-3.png" alt="Brand"></a>
                 </div>
                 <div class="items">
                     <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../website-menu-07/images/brand-4.png" alt="Brand"></a>
+                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="../../assets/sty/images/brand-5.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="../../assets/sty/images/brand-6.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="../../assets/sty/images/brand-1.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="../../assets/sty/images/brand-2.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="../../assets/sty/images/brand-3.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="../../assets/sty/images/brand-3.png" alt="Brand"></a>
+                </div>
+                <div class="items">
+                    <a href="#" title="brand"><img class="img-responsive"
+                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
                 </div>
             </div>
         </div>
@@ -482,9 +482,9 @@ include "../includes/auth_session.php";
 
     <br><br>
     <div class="special bg-images special-v2 box container-fluid"
-         style="background-image:url('../../website-menu-07/images/home1-banner1.jpg');background-repeat: no-repeat;">
+         style="background-image:url('../../assets/sty/images/home1-banner1.jpg');background-repeat: no-repeat;">
         <div class="col-md-7 float-left align-right">
-            <img class="images-logo container" src="../../website-menu-07/images/home1-images-banner1-2.png" alt="images">
+            <img class="images-logo container" src="../../assets/sty/images/home1-images-banner1-2.png" alt="images">
         </div>
         <!-- End col-md-7 -->
         <div class="col-md-5 float-right">
@@ -508,10 +508,10 @@ include "../includes/auth_session.php";
 <!-- Footer -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../../website-menu-07/js/jquery-3.3.1.min.js"></script>
-<script src="../../website-menu-07/js/popper.min.js"></script>
-<script src="../../website-menu-07/js/bootstrap.min.js"></script>
-<script src="../../website-menu-07/js/jquery.sticky.js"></script>
-<script src="../../website-menu-07/js/main.js"></script>
+<script src="../../assets/sty/js/jquery-3.3.1.min.js"></script>
+<script src="../../assets/sty/js/popper.min.js"></script>
+<script src="../../assets/sty/js/bootstrap.min.js"></script>
+<script src="../../assets/sty/js/jquery.sticky.js"></script>
+<script src="../../assets/sty/js/main.js"></script>
 </body>
 </html>

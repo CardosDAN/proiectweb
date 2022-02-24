@@ -38,12 +38,12 @@ $next = $page + 1;
     <script src="../assets/app/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../website-menu-07/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../assets/sty/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="../website-menu-07/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/sty/css/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../website-menu-07/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/sty/css/bootstrap.min.css">
 
     <link href="../assets/app/css/jquery-ui.css" rel="stylesheet">
     <link href="../assets/app/css/style.css" rel="stylesheet">
@@ -51,8 +51,8 @@ $next = $page + 1;
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Style -->
-    <link rel="stylesheet" href="../website-menu-07/css/style.css">
-    <link rel="stylesheet" href="../website-menu-07/css/style_shoppage.css">
+    <link rel="stylesheet" href="../assets/sty/css/style.css">
+    <link rel="stylesheet" href="../assets/sty/css/style_shoppage.css">
 
     <title>Store</title>
 
@@ -91,7 +91,7 @@ $next = $page + 1;
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="../website-menu-07/images/banner-catalog1.jpg" alt="First slide">
+            <img class="d-block w-100" src="../assets/sty/images/banner-catalog1.jpg" alt="First slide">
         </div>
     </div>
 </div>

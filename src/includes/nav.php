@@ -85,7 +85,7 @@ include("auth_session.php");
                 <li class="sidebar-dropdown">
                     <a href="#">
                         <i class="fa fa-table"></i>
-                        <span class="menu-text">Tables</span>
+                        <span class="menu-text">Administrează</span>
                         <span class="badge badge-pill badge-danger">3</span>
                     </a>
                     <div class="sidebar-submenu">
@@ -96,16 +96,23 @@ include("auth_session.php");
                                 </a>
                             </li>
                             <li>
-                                <a href="../cont_page/orders_table.php?search=#">Orders</a>
+                                <a href="../cont_page/orders_table.php?search=#">Anunțuri</a>
                             </li>
                             <li>
-                                <a href="../cont_page/contact_us.php">Contact us</a>
+                                <a href="../cont_page/contact_us.php">Contactează-ne</a>
                             </li>
                         </ul>
                     </div>
                 </li>
                 <?php endif ?>
-
+                <?php if($_SESSION['user_level_id'] >= 2): ?>
+                <li class="sidebar">
+                    <a href="../front_pages/adauga.php">
+                        <i class="fa fa-upload"></i>
+                        <span class="menu-text">Adaugă anunțuri</span>
+                    </a>
+                </li>
+                <?php endif ?>
                 <li class="sidebar-dropdown">
                     <a href="#">
                         <i class="fa fa-chart-line"></i>
@@ -241,12 +248,12 @@ include("auth_session.php");
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuMessage">
                 <a class="dropdown-item" href="../cont_page/profil.php">My profile</a>
-                <a class="dropdown-item" href="../actions/user_edit_info.php">Editează profilul</a>
+<!--                <a class="dropdown-item" href="../actions/user_edit_info.php">Editează profilul</a>-->
                 <a class="dropdown-item" href="../cont_page/settings.php">Setting</a>
             </div>
         </div>
         <div>
-            <a href="../../logout.php">
+            <a href="../cont_page/logout.php">
                 <i class="fa fa-power-off"></i>
             </a>
         </div>

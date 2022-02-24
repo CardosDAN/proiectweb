@@ -15,7 +15,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 }
 
 // Include config file
-require_once "src/includes/db.php";
+require_once "../includes/db.php";
 
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -70,11 +70,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;
                             $_SESSION["user_level_id"] = $user_level_id;
                             if($user_level_id=='1')
-                                header("location: src/front_pages/home.php");
+                                header("location: ../front_pages/home.php");
                             elseif ($user_level_id=='2')
-                                header("location: src/front_pages/adauga.php");
+                                header("location: ../front_pages/adauga.php");
                             else
-                                header("location: src/cont_page/users_table.php");
+                                header("location: ../cont_page/users_table.php");
                         } else{
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid username or password.";

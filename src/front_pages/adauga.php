@@ -1,6 +1,8 @@
 <?php
+$file_name = "adauga";
 //include auth_session.php file on all user panel pages
 include "../includes/auth_session.php";
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -11,15 +13,15 @@ include "../includes/auth_session.php";
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../website-menu-07/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../../assets/sty/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="../../website-menu-07/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../assets/sty/css/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../website-menu-07/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/sty/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Style -->
-    <link rel="stylesheet" href="../../website-menu-07/css/style.css">
+    <link rel="stylesheet" href="../../assets/sty/css/style.css">
 
     <title>Adauga un anunt</title>
     <style>
@@ -89,7 +91,7 @@ include "../includes/auth_session.php";
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="../../website-menu-07/images/banner-catalog1.jpg" alt="First slide">
+            <img class="d-block w-100" src="../../assets/sty/images/banner-catalog1.jpg" alt="First slide">
         </div>
     </div>
 </div>
@@ -197,11 +199,11 @@ include "../includes/auth_session.php";
 </div>
 
 
-<script src="../../website-menu-07/js/jquery-3.3.1.min.js"></script>
-<script src="../../website-menu-07/js/popper.min.js"></script>
-<script src="../../website-menu-07/js/bootstrap.min.js"></script>
-<script src="../../website-menu-07/js/jquery.sticky.js"></script>
-<script src="../../website-menu-07/js/main.js"></script>
+<script src="../../assets/sty/js/jquery-3.3.1.min.js"></script>
+<script src="../../assets/sty/js/popper.min.js"></script>
+<script src="../../assets/sty/js/bootstrap.min.js"></script>
+<script src="../../assets/sty/js/jquery.sticky.js"></script>
+<script src="../../assets/sty/js/main.js"></script>
 <script type="text/javascript">
     function showPreview(event) {
         if (event.target.files.length > 0) {

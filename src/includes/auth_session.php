@@ -22,7 +22,8 @@ if (isset($_SESSION['user_level_id'])) {
 
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $p > $user_level_id) {
-    header("location: login.php");
+    header("location: ../cont_page/login.php");
+   
     exit;
 }
 
