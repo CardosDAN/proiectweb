@@ -5,6 +5,10 @@ include("auth_session.php");
 ?>
 <?php //SELECT `sections`.`nume`, `pages`.`nume` FROM `sections`, `pages` WHERE `pages`.`min_user_level_id` <= 3 AND `sections`.`id` = `pages`.`section_id`;
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
         <!-- sidebar-brand  -->
@@ -179,66 +183,19 @@ include("auth_session.php");
 
     </div>
     <!-- sidebar-footer  -->
-    <div class="sidebar-footer">
-        <div class="dropdown">
 
-            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-bell"></i>
-                <span class="badge badge-pill badge-warning notification">3</span>
+    <div class="sidebar-footer">
+        <div class="dropdown ">
+            <a href="#" class=" dropdown-toggle" data-toggle="dropdown">
+                <span class="count" >
+
+                </span>
+                <span class="fa fa-bell" ></span>
             </a>
-            <div class="dropdown-menu notifications" aria-labelledby="dropdownMenuMessage">
-                <div class="notifications-header">
-                    <i class="fa fa-bell"></i>
-                    Notifications
+            <div class="dropdown-menu">
+                <div class="dropdown-item-text">
+
                 </div>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                    <div class="notification-content">
-                        <div class="icon">
-                            <i class="fas fa-check text-success border border-success"></i>
-                        </div>
-                        <div class="content">
-                            <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. In totam explicabo
-                            </div>
-                            <div class="notification-time">
-                                6 minutes ago
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="dropdown-item" href="#">
-                    <div class="notification-content">
-                        <div class="icon">
-                            <i class="fas fa-exclamation text-info border border-info"></i>
-                        </div>
-                        <div class="content">
-                            <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. In totam explicabo
-                            </div>
-                            <div class="notification-time">
-                                Today
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="dropdown-item" href="#">
-                    <div class="notification-content">
-                        <div class="icon">
-                            <i class="fas fa-exclamation-triangle text-warning border border-warning"></i>
-                        </div>
-                        <div class="content">
-                            <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. In totam explicabo
-                            </div>
-                            <div class="notification-time">
-                                Yesterday
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-center" href="#">View all notifications</a>
             </div>
         </div>
         <div class="dropdown">
@@ -264,3 +221,33 @@ include("auth_session.php");
         </div>
     </div>
 </nav>
+<script>
+    $(document).ready(function () {
+        function load_unseen_notification(view = '') {
+            $.ajax({
+                url: "../actions/fetch.php",
+                method: "POST",
+                data: {view: view},
+                dataType: "json",
+                success: function (data) {
+                    $('.dropdown-item-text').html(data.notification);
+                    if (data.unseen_notification > 0) {
+                        $('.count').html(data.unseen_notification);
+                    }
+                }
+            });
+        }
+
+        load_unseen_notification();
+
+        $(document).on('click', '.dropdown-toggle', function () {
+            $('.count').html('');
+            load_unseen_notification('yes');
+        });
+
+        setInterval(function () {
+            load_unseen_notification();
+        }, 5000);
+
+    });
+</script>

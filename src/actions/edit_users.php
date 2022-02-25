@@ -39,8 +39,6 @@ include("../includes/db.php");
                         $edit = mysqli_query($con, "update users set username='{$username}', email='{$email}', phone='{$phone}', password='{$password}', user_level_id='{$user_level_id}' where id='{$id}'");
 
                         if ($edit) {
-                            $_SESSION["user_level_id"] = $user_level_id;
-                            header("location:../cont_page/users_table.php");
                             exit;
                         } else {
                             echo mysqli_error();
@@ -85,7 +83,7 @@ include("../includes/db.php");
                                     </div>
                                 </div>
                             </div>
-                            <input class="btn btn-outline-success" type="submit" name="update" value="Update">
+                            <input class="btn btn-outline-success"  type="submit" name="update" value="Update">
                         </form>
 
                     </div>
