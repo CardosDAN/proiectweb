@@ -1,5 +1,5 @@
 <?php
-//include auth_session.php file on all user panel pages
+
 $file_name = 'orders_table';
 
 ?>
@@ -133,7 +133,7 @@ $file_name = 'orders_table';
                             <div class="card-content">
                                 <div class="card-body">
                                     <?php
-                                    $result = $con->query("SELECT DISTINCT category_id FROM anunturi ORDER BY category_id");
+                                    $result = $con->query("SELECT DISTINCT categorie FROM anunturi ORDER BY categorie");
                                     $row_cnt = $result->num_rows;
                                     ?>
                                     <div class="media d-flex">
@@ -179,7 +179,7 @@ $file_name = 'orders_table';
                                 <tbody>
                                 <?php
                                 include "../includes/db.php";
-                                $sql = "SELECT DISTINCT(anunturi.category_id), product_categories.*,anunturi.* FROM anunturi,product_categories WHERE  product_categories.id=anunturi.category_id";
+                                $sql = "SELECT * FROM anunturi ";
                                 $res = $con->query($sql);
                                 while ($row = $res->fetch_assoc()) {
                                     ?>
@@ -189,7 +189,7 @@ $file_name = 'orders_table';
                                         <td><?php echo $row["telefon"] ?></td>
                                         <td><?php echo $row["adresa"] ?></td>
                                         <td><?php echo $row["status"] ?></td>
-                                        <td><?php echo $row["name"] ?></td>
+                                        <td><?php echo $row["categorie"] ?></td>
                                         <td>
 
                                             <a class="btn btn-outline-danger"

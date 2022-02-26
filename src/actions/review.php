@@ -6,7 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $rating = $_POST["rating"];
     $product_id = $_POST["product_id"];
-    $sql = "INSERT INTO product_rating (name,rate,email,review,product_id) VALUES ('$name','$rating','$email','$review','$product_id')";
+    $proprietar_anunt = $_POST["proprietar_anunt"];
+    $sql = "INSERT INTO product_rating (name,rate,email,review,product_id, proprietar_anunt) VALUES ('$name','$rating','$email','$review','$product_id', '$proprietar_anunt')";
     if (mysqli_query($con, $sql)) {
         echo "New Rate addedddd successfully";
     } else {

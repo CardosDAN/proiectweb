@@ -6,9 +6,7 @@ include("auth_session.php");
 <?php //SELECT `sections`.`nume`, `pages`.`nume` FROM `sections`, `pages` WHERE `pages`.`min_user_level_id` <= 3 AND `sections`.`id` = `pages`.`section_id`;
 ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
         <!-- sidebar-brand  -->

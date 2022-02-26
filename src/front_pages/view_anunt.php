@@ -3,6 +3,7 @@ $file_name = "view_anunt";
 //include auth_session.php file on all user panel pages
 include "../includes/auth_session.php";
 $product_id = $_GET['id'];
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -522,6 +523,7 @@ $product_id = $_GET['id'];
                         $result = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($result)) {
                         $categorie = $row['categorie'];
+                        $proprietar_anunt = $row['user_id']
                         ?>
                         <h1><?php echo $row['titlu']; ?></h1>
                     </div>
@@ -632,15 +634,10 @@ $product_id = $_GET['id'];
 
                 <div class="container ">
                     <form action="../actions/review.php" method="post">
-                        <div class="rateyo" id="rating"
-                             data-rateyo-rating="0"
-                             data-rateyo-num-stars="5"
-                             data-rateyo-score="3">
-                        </div>
 
-                        <span class='result'>Rating: 0</span>
                         <input type="hidden" name="rating">
                         <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
+                        <input type="hidden" name="proprietar_anunt" value="<?php echo $proprietar_anunt ?>">
 
                         <div class="row">
                             <div class="col">
@@ -650,7 +647,13 @@ $product_id = $_GET['id'];
                                 <input type="email" name="email" class="form-control" placeholder="Email">
                             </div>
                         </div>
-                        <br><br>
+                        <br>
+                        <div class="rateyo" id="rating"
+                             data-rateyo-rating="0"
+                             data-rateyo-num-stars="5"
+                             data-rateyo-score="3">
+                        </div>
+                        <br>
                         <div>
                                 <textarea class="form-control" type="text" name="review"
                                           id="exampleFormControlTextarea1" placeholder="Review" rows="3"></textarea>

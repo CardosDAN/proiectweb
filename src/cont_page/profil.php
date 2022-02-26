@@ -1,5 +1,4 @@
 <?php
-
 $file_name = 'profil';
 
 ?>
@@ -11,6 +10,9 @@ $file_name = 'profil';
 
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <?php include("../includes/nav.php"); ?>
     <!-- page-content  -->
     <main class="page-content pt-2">
@@ -207,34 +209,6 @@ $file_name = 'profil';
         box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)
     }
 
-    .label-top {
-        position: absolute;
-        background-color: #8bc34a;
-        color: #fff;
-        top: 8px;
-        right: 8px;
-        padding: 5px 10px 5px 10px;
-        font-size: .7rem;
-        font-weight: 600;
-        border-radius: 3px;
-        text-transform: uppercase
-    }
-
-    .top-right {
-        position: absolute;
-        top: 24px;
-        left: 24px;
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        font-size: 1rem;
-        font-weight: 900;
-        background: #ff5722;
-        line-height: 90px;
-        text-align: center;
-        color: white
-    }
-
     .top-right span {
         display: inline-block;
         vertical-align: middle
@@ -298,80 +272,6 @@ $file_name = 'profil';
         font-size: 1rem;
         background-color: #f7810a !important
     }
-
-    .bg-danger {
-        font-size: 1rem
-    }
-
-    .price-hp {
-        font-size: 1rem;
-        font-weight: 600;
-        color: darkgray
-    }
-
-    .amz-hp {
-        font-size: .7rem;
-        font-weight: 600;
-        color: darkgray
-    }
-
-    .fa-question-circle:before {
-        color: darkgray
-    }
-
-    .fa-plus:before {
-        color: darkgray
-    }
-
-    .box {
-        border-radius: 1rem;
-        background: #fff;
-        box-shadow: 0 6px 10px rgb(0 0 0 / 8%), 0 0 6px rgb(0 0 0 / 5%);
-        transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12)
-    }
-
-    .box-img {
-        max-width: 300px
-    }
-
-    .thumb-sec {
-        max-width: 300px
-    }
-
-    @media (max-width: 576px) {
-        .box-img {
-            max-width: 200px
-        }
-
-        .thumb-sec {
-            max-width: 200px
-        }
-    }
-
-    .inner-gallery {
-        width: 60px;
-        height: 60px;
-        border: 1px solid #ddd;
-        border-radius: 3px;
-        margin: 1px;
-        display: inline-block;
-        overflow: hidden;
-        -o-object-fit: cover;
-        object-fit: cover
-    }
-
-    @media (max-width: 370px) {
-        .box .btn {
-            padding: 5px 40px 5px 40px;
-            font-size: 1rem
-        }
-    }
-
-    .disclaimer {
-        font-size: .9rem;
-        color: darkgray
-    }
-
     .related h3 {
         font-weight: 900
     }
