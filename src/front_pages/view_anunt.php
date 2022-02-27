@@ -92,33 +92,7 @@ $product_id = $_GET['id'];
             box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)
         }
 
-        .label-top {
-            position: absolute;
-            background-color: #8bc34a;
-            color: #fff;
-            top: 8px;
-            right: 8px;
-            padding: 5px 10px 5px 10px;
-            font-size: .7rem;
-            font-weight: 600;
-            border-radius: 3px;
-            text-transform: uppercase
-        }
 
-        .top-right {
-            position: absolute;
-            top: 24px;
-            left: 24px;
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            font-size: 1rem;
-            font-weight: 900;
-            background: #ff5722;
-            line-height: 90px;
-            text-align: center;
-            color: white
-        }
 
         .top-right span {
             display: inline-block;
@@ -129,14 +103,6 @@ $product_id = $_GET['id'];
             .card-img-top {
                 max-height: 250px
             }
-        }
-
-        .over-bg {
-            background: rgba(53, 53, 53, 0.85);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            backdrop-filter: blur(0.0px);
-            -webkit-backdrop-filter: blur(0.0px);
-            border-radius: 10px
         }
 
         .btn {
@@ -184,9 +150,6 @@ $product_id = $_GET['id'];
             background-color: #f7810a !important
         }
 
-        .bg-danger {
-            font-size: 1rem
-        }
 
         .price-hp {
             font-size: 1rem;
@@ -194,19 +157,7 @@ $product_id = $_GET['id'];
             color: darkgray
         }
 
-        .amz-hp {
-            font-size: .7rem;
-            font-weight: 600;
-            color: darkgray
-        }
 
-        .fa-question-circle:before {
-            color: darkgray
-        }
-
-        .fa-plus:before {
-            color: darkgray
-        }
 
         .box {
             border-radius: 1rem;
@@ -215,35 +166,9 @@ $product_id = $_GET['id'];
             transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12)
         }
 
-        .box-img {
-            max-width: 300px
-        }
 
-        .thumb-sec {
-            max-width: 300px
-        }
 
-        @media (max-width: 576px) {
-            .box-img {
-                max-width: 200px
-            }
 
-            .thumb-sec {
-                max-width: 200px
-            }
-        }
-
-        .inner-gallery {
-            width: 60px;
-            height: 60px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            margin: 1px;
-            display: inline-block;
-            overflow: hidden;
-            -o-object-fit: cover;
-            object-fit: cover
-        }
 
         @media (max-width: 370px) {
             .box .btn {
@@ -252,10 +177,7 @@ $product_id = $_GET['id'];
             }
         }
 
-        .disclaimer {
-            font-size: .9rem;
-            color: darkgray
-        }
+
 
         .related h3 {
             font-weight: 900
@@ -267,10 +189,7 @@ $product_id = $_GET['id'];
             color: #fff
         }
 
-        .cr {
-            font-size: 250%;
-        !important;
-        }
+
     </style>
     <style>
         a {
@@ -280,134 +199,6 @@ $product_id = $_GET['id'];
 
         a:hover {
             color: green;
-        }
-
-        @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-        #team {
-            background: white !important;
-        }
-
-        .btn-primary:hover,
-        .btn-primary:focus {
-            background-color: #108d6f;
-            border-color: #108d6f;
-            box-shadow: none;
-            outline: none;
-        }
-
-        .btn-primary {
-            color: #fff;
-            background-color: #007b5e;
-            border-color: #007b5e;
-        }
-
-        section {
-            padding: 60px 0;
-        }
-
-        section .section-title {
-            text-align: center;
-            color: #007b5e;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-        }
-
-        #team .card {
-            border: none;
-            background: #ffffff;
-        }
-
-        .image-flip:hover .backside,
-        .image-flip.hover .backside {
-            -webkit-transform: rotateY(0deg);
-            -moz-transform: rotateY(0deg);
-            -o-transform: rotateY(0deg);
-            -ms-transform: rotateY(0deg);
-            transform: rotateY(0deg);
-            border-radius: .25rem;
-        }
-
-        .image-flip:hover .frontside,
-        .image-flip.hover .frontside {
-            -webkit-transform: rotateY(180deg);
-            -moz-transform: rotateY(180deg);
-            -o-transform: rotateY(180deg);
-            transform: rotateY(180deg);
-        }
-
-        .mainflip {
-            -webkit-transition: 1s;
-            -webkit-transform-style: preserve-3d;
-            -ms-transition: 1s;
-            -moz-transition: 1s;
-            -moz-transform: perspective(1000px);
-            -moz-transform-style: preserve-3d;
-            -ms-transform-style: preserve-3d;
-            transition: 1s;
-            transform-style: preserve-3d;
-            position: relative;
-        }
-
-        .frontside {
-            position: relative;
-            -webkit-transform: rotateY(0deg);
-            -ms-transform: rotateY(0deg);
-            z-index: 2;
-            margin-bottom: 30px;
-        }
-
-        .backside {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: white;
-            -webkit-transform: rotateY(-180deg);
-            -moz-transform: rotateY(-180deg);
-            -o-transform: rotateY(-180deg);
-            -ms-transform: rotateY(-180deg);
-            transform: rotateY(-180deg);
-            -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-            -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-            box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-        }
-
-        .frontside,
-        .backside {
-            -webkit-backface-visibility: hidden;
-            -moz-backface-visibility: hidden;
-            -ms-backface-visibility: hidden;
-            backface-visibility: hidden;
-            -webkit-transition: 1s;
-            -webkit-transform-style: preserve-3d;
-            -moz-transition: 1s;
-            -moz-transform-style: preserve-3d;
-            -o-transition: 1s;
-            -o-transform-style: preserve-3d;
-            -ms-transition: 1s;
-            -ms-transform-style: preserve-3d;
-            transition: 1s;
-            transform-style: preserve-3d;
-        }
-
-        .frontside .card,
-        .backside .card {
-            min-height: 312px;
-        }
-
-        .backside .card a {
-            font-size: 18px;
-            color: #007b5e !important;
-        }
-
-        .frontside .card .card-title,
-        .backside .card .card-title {
-            color: #007b5e !important;
-        }
-
-        .frontside .card .card-body img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
         }
 
         a {
@@ -429,12 +220,74 @@ $product_id = $_GET['id'];
         .comment-text {
             font-size: 12px
         }
-
-
-        .name {
-            color: green;
+        .chat-btn {
+            position: absolute;
+            right: 14px;
+            bottom: 30px;
+            cursor: pointer
         }
 
+        .chat-btn .close {
+            display: none
+        }
+
+        .chat-btn i {
+            transition: all 0.9s ease
+        }
+
+        #check:checked~.chat-btn i {
+            display: block;
+            pointer-events: auto;
+            transform: rotate(180deg)
+        }
+
+        #check:checked~.chat-btn .comment {
+            display: none
+        }
+
+        .chat-btn i {
+            font-size: 22px;
+            color: #fff !important
+        }
+
+        .chat-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+            background-color: limegreen;
+            color: #fff;
+            font-size: 22px;
+            border: none
+        }
+
+        .wrapper {
+            position: absolute;
+            right: 20px;
+            height: 200px;
+            bottom: 100px;
+            width: 300px;
+            background-color: #fff;
+            border-radius: 5px;
+            opacity: 0;
+            transition: all 0.4s
+        }
+
+        #check:checked~.wrapper {
+            opacity: 1
+        }
+
+        .chat-form {
+            padding: 15px
+        }
+        .chat-form textarea {
+            resize: none
+        }
+        #check {
+            display: none !important
+        }
 
     </style>
 </head>
@@ -494,6 +347,20 @@ $product_id = $_GET['id'];
                                     <p class="card-text"><small
                                                 class="text-muted"> <?php echo "Pe Fresh Food din " . $row["created_at"]; ?></small>
                                     </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        <input type="checkbox" id="check">
+                        <label class="chat-btn" for="check">
+                            <i class="fa fa-commenting-o comment"></i>
+                            <i class="fa fa-close close"></i>
+                        </label>
+                        <div class="wrapper">
+                            <div class="chat-form">
+                                <div class="header">
                                     <div class="title align-right">
                                         <i class="bi bi-telephone">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green"
@@ -502,10 +369,13 @@ $product_id = $_GET['id'];
                                             </svg><?php echo $row['telefon']; ?></i>
                                     </div>
                                 </div>
+                                <form action="../actions/insert_mesaje.php" method="post">
+                                    <input type="hidden" id="username" name="username" value="<?php echo $_SESSION['username'];?>">
+                                    <textarea name="mesaj" style="height: 50px" class="form-control" placeholder="Mesajul"></textarea>
+                                    <button class="btn btn-success">Trimite</button>
+                                </form>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
                 <?php
@@ -538,8 +408,6 @@ $product_id = $_GET['id'];
                 <!-- End box details info -->
                 <div class="options">
                     <p><?php echo $row['descriere']; ?></p>
-
-                    <!-- End action -->
                     <div class="description-lits align-self-auto ">
                         <div class="row">
                             <div class="col-sm-3">
@@ -570,14 +438,9 @@ $product_id = $_GET['id'];
 
                     </div>
                 </div>
-                <!--End Description-->
-                <!-- End row -->
-                <!-- End share -->
             </div>
-            <!-- End Options -->
         </div>
     </div>
-    <!-- End product-details-content -->
     <div class="hoz-tab-container ver2 space-padding-tb-30">
         <ul class="tabs center">
             <li class="item active" rel="description">Descriere</li>
@@ -665,6 +528,7 @@ $product_id = $_GET['id'];
 
 
                 </form>
+
             </div>
         </div>
 
@@ -694,7 +558,7 @@ $product_id = $_GET['id'];
 
     </div>
 </div>
-</div>
+
 
 <div class="title-text-v2 space-60">
     <h3>Produse din aceiasi categorie</h3>

@@ -29,10 +29,14 @@ $file_name = 'profil';
                         <div class="container">
                             <div class="text-right">
                                 <!--                    <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>-->
-                                <a href="../actions/user_edit_info.php"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <a href="../actions/user_edit_info.php">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                         class="bi bi-pencil-square" viewBox="0 0 16 16">
                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                    </svg></a>
+                                        <path fill-rule="evenodd"
+                                              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                    </svg>
+                                </a>
                             </div>
                             <?php
                             $id = $_SESSION['id'];
@@ -98,52 +102,8 @@ $file_name = 'profil';
                         </div>
                     </section>
                 </div>
-
-            </div>
-            <br>
-            <h5>Anunturile tale</h5>
-
-            <div class="row">
-                <?php
-                $user_id = $_SESSION["id"];
-                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.user_id='$user_id'");
-                while ($row = $query->fetch_assoc()) { ?>
-                    <div class="col-md-4 p-2">
-
-                        <?php
-                        $imageURL = '../../../uploads/' . $row["file_name"]; ?>
-                        <div class="card h-100 shadow-sm">
-                            <h5 class="card-title container"><?php echo $row['status'] ?></h5>
-                            <img src="<?php echo $imageURL; ?>" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <div class="clearfix mb-3"><span
-                                            class="float-start badge rounded-pill bg-success"><?php echo $row['titlu'] ?>
-                                        <span class="float-end"><a
-                                                    href="#"><?php echo $row['pret'] ?></a></span>
-                                </div>
-                                <h5 class="card-title"><?php echo $row['descriere'] ?></h5>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="d-grid gap-2 my-4"><a
-                                                    href="../front_pages/view_anunt.php?id=<?php echo $row['id'] ?>"
-                                                    class="btn btn-warning">Vezi oferta</a>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="d-grid gap-2 my-4"><a
-                                                    href="../actions/edit_orders.php?id=<?php echo $row['id'] ?>"
-                                                    class="btn btn-warning">Editează</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                <?php } ?>
             </div>
         </div>
-
     </main>
 </div>
 
@@ -272,6 +232,7 @@ $file_name = 'profil';
         font-size: 1rem;
         background-color: #f7810a !important
     }
+
     .related h3 {
         font-weight: 900
     }

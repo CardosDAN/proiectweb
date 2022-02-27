@@ -1,5 +1,3 @@
-
-
 <?php
 //include auth_session.php file on all user panel pages
 $file_name = '';
@@ -52,66 +50,139 @@ $file_name = '';
         <div class="container-fluid p-5">
 
             <div class="row">
-                <div class="col">
-                    <h2 class="h4">Lista de utilizatori</h2>
-                </div>
+                <ul class="nav nav-tabs tabs tabs-title" id="myTab" role="tablist">
+                    <li class="nav-item" rel="tab_1" role="presentation">
+                        <a class="nav-link  active" id="home-tab" data-bs-toggle="tab" href="#activ" role="tab"
+                           aria-controls="activ" aria-selected="true">Active</a>
+                    </li>
+                    <li class="nav-item" rel="tab_2" role="presentation">
+                        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#inactiv" role="tab"
+                           aria-controls="inactiv"
+                           aria-selected="false">Inactive</a>
+                    </li>
+                </ul>
 
             </div>
             <hr>
-            <div class="row justify-content-center">
-                <div class="form-group col-md-12">
-                    <div class="container-fluid ">
-                        <?php
-                        include ('../includes/db.php');
-                        $result = @mysqli_query($con, "SELECT * FROM anunturi") or die("Error: " . mysqli_error($con));
 
-                        // delete records
-                        if(isset($_POST['chk_id']))
-                        {
-                            $arr = $_POST['chk_id'];
-                            foreach ($arr as $id) {
-                                @mysqli_query($con,"DELETE FROM anunturi WHERE id = " . $id);
-                            }
-                            $msg = "Deleted Successfully!";
-                            header("Location: anunturi.php?msg=$msg");
-                        }
-                        ?>
-                        <form action="anunturi.php" method="post">
-                            <?php if (isset($_GET['msg'])) { ?>
-                                <p class="alert alert-success"><?php echo $_GET['msg']; ?></p>
-                            <?php } ?>
-                            <table class="table table-striped table-hover">
-                                <div class="text-right">
-                                    <input id="submit" name="submit" type="submit" class="btn btn-danger" value="Delete Selected Row(s)" />
-                                </div>
-
-                                <thead>
-                                <tr>
-                                    <th><input id="chk_all" name="chk_all" type="checkbox"  /></th>
-                                    <th>Titlu</th>
-                                    <th>Descriere</th>
-
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php while($row = mysqli_fetch_assoc($result)) { ?>
-                                    <tr>
-                                        <td><input name="chk_id[]" type="checkbox" class='chkbox' value="<?php echo $row['id']; ?>"/></td>
-                                        <td><?php echo $row['titlu']; ?></td>
-                                        <td><?php echo $row['descriere']; ?></td>
-
-
-                                    </tr>
-                                <?php } ?>
-                                </tbody>
-                            </table>
-
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="activ" role="tabpanel" aria-labelledby="activ-tab">
+                    <div class="text-right m-sm-2">
+                        <form action="" method="get" class="form-inline">
+                            <input class="form-control mr-sm-2" type="text" name="search" value="<?php if (isset($_GET['search'])) {
+                                echo $_GET['search'];
+                            } ?>" placeholder="Cauta">
+                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
                         </form>
                     </div>
+                    <div class="row">
+                        <?php
+                        if (isset($_GET['search'])) {
+                            $filtervalues = $_GET['search'];
+                            $user_id = $_SESSION['id'];
+                            $query = "SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.user_id = '$user_id' and CONCAT(titlu) LIKE '%$filtervalues%'";
+                            $query_run = mysqli_query($con, $query);
+
+                            if (mysqli_num_rows($query_run)) {
+                                foreach ($query_run as $row) {
+                                    ?>
+
+
+                                    <div class="card mb-3 " style="max-width: 540px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-4">
+                                                <?php
+                                                $imageURL = '../../../uploads/' . $row["file_name"]; ?>
+                                                <img src="<?php echo $imageURL; ?>" class="img-fluid rounded-start"
+                                                     alt="...">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <a href="../front_pages/view_anunt.php?id=<?php echo $row['id'] ?>"
+                                                        class="card-title"><?php echo $row['titlu'] ?></a>
+                                                    <p class="card-text"><?php echo $row['descriere'] ?></p>
+                                                    <p class="card-text text-right">
+                                                        <a href="../actions/edit_orders.php?id=<?php echo $row['id'] ?>"><i
+                                                                    class="bi bi-pencil-square py-2 "></i></a>
+                                                        <a href="../actions/delete_orders.php?id=<?php echo $row['id'] ?>"><i
+                                                                    class="bi bi-trash py-2 danger"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                            } else {
+                                ?>
+                                <tr>
+                                    <td colspan="3">Niciun anunt Activ </td>
+                                </tr>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </div>
                 </div>
+                <div class="tab-pane fade" id="inactiv" role="tabpanel" aria-labelledby="inactiv-tab">
+                    <div class="text-right m-sm-2">
+                        <form action="" method="get" class="form-inline">
+                            <input class="form-control mr-sm-2" type="text" name="search" value="<?php if (isset($_GET['search'])) {
+                                echo $_GET['search'];
+                            } ?>" placeholder="Cauta">
+                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <?php
+                        if (isset($_GET['search'])) {
+                            $filtervalues = $_GET['search'];
+                            $user_id = $_SESSION['id'];
+                            $query = "SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Inactiv' and anunturi.user_id = '$user_id' and CONCAT(titlu) LIKE '%$filtervalues%'";
+                            $query_run = mysqli_query($con, $query);
 
+                            if (mysqli_num_rows($query_run)) {
+                                foreach ($query_run as $row) {
+                                    ?>
+
+
+                                    <div class="card mb-3 " style="max-width: 540px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-4">
+                                                <?php
+                                                $imageURL = '../../../uploads/' . $row["file_name"]; ?>
+                                                <img src="<?php echo $imageURL; ?>" class="img-fluid rounded-start"
+                                                     alt="...">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h5 href="../front_pages/view_anunt.php?id=<?php echo $row['id'] ?>"
+                                                        class="card-title"><?php echo $row['titlu'] ?></h5>
+                                                    <p class="card-text"><?php echo $row['descriere'] ?></p>
+                                                    <p class="card-text text-right">
+                                                        <a href="../actions/edit_orders.php?id=<?php echo $row['id'] ?>"><i
+                                                                    class="bi bi-pencil-square py-2 "></i></a>
+                                                        <a href="../actions/delete_orders.php?id=<?php echo $row['id'] ?>"><i
+                                                                    class="bi bi-trash py-2 danger"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                            } else {
+                                ?>
+                                <tr>
+                                    <td colspan="3">Niciun anunt Inactiv</td>
+                                </tr>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
-
 
 
             <div class="row ">
@@ -131,16 +202,6 @@ $file_name = '';
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
 </script>
 <script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#chk_all').click(function(){
-            if(this.checked)
-                $(".chkbox").prop("checked", true);
-            else
-                $(".chkbox").prop("checked", false);
-        });
-    });
-</script>
 <script src="../../assets/app/js/main.js"></script>
 </body>
 
