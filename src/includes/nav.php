@@ -195,33 +195,22 @@ include("auth_session.php");
 
                 </div>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-center" href="../cont_page/notificari.php">Vezi toate notificarile</a>
+                <a class="dropdown-item text-center" href="../cont_page/rating.php">Vezi toate notificarile</a>
             </div>
         </div>
         <div class="dropdown">
             <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-envelope"></i>
-                <span class="badge badge-pill badge-success notification">7</span>
+                <span class="badge badge-pill badge-success notification count_message"></span>
             </a>
             <div class="dropdown-menu messages" aria-labelledby="dropdownMenuMessage">
-                <a class="dropdown-item" href="#">
-                    <div class="message-content">
-                        <div class="pic">
-                            <img src="" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="message-title">
-                                <strong> Jhon doe</strong>
-                            </div>
-                            <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. In totam explicabo
-                            </div>
-                        </div>
+                <a class="dropdown-item-message" href="#">
+                    <div class="content">
                     </div>
 
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-center" href="#">View all messages</a>
+                <a class="dropdown-item text-center" href="../cont_page/message.php">View all messages</a>
 
             </div>
         </div>
@@ -276,6 +265,34 @@ include("auth_session.php");
 
         setInterval(function () {
             load_unseen_notification();
+        }, 5000);
+
+    });
+    $(document).ready(function () {
+        function load_unseen_message(view = '') {
+            $.ajax({
+                url: "../actions/fetch_message.php",
+                method: "POST",
+                data: {view: view},
+                dataType: "json",
+                success: function (data) {
+                    $('.dropdown-item-message').html(data.message);
+                    if (data.unseen_message > 0) {
+                        $('.count_message').html(data.unseen_message);
+                    }
+                }
+            });
+        }
+
+        load_unseen_message();
+
+        $(document).on('click', '.dropdown', function () {
+            $('.count_message').html('');
+            load_unseen_message('yes');
+        });
+
+        setInterval(function () {
+            load_unseen_message();
         }, 5000);
 
     });

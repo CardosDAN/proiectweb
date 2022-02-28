@@ -370,7 +370,7 @@ $product_id = $_GET['id'];
                                     </div>
                                 </div>
                                 <form action="../actions/insert_mesaje.php" method="post">
-                                    <input type="hidden" id="username" name="username" value="<?php echo $_SESSION['username'];?>">
+                                    <input type="hidden" id="username" name="product_id" value="<?= $product_id?>">
                                     <textarea name="mesaj" style="height: 50px" class="form-control" placeholder="Mesajul"></textarea>
                                     <button class="btn btn-success">Trimite</button>
                                 </form>
