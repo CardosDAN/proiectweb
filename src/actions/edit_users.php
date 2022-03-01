@@ -39,7 +39,9 @@ include("../includes/db.php");
                         $edit = mysqli_query($con, "update users set username='{$username}', email='{$email}', phone='{$phone}', password='{$password}', user_level_id='{$user_level_id}' where id='{$id}'");
 
                         if ($edit) {
+                            header('Location: ' . $_SERVER['HTTP_REFERER']);
                             exit;
+
                         } else {
                             echo mysqli_error();
                         }

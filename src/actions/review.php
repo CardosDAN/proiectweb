@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($con);
     }
-//    header("location: ../../view_anunt.php");
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+
 }
 ?>

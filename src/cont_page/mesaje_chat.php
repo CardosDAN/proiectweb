@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php $product_id = $_GET['id_anunt'];
+$id_client = $_GET['id_client'];
+?>
 
 <?php include("../includes/head.php"); ?>
 
@@ -324,14 +326,6 @@
         </a>
         <br>
         <div class="container-fluid">
-            <?php
-            $sql = "SELECT * FROM anunturi";
-            $result = mysqli_query($con, $sql);
-            if ($row = mysqli_fetch_assoc($result)) {
-
-                $product_id = $row['id'];
-            }
-            ?>
 
             <div class="padding">
                 <div class="row container">
@@ -340,10 +334,12 @@
                             <div class="ps-container ps-theme-default ps-active-y" id="chat-content"
                                  style="overflow-y: scroll !important; height:400px !important;">
                                 <?php
-                                $sql = "SELECT DISTINCT (mesaje.id), mesaje.mesaj,mesaje.time,mesaje.expeditor FROM mesaje,anunturi,users where (anunturi.id= mesaje.destinatar and users.id = anunturi.user_id)  or expeditor=".$_SESSION['id']. " ORDER BY mesaje.id";
+                                $user_id = $_SESSION['id'];
+                                $sql = "SELECT DISTINCT (mesaje.id), mesaje.mesaj,mesaje.time,mesaje.raspuns FROM mesaje,anunturi,users where mesaje.id_anunt = '$product_id' and mesaje.id_client = '$id_client'  ORDER BY mesaje.id";
+
                                 $result = mysqli_query($con, $sql);
                                 while ($row = mysqli_fetch_assoc($result)) { ?>
-                                    <div class="media media-chat <?= $row['expeditor'] ==$_SESSION['id'] ? 'media-chat-reverse': '' ?> ">
+                                    <div class="media media-chat <?= $row['raspuns'] == 0 ? 'media-chat-reverse': '' ?> ">
                                         <img class="avatar"
                                              src="https://img.icons8.com/color/36/000000/administrator-male.png"
                                              alt="...">
@@ -372,6 +368,7 @@
                                  src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
                             <form action="../actions/insert_mesaje.php" method="post">
                                 <input type="hidden" id="username" name="product_id" value="<?= $product_id ?>">
+                                <input type="hidden" id="username" name="id_client" value="<?= $id_client ?>">
                                 <input class="publisher-input" type="text" name="mesaj" placeholder="Mesajul tau">
                                 <input type="submit" class="publisher-btn text-info" value="Trimite">
                             </form>

@@ -8,7 +8,7 @@ if(isset($_POST['view'])){
         $update_query = "UPDATE product_rating SET status = 1 WHERE status=0 and proprietar_anunt = '$user_id'";
         mysqli_query($con, $update_query);
     }
-    $query = "SELECT * FROM product_rating where proprietar_anunt = '$user_id' ORDER BY id ";
+    $query = "SELECT * FROM product_rating where proprietar_anunt = '$user_id' and status=0 ORDER BY id ";
     $result = mysqli_query($con, $query);
     $output = '';
     if(mysqli_num_rows($result) > 0)

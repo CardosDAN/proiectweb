@@ -8,7 +8,7 @@ if($on)
 {
     mysqli_close($con);
 
-    header("location: ../cont_page/orders_table.php");
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
 }
 else

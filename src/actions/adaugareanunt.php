@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     $con->close();
 
-//    header("location: ../home.php");
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 }
 

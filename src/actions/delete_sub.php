@@ -8,7 +8,7 @@ $del = mysqli_query($con,"delete from contact_us where id = '$id'"); // delete q
 if($del)
 {
     mysqli_close($con); // Close connection
-    header("location:../users_table.php"); // redirects to all records page
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
 }
 else

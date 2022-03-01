@@ -18,6 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     $con->close();
 
-    header("location: ../front_pages/contact_us_table.php");
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 }

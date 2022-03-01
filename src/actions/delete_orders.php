@@ -8,7 +8,7 @@ $del = mysqli_query($con,"delete from anunturi where id = '$id'"); // delete que
 if($del)
 {
     mysqli_close($con); // Close connection
-    header("location:../orders_table.php"); // redirects to all records page
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
 }
 else

@@ -29,7 +29,7 @@ $file_name = '';
                 include "../includes/db.php";
 
                 $user_id = $_SESSION['id'];
-                $result = @mysqli_query($con, "SELECT mesaje.*,anunturi.*,users.* FROM mesaje,anunturi,users where anunturi.id = mesaje.destinatar and anunturi.user_id = '$user_id' and users.id=anunturi.user_id") or die("Error: " . mysqli_error($con));
+                $result = @mysqli_query($con, "SELECT users.username, anunturi.titlu, mesaje.id_anunt, mesaje.id_client FROM mesaje,anunturi,users where mesaje.id_anunt = anunturi.id and users.id=mesaje.id_client GROUP BY users.id, anunturi.id") or die("Error: " . mysqli_error($con));
 
 
                 if (isset($_POST['chk_id'])) {
@@ -51,7 +51,7 @@ $file_name = '';
                     <table class="table table-striped table-borderless">
                         <thead>
                         <tr>
-                            <th><input id="chk_all" name="chk_all" type="checkbox"/>Tot</th>
+                            <th><input id="chk_all" name="chk_all" type="checkbox"/>  &nbsp;Tot</th>
                             <th>Nume utilizator</th>
                             <th>Anunt</th>
 
@@ -66,9 +66,9 @@ $file_name = '';
                                 </td>
                                 <td><?php echo $row['username']; ?></td>
                                 <td>
-                                    <a href="mesaje_chat.php?id=<?php echo $row['id'] ?>"><?php echo $row['titlu']; ?></a>
+                                    <a href="mesaje_chat.php?id_anunt=<?= $row['id_anunt'] ?> &id_client=<?= $row['id_client'] ?> "><?php echo $row['titlu']; ?></a>
                                 </td>
-                                <td><?php echo $row['created_at']; ?></td>
+
                             </tr>
                         <?php } ?>
                         </tbody>

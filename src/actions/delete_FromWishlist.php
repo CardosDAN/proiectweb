@@ -8,7 +8,7 @@ $del = mysqli_query($con,"delete from wishlist where id = '$id'");
 if($del)
 {
     mysqli_close($con);
-    header("location: ../front_pages/wishlist.php");
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
 }
 else

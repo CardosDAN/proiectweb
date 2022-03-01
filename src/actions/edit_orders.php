@@ -92,6 +92,7 @@ include("../includes/db.php");
                         $sql = "Update anunturi set titlu='$titlu',telefon='$telefon',adresa='$adresa',pret='$pret',descriere='$descriere',image_id='$image_id' where id='$id')";
                         if ($con->query($sql) === TRUE) {
                             echo "Record updated successfully";
+                            header('Location: ' . $_SERVER['HTTP_REFERER']);
                         } else {
                             echo "Error updating record: " . $con->error;
                         }

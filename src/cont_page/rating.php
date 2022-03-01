@@ -28,7 +28,7 @@ $file_name = 'settings';
                 <div class="col-md-10">
                     <?php
                     $user_id = $_SESSION['id'];
-                    $query = $con->query("SELECT * FROM images,anunturi,product_rating where images.id=anunturi.image_id and anunturi.user_id = '$user_id' and anunturi.status='Activ' and anunturi.id=product_rating.product_id");
+                    $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.user_id = '$user_id' and anunturi.status='Activ'");
                     while ($row = $query->fetch_assoc()) { ?>
                         <div class="card mb-3">
                             <div class="row">
@@ -41,25 +41,30 @@ $file_name = 'settings';
                                         <h5 class="card-title"><?php echo $row['titlu'] ?></h5>
                                         <hr>
                                         <p class="card-text">
+                                        <?php
+                                        $query2 = $con->query("SELECT * FROM product_rating where product_rating.product_id =  ".$row['id']);
+                                        while ($row2 = $query2->fetch_assoc()) { ?>
+
                                         <div class="row">
                                             <div class="col-md-auto">
-                                                <span class="d-block font-weight-bold name"><?php echo $row['name']; ?></span>
+                                                <span class="d-block font-weight-bold name"><?php echo $row2['name']; ?></span>
                                             </div>
                                             <div class="col">
-                                                <span class="date text-black-50"><?php echo $row['email']; ?></span>
+                                                <span class="date text-black-50"><?php echo $row2['email']; ?></span>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-auto">
-                                                <p class="comment-text"><?php echo $row['review']; ?></p>
+                                                <p class="comment-text"><?php echo $row2['review']; ?></p>
 
                                             </div>
                                             <div class="col">
                                                 <div class="rateyo" id="rating"
-                                                     data-rateyo-rating="<?php echo $row['rate']; ?>">
+                                                     data-rateyo-rating="<?php echo $row2['rate']; ?>">
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php } ?>
                                         </p>
                                     </div>
                                 </div>
