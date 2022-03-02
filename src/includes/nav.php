@@ -184,7 +184,7 @@ include("auth_session.php");
 
     <div class="sidebar-footer">
         <div class="dropdown ">
-            <a href="#" class=" dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class=" dropdown" data-toggle="dropdown">
                 <span class="count" >
 
                 </span>
@@ -194,8 +194,7 @@ include("auth_session.php");
                 <div class="dropdown-item-text">
 
                 </div>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-center" href="../cont_page/rating.php">Vezi toate notificarile</a>
+
             </div>
         </div>
         <div class="dropdown">
@@ -258,7 +257,7 @@ include("auth_session.php");
 
         load_unseen_notification();
 
-        $(document).on('click', '.dropdown-toggle', function () {
+        $(document).on('click', '.dropdown', function () {
             $('.count').html('');
             load_unseen_notification('yes');
         });

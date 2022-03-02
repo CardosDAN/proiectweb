@@ -17,7 +17,7 @@ if(isset($_POST['view'])){
         {
             $output .= '
    <li>
-   <a href="#">
+   <a href="../cont_page/rating.php">
    <strong>'.$row["email"].'</strong><br />
    <small><em>'.$row["review"].'</em></small>
    </a>

@@ -112,10 +112,10 @@ include "../includes/auth_session.php";
                 <br>
                 <div class="mb-3">
                     <div class="form-row">
-                        <div class="col-5">
-                            <input type="text" name="adresa" class="form-control" placeholder="Adresa">
-                        </div>
                         <div class="col">
+                            <input type="text" name="adresa" class="form-control" placeholder="Primaria Jibou, Strada Libertății, Jibou">
+                        </div>
+                        <div class="col-md-2">
                             <input type="number" name="pret" class="form-control" placeholder="Pret">
                         </div>
                     </div>

@@ -7,7 +7,7 @@ if (isset($_POST['view'])) {
         $update_query = "UPDATE mesaje SET status = 1 WHERE status=0";
         mysqli_query($con, $update_query);
     }
-    $query = "SELECT DISTINCT mesaje.id, users.username, mesaje.mesaj FROM mesaje,anunturi,users where mesaje.destinatar = anunturi.id and anunturi.user_id = '$user_id' and mesaje.status = 0 AND users.id = mesaje.expeditor ORDER BY mesaje.id;";
+    $query = "SELECT DISTINCT mesaje.id, users.username, mesaje.mesaj FROM mesaje,anunturi,users where mesaje.id_anunt = anunturi.id and anunturi.user_id = '$user_id' and mesaje.status = 0 AND users.id = mesaje.id_client ORDER BY mesaje.id;";
     $result = mysqli_query($con, $query);
     $output = '';
     if (mysqli_num_rows($result) > 0) {
@@ -27,7 +27,7 @@ if (isset($_POST['view'])) {
     }
 
 
-    $status_query = "SELECT * FROM mesaje,anunturi WHERE mesaje.status=0 and anunturi.id = mesaje.destinatar and anunturi.user_id = '$user_id' ";
+    $status_query = "SELECT * FROM mesaje,anunturi WHERE mesaje.status=0 and anunturi.id = mesaje.id_anunt and anunturi.user_id = '$user_id' ";
     $result_query = mysqli_query($con, $status_query);
     $count = mysqli_num_rows($result_query);
     $data = array(
