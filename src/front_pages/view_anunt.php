@@ -3,7 +3,20 @@ $file_name = "view_anunt";
 //include auth_session.php file on all user panel pages
 include "../includes/auth_session.php";
 $product_id = $_GET['id'];
+$sql = "UPDATE anunturi SET visits = visits+1 WHERE anunturi.user_id != ".$_SESSION['id']." and id =".$product_id;
 
+$con->query($sql);
+
+$sql = "SELECT visits FROM anunturi WHERE id =".$product_id;
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $visits = $row["visits"];
+    }
+} else {
+    echo "no results";
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -388,15 +401,22 @@ $product_id = $_GET['id'];
             <div class="col-md-6 ">
                 <div class="box-details-info">
                     <div class="product-name">
+                        <div class="float-right">
+                            <p><i class="bi bi-eye-fill"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                    </svg></i><?php echo $visits." Vizualizari"; ?></p>
+                        </div>
                         <?php
 
-                        $sql = "SELECT * FROM anunturi where  id=" . $product_id;
+                        $sql = "SELECT * FROM anunturi where  id=".$product_id;
                         $result = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($result)) {
                         $categorie = $row['categorie'];
                         $proprietar_anunt = $row['user_id']
                         ?>
                         <h1><?php echo $row['titlu']; ?></h1>
+
                     </div>
                     <!-- End product-name -->
 
@@ -502,28 +522,29 @@ $product_id = $_GET['id'];
                         <input type="hidden" name="rating">
                         <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
                         <input type="hidden" name="proprietar_anunt" value="<?php echo $proprietar_anunt ?>">
-
-                        <div class="row">
-                            <div class="col">
-                                <input type="text" name="name" class="form-control" placeholder="Name">
-                            </div>
-                            <div class="col">
-                                <input type="email" name="email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                        <br>
                         <div class="rateyo" id="rating"
                              data-rateyo-rating="0"
                              data-rateyo-num-stars="5"
                              data-rateyo-score="3">
                         </div>
                         <br>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" disabled name="<?= $_SESSION['username']; ?>" class="form-control" placeholder="<?= $_SESSION['username']; ?>">
+                            </div>
+                            <div class="col">
+                                <input type="email" name="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <br>
+
+                        <br>
                         <div>
                                 <textarea class="form-control" type="text" name="review"
                                           id="exampleFormControlTextarea1" placeholder="Review" rows="3"></textarea>
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-primary" name="add">Post review</button>
+                        <button type="submit" class="btn btn-success" name="add">Post review</button>
                     </form>
                 </div>
 

@@ -1,0 +1,586 @@
+<?php
+
+$file_name = '';
+$product_id = $_GET['id'];
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css"/>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+<style>
+    /*.grey-bg {*/
+    /*    background-color: #F5F7FA;*/
+    /*}*/
+
+
+</style>
+<?php include("../includes/head.php"); ?>
+
+<body>
+<div class="page-wrapper default-theme sidebar-bg bg1 toggled">
+    <?php include("../includes/nav.php"); ?>
+    <!-- page-content  -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        :root {
+            --font1: 'Heebo', sans-serif;
+            --font2: 'Fira Sans Extra Condensed', sans-serif;
+            --font3: 'Roboto', sans-serif
+        }
+
+        /*body {*/
+        /*    font-family: var(--font3);*/
+        /*    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)*/
+        /*}*/
+
+        h2 {
+            font-weight: 900
+        }
+
+        .container-fluid {
+            max-width: 1200px
+        }
+
+        .card {
+            background: #fff;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+            transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+            border: 0;
+            border-radius: 1rem
+        }
+
+        .card-img,
+        .card-img-top {
+            border-top-left-radius: calc(1rem - 1px);
+            border-top-right-radius: calc(1rem - 1px)
+        }
+
+        .card h5 {
+            overflow: hidden;
+            height: 56px;
+            font-weight: 900;
+            font-size: 1rem
+        }
+
+        .card-img-top {
+            width: 100%;
+            max-height: 180px;
+            object-fit: contain;
+            padding: 30px
+        }
+
+        .card h2 {
+            font-size: 1rem
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)
+        }
+
+
+
+        .top-right span {
+            display: inline-block;
+            vertical-align: middle
+        }
+
+        @media (max-width: 768px) {
+            .card-img-top {
+                max-height: 250px
+            }
+        }
+
+        .btn {
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding: 15px 50px 5px 50px
+        }
+
+        .box .btn {
+            font-size: 1.5rem
+        }
+
+        @media (max-width: 1025px) {
+            .btn {
+                padding: 15px 40px 5px 40px
+            }
+        }
+
+        @media (max-width: 250px) {
+            .btn {
+                padding: 15px 30px 5px 30px
+            }
+        }
+
+        .btn-warning {
+            background: none #f7810a;
+            color: #ffffff;
+            fill: #ffffff;
+            border: none;
+            text-decoration: none;
+            outline: 0;
+            box-shadow: -1px 6px 19px rgba(247, 129, 10, 0.25);
+            border-radius: 100px
+        }
+
+        .btn-warning:hover {
+            background: none #ff962b;
+            color: #ffffff;
+            box-shadow: -1px 6px 13px rgba(255, 150, 43, 0.35)
+        }
+
+        .bg-success {
+            font-size: 1rem;
+            background-color: #f7810a !important
+        }
+
+
+        .price-hp {
+            font-size: 1rem;
+            font-weight: 600;
+            color: darkgray
+        }
+
+
+
+        .box {
+            border-radius: 1rem;
+            background: #fff;
+            box-shadow: 0 6px 10px rgb(0 0 0 / 8%), 0 0 6px rgb(0 0 0 / 5%);
+            transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12)
+        }
+
+
+
+
+
+        @media (max-width: 370px) {
+            .box .btn {
+                padding: 5px 40px 5px 40px;
+                font-size: 1rem
+            }
+        }
+
+
+
+        .related h3 {
+            font-weight: 900
+        }
+
+        footer {
+            background: #212529;
+            height: 80px;
+            color: #fff
+        }
+
+
+    </style>
+    <style>
+        a {
+            -webkit-transition: color 2s;
+            transition: color 2s;
+        }
+
+        a:hover {
+            color: green;
+        }
+
+        a {
+            -webkit-transition: color 2s;
+            transition: color 2s;
+        }
+
+        .avatar {
+            vertical-align: middle;
+            width: 90px;
+            height: 90px;
+            border-radius: 90%;
+        }
+
+        .date {
+            font-size: 11px
+        }
+
+        .comment-text {
+            font-size: 12px
+        }
+        .chat-btn {
+            position: absolute;
+            right: 14px;
+            bottom: 30px;
+            cursor: pointer
+        }
+
+        .chat-btn .close {
+            display: none
+        }
+
+        .chat-btn i {
+            transition: all 0.9s ease
+        }
+
+        #check:checked~.chat-btn i {
+            display: block;
+            pointer-events: auto;
+            transform: rotate(180deg)
+        }
+
+        #check:checked~.chat-btn .comment {
+            display: none
+        }
+
+        .chat-btn i {
+            font-size: 22px;
+            color: #fff !important
+        }
+
+        .chat-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+            background-color: limegreen;
+            color: #fff;
+            font-size: 22px;
+            border: none
+        }
+
+        .wrapper {
+            position: absolute;
+            right: 20px;
+            height: 200px;
+            bottom: 100px;
+            width: 300px;
+            background-color: #fff;
+            border-radius: 5px;
+            opacity: 0;
+            transition: all 0.4s
+        }
+
+        #check:checked~.wrapper {
+            opacity: 1
+        }
+
+        .chat-form {
+            padding: 15px
+        }
+        .chat-form textarea {
+            resize: none
+        }
+        #check {
+            display: none !important
+        }
+
+    </style>
+    <main class="page-content pt-2">
+        <div id="overlay" class="overlay"></div>
+        <a id="toggle-sidebar" class="btn btn-secondary rounded-0 sticky-top" href="#">
+            <span><i class="bi bi-list"></i></span>
+        </a>
+        <div class="grey-bg container-fluid">
+            <section id="minimal-statistics">
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <?php
+                                    $user_id = $_SESSION['id'];
+                                    $sql1 = "SELECT count(id) FROM anunturi where anunturi.user_id = '$user_id'";
+                                    $result = $con->query($sql1);
+
+                                    if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    while ($row = $result->fetch_assoc()) { ?>
+                                    <div class="media d-flex">
+                                        <div class="align-self-center">
+                                            <i class="icon-book-open primary font-large-2 float-right"></i>
+                                        </div>
+                                        <div class="media-body text-right">
+                                            <h3><?php echo $row["count(id)"]; ?></h3>
+                                            <span>Anunturi postate de tine</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php }
+                                } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <?php
+                                    $user_id = $_SESSION['id'];
+                                    $result = $con->query("SELECT DISTINCT categorie FROM anunturi where anunturi.user_id = '$user_id' ORDER BY categorie");
+                                    $row_cnt = $result->num_rows;
+                                    ?>
+                                    <div class="media d-flex">
+                                        <div class="media-body text-left">
+                                            <h3 class="primary"><?php printf($row_cnt); ?></h3>
+                                            <span>Categorii anunturi</span>
+                                        </div>
+                                        <div class="align-self-center">
+                                            <i class="icon-grid primary font-large-2 float-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <?php
+                                    $user_id = $_SESSION['id'];
+                                    $sql1 = "SELECT distinct visits FROM anunturi where anunturi.user_id = '$user_id'";
+                                    $result = $con->query($sql1);
+
+                                    if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    while ($row = $result->fetch_assoc()) { ?>
+                                    <div class="media d-flex">
+                                        <div class="align-self-center">
+                                            <i class="icon-eye primary font-large-2 float-right"></i>
+                                        </div>
+                                        <div class="media-body text-right">
+                                            <h3><?php echo $row["visits"]; ?></h3>
+                                            <span>Vizualizari totale</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php }
+                                } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <br>
+        <div class="container-fluid p-5">
+            <div class="row justify-content-center">
+                <div class="form-group col-md-12">
+                    <div class="container-fluid ">
+                        <div class=" bg-light rounded my-2 py-2">
+                            <div class="product-details-content row justify-content-between">
+                                <div class="col-md-5">
+                                    <div class="card mb-lg-3">
+                                        <?php
+
+                                        $query = $con->query("SELECT * FROM images,anunturi where  images.id=anunturi.image_id and anunturi.id=" . $product_id);
+
+                                        if ($query->num_rows > 0) {
+                                            while ($row = $query->fetch_assoc()) {
+                                                $imageURL = '../../../uploads/' . $row["file_name"];
+                                                $user_id = $row["user_id"];
+                                                ?>
+                                                <img src="<?php echo $imageURL; ?>" style="height: 325px;"/>
+                                            <?php }
+                                        } else { ?>
+                                            <p>No image(s) found...</p>
+                                        <?php } ?>
+                                        <div class="card-body">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <?php
+                                                        $query = $con->query("SELECT * FROM images,users where users.id='{$user_id}' and images.id=users.image_id ");
+
+                                                        if ($query->num_rows > 0) {
+                                                            while ($row = $query->fetch_assoc()) {
+                                                                $imageURL = '../../../uploads/' . $row["file_name"];
+                                                                ?>
+                                                                <img class=" avatar" src="<?php echo $imageURL; ?>"
+                                                                     data-holder-rendered="true"/>
+                                                            <?php }
+                                                        } else { ?>
+                                                            <p>No image(s) found...</p>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="col">
+                                                        <?php $id_anunt = $_GET['id']; ?>
+                                                        <?php
+                                                        $sql = "SELECT * FROM anunturi,users where anunturi.id='$id_anunt' and users.id=anunturi.user_id";
+                                                        $result = mysqli_query($con, $sql);
+                                                        while ($row = mysqli_fetch_assoc($result)) { ?>
+                                                        <?php echo $row["username"]; ?>
+                                                        <p class="card-text"><small
+                                                                    class="text-muted"> <?php echo "Pe Fresh Food din " . $row["created_at"]; ?></small>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    }
+                                    ?>
+
+                                </div>
+                                <?php
+
+                                $sql = "SELECT * FROM anunturi where  id=".$product_id;
+                                $result = mysqli_query($con, $sql);
+                                while ($row = mysqli_fetch_assoc($result)) {?>
+                                <!-- End col-md-6 -->
+                                <div class="col-md-6 ">
+                                    <div class="box-details-info">
+                                        <div class="product-name">
+                                            <h1><?php echo $row['titlu']; ?></h1>
+
+                                        </div>
+                                        <!-- End product-name -->
+
+                                        <div class="wrap-price">
+                                            <p class="price"><?php echo $row['pret']; ?></p>
+                                        </div>
+
+                                        <!-- End Price -->
+                                    </div>
+                                    <!-- End box details info -->
+                                    <div class="options">
+                                        <p><?php echo $row['descriere']; ?></p>
+                                        <div class="description-lits align-self-auto ">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <i class="bi bi-geo-alt">
+                                                        <?php echo "Locatie " . $row['adresa']; ?> </i>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <?php
+                                                    $address = $row['adresa'];;
+                                                    echo '<iframe frameborder="0" src="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=' . str_replace(",", "", str_replace(" ", "+", $address)) . '&z=14&output=embed"></iframe>'; ?>
+                                                </div>
+                                            </div>
+                                            <div class="container-fluid">
+                                                <i class="bi bi-eye-fill">
+                                                    <?= $row['visits'].' Vizualizari'; ?>
+                                                </i>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="form-group col-md-12">
+                    <div class="col">
+                        <hr>
+                        <p>Alte anunturi postate de tine</p>
+                        <hr>
+                        <div class="container-fluid ">
+                            <div class=" bg-light rounded my-2 py-2">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>id</th>
+                                        <th>Titlu</th>
+                                        <th>Nr telefon</th>
+                                        <th>Adresa</th>
+                                        <th>Status</th>
+                                        <th>Categorie</th>
+                                        <th>Actiuni</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    include "../includes/db.php";
+                                    $user_id = $_SESSION['id'];
+                                    $sql = "SELECT * FROM anunturi where anunturi.user_id = '$user_id' ";
+                                    $res = $con->query($sql);
+                                    while ($row = $res->fetch_assoc()) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $row["id"] ?></td>
+                                            <td><?php echo $row["titlu"] ?></td>
+                                            <td><?php echo $row["telefon"] ?></td>
+                                            <td><?php echo $row["adresa"] ?></td>
+                                            <td><?php echo $row["status"] ?></td>
+                                            <td><?php echo $row["categorie"] ?></td>
+                                            <td>
+
+                                                <a class="btn btn-outline-danger"
+                                                   href="../actions/delete_orders.php?id=<?php echo $row['id']; ?>">
+                                                    <i class=" bi bi-trash"></i>
+                                                </a>
+                                                <a class="btn btn-outline-primary"
+                                                   href="../actions/edit_orders.php?id=<?php echo $row['id']; ?>">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+                                                <a class="btn btn-outline-warning"
+                                                   href="../actions/add_off.php?id=<?php echo $row['id']; ?>">
+                                                    <i class="bi bi-toggle-off"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('table').DataTable();
+                            })
+                        </script>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</div>
+
+<!-- page-wrapper -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+</script>
+<script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../assets/app/js/main.js"></script>
+</body>
+
+</html>

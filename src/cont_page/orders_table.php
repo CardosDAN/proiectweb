@@ -33,7 +33,7 @@ $file_name = 'orders_table';
 
 </style>
 <?php include("../includes/head.php"); ?>
-
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
     <?php include("../includes/nav.php"); ?>
@@ -48,106 +48,41 @@ $file_name = 'orders_table';
             <section id="minimal-statistics">
                 <div class="row">
                     <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <?php
 
-                                    $sql1 = "SELECT * FROM users ORDER BY id DESC limit 1";
-                                    $result = $con->query($sql1);
+                        <script type="text/javascript">
+                            google.charts.load("current", {packages: ["corechart"]});
+                            google.charts.setOnLoadCallback(drawChart);
+                            <?php
+                            include "../../src/includes/db.php";
 
-                                    if ($result->num_rows > 0) {
-                                        // output data of each row
-                                        while ($row = $result->fetch_assoc()) { ?>
-                                            <div class="media d-flex">
-                                                <div class="media-body text-left">
-                                                    <h3 class="success"><?php echo $row["id"]; ?></h3>
-                                                    <span>Users</span>
-                                                </div>
-                                                <div class="align-self-center">
-                                                    <i class="icon-user success font-large-2 float-right"></i>
-                                                </div>
-                                            </div>
-                                        <?php }
-                                    } ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <?php
 
-                                    $sql1 = "SELECT * FROM anunturi ORDER BY id DESC limit 1";
-                                    $result = $con->query($sql1);
+                            $sql1 = "CALL `get_products_status`();";
+                            $result = $con->query($sql1);
 
-                                    if ($result->num_rows > 0) {
-                                    // output data of each row
-                                    while ($row = $result->fetch_assoc()) { ?>
-                                    <div class="media d-flex">
-                                        <div class="align-self-center">
-                                            <i class="icon-speech warning font-large-2 float-left"></i>
-                                        </div>
-                                        <div class="media-body text-right">
-                                            <h3><?php echo $row["id"]; ?></h3>
-                                            <span>Anunturi</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php }
-                                } ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <?php
+                            if ($result->num_rows > 0) {
 
-                                    $sql1 = "SELECT * FROM product_rating ORDER BY id DESC limit 1";
-                                    $result = $con->query($sql1);
+                            while ($row = $result->fetch_assoc()) { ?>
+                            function drawChart() {
+                                var data = google.visualization.arrayToDataTable([
+                                    ['Task', 'Hours per Day'],
+                                    ['Active', <?= $row['active'] ?>],
+                                    ['Inactive', <?= $row['inactive'] ?>]
+                                ]);
 
-                                    if ($result->num_rows > 0) {
-                                    // output data of each row
-                                    while ($row = $result->fetch_assoc()) { ?>
-                                    <div class="media d-flex">
-                                        <div class="media-body text-left">
-                                            <h3 class="warning"><?php echo $row["id"]; ?></h3>
-                                            <span>Rating anunturi</span>
-                                        </div>
-                                        <div class="align-self-center">
-                                            <i class="icon-bubbles warning font-large-2 float-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php }
-                                } ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <?php
-                                    $result = $con->query("SELECT DISTINCT categorie FROM anunturi ORDER BY categorie");
-                                    $row_cnt = $result->num_rows;
-                                    ?>
-                                    <div class="media d-flex">
-                                        <div class="media-body text-left">
-                                            <h3 class="primary"><?php printf($row_cnt); ?></h3>
-                                            <span>Categorii anunturi</span>
-                                        </div>
-                                        <div class="align-self-center">
-                                            <i class="icon-book-open primary font-large-2 float-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                var options = {
+                                    title: 'Anunturi',
+                                    is3D: true,
+                                };
+
+                                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                                chart.draw(data, options);
+                            }
+                            <?php
+                            }
+                            }
+                            ?>
+                        </script>
+                        <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
                     </div>
                 </div>
             </section>
@@ -230,14 +165,53 @@ $file_name = 'orders_table';
 
             <div class="row ">
                 <div class="form-group col-md-12">
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.setOnLoadCallback(drawStuff);
+                        <?php
+                        include "../../src/includes/db.php";
+                        $result = $con->query("SELECT DISTINCT categorie FROM anunturi");
+                        $row_cnt = $result->num_rows;
+                        $result1 = $con->query("SELECT DISTINCT sub_categorie FROM anunturi");
+                        $row_cnt1 = $result1->num_rows;
+                        $result2 = $con->query("SELECT DISTINCT id FROM anunturi");
+                        $row_cnt2 = $result2->num_rows;?>
+                        function drawStuff() {
+                            var data = new google.visualization.arrayToDataTable([
+                                ['', ''],
+                                ["Numar Categori", <?php printf($row_cnt); ?>],
+                                ["Numar sub categori", <?php printf($row_cnt1); ?>],
+                                ["Numar anunturi totale", <?php printf($row_cnt2); ?>]
+                            ]);
 
+                            var options = {
+                                width: 500,
+                                legend: { position: 'none' },
+                                chart: { title: 'Informati anunturi',
+                                    subtitle: '' },
+                                bars: 'horizontal',
+                                axes: {
+                                    x: {
+                                        0: { side: 'top', label: 'Percentage'}
+                                    }
+                                },
+                                bar: { groupWidth: "90%" }
+                            };
+
+                            var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+                            chart.draw(data, options);
+                        };
+                    </script>
+                    <div id="top_x_div" style="width: 900px; height: 500px;">
+
+                    </div>
                 </div>
 
             </div>
         </div>
 </div>
 
-<!-- page-wrapper -->
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"

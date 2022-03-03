@@ -98,7 +98,7 @@ $file_name = '';
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
-                                                    <a href="../front_pages/view_anunt.php?id=<?php echo $row['id'] ?>"
+                                                    <a href="vizualizare%20anuntO.php?id=<?php echo $row['id'] ?>"
                                                         class="card-title"><?php echo $row['titlu'] ?></a>
                                                     <p class="card-text"><?php echo $row['descriere'] ?></p>
                                                     <p class="card-text text-right">
