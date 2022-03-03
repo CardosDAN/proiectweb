@@ -28,7 +28,6 @@ $file_name = 'profil';
                     <section class="section about-section gray-bg" id="about">
                         <div class="container">
                             <div class="text-right">
-                                <!--                    <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>-->
                                 <a href="../actions/user_edit_info.php">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                          class="bi bi-pencil-square" viewBox="0 0 16 16">

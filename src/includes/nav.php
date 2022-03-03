@@ -3,8 +3,6 @@
 include("auth_session.php");
 
 ?>
-<?php //SELECT `sections`.`nume`, `pages`.`nume` FROM `sections`, `pages` WHERE `pages`.`min_user_level_id` <= 3 AND `sections`.`id` = `pages`.`section_id`;
-?>
 
 
 <nav id="sidebar" class="sidebar-wrapper">
@@ -57,7 +55,7 @@ include("auth_session.php");
                 <span class="user-role">
                         <?php
                         $loged_id = $_SESSION['id'];
-                        $sql = "SELECT * FROM users where id=$loged_id";
+                        $sql = "SELECT * FROM users where id='$loged_id'";
                         $result = $con->query($sql);
 
                         if ($result->num_rows > 0) {
@@ -115,66 +113,6 @@ include("auth_session.php");
                     </a>
                 </li>
                 <?php endif ?>
-                <li class="sidebar-dropdown">
-                    <a href="#">
-                        <i class="fa fa-chart-line"></i>
-                        <span class="menu-text">Charts</span>
-                    </a>
-                    <div class="sidebar-submenu">
-                        <ul>
-                            <li>
-                                <a href="#">Pie chart</a>
-                            </li>
-                            <li>
-                                <a href="#">Line chart</a>
-                            </li>
-                            <li>
-                                <a href="#">Bar chart</a>
-                            </li>
-                            <li>
-                                <a href="#">Histogram</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="sidebar-dropdown">
-                    <a href="#">
-                        <i class="fa fa-globe"></i>
-                        <span class="menu-text">Maps</span>
-                    </a>
-                    <div class="sidebar-submenu">
-                        <ul>
-                            <li>
-                                <a href="#">Google maps</a>
-                            </li>
-                            <li>
-                                <a href="#">Open street map</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-<!--                <li class="header-menu">-->
-<!--                    <span>Extra</span>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#">-->
-<!--                        <i class="fa fa-book"></i>-->
-<!--                        <span class="menu-text">Documentation</span>-->
-<!--                        <span class="badge badge-pill badge-primary">Beta</span>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#">-->
-<!--                        <i class="fa fa-calendar"></i>-->
-<!--                        <span class="menu-text">Calendar</span>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#">-->
-<!--                        <i class="fa fa-folder"></i>-->
-<!--                        <span class="menu-text">Examples</span>-->
-<!--                    </a>-->
-<!--                </li>-->
             </ul>
         </div>
         <!-- sidebar-menu  -->
@@ -219,7 +157,7 @@ include("auth_session.php");
                 <span class="badge-sonar"></span>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuMessage">
-                <a class="dropdown-item" href="../cont_page/anunturi.php">Anunturi</a>
+                <a class="dropdown-item" href="../cont_page/anunturi.php?search=">Anunturi</a>
                 <a class="dropdown-item" href="../cont_page/profil.php">Profil</a>
 <!--                <a class="dropdown-item" href="../actions/user_edit_info.php">Editează profilul</a>-->
                 <a class="dropdown-item" href="../cont_page/settings.php">Setări</a>
