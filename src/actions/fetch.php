@@ -5,10 +5,10 @@ $user_id = $_SESSION['id'];
 if(isset($_POST['view'])){
     if($_POST["view"] != '')
     {
-        $update_query = "UPDATE product_rating SET status = 1 WHERE status=0 and proprietar_anunt = '$user_id'";
+        $update_query = "UPDATE notificari SET status = 1 WHERE status=0 and user_id = '$user_id'";
         mysqli_query($con, $update_query);
     }
-    $query = "SELECT * FROM product_rating where proprietar_anunt = '$user_id' and status=0 ORDER BY id ";
+    $query = "SELECT * FROM notificari where user_id = '$user_id'  ORDER BY id ";
     $result = mysqli_query($con, $query);
     $output = '';
     if(mysqli_num_rows($result) > 0)
@@ -28,12 +28,12 @@ if(isset($_POST['view'])){
     }
     else{
         $output .= '
-     <li><a href="#" class="text-bold text-italic">No Notification Found</a></li>';
+     <li><a href="#" class="text-bold text-italic">Nu ai nici o notiifcare</a></li>';
     }
 
 
 
-    $status_query = "SELECT * FROM product_rating WHERE status=0 and proprietar_anunt = '$user_id'";
+    $status_query = "SELECT * FROM notificari WHERE status=0 and user_id= '$user_id'";
     $result_query = mysqli_query($con, $status_query);
     $count = mysqli_num_rows($result_query);
     $data = array(

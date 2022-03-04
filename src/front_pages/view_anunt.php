@@ -142,7 +142,7 @@ if ($result->num_rows > 0) {
         }
 
         .btn-warning {
-            background: none #f7810a;
+
             color: #ffffff;
             fill: #ffffff;
             border: none;
@@ -153,14 +153,14 @@ if ($result->num_rows > 0) {
         }
 
         .btn-warning:hover {
-            background: none #ff962b;
+
             color: #ffffff;
             box-shadow: -1px 6px 13px rgba(255, 150, 43, 0.35)
         }
 
         .bg-success {
             font-size: 1rem;
-            background-color: #f7810a !important
+
         }
 
 
@@ -488,7 +488,7 @@ if ($result->num_rows > 0) {
                             <div class="col-md-8">
                                 <div class="d-flex flex-column comment-section">
                                     <?php
-                                    $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=product_rating.product_id and product_rating.product_id=" . $product_id;
+                                    $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=product_rating.product_id and product_rating.product_id= '$product_id' order by product_rating.id desc limit 4";
                                     $result = mysqli_query($con, $sql);
                                     while ($row = mysqli_fetch_assoc($result)) { ?>
                                     <div class="bg-white p-2">
@@ -522,18 +522,21 @@ if ($result->num_rows > 0) {
                         <input type="hidden" name="rating">
                         <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
                         <input type="hidden" name="proprietar_anunt" value="<?php echo $proprietar_anunt ?>">
-                        <div class="rateyo" id="rating"
-                             data-rateyo-rating="0"
-                             data-rateyo-num-stars="5"
-                             data-rateyo-score="3">
-                        </div>
-                        <br>
+
                         <div class="row">
                             <div class="col">
                                 <input type="text" disabled name="<?= $_SESSION['username']; ?>" class="form-control" placeholder="<?= $_SESSION['username']; ?>">
                             </div>
                             <div class="col">
                                 <input type="email" name="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="col">
+                                <div class="rateyo" id="rating"
+                                     data-rateyo-rating="0"
+                                     data-rateyo-num-stars="5"
+                                     data-rateyo-score="3">
+                                </div>
+                                <br>
                             </div>
                         </div>
                         <br>
@@ -608,7 +611,7 @@ if ($result->num_rows > 0) {
                                 <h5 class="card-title"><?php echo $row['descriere'] ?></h5>
                                 <div class="container">
                                     <a href="../front_pages/view_anunt.php?id=<?php echo $row['id'] ?>"
-                                       class="btn btn-warning ">Check offer</a>
+                                       class="btn btn-warning ">Vezi oferta</a>
                                 </div>
                             </div>
                         </div>

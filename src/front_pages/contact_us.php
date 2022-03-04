@@ -30,7 +30,7 @@ include ("../includes/auth_session.php");
         <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);">
             <div class="gm-style">
                 <?php
-                $address = 'Jibou';;
+                $address = 'Piața 1 Decembrie, Jibou';;
                 echo '<iframe height="650" width="1320" src="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=' . str_replace(",", "", str_replace(" ", "+", $address)) . '&z=14&output=embed"></iframe>'; ?>
             </div>
         </div>

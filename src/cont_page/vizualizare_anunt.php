@@ -289,7 +289,7 @@ $product_id = $_GET['id'];
                                     <tbody>
                                     <?php
                                     include "../includes/db.php";
-                                    $user_id = $_SESSION['id'];
+
                                     $sql = "SELECT * FROM anunturi where anunturi.user_id = '$user_id' ";
                                     $res = $con->query($sql);
                                     while ($row = $res->fetch_assoc()) {

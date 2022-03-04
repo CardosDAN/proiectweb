@@ -140,15 +140,15 @@ include "../includes/auth_session.php";
             <div class="col">
                 <div class="m-3">
                     <script>
-                        function populate(brand,sub_brand){
-                            var brand = document.getElementById(brand);
-                            var sub_brand = document.getElementById(sub_brand);
+                        function populate(categorie,sub_categorie){
+                            var brand = document.getElementById(categorie);
+                            var sub_brand = document.getElementById(sub_categorie);
                             sub_brand.innerHTML = "";
-                            if(brand.value == "Fructe"){
+                            if(categorie.value == "Fructe"){
                                 var optionArray = ["|","mere|Mere","pere|Pere","prune|Prune"];
-                            } else if(brand.value == "Legume"){
+                            } else if(categorie.value == "Legume"){
                                 var optionArray = ["|","ceapa|Ceapa","morcov|Morcov","varza|Varza"];
-                            } else if(brand.value == "Lactate"){
+                            } else if(categorie.value == "Lactate"){
                                 var optionArray = ["|","lapte|Lapte","branza|Branza"];
                             }
                             for(var option in optionArray){
@@ -166,7 +166,7 @@ include "../includes/auth_session.php";
                         </div>
                         <div class="card-body">
                             Categoria:
-                            <select class="form-select" id="brand" name="brand" onchange="populate(this.id,'sub_brand')">
+                            <select class="form-select" id="brand" name="categorie" onchange="populate(this.id,'sub_categorie')">
                                 <option value=""></option>
                                 <option value="Fructe">Fructe</option>
                                 <option value="Legume">Legume</option>
@@ -174,7 +174,7 @@ include "../includes/auth_session.php";
                             </select>
                             <hr />
                             Sub categoria
-                            <select class="form-select" id="sub_brand" name="sub_brand">
+                            <select class="form-select" id="sub_brand" name="sub_categorie">
                                 <option value=""></option>
                             </select>
                             <hr />

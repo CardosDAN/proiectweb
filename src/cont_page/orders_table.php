@@ -132,7 +132,7 @@ $file_name = 'orders_table';
                                                 <i class=" bi bi-trash"></i>
                                             </a>
                                             <a class="btn btn-outline-info"
-                                               href="../front_pages/view_anunt.php?id=<?php echo $row['id']; ?>">
+                                               href="vizualizare_anunt.php?id=<?php echo $row['id']; ?>">
                                                 <i class=" bi bi-eye"></i>
                                             </a>
                                             <a class="btn btn-outline-primary"

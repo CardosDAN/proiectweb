@@ -129,8 +129,6 @@ include "../includes/auth_session.php";
             position: relative;
             z-index: 999;
         }
-
-
     </style>
 
 </head>
@@ -249,138 +247,7 @@ include "../includes/auth_session.php";
         </div>
     </div>
 
-    <div id="carouselExampleControls" class="carousel slide bg-slider-one-item space-100 bg-home2-slider "
-         data-ride="carousel">
-        <div class="title-text-v2 align-center p4">
-            <p4>Furnizorii noștri</p4>
-            <br><br>
-        </div>
-        <div class="carousel-inner">
 
-            <div class="carousel-item active">
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-5.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-6.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-1.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-2.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-3.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-3.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-5.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-6.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-1.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-2.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-3.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-3.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-5.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-6.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-1.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-2.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-3.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-3.png" alt="Brand"></a>
-                </div>
-                <div class="items">
-                    <a href="#" title="brand"><img class="img-responsive"
-                                                   src="../../assets/sty/images/brand-4.png" alt="Brand"></a>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
 
 
 </div>
@@ -421,7 +288,7 @@ include "../includes/auth_session.php";
                                             class="float-end price-hp"><?php echo $row['pret']?></span></div>
                                 <h5 class="card-title"><?php echo $row['descriere']?></h5>
                                 <div class="container">
-                                    <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning ">Check offer</a>
+                                    <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning ">Vezi oferta</a>
                                 </div>
                             </div>
                         </div>
@@ -490,12 +357,12 @@ include "../includes/auth_session.php";
         <div class="col-md-5 float-right">
             <div class="special-content align-center">
                 <div class="p1">
-                    <p>Oferte speciale</p>
+                    <p>Produse 100% bio</p>
                 </div>
 
-                <h3>Get 30% off</h3>
-                <h3>your order of $100 or more</h3>
-                <a class="btn btn-outline-success" href="#" title="shopnow">Shop Now</a>
+                <h3>Aduse chiar de la sursă</h3>
+
+                <a class="btn btn-outline-success" href="#" title="shopnow">Vezi acum</a>
             </div>
         </div>
         <!-- End col-md-5 -->

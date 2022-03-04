@@ -61,14 +61,12 @@
                                     <a href="#" class="nav-link">Pagini</a>
                                     <ul class="dropdown arrow-top">
                                         <li><a href="wishlist.php" class="nav-link">Wishlist</a></li>
-                                        <li><a href="#" class="nav-link">Pricing</a></li>
-                                        <li><a href="#" class="nav-link">FAQ</a></li>
                                         <li class="has-children">
                                             <a href="#">Contul tău</a>
                                             <ul class="dropdown">
-                                                <li><a href="#">Menu One</a></li>
-                                                <li><a href="#">Menu Two</a></li>
-                                                <li><a href="#">Menu Three</a></li>
+                                                <li><a href="../cont_page/profil.php">Profil</a></li>
+                                                <li><a href="../cont_page/anunturi.php?search=">Anunturile tale</a></li>
+                                                <li><a href="../cont_page/rating.php">Rating anunturi</a></li>
                                             </ul>
                                         </li>
                                     </ul>

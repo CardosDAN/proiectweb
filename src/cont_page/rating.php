@@ -1,6 +1,6 @@
 <?php
 
-$file_name = 'settings';
+$file_name = ' ';
 
 ?>
 
@@ -38,7 +38,9 @@ $file_name = 'settings';
                                 </div>
                                 <div class="col">
                                     <div class="card-body">
+                                        <p class="float-right bi bi-eye"><?php echo ' '.$row['visits'] ?></p>
                                         <h5 class="card-title"><?php echo $row['titlu'] ?></h5>
+
                                         <hr>
                                         <p class="card-text">
                                         <?php
