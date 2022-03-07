@@ -3,16 +3,10 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
-
-//$newcontact = new Create();
-//$newcontact->userMessage();
-
-
-
 include("../includes/db.php");
+
 function upload($files){
-    $statusMsg = '';
+
     global $con;
     // File upload path
     $targetDir = "../../uploads/";

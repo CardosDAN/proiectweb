@@ -104,38 +104,94 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
         body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
     </style>
 </head>
 <body>
-<div class="wrapper container">
-    <h2>Login</h2>
-    <p>Please fill in your credentials to login.</p>
+<br><br><br><br>
+<div class=" container text-center card shadow">
+
 
     <?php
     if(!empty($login_err)){
         echo '<div class="alert alert-danger">' . $login_err . '</div>';
     }
     ?>
+    <div class="row">
+        <div class="col-md-5">
+            <h2>Login</h2>
+            <p>Vă rugăm să vă completați datele de conectare pentru a vă autentifica.</p>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                </div>
+                <div class="form-group">
+                    <label>Parola</label>
+                    <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Login">
+                </div>
+                <p>Nu ai un cont?<a href="registration.php">Inscrie-te acum</a>.</p>
+            </form>
+        </div>
+        <div class="col">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="../../assets/sty/images/piata.jpg"
+                             alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h1 style="margin-top: -35%">Alimente organice proaspete</h1>
+                            <p>Vă aducem fructe și legume organice de pe câmpurile noastre până acasă </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="../../assets/sty/images/pexels-mikhail-nilov-7676950.jpg"
+                             alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>...</h5>
+                            <p>...</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="../../assets/sty/images/orange.jpg"
+                             alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5></h5>
+                            <p>...</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-            <span class="invalid-feedback"><?php echo $username_err; ?></span>
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-            <span class="invalid-feedback"><?php echo $password_err; ?></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Login">
-        </div>
-        <p>Don't have an account? <a href="registration.php">Sign up now</a>.</p>
-    </form>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/sty/js/jquery-3.3.1.min.js"></script>
+<script src="../../assets/sty/js/popper.min.js"></script>
+<script src="../../assets/sty/js/bootstrap.min.js"></script>
+<script src="../../assets/sty/js/jquery.sticky.js"></script>
+<script src="../../assets/sty/js/main.js"></script>
 </body>
 </html>

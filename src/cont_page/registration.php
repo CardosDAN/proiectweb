@@ -1,6 +1,6 @@
 <?php
 // Include config file
-require_once "src/includes/db.php";
+require_once "../includes/db.php";
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
@@ -104,9 +104,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
-<div class="wrapper container">
+<br><br><br>
+<div class="wrapper container border shadow">
     <h2>Sign Up</h2>
-    <p>Please fill this form to create an account.</p>
+    <p>Vă rugăm să completați acest formular pentru a vă crea un cont</p>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group">
             <label>Username</label>
@@ -114,20 +115,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <span class="invalid-feedback"><?php echo $username_err; ?></span>
         </div>
         <div class="form-group">
-            <label>Password</label>
+            <label>Parola</label>
             <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
             <span class="invalid-feedback"><?php echo $password_err; ?></span>
         </div>
         <div class="form-group">
-            <label>Confirm Password</label>
+            <label>Confirma parola</label>
             <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
             <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Submit">
+            <input type="submit" class="btn btn-success" value="Submit">
             <input type="reset" class="btn btn-secondary ml-2" value="Reset">
         </div>
-        <p>Already have an account? <a href="login.php">Login here</a>.</p>
+        <p>Ai deja un cont? <a href="login.php">Autentifică-te aici</a>.</p>
     </form>
 </div>
 </body>

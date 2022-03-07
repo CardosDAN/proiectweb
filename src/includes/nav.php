@@ -130,9 +130,19 @@ include("auth_session.php");
             </a>
             <div class="dropdown-menu">
                 <div class="dropdown-item-text">
-
+                    <?php
+                    $sql = "SELECT * FROM notifications where user_id=".$_SESSION['id'];
+                    $result = $con->query($sql);
+                    if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) { ?>
+                    <li>
+                        <a href="../includes/delete_notification.php?id=<?= $row['id'] ?> ">
+                        <strong><?php echo $row['message']; ?></strong><br/>
+                        <small><em> <?php echo $row['time']; ?></em></small>
+                        </a>
+                    </li>
+                    <?php  } } ?>
                 </div>
-
             </div>
         </div>
         <div class="dropdown">
@@ -177,34 +187,6 @@ include("auth_session.php");
     </div>
 </nav>
 <script>
-    $(document).ready(function () {
-        function load_unseen_notification(view = '') {
-            $.ajax({
-                url: "../actions/fetch.php",
-                method: "POST",
-                data: {view: view},
-                dataType: "json",
-                success: function (data) {
-                    $('.dropdown-item-text').html(data.notification);
-                    if (data.unseen_notification > 0) {
-                        $('.count').html(data.unseen_notification);
-                    }
-                }
-            });
-        }
-
-        load_unseen_notification();
-
-        $(document).on('click', '.dropdown', function () {
-            $('.count').html('');
-            load_unseen_notification('yes');
-        });
-
-        setInterval(function () {
-            load_unseen_notification();
-        }, 5000);
-
-    });
     $(document).ready(function () {
         function load_unseen_message(view = '') {
             $.ajax({
