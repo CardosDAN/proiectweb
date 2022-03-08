@@ -3,15 +3,15 @@ $file_name = "view_anunt";
 
 include "../includes/auth_session.php";
 $product_id = $_GET['id'];
-$sql = "UPDATE anunturi SET visits = visits+1 WHERE anunturi.user_id != ".$_SESSION['id']." and id =".$product_id;
+$sql = "UPDATE anunturi SET visits = visits+1 WHERE anunturi.user_id != " . $_SESSION['id'] . " and id =" . $product_id;
 
 $con->query($sql);
 
-$sql = "SELECT visits FROM anunturi WHERE id =".$product_id;
+$sql = "SELECT visits FROM anunturi WHERE id =" . $product_id;
 $result = $con->query($sql);
 
 if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $visits = $row["visits"];
     }
 } else {
@@ -106,7 +106,6 @@ if ($result->num_rows > 0) {
         }
 
 
-
         .top-right span {
             display: inline-block;
             vertical-align: middle
@@ -171,7 +170,6 @@ if ($result->num_rows > 0) {
         }
 
 
-
         .box {
             border-radius: 1rem;
             background: #fff;
@@ -180,16 +178,12 @@ if ($result->num_rows > 0) {
         }
 
 
-
-
-
         @media (max-width: 370px) {
             .box .btn {
                 padding: 5px 40px 5px 40px;
                 font-size: 1rem
             }
         }
-
 
 
         .related h3 {
@@ -233,6 +227,7 @@ if ($result->num_rows > 0) {
         .comment-text {
             font-size: 12px
         }
+
         .chat-btn {
             position: absolute;
             right: 14px;
@@ -248,13 +243,13 @@ if ($result->num_rows > 0) {
             transition: all 0.9s ease
         }
 
-        #check:checked~.chat-btn i {
+        #check:checked ~ .chat-btn i {
             display: block;
             pointer-events: auto;
             transform: rotate(180deg)
         }
 
-        #check:checked~.chat-btn .comment {
+        #check:checked ~ .chat-btn .comment {
             display: none
         }
 
@@ -288,16 +283,18 @@ if ($result->num_rows > 0) {
             transition: all 0.4s
         }
 
-        #check:checked~.wrapper {
+        #check:checked ~ .wrapper {
             opacity: 1
         }
 
         .chat-form {
             padding: 15px
         }
+
         .chat-form textarea {
             resize: none
         }
+
         #check {
             display: none !important
         }
@@ -383,9 +380,10 @@ if ($result->num_rows > 0) {
                                     </div>
                                 </div>
                                 <form action="../actions/insert_mesaje.php" method="post">
-                                    <input type="hidden" id="username" name="product_id" value="<?= $product_id?>">
-                                    <input type="hidden" id="username" name="id_client" value="<?= $_SESSION['id']?>">
-                                    <textarea name="mesaj" style="height: 50px" class="form-control" placeholder="Mesajul"></textarea>
+                                    <input type="hidden" id="username" name="product_id" value="<?= $product_id ?>">
+                                    <input type="hidden" id="username" name="id_client" value="<?= $_SESSION['id'] ?>">
+                                    <textarea name="mesaj" style="height: 50px" class="form-control"
+                                              placeholder="Mesajul"></textarea>
                                     <button class="btn btn-success">Trimite</button>
                                 </form>
                             </div>
@@ -402,14 +400,17 @@ if ($result->num_rows > 0) {
                 <div class="box-details-info">
                     <div class="product-name">
                         <div class="float-right">
-                            <p><i class="bi bi-eye-fill"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                            <p><i class="bi bi-eye-fill">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green"
+                                         class="bi bi-eye-fill" viewBox="0 0 16 16">
                                         <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                                         <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                    </svg></i><?php echo $visits." Vizualizari"; ?></p>
+                                    </svg>
+                                </i><?php echo $visits . " Vizualizari"; ?></p>
                         </div>
                         <?php
 
-                        $sql = "SELECT * FROM anunturi where  id=".$product_id;
+                        $sql = "SELECT * FROM anunturi where  id=" . $product_id;
                         $result = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($result)) {
                         $categorie = $row['categorie'];
@@ -483,17 +484,14 @@ if ($result->num_rows > 0) {
             </ul>
             <div id="customer" class=" container-fluid" style="display: block;">
                 <div class="box border">
-                    <div class="container mt-5">
-                        <div class="d-flex justify-content row">
-                            <div class="col-md-8">
-                                <div class="d-flex flex-column comment-section">
-                                    <?php
-                                    $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=product_rating.product_id and product_rating.product_id= '$product_id' order by product_rating.id desc limit 4";
-                                    $result = mysqli_query($con, $sql);
-                                    while ($row = mysqli_fetch_assoc($result)) { ?>
+                    <div class="container">
+                        <div class="col-md-8">
+                            <div class="d-flex flex-column comment-section">
+                                <?php
+                                $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=product_rating.product_id and product_rating.product_id= '$product_id' order by product_rating.id desc limit 4";
+                                $result = mysqli_query($con, $sql);
+                                while ($row = mysqli_fetch_assoc($result)) { ?>
                                     <div class="bg-white p-2">
-
-
                                         <div class="d-flex flex-row user-info">
                                             <div class="d-flex flex-column justify-content-start ml-2">
                                                 <span class="d-block font-weight-bold name"><?php echo $row['name']; ?></span>
@@ -502,14 +500,11 @@ if ($result->num_rows > 0) {
                                             <div class="rateyo" id="rating"
                                                  data-rateyo-rating="<?php echo $row['rate']; ?>">
                                             </div>
-
-
                                         </div>
                                         <div class="mt-2">
                                             <p class="comment-text"><?php echo $row['review']; ?></p>
                                         </div>
                                     </div>
-                                </div>
                                 <?php } ?>
                             </div>
                         </div>
@@ -518,26 +513,26 @@ if ($result->num_rows > 0) {
 
                 <div class="container ">
                     <form action="../actions/review.php" method="post">
-
+                        <div class="rateyo" id="rating"
+                             data-rateyo-rating="0"
+                             data-rateyo-num-stars="5"
+                             data-rateyo-score="3">
+                        </div>
+                        <br>
+                        <span class='result'>Rating: 0</span>
                         <input type="hidden" name="rating">
                         <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
                         <input type="hidden" name="proprietar_anunt" value="<?php echo $proprietar_anunt ?>">
 
                         <div class="row">
                             <div class="col">
-                                <input type="text" disabled name="<?= $_SESSION['username']; ?>" class="form-control" placeholder="<?= $_SESSION['username']; ?>">
+                                <input type="text" disabled name="<?= $_SESSION['username']; ?>" class="form-control"
+                                       placeholder="<?= $_SESSION['username']; ?>">
                             </div>
                             <div class="col">
                                 <input type="email" name="email" class="form-control" placeholder="Email">
                             </div>
-                            <div class="col">
-                                <div class="rateyo" id="rating"
-                                     data-rateyo-rating="0"
-                                     data-rateyo-num-stars="5"
-                                     data-rateyo-score="3">
-                                </div>
-                                <br>
-                            </div>
+
                         </div>
                         <br>
 
@@ -550,22 +545,11 @@ if ($result->num_rows > 0) {
                         <button type="submit" class="btn btn-success" name="add">Post review</button>
                     </form>
                 </div>
-
-
-                </form>
-
             </div>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
-
-        <script>
-            function wishlist_toggle() {
-                console.log("merge");
-                $.get("../actions/wishlist_toggle.php", {product_id: "<?php echo $product_id?>"})
-            }
-        </script>
         <script>
 
 
@@ -579,7 +563,11 @@ if ($result->num_rows > 0) {
             });
 
         </script>
-
+        <script>
+            function wishlist_toggle() {
+                $.get("../actions/wishlist_toggle.php", {product_id: "<?php echo $product_id?>"})
+            }
+        </script>
 
     </div>
 </div>
@@ -588,7 +576,6 @@ if ($result->num_rows > 0) {
 <div class="title-text-v2 space-60">
     <h3>Produse din aceiasi categorie</h3>
 </div>
-
 
 
 <section id="slider" class="pt-5">
@@ -623,7 +610,7 @@ if ($result->num_rows > 0) {
 </section>
 
 <div class="">
-    <?php include "../includes/footer_front.php";?>
+    <?php include "../includes/footer_front.php"; ?>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
