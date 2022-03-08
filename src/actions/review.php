@@ -1,9 +1,10 @@
 <?php
 include "../includes/db.php";
+include "../includes/auth_session.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $review = $_POST["review"];
-    $name = $_POST["name"];
+    $name = $_SESSION['username'];
     $rating = $_POST["rating"];
     $product_id = $_POST["product_id"];
     $proprietar_anunt = $_POST["proprietar_anunt"];

@@ -23,7 +23,7 @@ if (isset($_POST['view'])) {
         }
     } else {
         $output .= '
-     <li><a href="#" class="text-bold text-italic">No mesaj Found</a></li>';
+     <li><a href="#" class="text-bold text-italic">Nu ai nici un mesaj nou</a></li>';
     }
 
 

@@ -1,6 +1,6 @@
 <?php
 $file_name = "view_anunt";
-//include auth_session.php file on all user panel pages
+
 include "../includes/auth_session.php";
 $product_id = $_GET['id'];
 $sql = "UPDATE anunturi SET visits = visits+1 WHERE anunturi.user_id != ".$_SESSION['id']." and id =".$product_id;

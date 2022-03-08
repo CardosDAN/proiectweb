@@ -23,36 +23,29 @@ include("../includes/db.php");
         <div class="container-fluid">
             <div class="row">
                 <div class="form-group col-md-12">
-                    <?php
-                    ini_set('display_errors', 1);
-                    ini_set('display_startup_errors', 1);
-                    error_reporting(E_ALL);
-                    include("../includes/db.php");
-                    $id = $_GET['id']; // get id through query string
+                    <?php $id = $_GET['id']; // get id through query string
 
-                    $qry = "select * from anunturi where anunturi.id='$id'";
-                    $result = mysqli_query($con, $qry);
-                    if ($row = mysqli_fetch_assoc($result)){
-                           $image_id = $row['image_id'];
-                    }
+                    $qry = mysqli_query($con, "select * from anunturi where id='$id'"); // select query
 
                     $row = mysqli_fetch_array($qry); // fetch data
-                    $image_id = $row['image_id'];
-                    if (isset($_POST['update']))  {
+
+                    if (isset($_POST['update'])) // when click on Update button
+                    {
                         $titlu = $_POST["titlu"];
                         $telefon = $_POST["telefon"];
                         $adresa = $_POST["adresa"];
                         $pret = $_POST["pret"];
                         $descriere = $_POST["descriere"];
-                        $image_save= $image_id;
-                        $sql = "Update anunturi set titlu='$titlu',telefon='$telefon',adresa='$adresa',pret='$pret',descriere='$descriere' where id='$id'";
-                        if ($con->query($sql) === TRUE) {
-                            echo "Record updated successfully";
-//                            header('Location: ' . $_SERVER['HTTP_REFERER']);
-                        } else {
-                            echo "Error updating record: " . $con->error;
-                        }
 
+                        $edit = mysqli_query($con, "Update anunturi set titlu='$titlu',telefon='$telefon',adresa='$adresa',pret='$pret',descriere='$descriere' where id='$id'");
+
+                        if ($edit) {
+                            header('Location: ' . $_SERVER['HTTP_REFERER']);
+                            exit;
+
+                        } else {
+                            echo mysqli_error();
+                        }
                     }
                     ?>
 
