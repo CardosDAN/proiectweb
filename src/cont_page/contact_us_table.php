@@ -52,97 +52,16 @@ $file_name = 'contact_us_table';
                             <div class="card-content">
                                 <div class="card-body">
                                     <?php
-
-                                    $sql1 = "SELECT * FROM users ORDER BY id DESC limit 1";
-                                    $result = $con->query($sql1);
-
-                                    if ($result->num_rows > 0) {
-                                        // output data of each row
-                                        while ($row = $result->fetch_assoc()) { ?>
-                                            <div class="media d-flex">
-                                                <div class="media-body text-left">
-                                                    <h3 class="success"><?php echo $row["id"]; ?></h3>
-                                                    <span>Users</span>
-                                                </div>
-                                                <div class="align-self-center">
-                                                    <i class="icon-user success font-large-2 float-right"></i>
-                                                </div>
-                                            </div>
-                                        <?php }
-                                    } ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <?php
-
-                                    $sql1 = "SELECT * FROM anunturi ORDER BY id DESC limit 1";
-                                    $result = $con->query($sql1);
-
-                                    if ($result->num_rows > 0) {
-                                    // output data of each row
-                                    while ($row = $result->fetch_assoc()) { ?>
-                                    <div class="media d-flex">
-                                        <div class="align-self-center">
-                                            <i class="icon-speech warning font-large-2 float-left"></i>
-                                        </div>
-                                        <div class="media-body text-right">
-                                            <h3><?php echo $row["id"]; ?></h3>
-                                            <span>Anunturi</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php }
-                                } ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <?php
-
-                                    $sql1 = "SELECT * FROM product_rating ORDER BY id DESC limit 1";
-                                    $result = $con->query($sql1);
-
-                                    if ($result->num_rows > 0) {
-                                    // output data of each row
-                                    while ($row = $result->fetch_assoc()) { ?>
-                                    <div class="media d-flex">
-                                        <div class="media-body text-left">
-                                            <h3 class="warning"><?php echo $row["id"]; ?></h3>
-                                            <span>Rating anunturi</span>
-                                        </div>
-                                        <div class="align-self-center">
-                                            <i class="icon-bubbles warning font-large-2 float-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php }
-                                } ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <?php
-                                    $result = $con->query("SELECT DISTINCT categorie FROM anunturi ORDER BY categorie");
+                                    $result = $con->query("SELECT DISTINCT id FROM users ORDER BY id");
                                     $row_cnt = $result->num_rows;
                                     ?>
                                     <div class="media d-flex">
                                         <div class="media-body text-left">
-                                            <h3 class="primary"><?php printf($row_cnt); ?></h3>
-                                            <span>Categorii anunturi</span>
+                                            <h3 class="success"><?php printf($row_cnt); ?></h3>
+                                            <span>Users</span>
                                         </div>
                                         <div class="align-self-center">
-                                            <i class="icon-book-open primary font-large-2 float-right"></i>
+                                            <i class="icon-user success font-large-2 float-right"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -168,7 +87,7 @@ $file_name = 'contact_us_table';
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Nr</th>
                                     <th>Nume</th>
                                     <th>Email</th>
                                     <th>Subiect</th>

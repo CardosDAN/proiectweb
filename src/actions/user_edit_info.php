@@ -35,8 +35,8 @@
                             $username = $_POST['username'];
                             $email = $_POST['email'];
                             $phone = $_POST['phone'];
-
-                            $edit = mysqli_query($con, "update users set username='{$username}', email='{$email}', phone='{$phone}' where id='{$id}'");
+                            $user_level_id = $_POST['user_level_id'];
+                            $edit = mysqli_query($con, "update users set username='{$username}', email='{$email}', phone='{$phone}', user_level_id='{$user_level_id}' where id='{$id}'");
 
                             if ($edit) {
                                 mysqli_close($con); // Close connection
@@ -62,6 +62,23 @@
                                 <label for="exampleInputEmail1">Phone number</label>
                                 <input type="number" class="form-control" name="phone" value="<?php echo $row['phone'] ?>" placeholder="Enter Phone" Required>
                             </div>
+                            <?php if($_SESSION['user_level_id'] == "3"): ?>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"></label>
+                                <div class="card ">
+                                    <div class="card-header">
+                                        Schimbă statusul
+                                    </div>
+                                    <div class="card-body">
+                                        <select class="form-select" name="user_level_id" aria-label="Default select example">
+                                            <option value="1">User</option>
+                                            <option value="2">Seller</option>
+                                            <option value="3">Admin</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endif ?>
                             <input class="btn btn-outline-success" type="submit" name="update" value="Update">
                             <a class="btn btn-outline-danger" href="../cont_page/profil.php">Back</a>
                         </form>

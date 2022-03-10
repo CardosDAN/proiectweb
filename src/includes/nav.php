@@ -78,9 +78,6 @@ include("auth_session.php");
         <!-- sidebar-menu  -->
         <div class=" sidebar-item sidebar-menu">
             <ul>
-                <li class="header-menu">
-                    <span>General</span>
-                </li>
                 <?php if($_SESSION['user_level_id'] == "3"): ?>
                 <li class="sidebar-dropdown">
                     <a href="#">

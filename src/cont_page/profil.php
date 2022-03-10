@@ -7,6 +7,7 @@ $file_name = 'profil';
 
 
 <?php include("../includes/head.php"); ?>
+<!-- CSS only -->
 
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
@@ -28,7 +29,33 @@ $file_name = 'profil';
                     <section class="section about-section gray-bg" id="about">
                         <div class="container">
                             <div class="text-right">
-                                <a href="../actions/user_edit_info.php">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                   Aplică aici
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Vrei sa devi vazator?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                               <form method="post" action="../actions/applications.php">
+                                                   <label for="exampleInputPassword1" class="form-label">De ce doresti sa devi vanzator?</label>
+                                                   <textarea type="text" name="mesaj" class="form-control" id="exampleInputPassword1"></textarea>
+                                                   <input type="hidden" class="form-control" id="exampleInputPassword1" name="user_id" value="<?= $_SESSION['id'] ?>">
+                                                   <hr>
+                                                   <button type="submit" class="btn btn-primary">Trimite</button>
+                                               </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                &nbsp;
+                                <a href="../actions/edit_users.php?id=<?php echo $_SESSION['id']; ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                          class="bi bi-pencil-square" viewBox="0 0 16 16">
                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -386,6 +413,8 @@ $file_name = 'profil';
         color: #20247b;
     }
 </style>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">

@@ -80,42 +80,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span><i class="bi bi-list"></i></span>
         </a>
         <br>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
 
                 <div class="form-group col-md-12">
                     <div class="row">
-                        <div class="col">
-                            <div class="wrapper">
-                                <h2>Reseteaza parola</h2>
-                                <p>Vă rugăm să completați acest formular pentru a vă reseta parola.</p>
-                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                    <div class="form-group">
-                                        <label>Parola nouă</label>
-                                        <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
-                                        <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Confirmă parola</label>
-                                        <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
-                                        <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" value="Submit">
-                                    </div>
-                                </form>
-                            </div>
+
+                        <div class="wrapper">
+                            <h2>Reseteaza parola</h2>
+                            <p>Vă rugăm să completați acest formular pentru a vă reseta parola.</p>
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                <div class="form-group">
+                                    <label>Parola nouă</label>
+                                    <input type="password" name="new_password"
+                                           class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>"
+                                           value="<?php echo $new_password; ?>">
+                                    <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirmă parola</label>
+                                    <input type="password" name="confirm_password"
+                                           class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+                                    <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                </div>
+                            </form>
+
                         </div>
-                        <div class="col">
-                            <div class="input-group">
+                        <hr>
+                        <div class="input-group">
 
                             <form action="../actions/upload.php" method="post" enctype="multipart/form-data">
-                                <label for="formFileSm" class="form-label">Selectați Fișier imagine de încărcat pentru fotografia dvs. de profil</label>
-                                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="file" aria-label="Upload">
-                                <button class="btn btn-primary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
+                                <label for="formFileSm" class="form-label">Selectați Fișier imagine de încărcat
+                                    pentru fotografia dvs. de profil</label>
+                                <input type="file" class="form-control" id="inputGroupFile04"
+                                       aria-describedby="inputGroupFileAddon04" name="file" aria-label="Upload">
+                                <button class="btn btn-primary" type="submit" name="submit"
+                                        id="inputGroupFileAddon04">Upload
+                                </button>
                             </form>
                         </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
