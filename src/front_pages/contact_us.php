@@ -90,18 +90,22 @@ include ("../includes/auth_session.php");
         <div class="content-text center">
             <h3>Contactează-ne</h3>
             <p>Lasă un mesaj</p>
-            <form class="form-horizontal space-50" action="../actions/contact_us_database.php">
+            <form class="form-horizontal space-50" action="../actions/contact_us_database.php" method="post">
                 <div class="form-group col-md-12">
-                    <input type="text" placeholder="Email*" id="inputsumary" class="form-control">
+                    <input type="email" placeholder="Email*" name="mail" id="inputsumary" class="form-control">
                 </div>
                 <div class="form-group col-md-12">
-                    <input type="text" placeholder="Nume" id="inputemail" class="form-control">
+                    <input type="text" name="name" placeholder="Nume" id="inputemail" class="form-control">
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="text" name="subject" placeholder="Subiect" id="inputemail" class="form-control">
                 </div>
                 <div class="form-group">
-                    <textarea placeholder="Comment" name="Comment" id="message" class="form-control"></textarea>
+                    <textarea placeholder="Comment" name="message" id="message" class="form-control"></textarea>
                 </div>
                 <div class="box align-left">
-                    <a title="add tags" href="#" class="link-v1 rt">Trimite mesaj</a>
+<!--                    <a title="add tags" type="submit" name="submit" href="#" class="link-v1 rt">Trimite mesaj</a>-->
+                    <button type="submit" class="link-v1 rt" name="submit">Trimite</button>
                 </div>
             </form>
         </div>

@@ -1,29 +1,18 @@
+
 <?php
+$to_email = "cardosdan08@gmail.com";
+$subject = "Test email to send from XAMPP";
+$body = "Hi, This is test mail to check how to send mail from Localhost Using Gmail ";
+$headers = "From: sender email";
 
-$sql = "UPDATE anunturi SET visits = visits+1 WHERE id = 1";
-$con->query($sql);
+if (mail($to_email, $subject, $body, $headers))
 
-$sql = "SELECT visits FROM anunturi WHERE id = 1";
-$result = $con->query($sql);
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $visits = $row["visits"];
-    }
-} else {
-    echo "no results";
+{
+    echo "Email successfully sent to $to_email...";
 }
-?>
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Visit counter</title>
-</head>
-<body>
-Visits: <?php print $visits; ?>
+else
 
-</body>
-</html>
+{
+    echo "Email sending failed!";
+}
