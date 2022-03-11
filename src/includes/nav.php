@@ -95,9 +95,6 @@ include("auth_session.php");
                             <li>
                                 <a href="../cont_page/orders_table.php?search=#">Anunțuri</a>
                             </li>
-                            <li>
-                                <a href="../cont_page/contact_us_table.php">Contactează-ne</a>
-                            </li>
                         </ul>
                     </div>
                 </li>
