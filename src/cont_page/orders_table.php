@@ -102,12 +102,11 @@ $file_name = 'orders_table';
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>id</th>
+                                    <th>Nr</th>
                                     <th>Titlu</th>
                                     <th>Nr telefon</th>
                                     <th>Adresa</th>
                                     <th>Status</th>
-                                    <th>Categorie</th>
                                     <th>Actiuni</th>
                                 </tr>
                                 </thead>
@@ -124,7 +123,6 @@ $file_name = 'orders_table';
                                         <td><?php echo $row["telefon"] ?></td>
                                         <td><?php echo $row["adresa"] ?></td>
                                         <td><?php echo $row["status"] ?></td>
-                                        <td><?php echo $row["category_id"] ?></td>
                                         <td>
 
                                             <a class="btn btn-outline-danger"
@@ -170,9 +168,9 @@ $file_name = 'orders_table';
                         google.charts.setOnLoadCallback(drawStuff);
                         <?php
                         include "../../src/includes/db.php";
-                        $result = $con->query("SELECT DISTINCT categorie FROM anunturi");
+                        $result = $con->query("SELECT DISTINCT category_id FROM anunturi");
                         $row_cnt = $result->num_rows;
-                        $result1 = $con->query("SELECT DISTINCT sub_categorie FROM anunturi");
+                        $result1 = $con->query("SELECT DISTINCT sub_category_id FROM anunturi");
                         $row_cnt1 = $result1->num_rows;
                         $result2 = $con->query("SELECT DISTINCT id FROM anunturi");
                         $row_cnt2 = $result2->num_rows;?>

@@ -277,12 +277,11 @@ $product_id = $_GET['id'];
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>id</th>
+                                        <th>Nr</th>
                                         <th>Titlu</th>
                                         <th>Nr telefon</th>
                                         <th>Adresa</th>
                                         <th>Status</th>
-                                        <th>Categorie</th>
                                         <th>Actiuni</th>
                                     </tr>
                                     </thead>
@@ -290,7 +289,7 @@ $product_id = $_GET['id'];
                                     <?php
                                     include "../includes/db.php";
 
-                                    $sql = "SELECT * FROM anunturi,category where anunturi.user_id = '$user_id' and anunturi.category_id = category.id ";
+                                    $sql = "SELECT * FROM anunturi where anunturi.user_id = '$user_id'";
                                     $res = $con->query($sql);
                                     while ($row = $res->fetch_assoc()) {
                                         ?>
@@ -300,7 +299,6 @@ $product_id = $_GET['id'];
                                             <td><?php echo $row["telefon"] ?></td>
                                             <td><?php echo $row["adresa"] ?></td>
                                             <td><?php echo $row["status"] ?></td>
-                                            <td><?php echo $row["name"] ?></td>
                                             <td>
 
                                                 <a class="btn btn-outline-danger"

@@ -150,7 +150,7 @@ $file_name = 'users_table';
                                 <tbody>
                                 <?php
                                 include "../includes/db.php";
-                                $sql = "Select * from users,user_levels where users.user_level_id = user_levels.id";
+                                $sql = "Select * from users";
                                 $res = $con->query($sql);
                                 while ($row = $res->fetch_assoc()) {
                                     ?>
@@ -159,7 +159,7 @@ $file_name = 'users_table';
                                         <td><?php echo $row["username"] ?></td>
                                         <td><?php echo $row["phone"] ?></td>
                                         <td><?php echo $row["email"] ?></td>
-                                        <td><?php echo $row["nume"] ?></td>
+                                        <td><?php echo $row["user_level_id"] ?></td>
                                         <td>
 
                                             <a class="btn btn-outline-danger"
