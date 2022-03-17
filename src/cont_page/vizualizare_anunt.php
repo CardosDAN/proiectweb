@@ -103,7 +103,7 @@ $product_id = $_GET['id'];
                                 <div class="card-body">
                                     <?php
                                     $user_id = $_SESSION['id'];
-                                    $result = $con->query("SELECT DISTINCT categorie FROM anunturi where anunturi.user_id = '$user_id' ORDER BY categorie");
+                                    $result = $con->query("SELECT DISTINCT category_id FROM anunturi where anunturi.user_id = '$user_id' ORDER BY category_id");
                                     $row_cnt = $result->num_rows;
                                     ?>
                                     <div class="media d-flex">
@@ -290,7 +290,7 @@ $product_id = $_GET['id'];
                                     <?php
                                     include "../includes/db.php";
 
-                                    $sql = "SELECT * FROM anunturi where anunturi.user_id = '$user_id' ";
+                                    $sql = "SELECT * FROM anunturi,category where anunturi.user_id = '$user_id' and anunturi.category_id = category.id ";
                                     $res = $con->query($sql);
                                     while ($row = $res->fetch_assoc()) {
                                         ?>
@@ -300,7 +300,7 @@ $product_id = $_GET['id'];
                                             <td><?php echo $row["telefon"] ?></td>
                                             <td><?php echo $row["adresa"] ?></td>
                                             <td><?php echo $row["status"] ?></td>
-                                            <td><?php echo $row["categorie"] ?></td>
+                                            <td><?php echo $row["name"] ?></td>
                                             <td>
 
                                                 <a class="btn btn-outline-danger"

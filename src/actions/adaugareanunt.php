@@ -51,11 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $pret = $_POST["pret"];
     $descriere = $_POST["descriere"];
     $image_id = upload($_FILES["file"]);
-    $categorie = $_POST['$categorie'];
-    $sub_categorie= $_POST['sub_categorie'];
+    $category_id = $_POST['category_id'];
+    $sub_category_id= $_POST['sub_category_id'];
     session_start();
     $user_id = $_SESSION['id'];
-    $sql = "INSERT INTO anunturi (titlu,telefon,adresa,pret,descriere,image_id,user_id,categorie,sub_categorie) VALUES ('{$titlu}','{$telefon}','{$adresa}','{$pret}','{$descriere}','{$image_id}','$user_id','$categorie','$sub_categorie')";
+    $sql = "INSERT INTO anunturi (titlu,telefon,adresa,pret,descriere,image_id,user_id,category_id,sub_category_id) VALUES ('{$titlu}','{$telefon}','{$adresa}','{$pret}','{$descriere}','{$image_id}','$user_id','$category_id','$sub_category_id')";
     if ($con->query($sql) === TRUE) {
         echo "Record updated successfully";
     } else {

@@ -124,7 +124,7 @@ $file_name = 'orders_table';
                                         <td><?php echo $row["telefon"] ?></td>
                                         <td><?php echo $row["adresa"] ?></td>
                                         <td><?php echo $row["status"] ?></td>
-                                        <td><?php echo $row["categorie"] ?></td>
+                                        <td><?php echo $row["category_id"] ?></td>
                                         <td>
 
                                             <a class="btn btn-outline-danger"

@@ -55,14 +55,14 @@ include("auth_session.php");
                 <span class="user-role">
                         <?php
                         $loged_id = $_SESSION['id'];
-                        $sql = "SELECT * FROM users where id='$loged_id'";
+                        $sql = "SELECT * FROM users,user_levels where users.id='$loged_id' and users.user_level_id = user_levels.id";
                         $result = $con->query($sql);
 
                         if ($result->num_rows > 0) {
                         // output data of each row
                         while ($row = $result->fetch_assoc()) { ?>
 
-                        <?php echo "Status: ".$row["user_level_id"]; ?>
+                        <?php echo "Status: ".$row["nume"]; ?>
                     </span>
                 <?php
                 }

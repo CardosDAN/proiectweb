@@ -275,7 +275,7 @@ include "../includes/auth_session.php";
             <link rel="stylesheet" href="../../assets/app/css/card.css">
             <div class="row">
                 <?php
-                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.categorie='Legume' and anunturi.status='Activ' limit 6");
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.category_id='2' and anunturi.status='Activ' limit 6");
                 while ($row = $query->fetch_assoc()) { ?>
                     <div class="col-xl-4 py-1">
                         <div class="card h-100 shadow-sm">
@@ -299,7 +299,7 @@ include "../includes/auth_session.php";
         <div class="tab-pane fade" id="fruits" role="tabpanel" aria-labelledby="fruits-tab">
             <div class="row">
                 <?php
-                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.categorie='Fructe' and anunturi.status='Activ' limit 6");
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.category_id='1' and anunturi.status='Activ' limit 6");
                 while ($row = $query->fetch_assoc()) { ?>
                     <div class="col-xl-4 py-1">
                         <div class="card h-100 shadow-sm">
@@ -323,7 +323,7 @@ include "../includes/auth_session.php";
         <div class="tab-pane fade" id="nuts" role="tabpanel" aria-labelledby="nuts-tab">
             <div class="row">
                 <?php
-                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.categorie='Lactate' and anunturi.status='Activ' limit 6");
+                $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.category_id='3' and anunturi.status='Activ' limit 6");
                 while ($row = $query->fetch_assoc()) { ?>
                     <div class="col-xl-4 py-1">
                         <div class="card h-100 shadow-sm">

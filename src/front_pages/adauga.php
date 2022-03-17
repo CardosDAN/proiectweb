@@ -22,6 +22,8 @@ include "../includes/auth_session.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Style -->
     <link rel="stylesheet" href="../../assets/sty/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <title>Adauga un anunt</title>
     <style>
@@ -139,45 +141,25 @@ include "../includes/auth_session.php";
 
             <div class="col">
                 <div class="m-3">
-                    <script>
-                        function populate(categorie,sub_categorie){
-                            var brand = document.getElementById(categorie);
-                            var sub_brand = document.getElementById(sub_categorie);
-                            sub_brand.innerHTML = "";
-                            if(categorie.value == "Fructe"){
-                                var optionArray = ["|","mere|Mere","pere|Pere","prune|Prune"];
-                            } else if(categorie.value == "Legume"){
-                                var optionArray = ["|","ceapa|Ceapa","morcov|Morcov","varza|Varza"];
-                            } else if(categorie.value == "Lactate"){
-                                var optionArray = ["|","lapte|Lapte","branza|Branza"];
-                            }
-                            for(var option in optionArray){
-                                var pair = optionArray[option].split("|");
-                                var newOption = document.createElement("option");
-                                newOption.value = pair[0];
-                                newOption.innerHTML = pair[1];
-                                sub_brand.options.add(newOption);
-                            }
-                        }
-                    </script>
                     <div class="card">
-                        <div class="card-header">
-                            Alege categoria pentru anunt
+                        <div class="form-group">
+                            <label for="title">Selectează categoria:</label>
+                            <select name="category_id" class="form-select">
+                                <option value="">--- Selectează categoria ---</option>
+                                <?php
+                                require('../includes/db.php');
+                                $sql = "SELECT * FROM category";
+                                $result = $con->query($sql);
+                                while($row = $result->fetch_assoc()){
+                                    echo "<option value='".$row['id']."'>".$row['name']."</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
-                        <div class="card-body">
-                            Categoria:
-                            <select class="form-select" id="brand" name="categorie" onchange="populate(this.id,'sub_categorie')">
-                                <option value=""></option>
-                                <option value="Fructe">Fructe</option>
-                                <option value="Legume">Legume</option>
-                                <option value="Lactate">Lactate</option>
+                        <div class="form-group">
+                            <label for="title">Selecteaza sub categoria</label>
+                            <select name="sub_category_id" class="form-select">
                             </select>
-                            <hr />
-                            Sub categoria
-                            <select class="form-select" id="sub_brand" name="sub_categorie">
-                                <option value=""></option>
-                            </select>
-                            <hr />
                         </div>
                     </div>
                 </div>
@@ -198,7 +180,32 @@ include "../includes/auth_session.php";
     <!-- Footer -->
 </div>
 
+<script>
+    $( "select[name='category_id']" ).change(function () {
+        var category = $(this).val();
 
+
+        if(category) {
+
+
+            $.ajax({
+                url: "../actions/dropdown_category.php",
+                dataType: 'Json',
+                data: {'id':category},
+                success: function(data) {
+                    $('select[name="sub_category_id"]').empty();
+                    $.each(data, function(key, value) {
+                        $('select[name="sub_category_id"]').append('<option value="'+ key +'">'+ value +'</option>');
+                    });
+                }
+            });
+
+
+        }else{
+            $('select[name="sub_category_id"]').empty();
+        }
+    });
+</script>
 <script src="../../assets/sty/js/jquery-3.3.1.min.js"></script>
 <script src="../../assets/sty/js/popper.min.js"></script>
 <script src="../../assets/sty/js/bootstrap.min.js"></script>

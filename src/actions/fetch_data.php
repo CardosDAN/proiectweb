@@ -236,9 +236,9 @@
 </style>
 
 <?php
-//include "../includes/db.php";
+
 include "../actions/database_connection.php";
-//include('database_connection.php');
+
 
 if (isset($_POST["action"])) {
     $query = "
@@ -249,17 +249,17 @@ if (isset($_POST["action"])) {
 		 AND pret BETWEEN '" . $_POST["minimum_price"] . "' AND '" . $_POST["maximum_price"] . "'
 		";
     }
-    if (isset($_POST["categorie"])) {
-        $categorie_filter = implode("','", $_POST["categorie"]);
+    if (isset($_POST["category_id"])) {
+        $category_id_filter = implode("','", $_POST["category_id"]);
         $query .= "
-		 AND categorie IN('" . $categorie_filter . "')
+		 AND category_id IN('" . $category_id_filter . "')
 		";
     }
-    if(isset($_POST["sub_categorie"]))
+    if(isset($_POST["sub_category_id"]))
     {
-        $sub_categorie_filter = implode("','", $_POST["sub_categorie"]);
+        $sub_category_id_filter = implode("','", $_POST["sub_category_id"]);
         $query .= "
-		 AND sub_categorie IN('".$sub_categorie_filter."')
+		 AND sub_category_id IN('".$sub_category_id_filter."')
 		";
     }
     if(isset($_POST["record_limit"]))

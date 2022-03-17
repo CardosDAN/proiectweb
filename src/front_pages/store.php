@@ -133,15 +133,15 @@ $next = $page + 1;
                     <div>
                         <?php
 
-                        $query = "SELECT DISTINCT(categorie) FROM anunturi WHERE status = 'Activ' ORDER BY id DESC";
+                        $query = "SELECT DISTINCT(category_id),category.id,category.name FROM anunturi,category where anunturi.category_id = category.id and anunturi.status = 'Activ'";
                         $statement = $con->prepare($query);
                         $statement->execute();
                         $result = $statement->fetchAll();
                         foreach ($result as $row) {
                             ?>
                             <div class="p3">
-                                <label><input type="checkbox" class="common_selector categorie"
-                                              value="<?php echo $row['categorie']; ?>"> <?php echo $row['categorie']; ?>
+                                <label><input type="checkbox" class="common_selector category_id"
+                                              value="<?php echo $row['category_id']; ?>"> <?php echo $row['name']; ?>
                                 </label>
                             </div>
                             <?php
@@ -155,15 +155,15 @@ $next = $page + 1;
                     <div>
                         <?php
 
-                        $query = "SELECT DISTINCT(sub_categorie) FROM anunturi WHERE status = 'Activ' ORDER BY id DESC";
+                        $query = "SELECT DISTINCT(anunturi.sub_category_id),sub_category.id,sub_category.name FROM anunturi,sub_category WHERE status = 'Activ' and anunturi.sub_category_id = sub_category.id";
                         $statement = $con->prepare($query);
                         $statement->execute();
                         $result = $statement->fetchAll();
                         foreach ($result as $row) {
                             ?>
                             <div class="p3">
-                                <label><input type="checkbox" class="common_selector sub_categorie"
-                                              value="<?php echo $row['sub_categorie']; ?>"> <?php echo $row['sub_categorie']; ?>
+                                <label><input type="checkbox" class="common_selector sub_category_id"
+                                              value="<?php echo $row['sub_category_id']; ?>"> <?php echo $row['name']; ?>
                                 </label>
                             </div>
                             <?php
@@ -261,8 +261,8 @@ $next = $page + 1;
             var action = 'fetch_data';
             var minimum_price = $('#hidden_minimum_price').val();
             var maximum_price = $('#hidden_maximum_price').val();
-            var categorie = get_filter('categorie');
-            var sub_categorie = get_filter('sub_categorie');
+            var category_id = get_filter('category_id');
+            var sub_category_id = get_filter('sub_category_id');
             var record_limit = $('#records-limit').val();
             var page = <?= isset($_GET['page']) ? $_GET['page'] : 1  ?>
             // var storage = get_filter('storage');
@@ -273,8 +273,8 @@ $next = $page + 1;
                     action: action,
                     minimum_price: minimum_price,
                     maximum_price: maximum_price,
-                    categorie: categorie,
-                    sub_categorie: sub_categorie,
+                    category_id: category_id,
+                    sub_category_id: sub_category_id,
                     record_limit: record_limit,
                     page:page
                 },
