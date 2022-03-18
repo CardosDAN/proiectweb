@@ -88,12 +88,15 @@ include("auth_session.php");
                     <div class="sidebar-submenu">
                         <ul>
                             <li>
-                                <a href="../cont_page/users_table.php?search=#">Users
+                                <a href="../cont_page/users_table.php">Users
 
                                 </a>
                             </li>
                             <li>
-                                <a href="../cont_page/orders_table.php?search=#">Anunțuri</a>
+                                <a href="../cont_page/orders_table.php">Anunțuri</a>
+                            </li>
+                            <li>
+                                <a href="../cont_page/category.php">Categori</a>
                             </li>
                         </ul>
                     </div>
