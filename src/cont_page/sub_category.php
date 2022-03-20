@@ -48,7 +48,7 @@ $file_name = 'users_table';
 
             <div class="row">
                 <div class="col">
-                    <h2 class="h4">Adaugă o nouă categorie</h2>
+                    <h2 class="h4">Adaugă o nouă sub categorie</h2>
                 </div>
 
             </div>
@@ -71,28 +71,29 @@ $file_name = 'users_table';
                                         <thead>
                                         <tr>
                                             <th>Nr</th>
-                                            <th>Categoria</th>
+                                            <th>Sub Categoria</th>
                                             <th> </th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <?php
+                                        $category_id = $_GET["id"];
                                         include "../includes/db.php";
-                                        $sql = "Select * from category";
+                                        $sql = "Select * from sub_category where sub_category_id = '$category_id'";
                                         $res = $con->query($sql);
                                         while ($row = $res->fetch_assoc()) {
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["id"] ?></td>
-                                                <td><a href="sub_category.php?id=<?= $row['id'] ?>"><?php echo $row["name"] ?></a></td>
+                                                <td><?php echo $row["name"] ?></td>
                                                 <td>
 
                                                     <a class="btn btn-outline-danger"
-                                                       href="../actions/delete_category.php?id=<?php echo $row['id']; ?>">
+                                                       href="../actions/delete_sub_category.php?id=<?php echo $row['id']; ?>">
                                                         <i class=" bi bi-trash"></i>
                                                     </a>
                                                     <a class="btn btn-outline-primary"
-                                                       href="../actions/edit_category.php?id=<?php echo $row['id']; ?>">
+                                                       href="../actions/edit_sub_category.php?id=<?php echo $row['id']; ?>">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </a>
                                                 </td>
