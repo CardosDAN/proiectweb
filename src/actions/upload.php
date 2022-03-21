@@ -11,16 +11,16 @@ function upload($files)
     $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
     if (!empty($files["name"])) {
-// Allow certain file formats
+
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf');
         if (in_array($fileType, $allowTypes)) {
-// Upload file to server
+
             if (move_uploaded_file($files["tmp_name"], $targetFilePath)) {
-// Insert image file name into database
+
                 $insert = $con->query("INSERT into images (file_name, uploaded_on) VALUES ('" . $fileName . "', NOW())");
                 if ($insert) {
                     return $con->insert_id;
-#return $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+
                 } else {
                     $statusMsg = "File upload failed, please try again.";
                 }

@@ -1,6 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
-$file_name = 'users_table';
+$file_name = '';
 
 ?>
 
@@ -58,9 +58,10 @@ $file_name = 'users_table';
                     <div class="container-fluid ">
                         <div class="row">
                             <div class="col-md-5">
-                                <form method="post" action="../actions/insert_category.php">
+                                <form method="post" action="../actions/insert_sub_category.php">
                                     <div class="mb-3">
                                         <input type="text" class="form-control" id="exampleInputEmail1"  name="name" aria-describedby="emailHelp">
+                                        <input type="hidden" class="form-control" id="exampleInputEmail1"  name="sub_category_id" value="<?= $_GET['id'] ?> ">
                                     </div>
                                     <button type="submit" class="btn btn-primary float-right">Adaugă</button>
                                 </form>
@@ -70,7 +71,6 @@ $file_name = 'users_table';
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>Nr</th>
                                             <th>Sub Categoria</th>
                                             <th> </th>
                                         </tr>
@@ -84,7 +84,6 @@ $file_name = 'users_table';
                                         while ($row = $res->fetch_assoc()) {
                                             ?>
                                             <tr>
-                                                <td><?php echo $row["id"] ?></td>
                                                 <td><?php echo $row["name"] ?></td>
                                                 <td>
 
