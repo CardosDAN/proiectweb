@@ -1,15 +1,14 @@
 <?php
-// Initialize the session
+
 include "db.php";
-//include "../actions/database_connection.php";
+
 session_start();
 
-// Check if the user is logged in, if not then redirect him to login page
+
 if (isset($_SESSION['user_level_id'])) {
     $user_level_id = $_SESSION['user_level_id'];
     $nume_pagina = substr(basename($_SERVER['PHP_SELF']), 0, -4);
 
-//    || true in if
     $p = "1";
     if(isset($file_name) ){
         $qPermission = mysqli_query($con, "select min_user_level_id from pages WHERE nume='$file_name'");
@@ -18,14 +17,25 @@ if (isset($_SESSION['user_level_id'])) {
         }
     }
 }
+if (isset($_SESSION["id"])) {
+    $user_id = $_SESSION["id"];
 
+    $result = mysqli_query($con, "SELECT blocat FROM users where id = " . $user_id);
 
-// Check if the user is logged in, if not then redirect him to login page
+    while ($row = mysqli_fetch_array($result)) {
+        $blocat = $row['blocat'];
+    }
+    if ($blocat == "1") {
+        header("Location:../cont_page/login.php");
+        //    } else {
+        //        header("Location:banned.php");
+    }
+}
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $p > $user_level_id) {
     header("location: ../cont_page/login.php");
-   
+
     exit;
 }
 
-?>
+
 

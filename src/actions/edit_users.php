@@ -24,24 +24,23 @@ include("../includes/db.php");
         <div class="container col-md-12">
             <div class="row">
                 <div class="form-group col-md-12">
-                    <?php $id = $_GET['id']; // get id through query string
+                    <?php $id = $_GET['id'];
 
                     $qry = mysqli_query($con, "select * from users where id='$id'"); // select query
 
-                    $row = mysqli_fetch_array($qry); // fetch data
+                    $row = mysqli_fetch_array($qry);
 
-                    if (isset($_POST['update'])) // when click on Update button
+                    if (isset($_POST['update']))
                     {
                         $username = $_POST['username'];
                         $email = $_POST['email'];
                         $phone = $_POST['phone'];
-                        $password = $_POST['password'];
                         $user_level_id = $_POST['user_level_id'];
-
-                        $edit = mysqli_query($con, "update users set username='{$username}', email='{$email}', phone='{$phone}', password='{$password}', user_level_id='{$user_level_id}' where id='{$id}'");
+                        $blocat = $_POST['blocat'];
+                        $edit = mysqli_query($con, "update users set username='{$username}', email='{$email}', phone='{$phone}', user_level_id='{$user_level_id}', blocat = '{$blocat}' where id='{$id}'");
 
                         if ($edit) {
-                            header('Location: ' . $_SERVER['HTTP_REFERER']);
+                            header('Location: ../cont_page/users_table.php ');
                             exit;
 
                         } else {
@@ -67,21 +66,41 @@ include("../includes/db.php");
                                         <label for="exampleInputEmail1">Numarul de telefon</label>
                                         <input type="number" class="form-control" name="phone" value="<?php echo $row['phone'] ?>" placeholder="Enter Phone" Required>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1"></label>
-                                        <div class="card ">
-                                            <div class="card-header">
-                                                Schimbă statusul
+                                    <?php if($_SESSION['user_level_id'] == "3"): ?>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <div class="card ">
+                                                    <div class="card-header">
+                                                        Schimbă statusul
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <select class="form-select" name="user_level_id" aria-label="Default select example">
+                                                            <option value="1">User</option>
+                                                            <option value="2">Seller</option>
+                                                            <option value="3">Admin</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="card-body">
-                                                <select class="form-select" name="user_level_id" aria-label="Default select example">
-                                                    <option value="1">User</option>
-                                                    <option value="2">Seller</option>
-                                                    <option value="3">Admin</option>
-                                                </select>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        Blochează userul
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <select class="form-select" name="blocat" aria-label="Default select example">
+                                                            <option value="0">Deblochează</option>
+                                                            <option value="1">Blochează</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php endif ?>
                                     <input class="btn btn-outline-success float-right"  type="submit" name="update" value="Update">
                                 </form>
                             </div>

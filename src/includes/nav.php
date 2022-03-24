@@ -96,7 +96,7 @@ include("auth_session.php");
                                 <a href="../cont_page/orders_table.php">Anunțuri</a>
                             </li>
                             <li>
-                                <a href="../cont_page/category.php">Categori</a>
+                                <a href="../cont_page/category.php">Categori/Subcategori</a>
                             </li>
                         </ul>
                     </div>

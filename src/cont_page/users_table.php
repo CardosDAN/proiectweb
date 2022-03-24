@@ -139,7 +139,7 @@ $file_name = 'users_table';
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Nr</th>
                                     <th>Username</th>
                                     <th>Telefon</th>
                                     <th>Email</th>
