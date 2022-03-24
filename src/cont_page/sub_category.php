@@ -1,6 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
-$file_name = '';
+$file_name = 'sub_category';
 
 ?>
 

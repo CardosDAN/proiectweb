@@ -1,6 +1,6 @@
 <?php
 
-$file_name = '';
+$file_name = 'vizualizare_anunt';
 $product_id = $_GET['id'];
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-$file_name = '';
+$file_name = 'edit_sub_category';
 
 include("../includes/db.php");
 

@@ -1,6 +1,6 @@
 
 <?php
-$file_name = '';
+$file_name = 'edit_orders';
 
 include("../includes/db.php");
 function upload($files){
