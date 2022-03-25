@@ -124,11 +124,7 @@ $file_name = 'orders_table';
                                         <td><?php echo $row["adresa"] ?></td>
                                         <td><?php echo $row["status"] ?></td>
                                         <td>
-
-                                            <a class="btn btn-outline-danger"
-                                               href="../actions/delete_orders.php?id=<?php echo $row['id']; ?>">
-                                                <i class=" bi bi-trash"></i>
-                                            </a>
+                                            <?php echo "<a onClick=\"javascript: return confirm('Vă rugăm să confirmați ștergerea');\" href='../actions/delete_orders.php?id=".$row['id']."'><i class='bi bi-trash btn btn-outline-danger'></i></a>"; ?>
                                             <a class="btn btn-outline-info"
                                                href="vizualizare_anunt.php?id=<?php echo $row['id']; ?>">
                                                 <i class=" bi bi-eye"></i>

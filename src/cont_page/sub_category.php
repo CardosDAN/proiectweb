@@ -86,11 +86,7 @@ $file_name = 'sub_category';
                                             <tr>
                                                 <td><?php echo $row["name"] ?></td>
                                                 <td>
-
-                                                    <a class="btn btn-outline-danger"
-                                                       href="../actions/delete_sub_category.php?id=<?php echo $row['id']; ?>">
-                                                        <i class=" bi bi-trash"></i>
-                                                    </a>
+                                                    <?php echo "<a onClick=\"javascript: return confirm('Vă rugăm să confirmați ștergerea');\" href='../actions/delete_sub_category.php?id=".$row['id']."'><i class='bi bi-trash btn btn-outline-danger'></i></a>"; ?>
                                                     <a class="btn btn-outline-primary"
                                                        href="../actions/edit_sub_category.php?id=<?php echo $row['id']; ?>">
                                                         <i class="bi bi-pencil-square"></i>

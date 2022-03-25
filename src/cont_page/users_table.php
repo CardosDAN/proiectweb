@@ -129,7 +129,11 @@ $file_name = 'users_table';
                 <div class="col">
                     <h2 class="h4">Lista de utilizatori</h2>
                 </div>
-
+                <?php
+                function function_alert($message)
+                {
+                    echo "<script>alert('$message');</script>";
+                }?>
             </div>
             <hr>
             <div class="row justify-content-center">
@@ -139,12 +143,11 @@ $file_name = 'users_table';
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>Nr</th>
                                     <th>Username</th>
                                     <th>Telefon</th>
                                     <th>Email</th>
                                     <th>Level</th>
-                                    <th>Actiuni</th>
+                                    <th> </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -155,17 +158,13 @@ $file_name = 'users_table';
                                 while ($row = $res->fetch_assoc()) {
                                     ?>
                                     <tr>
-                                        <td><?php echo $row["id"] ?></td>
                                         <td><?php echo $row["username"] ?></td>
                                         <td><?php echo $row["phone"] ?></td>
                                         <td><?php echo $row["email"] ?></td>
                                         <td><?php echo $row["user_level_id"] ?></td>
                                         <td>
+                                           <?php echo "<a onClick=\"javascript: return confirm('Vă rugăm să confirmați ștergerea');\" href='../actions/delete_user.php?id=".$row['id']."'><i class='bi bi-trash btn btn-outline-danger'></i></a>"; ?>
 
-                                            <a class="btn btn-outline-danger"
-                                               href="../actions/delete_user.php?id=<?php echo $row['id']; ?>">
-                                                <i class=" bi bi-trash"></i>
-                                            </a>
                                             <a class="btn btn-outline-primary"
                                                href="../actions/edit_users.php?id=<?php echo $row['id']; ?>">
                                                 <i class="bi bi-pencil-square"></i>

@@ -104,7 +104,7 @@ include("../includes/db.php");
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["id"] ?></td>
-                                                <td><?php echo $row["name"] ?></td>
+                                                <td><a href="../cont_page/sub_category.php?id=<?= $row['id'] ?>"><?php echo $row["name"] ?></a></td>
                                                 <td>
 
                                                     <a class="btn btn-outline-danger"
