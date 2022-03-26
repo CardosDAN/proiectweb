@@ -4,6 +4,114 @@ $file_name = "adauga";
 include "../includes/auth_session.php";
 
 ?>
+<?php
+$titlu = $telefon = $adresa = $pret = $descriere = $category_id = '';
+$erori = array('titlu' => '', 'telefon' => '', 'adresa' => '', 'pret' => '', 'descriere' => '', 'category_id' => '');
+
+if (empty($_POST['titlu'])) {
+    $erori['titlu'] = 'Titlul trebuie introdus';
+} else {
+    $titlu = $_POST['titlu'];
+    if (!preg_match('/^[a-zA-Z\s]+$/', $titlu)) {
+        $erori['titlu'] = 'Titlul trebuie sa fie din litere ';
+    }
+}
+if (empty($_POST["telefon"])) {
+    $erori['telefon'] = "Trebuie introdus numarul de telefon";
+} else {
+    $telefon = $_POST["telefon"];
+    if (!preg_match("/^[0-9]{10}+$/", $telefon)) {
+        $erori['telefon'] = "Numarul introdus nu este valid";
+    }
+}
+if (empty($_POST["adresa"])) {
+    $erori['adresa'] = "Trebuie introdusa adresa";
+} else {
+    $adresa = $_POST["adresa"];
+}
+if (empty($_POST["pret"])) {
+    $erori['pret'] = "Trebuie introdus pretul";
+} else {
+    $pret = $_POST["pret"];
+    if (!preg_match("/^\d+(:?[.]\d{2})$/", $_POST["pret"]) == '0') {
+        $erori['pret'] = "Pretul introdus nu este corect";
+    }
+}
+if (empty($_POST["descriere"])) {
+    $erori['descriere'] = "Trebuie introdusa o descriere a produsului";
+} else {
+    $descriere = $_POST["descriere"];
+}
+if (empty($_POST["category_id"])) {
+    $erori['category_id'] = "Trebuie selectata o categorie";
+} else {
+    $category_id = $_POST["category_id"];
+}
+if (array_filter($erori)) {
+    echo '';
+} else {
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
+    function upload($files)
+    {
+
+        global $con;
+        // File upload path
+        $targetDir = "../../uploads/";
+        $fileName = basename($files["name"]);
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+        if (!empty($files["name"])) {
+            // Allow certain file formats
+            $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf');
+            if (in_array($fileType, $allowTypes)) {
+                // Upload file to server
+                if (move_uploaded_file($files["tmp_name"], $targetFilePath)) {
+                    // Insert image file name into database
+                    $insert = $con->query("INSERT into images (file_name, uploaded_on) VALUES ('" . $fileName . "', NOW())");
+                    if ($insert) {
+                        return $con->insert_id;
+                        #return $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+                    } else {
+                        $statusMsg = "File upload failed, please try again.";
+                    }
+                } else {
+                    $statusMsg = "Sorry, there was an error uploading your file.";
+                }
+            } else {
+                $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+            }
+        } else {
+            $statusMsg = 'Please select a file to upload.';
+        }
+
+// Display status message
+        echo $statusMsg;
+        return 0;
+    }
+
+    $titlu = mysqli_real_escape_string($con, $_POST["titlu"]);
+    $telefon = mysqli_real_escape_string($con, $_POST["telefon"]);
+    $adresa = mysqli_real_escape_string($con, $_POST["adresa"]);
+    $adresa = mysqli_real_escape_string($con, $_POST["pret"]);
+    $descriere = mysqli_real_escape_string($con, $_POST["descriere"]);
+    $category_id = mysqli_real_escape_string($con, $_POST["category_id"]);
+    $image_id = upload($_FILES["file"]);
+    $sub_category_id = $_POST['sub_category_id'];
+    $user_id = $_SESSION['id'];
+    $sql = "INSERT INTO anunturi (titlu,telefon,adresa,pret,descriere,image_id,user_id,category_id,sub_category_id) VALUES ('{$titlu}','{$telefon}','{$adresa}','{$pret}','{$descriere}','{$image_id}','$user_id','$category_id','$sub_category_id')";
+    if ($con->query($sql) === TRUE) {
+        echo "";
+    } else {
+        echo "Error updating record: " . $con->error;
+    }
+
+
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,7 +127,8 @@ include "../includes/auth_session.php";
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../assets/sty/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Style -->
     <link rel="stylesheet" href="../../assets/sty/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
@@ -40,14 +149,16 @@ include "../includes/auth_session.php";
             margin: 0px;
             height: 100vh;
         }
+
         .center {
-            height:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
         }
-        .form-input  {
+
+        .form-input {
             width: 350px;
             padding: 20px;
             background: #fff;
@@ -100,31 +211,42 @@ include "../includes/auth_session.php";
 
 
 <div class="container m-4">
-    <form action="../actions/adaugareanunt.php" method="post" enctype="multipart/form-data">
+    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col">
                 <div class="form-row">
                     <div class="col-7">
-                        <input type="text" name="titlu" class="form-control" placeholder="Titlul anuntului">
+                        <input type="text" name="titlu" class="form-control"
+                               value="<?php echo htmlspecialchars($titlu) ?>" placeholder="Titlul anuntului">
+                        <div class="red-text"><?php echo $erori['titlu']; ?></div>
                     </div>
                     <div class="col">
-                        <input type="number" name="telefon" class="form-control" placeholder="Numarul de telefon">
+                        <input type="number" name="telefon" min="0" class="form-control"
+                               value="<?php echo htmlspecialchars($telefon) ?>" placeholder="Numarul de telefon">
+                        <div class="red-text"><?php echo $erori['telefon']; ?></div>
                     </div>
                 </div>
                 <br>
                 <div class="mb-3">
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" name="adresa" class="form-control" placeholder="Primaria Jibou, Strada Libertății, Jibou">
+                            <input type="text" name="adresa" class="form-control"
+                                   value="<?php echo htmlspecialchars($adresa) ?>"
+                                   placeholder="Primaria Jibou, Strada Libertății, Jibou">
+                            <div class="red-text"><?php echo $erori['adresa']; ?></div>
                         </div>
                         <div class="col-md-2">
-                            <input type="number" name="pret" class="form-control" placeholder="Pret">
+                            <input type="number" name="pret" min="0" class="form-control"
+                                   value="<?php echo htmlspecialchars($pret) ?>" placeholder="Pret">
+                            <div class="red-text"><?php echo $erori['pret']; ?></div>
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Dă cât mai multe detali..</label>
-                    <textarea type="text" name="descriere" class="form-control" id="exampleInputPassword1"></textarea>
+                    <textarea type="text" name="descriere" class="form-control"
+                              id="exampleInputPassword1"><?php echo htmlspecialchars($descriere) ?></textarea>
+                    <div class="red-text"><?php echo $erori['descriere']; ?></div>
                 </div>
                 <div class="container ">
                     <div class="center">
@@ -132,7 +254,8 @@ include "../includes/auth_session.php";
                             <div class="preview">
                                 <img id="file-ip-1-preview">
                                 <label for="file-ip-1">Upload Image</label>
-                                <input type="file" id="file-ip-1" name="file" accept="image/*" onchange="showPreview(event);">
+                                <input type="file" id="file-ip-1" name="file" accept="image/*"
+                                       onchange="showPreview(event);">
                             </div>
                         </div>
                     </div>
@@ -144,14 +267,15 @@ include "../includes/auth_session.php";
                     <div class="card">
                         <div class="form-group">
                             <label for="title">Selectează categoria:</label>
+                            <div class="red-text"><?php echo $erori['category_id']; ?></div>
                             <select name="category_id" class="form-select">
-                                <option value="">--- Selectează categoria ---</option>
+                                <option value="<?php echo htmlspecialchars($category_id) ?>">--- Selectează categoria ---</option>
                                 <?php
                                 require('../includes/db.php');
                                 $sql = "SELECT * FROM category";
                                 $result = $con->query($sql);
-                                while($row = $result->fetch_assoc()){
-                                    echo "<option value='".$row['id']."'>".$row['name']."</option>";
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
                                 }
                                 ?>
                             </select>
@@ -181,27 +305,27 @@ include "../includes/auth_session.php";
 </div>
 
 <script>
-    $( "select[name='category_id']" ).change(function () {
+    $("select[name='category_id']").change(function () {
         var category = $(this).val();
 
 
-        if(category) {
+        if (category) {
 
 
             $.ajax({
                 url: "../actions/dropdown_category.php",
                 dataType: 'Json',
-                data: {'id':category},
-                success: function(data) {
+                data: {'id': category},
+                success: function (data) {
                     $('select[name="sub_category_id"]').empty();
-                    $.each(data, function(key, value) {
-                        $('select[name="sub_category_id"]').append('<option value="'+ key +'">'+ value +'</option>');
+                    $.each(data, function (key, value) {
+                        $('select[name="sub_category_id"]').append('<option value="' + key + '">' + value + '</option>');
                     });
                 }
             });
 
 
-        }else{
+        } else {
             $('select[name="sub_category_id"]').empty();
         }
     });
