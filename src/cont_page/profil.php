@@ -45,7 +45,7 @@ $file_name = 'profil';
                                             <div class="modal-body">
                                                <form method="post" action="../actions/applications.php">
                                                    <label for="exampleInputPassword1" class="form-label">De ce doresti sa devi vanzator?</label>
-                                                   <textarea type="text" name="mesaj" class="form-control" id="exampleInputPassword1"></textarea>
+                                                   <textarea type="text" name="mesaj" class="form-control" id="exampleInputPassword1" required></textarea>
                                                    <input type="hidden" class="form-control" id="exampleInputPassword1" name="user_id" value="<?= $_SESSION['id'] ?>">
                                                    <hr>
                                                    <button type="submit" class="btn btn-primary">Trimite</button>

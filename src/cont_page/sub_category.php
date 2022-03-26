@@ -60,7 +60,7 @@ $file_name = 'sub_category';
                             <div class="col-md-5">
                                 <form method="post" action="../actions/insert_sub_category.php">
                                     <div class="mb-3">
-                                        <input type="text" class="form-control" id="exampleInputEmail1"  name="name" aria-describedby="emailHelp">
+                                        <input type="text" class="form-control" id="exampleInputEmail1"  name="name" aria-describedby="emailHelp" required>
                                         <input type="hidden" class="form-control" id="exampleInputEmail1"  name="sub_category_id" value="<?= $_GET['id'] ?> ">
                                     </div>
                                     <button type="submit" class="btn btn-primary float-right">Adaugă</button>

@@ -527,10 +527,10 @@ if ($result->num_rows > 0) {
                         <div class="row">
                             <div class="col">
                                 <input type="text" disabled name="<?= $_SESSION['username']; ?>" class="form-control"
-                                       placeholder="<?= $_SESSION['username']; ?>">
+                                       placeholder="<?= $_SESSION['username']; ?>" required>
                             </div>
                             <div class="col">
-                                <input type="email" name="email" class="form-control" placeholder="Email">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
                             </div>
 
                         </div>
@@ -539,7 +539,7 @@ if ($result->num_rows > 0) {
                         <br>
                         <div>
                                 <textarea class="form-control" type="text" name="review"
-                                          id="exampleFormControlTextarea1" placeholder="Review" rows="3"></textarea>
+                                          id="exampleFormControlTextarea1" placeholder="Review" rows="3" required></textarea>
                         </div>
                         <br>
                         <button type="submit" class="btn btn-success" name="add">Post review</button>

@@ -8,108 +8,109 @@ include "../includes/auth_session.php";
 $titlu = $telefon = $adresa = $pret = $descriere = $category_id = '';
 $erori = array('titlu' => '', 'telefon' => '', 'adresa' => '', 'pret' => '', 'descriere' => '', 'category_id' => '');
 
-if (empty($_POST['titlu'])) {
-    $erori['titlu'] = 'Titlul trebuie introdus';
-} else {
-    $titlu = $_POST['titlu'];
-    if (!preg_match('/^[a-zA-Z\s]+$/', $titlu)) {
-        $erori['titlu'] = 'Titlul trebuie sa fie din litere ';
-    }
-}
-if (empty($_POST["telefon"])) {
-    $erori['telefon'] = "Trebuie introdus numarul de telefon";
-} else {
-    $telefon = $_POST["telefon"];
-    if (!preg_match("/^[0-9]{10}+$/", $telefon)) {
-        $erori['telefon'] = "Numarul introdus nu este valid";
-    }
-}
-if (empty($_POST["adresa"])) {
-    $erori['adresa'] = "Trebuie introdusa adresa";
-} else {
-    $adresa = $_POST["adresa"];
-}
-if (empty($_POST["pret"])) {
-    $erori['pret'] = "Trebuie introdus pretul";
-} else {
-    $pret = $_POST["pret"];
-    if (!preg_match("/^\d+(:?[.]\d{2})$/", $_POST["pret"]) == '0') {
-        $erori['pret'] = "Pretul introdus nu este corect";
-    }
-}
-if (empty($_POST["descriere"])) {
-    $erori['descriere'] = "Trebuie introdusa o descriere a produsului";
-} else {
-    $descriere = $_POST["descriere"];
-}
-if (empty($_POST["category_id"])) {
-    $erori['category_id'] = "Trebuie selectata o categorie";
-} else {
-    $category_id = $_POST["category_id"];
-}
-if (array_filter($erori)) {
-    echo '';
-} else {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+if (isset($_POST['submit'])) {
 
-    function upload($files)
-    {
+    if (empty($_POST['titlu'])) {
+        $erori['titlu'] = 'Titlul trebuie introdus';
+    } else {
+        $titlu = $_POST['titlu'];
+        if (!preg_match('/^[a-zA-Z\s]+$/', $titlu)) {
+            $erori['titlu'] = 'Titlul trebuie sa fie din litere ';
+        }
+    }
+    if (empty($_POST["telefon"])) {
+        $erori['telefon'] = "Trebuie introdus numarul de telefon";
+    } else {
+        $telefon = $_POST["telefon"];
+        if (!preg_match("/^[0-9]{10}+$/", $telefon)) {
+            $erori['telefon'] = "Numarul introdus nu este valid";
+        }
+    }
+    if (empty($_POST["adresa"])) {
+        $erori['adresa'] = "Trebuie introdusa adresa";
+    } else {
+        $adresa = $_POST["adresa"];
+    }
+    if (empty($_POST["pret"])) {
+        $erori['pret'] = "Trebuie introdus pretul";
+    } else {
+        $pret = $_POST["pret"];
+        if (!preg_match("/^\d+(:?[.]\d{2})$/", $_POST["pret"]) == '0') {
+            $erori['pret'] = "Pretul introdus nu este corect";
+        }
+    }
+    if (empty($_POST["descriere"])) {
+        $erori['descriere'] = "Trebuie introdusa o descriere a produsului";
+    } else {
+        $descriere = $_POST["descriere"];
+    }
+    if (empty($_POST["category_id"])) {
+        $erori['category_id'] = "Trebuie selectata o categorie";
+    } else {
+        $category_id = $_POST["category_id"];
+    }
+    if (array_filter($erori)) {
+        echo '';
+    } else {
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
 
-        global $con;
-        // File upload path
-        $targetDir = "../../uploads/";
-        $fileName = basename($files["name"]);
-        $targetFilePath = $targetDir . $fileName;
-        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+        function upload($files)
+        {
 
-        if (!empty($files["name"])) {
-            // Allow certain file formats
-            $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf');
-            if (in_array($fileType, $allowTypes)) {
-                // Upload file to server
-                if (move_uploaded_file($files["tmp_name"], $targetFilePath)) {
-                    // Insert image file name into database
-                    $insert = $con->query("INSERT into images (file_name, uploaded_on) VALUES ('" . $fileName . "', NOW())");
-                    if ($insert) {
-                        return $con->insert_id;
-                        #return $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+            global $con;
+            // File upload path
+            $targetDir = "../../uploads/";
+            $fileName = basename($files["name"]);
+            $targetFilePath = $targetDir . $fileName;
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+            if (!empty($files["name"])) {
+                // Allow certain file formats
+                $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf');
+                if (in_array($fileType, $allowTypes)) {
+                    // Upload file to server
+                    if (move_uploaded_file($files["tmp_name"], $targetFilePath)) {
+                        // Insert image file name into database
+                        $insert = $con->query("INSERT into images (file_name, uploaded_on) VALUES ('" . $fileName . "', NOW())");
+                        if ($insert) {
+                            return $con->insert_id;
+                            #return $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+                        } else {
+                            $statusMsg = "File upload failed, please try again.";
+                        }
                     } else {
-                        $statusMsg = "File upload failed, please try again.";
+                        $statusMsg = "Sorry, there was an error uploading your file.";
                     }
                 } else {
-                    $statusMsg = "Sorry, there was an error uploading your file.";
+                    $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
                 }
             } else {
-                $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+                $statusMsg = 'Please select a file to upload.';
             }
-        } else {
-            $statusMsg = 'Please select a file to upload.';
-        }
 
 // Display status message
-        echo $statusMsg;
-        return 0;
+            echo $statusMsg;
+            return 0;
+        }
+
+        $titlu = mysqli_real_escape_string($con, $_POST["titlu"]);
+        $telefon = mysqli_real_escape_string($con, $_POST["telefon"]);
+        $adresa = mysqli_real_escape_string($con, $_POST["adresa"]);
+        $adresa = mysqli_real_escape_string($con, $_POST["pret"]);
+        $descriere = mysqli_real_escape_string($con, $_POST["descriere"]);
+        $category_id = mysqli_real_escape_string($con, $_POST["category_id"]);
+        $image_id = upload($_FILES["file"]);
+        $sub_category_id = $_POST['sub_category_id'];
+        $user_id = $_SESSION['id'];
+        $sql = "INSERT INTO anunturi (titlu,telefon,adresa,pret,descriere,image_id,user_id,category_id,sub_category_id) VALUES ('{$titlu}','{$telefon}','{$adresa}','{$pret}','{$descriere}','{$image_id}','$user_id','$category_id','$sub_category_id')";
+        if ($con->query($sql) === TRUE) {
+            echo "";
+        } else {
+            echo "Error updating record: " . $con->error;
+        }
     }
-
-    $titlu = mysqli_real_escape_string($con, $_POST["titlu"]);
-    $telefon = mysqli_real_escape_string($con, $_POST["telefon"]);
-    $adresa = mysqli_real_escape_string($con, $_POST["adresa"]);
-    $adresa = mysqli_real_escape_string($con, $_POST["pret"]);
-    $descriere = mysqli_real_escape_string($con, $_POST["descriere"]);
-    $category_id = mysqli_real_escape_string($con, $_POST["category_id"]);
-    $image_id = upload($_FILES["file"]);
-    $sub_category_id = $_POST['sub_category_id'];
-    $user_id = $_SESSION['id'];
-    $sql = "INSERT INTO anunturi (titlu,telefon,adresa,pret,descriere,image_id,user_id,category_id,sub_category_id) VALUES ('{$titlu}','{$telefon}','{$adresa}','{$pret}','{$descriere}','{$image_id}','$user_id','$category_id','$sub_category_id')";
-    if ($con->query($sql) === TRUE) {
-        echo "";
-    } else {
-        echo "Error updating record: " . $con->error;
-    }
-
-
 }
 ?>
 <!doctype html>
@@ -269,7 +270,9 @@ if (array_filter($erori)) {
                             <label for="title">Selectează categoria:</label>
                             <div class="red-text"><?php echo $erori['category_id']; ?></div>
                             <select name="category_id" class="form-select">
-                                <option value="<?php echo htmlspecialchars($category_id) ?>">--- Selectează categoria ---</option>
+                                <option value="<?php echo htmlspecialchars($category_id) ?>">--- Selectează categoria
+                                    ---
+                                </option>
                                 <?php
                                 require('../includes/db.php');
                                 $sql = "SELECT * FROM category";
