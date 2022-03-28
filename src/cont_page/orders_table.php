@@ -1,7 +1,7 @@
 <?php
 
 $file_name = 'orders_table';
-
+$order_status = ['Inactiv','Activ'];
 ?>
 
 <!DOCTYPE html>
@@ -122,7 +122,7 @@ $file_name = 'orders_table';
                                         <td><?php echo $row["titlu"] ?></td>
                                         <td><?php echo $row["telefon"] ?></td>
                                         <td><?php echo $row["adresa"] ?></td>
-                                        <td><?php echo $row["status"] ?></td>
+                                        <td><?php echo $order_status[$row["status"]] ?></td>
                                         <td>
                                             <?php echo "<a onClick=\"javascript: return confirm('Vă rugăm să confirmați ștergerea');\" href='../actions/delete_orders.php?id=".$row['id']."'><i class='bi bi-trash btn btn-outline-danger'></i></a>"; ?>
                                             <a class="btn btn-outline-info"
@@ -133,14 +133,22 @@ $file_name = 'orders_table';
                                                href="../actions/edit_orders.php?id=<?php echo $row['id']; ?>">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
+                                            <?php
+                                            if($row['status'] == false):
+                                            ?>
                                             <a class="btn btn-outline-warning"
                                                href="../actions/add_on.php?id=<?php echo $row['id']; ?>">
                                                 <i class="bi bi-toggle-on"></i>
                                             </a>
+                                                <?php
+                                                else:
+                                                ?>
                                             <a class="btn btn-outline-warning"
                                                href="../actions/add_off.php?id=<?php echo $row['id']; ?>">
                                                 <i class="bi bi-toggle-off"></i>
                                             </a>
+                                                <?php endif;
+                                                ?>
                                         </td>
                                     </tr>
                                 <?php } ?>

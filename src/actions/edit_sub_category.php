@@ -54,7 +54,7 @@ include("../includes/db.php");
                 <div class="form-group col-md-12">
                     <?php $id = $_GET['id']; // get id through query string
 
-                    $qry = mysqli_query($con, "select * from category where id='$id'"); // select query
+                    $qry = mysqli_query($con, "select * from sub_category where id='$id'"); // select query
 
                     $row = mysqli_fetch_array($qry); // fetch data
 
@@ -62,7 +62,7 @@ include("../includes/db.php");
                     {
                         $name = $_POST['name'];
 
-                        $edit = mysqli_query($con, "update category set name='{$name}' where id='{$id}'");
+                        $edit = mysqli_query($con, "update sub_category set name='{$name}' where id='{$id}'");
 
                         if ($edit) {
                             header('Location: ' . $_SERVER['HTTP_REFERER']);

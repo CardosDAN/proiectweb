@@ -242,7 +242,7 @@ include "../actions/database_connection.php";
 
 if (isset($_POST["action"])) {
     $query = "
-		SELECT * FROM anunturi,images WHERE images.id=anunturi.image_id and anunturi.status='Activ' 
+		SELECT * FROM anunturi,images WHERE images.id=anunturi.image_id and anunturi.status=1 
 	";
     if (isset($_POST["minimum_price"], $_POST["maximum_price"]) && !empty($_POST["minimum_price"]) && !empty($_POST["maximum_price"])) {
         $query .= "

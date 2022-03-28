@@ -57,22 +57,22 @@ $file_name = 'category';
                 <div class="form-group col-md-12">
                     <div class="container-fluid ">
                         <div class="row">
-                            <div class="col-md-5">
-                                <form method="post" action="../actions/insert_category.php">
-                                    <div class="mb-3">
+                            <div class="col-md-12">
+                                <form method="post" class="form-inline" action="../actions/insert_category.php">
+                                    <div class="form-group mx-sm-3 mb-2">
                                         <input type="text" class="form-control" id="exampleInputEmail1"  name="name" aria-describedby="emailHelp" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary float-right">Adaugă</button>
+                                    <button type="submit" class="btn btn-primary mb-2">Adaugă</button>
                                 </form>
                             </div>
-                            <div class="col">
-                                <div class=" bg-light rounded my-2 py-2">
+                            <div class="col-md-12">
+                                <div class=" rounded my-2 py-2">
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
                                             <th>Nr</th>
                                             <th>Categoria</th>
-                                            <th> </th>
+                                            <th data-orderable="false"> </th>
                                         </tr>
                                         </thead>
                                         <tbody>

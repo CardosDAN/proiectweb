@@ -28,7 +28,7 @@ $file_name = ' ';
                 <div class="col-md-10">
                     <?php
                     $user_id = $_SESSION['id'];
-                    $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.user_id = '$user_id' and anunturi.status='Activ'");
+                    $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.user_id = '$user_id' and anunturi.status=1");
                     while ($row = $query->fetch_assoc()) { ?>
                         <div class="card mb-3">
                             <div class="row">

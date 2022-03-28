@@ -12,7 +12,7 @@ if ($result->num_rows > 0) {
     }
 }
 
-$on = mysqli_query($con, "UPDATE anunturi SET status = 'Inactiv' where id= '$id'");
+$on = mysqli_query($con, "UPDATE anunturi SET status = 0 where id= '$id'");
 
 if($on)
 {

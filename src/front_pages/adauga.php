@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
         $titlu = mysqli_real_escape_string($con, $_POST["titlu"]);
         $telefon = mysqli_real_escape_string($con, $_POST["telefon"]);
         $adresa = mysqli_real_escape_string($con, $_POST["adresa"]);
-        $adresa = mysqli_real_escape_string($con, $_POST["pret"]);
+        $pret = mysqli_real_escape_string($con, $_POST["pret"]);
         $descriere = mysqli_real_escape_string($con, $_POST["descriere"]);
         $category_id = mysqli_real_escape_string($con, $_POST["category_id"]);
         $image_id = upload($_FILES["file"]);
@@ -291,7 +291,7 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
                 <div class="align-right">
-                    <button type="submit" class="btn btn-success">Adauga</button>
+                    <button type="submit" name="submit" class="btn btn-success">Adauga</button>
                     <a type="button" class="btn btn-danger" href="home.php">Anulează</a>
                 </div>
             </div>

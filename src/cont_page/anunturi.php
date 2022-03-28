@@ -69,9 +69,10 @@ $file_name = 'anunturi';
                 <div class="tab-pane fade show active" id="activ" role="tabpanel" aria-labelledby="activ-tab">
                     <div class="text-right m-sm-2">
                         <form action="" method="get" class="form-inline">
-                            <input class="form-control mr-sm-2" type="text" name="search" value="<?php if (isset($_GET['search'])) {
-                                echo $_GET['search'];
-                            } ?>" placeholder="Cauta">
+                            <input class="form-control mr-sm-2" type="text" name="search"
+                                   value="<?php if (isset($_GET['search'])) {
+                                       echo $_GET['search'];
+                                   } ?>" placeholder="Cauta">
                             <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
                         </form>
                     </div>
@@ -80,43 +81,45 @@ $file_name = 'anunturi';
                         if (isset($_GET['search'])) {
                             $filtervalues = $_GET['search'];
                             $user_id = $_SESSION['id'];
-                            $query = "SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.user_id = '$user_id' and CONCAT(titlu) LIKE '%$filtervalues%'";
+                            $query = "SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status=1 and anunturi.user_id = '$user_id' and CONCAT(titlu) LIKE '%$filtervalues%'";
                             $query_run = mysqli_query($con, $query);
 
                             if (mysqli_num_rows($query_run)) {
                                 foreach ($query_run as $row) {
                                     ?>
 
-
-                                    <div class="card mb-3 " style="max-width: 540px;">
-                                        <div class="row g-0">
-                                            <div class="col-md-4">
-                                                <?php
-                                                $imageURL = '../../../uploads/' . $row["file_name"]; ?>
-                                                <img src="<?php echo $imageURL; ?>" class="img-fluid rounded-start"
-                                                     alt="...">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="card-body">
-                                                    <a href="vizualizare_anunt.php?id=<?php echo $row['id'] ?>"
-                                                        class="card-title"><?php echo $row['titlu'] ?></a>
-                                                    <p class="card-text"><?php echo $row['descriere'] ?></p>
-                                                    <p class="card-text text-right">
-                                                        <a href="../actions/edit_orders.php?id=<?php echo $row['id'] ?>"><i
-                                                                    class="bi bi-pencil-square py-2 "></i></a>
-                                                        <a href="../actions/delete_orders.php?id=<?php echo $row['id'] ?>"><i
-                                                                    class="bi bi-trash py-2 danger"></i></a>
-                                                    </p>
+                                    <div class="col-6 px-2">
+                                        <div class="card mb-3 p-2" style="max-width: 540px;">
+                                            <div class="row g-0">
+                                                <div class="col-md-4">
+                                                    <?php
+                                                    $imageURL = '../../../uploads/' . $row["file_name"]; ?>
+                                                    <img src="<?php echo $imageURL; ?>" class="img-fluid rounded-start"
+                                                         alt="...">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <a href="vizualizare_anunt.php?id=<?php echo $row['id'] ?>"
+                                                           class="card-title"><?php echo $row['titlu'] ?></a>
+                                                        <p class="card-text"><?php echo $row['descriere'] ?></p>
+                                                        <p class="card-text text-right">
+                                                            <a href="../actions/edit_orders.php?id=<?php echo $row['id'] ?>"><i
+                                                                        class="bi bi-pencil-square py-2 "></i></a>
+                                                            <a href="../actions/delete_orders.php?id=<?php echo $row['id'] ?>"><i
+                                                                        class="bi bi-trash py-2 danger"></i></a>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                     <?php
                                 }
                             } else {
                                 ?>
                                 <tr>
-                                    <td colspan="3">Niciun anunt Activ </td>
+                                    <td colspan="3">Niciun anunt Activ</td>
                                 </tr>
                                 <?php
                             }
@@ -127,9 +130,10 @@ $file_name = 'anunturi';
                 <div class="tab-pane fade" id="inactiv" role="tabpanel" aria-labelledby="inactiv-tab">
                     <div class="text-right m-sm-2">
                         <form action="" method="get" class="form-inline">
-                            <input class="form-control mr-sm-2" type="text" name="search" value="<?php if (isset($_GET['search'])) {
-                                echo $_GET['search'];
-                            } ?>" placeholder="Cauta">
+                            <input class="form-control mr-sm-2" type="text" name="search"
+                                   value="<?php if (isset($_GET['search'])) {
+                                       echo $_GET['search'];
+                                   } ?>" placeholder="Cauta">
                             <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
                         </form>
                     </div>
@@ -138,37 +142,38 @@ $file_name = 'anunturi';
                         if (isset($_GET['search'])) {
                             $filtervalues = $_GET['search'];
                             $user_id = $_SESSION['id'];
-                            $query = "SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Inactiv' and anunturi.user_id = '$user_id' and CONCAT(titlu) LIKE '%$filtervalues%'";
+                            $query = "SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status=0 and anunturi.user_id = '$user_id' and CONCAT(titlu) LIKE '%$filtervalues%'";
                             $query_run = mysqli_query($con, $query);
 
                             if (mysqli_num_rows($query_run)) {
                                 foreach ($query_run as $row) {
                                     ?>
-
-
-                                    <div class="card mb-3 " style="max-width: 540px;">
-                                        <div class="row g-0">
-                                            <div class="col-md-4">
-                                                <?php
-                                                $imageURL = '../../../uploads/' . $row["file_name"]; ?>
-                                                <img src="<?php echo $imageURL; ?>" class="img-fluid rounded-start"
-                                                     alt="...">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="card-body">
-                                                    <h5 href="../front_pages/view_anunt.php?id=<?php echo $row['id'] ?>"
-                                                        class="card-title"><?php echo $row['titlu'] ?></h5>
-                                                    <p class="card-text"><?php echo $row['descriere'] ?></p>
-                                                    <p class="card-text text-right">
-                                                        <a href="../actions/edit_orders.php?id=<?php echo $row['id'] ?>"><i
-                                                                    class="bi bi-pencil-square py-2 "></i></a>
-                                                        <a href="../actions/delete_orders.php?id=<?php echo $row['id'] ?>"><i
-                                                                    class="bi bi-trash py-2 danger"></i></a>
-                                                    </p>
+                                    <div class="col-6 px-2">
+                                        <div class="card mb-3 p-2" style="max-width: 540px;">
+                                            <div class="row g-0">
+                                                <div class="col-md-4">
+                                                    <?php
+                                                    $imageURL = '../../../uploads/' . $row["file_name"]; ?>
+                                                    <img src="<?php echo $imageURL; ?>" class="img-fluid rounded-start"
+                                                         alt="...">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h5 href="../front_pages/view_anunt.php?id=<?php echo $row['id'] ?>"
+                                                            class="card-title"><?php echo $row['titlu'] ?></h5>
+                                                        <p class="card-text"><?php echo $row['descriere'] ?></p>
+                                                        <p class="card-text text-right">
+                                                            <a href="../actions/edit_orders.php?id=<?php echo $row['id'] ?>"><i
+                                                                        class="bi bi-pencil-square py-2 "></i></a>
+                                                            <a href="../actions/delete_orders.php?id=<?php echo $row['id'] ?>"><i
+                                                                        class="bi bi-trash py-2 danger"></i></a>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                     <?php
                                 }
                             } else {

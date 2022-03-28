@@ -157,7 +157,7 @@ include "../includes/auth_session.php";
             <tbody>
             <?php
             $user_id = $_SESSION["id"];
-            $sql = "SELECT wishlist.*,anunturi.titlu, anunturi.pret, images.file_name FROM wishlist,anunturi,images where wishlist.user_id='$user_id' and images.id=anunturi.image_id and anunturi.id=wishlist.product_id and anunturi.status='Activ';";
+            $sql = "SELECT wishlist.*,anunturi.titlu, anunturi.pret, images.file_name FROM wishlist,anunturi,images where wishlist.user_id='$user_id' and images.id=anunturi.image_id and anunturi.id=wishlist.product_id and anunturi.status=1;";
             $result = $con->query($sql);
             if ($result->num_rows > 0) {
             // output data of each row

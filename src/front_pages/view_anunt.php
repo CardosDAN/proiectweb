@@ -583,7 +583,7 @@ if ($result->num_rows > 0) {
         <div class="slider">
             <div class="owl-carousel">
                 <?php
-                $query = $con->query("SELECT distinct (anunturi.category_id),anunturi.*,images.* FROM images,anunturi where images.id=anunturi.image_id and anunturi.status='Activ' and anunturi.id != '$product_id'  and anunturi.category_id='$categorie'");
+                $query = $con->query("SELECT distinct (anunturi.category_id),anunturi.*,images.* FROM images,anunturi where images.id=anunturi.image_id and anunturi.status=1 and anunturi.id != '$product_id'  and anunturi.category_id='$categorie'");
                 while ($row = $query->fetch_assoc()) { ?>
                     <div class=" slider-card">
                         <div class="card h-100 shadow-sm">
