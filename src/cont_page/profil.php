@@ -44,7 +44,7 @@ $file_name = 'profil';
                                             </div>
                                             <div class="modal-body">
                                                <form method="post" action="../actions/applications.php">
-                                                   <label for="exampleInputPassword1" class="form-label">De ce doresti sa devi vanzator?</label>
+                                                   <label for="exampleInputPassword1" class="form-label float-left">De ce doresti sa devi vanzator?</label>
                                                    <textarea type="text" name="mesaj" class="form-control" id="exampleInputPassword1" required></textarea>
                                                    <input type="hidden" class="form-control" id="exampleInputPassword1" name="user_id" value="<?= $_SESSION['id'] ?>">
                                                    <hr>
@@ -66,7 +66,7 @@ $file_name = 'profil';
                             </div>
                             <?php
                             $id = $_SESSION['id'];
-                            $sql = "select * from users WHERE id = $id LIMIT $id";
+                            $sql = "select * from users,user_levels WHERE users.id = '$id' and users.user_level_id = user_levels.id LIMIT ".$id;
                             $result = mysqli_query($con, $sql);
                             while ($data = mysqli_fetch_array($result)) { ?>
                                 <div class="row  flex-row-reverse">
@@ -91,7 +91,7 @@ $file_name = 'profil';
                                                 <div class="col-md-6">
                                                     <div class="media">
                                                         <label>Status</label>
-                                                        <p><?php echo $data["user_level_id"] ?></p>
+                                                        <p><?php echo $data["nume"] ?></p>
                                                     </div>
                                                     <div class="media">
                                                         <label>Pe Fresh Food</label>

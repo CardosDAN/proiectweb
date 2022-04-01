@@ -57,45 +57,49 @@ $file_name = 'sub_category';
                 <div class="form-group col-md-12">
                     <div class="container-fluid ">
                         <div class="row">
-                            <div class="col-md-5">
-                                <form method="post" action="../actions/insert_sub_category.php">
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" id="exampleInputEmail1"  name="name" aria-describedby="emailHelp" required>
-                                        <input type="hidden" class="form-control" id="exampleInputEmail1"  name="sub_category_id" value="<?= $_GET['id'] ?> ">
+                            <div class="col-md-12">
+                                <form method="post" class="form-inline" action="../actions/insert_sub_category.php">
+                                    <div class="form-group mx-sm-3 mb-2">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="name"
+                                               aria-describedby="emailHelp" required>
+                                        <input type="hidden" class="form-control" id="exampleInputEmail1"
+                                               name="sub_category_id" value="<?= $_GET['id'] ?> ">
                                     </div>
-                                    <button type="submit" class="btn btn-primary float-right">Adaugă</button>
+                                    <button type="submit" class="btn btn-primary mb-2">Adaugă</button>
                                 </form>
                             </div>
-                            <div class="col">
-                                <div class=" bg-light rounded my-2 py-2">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Sub Categoria</th>
-                                            <th> </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php
-                                        $category_id = $_GET["id"];
-                                        include "../includes/db.php";
-                                        $sql = "Select * from sub_category where sub_category_id = '$category_id'";
-                                        $res = $con->query($sql);
-                                        while ($row = $res->fetch_assoc()) {
-                                            ?>
+                            <div class="col-md-12">
+                                <div class=" rounded my-2 py-2">
+                                    <div class=" bg-light rounded my-2 py-2">
+                                        <table class="table table-bordered">
+                                            <thead>
                                             <tr>
-                                                <td><?php echo $row["name"] ?></td>
-                                                <td>
-                                                    <?php echo "<a onClick=\"javascript: return confirm('Vă rugăm să confirmați ștergerea');\" href='../actions/delete_sub_category.php?id=".$row['id']."'><i class='bi bi-trash btn btn-outline-danger'></i></a>"; ?>
-                                                    <a class="btn btn-outline-primary"
-                                                       href="../actions/edit_sub_category.php?id=<?php echo $row['id']; ?>">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </a>
-                                                </td>
+                                                <th>Sub Categoria</th>
+                                                <th data-orderable="false"></th>
                                             </tr>
-                                        <?php } ?>
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                            <?php
+                                            $category_id = $_GET["id"];
+                                            include "../includes/db.php";
+                                            $sql = "Select * from sub_category where sub_category_id = '$category_id'";
+                                            $res = $con->query($sql);
+                                            while ($row = $res->fetch_assoc()) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row["name"] ?></td>
+                                                    <td>
+                                                        <?php echo "<a onClick=\"javascript: return confirm('Vă rugăm să confirmați ștergerea');\" href='../actions/delete_sub_category.php?id=" . $row['id'] . "'><i class='bi bi-trash btn btn-outline-danger'></i></a>"; ?>
+                                                        <a class="btn btn-outline-primary"
+                                                           href="../actions/edit_sub_category.php?id=<?php echo $row['id']; ?>">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

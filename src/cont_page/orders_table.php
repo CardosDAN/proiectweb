@@ -98,7 +98,7 @@ $order_status = ['Inactiv','Activ'];
             <div class="row justify-content-center">
                 <div class="form-group col-md-12">
                     <div class="container-fluid ">
-                        <div class=" bg-light rounded my-2 py-2">
+                        <div class="rounded my-2 py-2">
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
@@ -107,7 +107,7 @@ $order_status = ['Inactiv','Activ'];
                                     <th>Nr telefon</th>
                                     <th>Adresa</th>
                                     <th>Status</th>
-                                    <th>Actiuni</th>
+                                    <th data-orderable="false"> </th>
                                 </tr>
                                 </thead>
                                 <tbody>

@@ -76,23 +76,22 @@ include("../includes/db.php");
 
                     <div class="container">
                         <div class="row">
-                            <div class="col">
-                                <form method="POST">
-                                    <div class="form-group">
+                            <div class="col-md-12">
+                                <form method="POST" class="form-inline">
+                                    <div class="form-group mx-sm-3 mb-2">
                                         <label for="exampleInputEmail1">Sub Categoria</label>
                                         <input type="text" name="username" class="form-control" value="<?php echo $row['name'] ?>" placeholder="Enter Full Name" Required>
                                     </div>
-                                    <input class="btn btn-outline-success float-right"  type="submit" name="update" value="Update">
+                                    <button class="btn btn-success mb-2"  type="submit" name="update" value="Update">Update</button>
                                 </form>
                             </div>
-                            <div class="col">
-                                <div class=" bg-light rounded my-2 py-2">
+                            <div class="col-md-12">
+                                <div class="rounded my-2 py-2">
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>Nr</th>
                                             <th>Sub Categoria</th>
-                                            <th> </th>
+                                            <th data-orderable="false"> </th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -104,7 +103,6 @@ include("../includes/db.php");
                                         while ($row = $res->fetch_assoc()) {
                                             ?>
                                             <tr>
-                                                <td><?php echo $row["id"] ?></td>
                                                 <td><?php echo $row["name"] ?></td>
                                                 <td>
 
