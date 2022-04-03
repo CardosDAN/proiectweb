@@ -92,7 +92,7 @@ $next = $page + 1;
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="../../assets/sty/images/banner-catalog1.jpg" alt="First slide">
+            <img class="d-block" src="../../assets/sty/images/banner-catalog1.jpg" alt="First slide">
         </div>
     </div>
 </div>
@@ -312,6 +312,11 @@ $next = $page + 1;
 
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<script src="../../assets/sty/js/popper.min.js"></script>
+<script src="../../assets/sty/js/bootstrap.min.js"></script>
+<script src="../../assets/sty/js/jquery.sticky.js"></script>
+<script src="../../assets/sty/js/main.js"></script>
 </body>
 </html>
