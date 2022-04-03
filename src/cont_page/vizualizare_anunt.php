@@ -26,13 +26,6 @@ $product_id = $_GET['id'];
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-<style>
-    /*.grey-bg {*/
-    /*    background-color: #F5F7FA;*/
-    /*}*/
-
-
-</style>
 <?php include("../includes/head.php"); ?>
 
 <body>
@@ -67,6 +60,7 @@ $product_id = $_GET['id'];
         <a id="toggle-sidebar" class="btn btn-secondary rounded-0 sticky-top" href="#">
             <span><i class="bi bi-list"></i></span>
         </a>
+        <br><br><br>
         <div class="grey-bg container-fluid">
             <section id="minimal-statistics">
                 <div class="row">
@@ -245,7 +239,7 @@ $product_id = $_GET['id'];
                                                 <div class="col">
                                                     <?php
                                                     $address = $row['adresa'];;
-                                                    echo '<iframe frameborder="0" src="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=' . str_replace(",", "", str_replace(" ", "+", $address)) . '&z=14&output=embed"></iframe>'; ?>
+                                                    echo '<iframe frameborder="0" height="400" width="500" src="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=' . str_replace(",", "", str_replace(" ", "+", $address)) . '&z=14&output=embed"></iframe>'; ?>
                                                 </div>
                                             </div>
                                             <div class="container-fluid">
@@ -273,7 +267,7 @@ $product_id = $_GET['id'];
                         <p>Alte anunturi postate de tine</p>
                         <hr>
                         <div class="container-fluid ">
-                            <div class=" bg-light rounded my-2 py-2">
+                            <div class="rounded my-2 py-2">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
@@ -282,7 +276,7 @@ $product_id = $_GET['id'];
                                         <th>Nr telefon</th>
                                         <th>Adresa</th>
                                         <th>Status</th>
-                                        <th>Actiuni</th>
+                                        <th data-orderable="false"> </th>
                                     </tr>
                                     </thead>
                                     <tbody>

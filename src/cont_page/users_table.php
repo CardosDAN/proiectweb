@@ -25,13 +25,6 @@ $file_name = 'users_table';
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-<style>
-    /*.grey-bg {*/
-    /*    background-color: #F5F7FA;*/
-    /*}*/
-
-
-</style>
 <?php include("../includes/head.php"); ?>
 
 <body>
@@ -43,7 +36,7 @@ $file_name = 'users_table';
         <a id="toggle-sidebar" class="btn btn-secondary rounded-0 sticky-top" href="#">
             <span><i class="bi bi-list"></i></span>
         </a>
-        <br>
+        <br><br><br>
         <div class="grey-bg container-fluid">
             <section id="minimal-statistics">
                 <div class="row">
