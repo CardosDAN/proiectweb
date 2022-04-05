@@ -2,7 +2,7 @@
 
 $file_name = 'vizualizare_anunt';
 $product_id = $_GET['id'];
-
+$order_status = ['Inactiv','Activ'];
 ?>
 
 <!DOCTYPE html>
@@ -292,13 +292,9 @@ $product_id = $_GET['id'];
                                             <td><?php echo $row["titlu"] ?></td>
                                             <td><?php echo $row["telefon"] ?></td>
                                             <td><?php echo $row["adresa"] ?></td>
-                                            <td><?php echo $row["status"] ?></td>
+                                            <td><?php echo $order_status[$row["status"]] ?></td>
                                             <td>
-
-                                                <a class="btn btn-outline-danger"
-                                                   href="../actions/delete_orders.php?id=<?php echo $row['id']; ?>">
-                                                    <i class=" bi bi-trash"></i>
-                                                </a>
+                                                <?php echo "<a onClick=\"javascript: return confirm('Vă rugăm să confirmați ștergerea');\" href='../actions/delete_orders.php?id=" . $row['id'] . "'><i class='bi bi-trash btn btn-outline-danger'></i></a>"; ?>
                                                 <a class="btn btn-outline-primary"
                                                    href="../actions/edit_orders.php?id=<?php echo $row['id']; ?>">
                                                     <i class="bi bi-pencil-square"></i>

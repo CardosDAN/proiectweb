@@ -66,8 +66,6 @@ include("auth_session.php");
                     </span>
                 <?php
                 }
-                } else {
-                    echo "0 results";
                 }
                 ?>
 
@@ -154,7 +152,7 @@ include("auth_session.php");
 
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-center" href="../cont_page/message.php">View all messages</a>
+                <a class="dropdown-item text-center" href="../cont_page/message.php">Vezi toate mesajele</a>
 
             </div>
         </div>

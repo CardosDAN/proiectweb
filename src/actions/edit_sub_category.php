@@ -80,7 +80,7 @@ include("../includes/db.php");
                                 <form method="POST" class="form-inline">
                                     <div class="form-group mx-sm-3 mb-2">
                                         <label for="exampleInputEmail1">Sub Categoria</label>
-                                        <input type="text" name="username" class="form-control" value="<?php echo $row['name'] ?>" placeholder="Enter Full Name" Required>
+                                        <input type="text" name="name" class="form-control" value="<?php echo $row['name'] ?>" placeholder="Enter Full Name" Required>
                                     </div>
                                     <button class="btn btn-success mb-2"  type="submit" name="update" value="Update">Update</button>
                                 </form>
@@ -105,15 +105,7 @@ include("../includes/db.php");
                                             <tr>
                                                 <td><?php echo $row["name"] ?></td>
                                                 <td>
-
-                                                    <a class="btn btn-outline-danger"
-                                                       href="../actions/delete_sub_category.php?id=<?php echo $row['id']; ?>">
-                                                        <i class=" bi bi-trash"></i>
-                                                    </a>
-                                                    <a class="btn btn-outline-primary"
-                                                       href="../actions/edit_sub_category.php?id=<?php echo $row['id']; ?>">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </a>
+                                                    <?php echo "<a onClick=\"javascript: return confirm('Vă rugăm să confirmați ștergerea');\" href='../actions/delete_sub_category.php?id=" . $row['id'] . "'><i class='bi bi-trash btn btn-outline-danger'></i></a>"; ?>
                                                 </td>
                                             </tr>
                                         <?php } ?>
