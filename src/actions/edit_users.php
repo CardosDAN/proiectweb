@@ -118,7 +118,7 @@ include("../includes/db.php");
                                     <img src="<?php echo $imageURL; ?>" class="card-img" alt="...">
                                     <?php }
                                     } else { ?>
-                                        <p>No image(s) found...</p>
+                                        <img src="https://www.pngitem.com/pimgs/m/551-5510463_default-user-image-png-transparent-png.png" alt="https://www.pngitem.com/pimgs/m/551-5510463_default-user-image-png-transparent-png.png" class="img-fluid">
                                     <?php } ?>
                                     <div class="card-body">
                                         <?php

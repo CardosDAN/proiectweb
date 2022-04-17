@@ -183,7 +183,7 @@ INSERT INTO `images` (`id`, `file_name`, `uploaded_on`, `status`) VALUES
 (50, 'bg4.jpg', '2022-02-15 14:16:22', '1'),
 (51, 'bg4.jpg', '2022-02-17 10:53:19', '1'),
 (52, 'bg4.jpg', '2022-02-17 10:56:16', '1'),
-(53, 'bg3.jpg', '2022-02-17 10:58:49', '1'),
+(53, 'bg1.jpg', '2022-02-17 10:58:49', '1'),
 (54, 'bg2.jpg', '2022-02-17 18:23:21', '1'),
 (55, 'sushobhan-badhai-LrPKL7jOldI-unsplash.jpg', '2022-02-21 18:01:20', '1'),
 (56, 'sushobhan-badhai-LrPKL7jOldI-unsplash.jpg', '2022-02-21 18:03:23', '1'),

@@ -205,7 +205,7 @@ if (isset($_POST['submit'])) {
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="../../assets/sty/images/banner-catalog1.jpg" alt="First slide">
+            <img class="d-block" src="../../assets/sty/images/banner-catalog1.jpg" alt="First slide">
         </div>
     </div>
 </div>

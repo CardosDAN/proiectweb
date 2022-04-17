@@ -116,7 +116,7 @@ $file_name = 'profil';
                                                          data-holder-rendered="true"/>
                                                 <?php }
                                             } else { ?>
-                                                <p>No image(s) found...</p>
+                                                <img src="https://www.pngitem.com/pimgs/m/551-5510463_default-user-image-png-transparent-png.png" alt="https://www.pngitem.com/pimgs/m/551-5510463_default-user-image-png-transparent-png.png">
                                             <?php } ?>
 
                                         </div>

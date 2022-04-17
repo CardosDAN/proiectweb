@@ -130,7 +130,7 @@ function upload($files){
                             </div>
 
 
-                            <input class="btn btn-outline-success" type="submit" name="update" value="Update">
+                            <input class="btn btn-outline-success float-right" type="submit" name="update" value="Update">
                         </form>
 
                     </div>

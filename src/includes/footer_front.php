@@ -30,7 +30,7 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4" style="color: limegreen">
-                        Products
+                        Produse
                     </h6>
                     <p>
                         <a href="../front_pages/store.php" class="text-reset">Fructe</a>
@@ -48,19 +48,16 @@
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4" style="color: limegreen">
-                        Useful links
+                        Link-uri utile
                     </h6>
                     <p>
-                        <a href="../front_pages/about_us.php" class="text-reset">About us</a>
+                        <a href="../front_pages/about_us.php" class="text-reset">Despre noi</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Settings</a>
+                        <a href="../cont_page/settings.php" class="text-reset">Setari</a>
                     </p>
                     <p>
-                        <a href="../front_pages/store.php" class="text-reset">Store</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Help</a>
+                        <a href="../front_pages/store.php" class="text-reset">Magazin</a>
                     </p>
                 </div>
                 <!-- Grid column -->

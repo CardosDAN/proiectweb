@@ -29,7 +29,7 @@ $file_name = 'message';
                 include "../includes/db.php";
 
                 $user_id = $_SESSION['id'];
-                $result = @mysqli_query($con, "SELECT users.username, anunturi.titlu, mesaje.id_anunt, mesaje.id_client FROM mesaje,anunturi,users where mesaje.id_anunt = anunturi.id and users.id=mesaje.id_client GROUP BY users.id, anunturi.id") or die("Error: " . mysqli_error($con));
+                $result = @mysqli_query($con, "SELECT users.username, anunturi.titlu, mesaje.id_anunt, mesaje.id_client FROM mesaje,anunturi,users where anunturi.id = mesaje.id_anunt and users.id=mesaje.id_client AND (id_client = '$user_id' OR anunturi.user_id = '$user_id') GROUP BY users.id, anunturi.id;") or die("Error: " . mysqli_error($con));
 
 
                 if (isset($_POST['chk_id'])) {

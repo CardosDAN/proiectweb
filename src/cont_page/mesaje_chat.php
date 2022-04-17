@@ -335,14 +335,12 @@ $id_client = $_GET['id_client'];
                                  style="overflow-y: scroll !important; height:400px !important;">
                                 <?php
                                 $user_id = $_SESSION['id'];
-                                $sql = "SELECT DISTINCT (mesaje.id), mesaje.mesaj,mesaje.time,mesaje.raspuns FROM mesaje,anunturi,users where mesaje.id_anunt = '$product_id' and mesaje.id_client = '$id_client'  ORDER BY mesaje.id";
+                                $sql = "SELECT DISTINCT (mesaje.id), mesaje.mesaj,mesaje.time,mesaje.raspuns,users.username FROM mesaje,anunturi,users where mesaje.id_anunt = '$product_id' and mesaje.id_client = '$id_client'  AND users.id = mesaje.id_client  ORDER BY mesaje.id";
 
                                 $result = mysqli_query($con, $sql);
                                 while ($row = mysqli_fetch_assoc($result)) { ?>
                                     <div class="media media-chat <?= $row['raspuns'] == 0 ? 'media-chat-reverse': '' ?> ">
-                                        <img class="avatar"
-                                             src="https://img.icons8.com/color/36/000000/administrator-male.png"
-                                             alt="...">
+                                       <p><?= $row['username'] ?></p>
 
                                         <div class="media-body">
                                             <p><?php echo $row['mesaj']; ?></p>
