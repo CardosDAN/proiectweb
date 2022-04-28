@@ -6,34 +6,29 @@ include("../includes/db.php");
 function upload($files){
 
     global $con;
-    // File upload path
     $targetDir = "../../uploads/";
     $fileName = basename($files["name"]);
     $targetFilePath = $targetDir . $fileName;
     $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 
     if(!empty($files["name"])){
-        // Allow certain file formats
-        $allowTypes = array('jpg','png','jpeg','gif','pdf');
+        $allowTypes = array('jpg','png','jpeg','gif');
         if(in_array($fileType, $allowTypes)){
-            // Upload file to server
             if(move_uploaded_file($files["tmp_name"], $targetFilePath)){
-                // Insert image file name into database
                 $insert = $con->query("INSERT into images (file_name, uploaded_on) VALUES ('".$fileName."', NOW())");
                 if($insert){
                     return $con->insert_id;
-                    #return $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
                 }else{
-                    $statusMsg = "File upload failed, please try again.";
+                    $statusMsg = "Imaginea incarcata a esuat, incearca din nou mai tarziu.";
                 }
             }else{
-                $statusMsg = "Sorry, there was an error uploading your file.";
+                $statusMsg = "Scuze, a aparut o eroare la incarcarea imagini.";
             }
         }else{
-            $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+            $statusMsg = 'Scuze, numai JPG, JPEG, PNG, pot fi puse.';
         }
     }else{
-        $statusMsg = 'Please select a file to upload.';
+        $statusMsg = 'Te rog sa selectezi o imagine';
     }
 
 // Display status message
@@ -77,6 +72,7 @@ function upload($files){
                         if(isset($_FILES["file"])){
                             $image_id = upload($_FILES["file"]);
                             $edit = mysqli_query($con, "Update anunturi set image_id='$image_id' where id='$id'");
+//                            header("Location: ../cont_page/orders_table.php");
                         }
 //                        if ($edit) {
 ////                            header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -103,11 +99,11 @@ function upload($files){
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Pret</label>
-                                        <input type="number" class="form-control" name="pret" value="<?php echo $row['pret'] ?>">
+                                        <input type="number" class="form-control" name="pret" value="<?php echo $row['pret'] ?>" Required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Adresa</label>
-                                        <input type="text" class="form-control" name="adresa" value="<?php echo $row['adresa'] ?>" >
+                                        <input type="text" class="form-control" name="adresa" value="<?php echo $row['adresa'] ?>"Required >
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Descriere</label>

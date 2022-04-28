@@ -9,7 +9,7 @@ if(isset($_POST['records-limit'])){
     $_SESSION['records-limit'] = $_POST['records-limit'];
 }
 
-$limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 5;
+$limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10;
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) ) ? $_GET['page'] : 1;
 $paginationStart = ($page - 1) * $limit;
 $students = $con->query("SELECT * FROM anunturi LIMIT $paginationStart, $limit")->fetchAll();

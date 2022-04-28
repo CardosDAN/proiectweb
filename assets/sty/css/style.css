@@ -379,8 +379,7 @@ a {
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;
     transition: .3s all ease; }
-    .sticky-wrapper .site-navbar ul li.active a {
-      color: #fff; }
+
   .sticky-wrapper.is-sticky .site-navbar {
     background-color: limegreen;
     }

@@ -143,7 +143,7 @@ include("../includes/auth_session.php");
                 <div class="container container-ver2">
                     <div class="title-choose align-center color-brand">
                         <br><br><br><br><br><br>
-                        <h3>Why Choose Us?</h3>
+                        <h3>De ce să ne alegi pe noi?</h3>
                         <div class="align-center border-choose">
                             <div class="images">
                                 <img src="../../assets/sty/images/bg-border-center.png" alt="icon">
@@ -161,8 +161,8 @@ include("../includes/auth_session.php");
                                         <img src="../../assets/sty/images/icon-about1.png" alt="icon">
                                     </div>
                                     <div class="text">
-                                        <h3>Always Fresh</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                        <h3>Proaspăt tot timpul</h3>
+                                        <p>Produsele vândute de noi sunt proaspete.</p>
                                     </div>
                                 </div>
                                 <!--End items-->
@@ -171,8 +171,8 @@ include("../includes/auth_session.php");
                                         <img src="../../assets/sty/images/icon-about2.png" alt="icon">
                                     </div>
                                     <div class="text">
-                                        <h3>Keep You Healthy </h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                        <h3>Păstrează-te sănătos</h3>
+                                        <p>Nu este nici un secret că produsele bio îți mențin sănătatea </p>
                                     </div>
                                 </div>
                                 <!--End items-->
@@ -181,8 +181,8 @@ include("../includes/auth_session.php");
                                         <img src="../../assets/sty/images/icon-about3.png" alt="icon">
                                     </div>
                                     <div class="text">
-                                        <h3>Healthy Cooking </h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                        <h3>Gătit sănătos </h3>
+                                        <p>Pentru a avea o dietă sănătoasă este nevoie de o mâncare sănătoasă. </p>
                                     </div>
                                 </div>
                                 <!--End items-->
@@ -198,8 +198,8 @@ include("../includes/auth_session.php");
                                         <img src="../../assets/sty/images/icon-about4.png" alt="icon">
                                     </div>
                                     <div class="text">
-                                        <h3>Always Fresh</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                        <h3>Produse în țară</h3>
+                                        <p>Produse crescute, întreținute și vândute direct de la sursă. </p>
                                     </div>
                                 </div>
                                 <!--End items-->
@@ -208,8 +208,8 @@ include("../includes/auth_session.php");
                                         <img src="../../assets/sty/images/icon-about5.png" alt="icon">
                                     </div>
                                     <div class="text">
-                                        <h3>Always Fresh</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                        <h3>Vânzare ușoară</h3>
+                                        <p>Vinzi produsele tale mult mai simplu și mai ușor. </p>
                                     </div>
                                 </div>
                                 <!--End items-->
@@ -218,8 +218,8 @@ include("../includes/auth_session.php");
                                         <img src="../../assets/sty/images/icon-about6.png" alt="icon">
                                     </div>
                                     <div class="text">
-                                        <h3>Always Fresh</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                        <h3>Preț rezonabil</h3>
+                                        <p>Cumpără produsele dorite la un preț rezonabil și accesibil pentru tine. </p>
                                     </div>
                                 </div>
                                 <!--End items-->
@@ -238,8 +238,8 @@ include("../includes/auth_session.php");
             <div class="container container-ver2 center">
                 <div class="choose-us">
                     <div class="title-choose align-center about">
-                        <h4>We Are Family</h4>
-                        <h3>FRESH FOOD’S FARMERS</h3>
+                        <h4>Noi suntem familie</h4>
+                        <h3>Fermieri FRESH FOOD</h3>
                         <div class="align-center border-choose">
                             <div class="images">
                                 <img src="../../assets/sty/images/bg-border-center.png" alt="icon">
@@ -258,17 +258,9 @@ include("../includes/auth_session.php");
                             </div>
                         </div>
                         <div class="banner-title">
-                            <h3>MICHAEL ANDREWS</h3>
-                            <p>Richard McClintock, a Latin professor at words, consectetur, from a Lorem Ipsum passage,
-                                and literature, discovered the</p>
-                            <div class="interactive-banner-profile text-center">
-                                <div class="action light-style">
-                                    <a href="#"><i class="icons icons-bodered radius-x fa fa-twitter"></i></a>
-                                    <a href="#"><i class="icons icons-bodered radius-x fa fa fa-facebook"></i></a>
-                                    <a href="#"><i class="icons icons-bodered radius-x fa fa-skype"></i></a>
-                                    <a href="#"><i class="icons icons-bodered radius-x fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
+                            <h3>Richard McClintock</h3>
+                            <p>Richard McClintock, profesor de latină la cuvinte, consectetur, dintr-un pasaj Lorem Ipsum,
+                                și literatură, și-a descoperit în cele din urmă adevărata lui pasiune de fermier.</p>
                         </div>
                     </div>
                     <!-- End col-md-4 -->
@@ -281,16 +273,8 @@ include("../includes/auth_session.php");
                         </div>
                         <div class="banner-title">
                             <h3>MEGHAN TRAIMIE</h3>
-                            <p>Richard McClintock, a Latin professor at words, consectetur, from a Lorem Ipsum passage,
-                                and literature, discovered the</p>
-                            <div class="interactive-banner-profile text-center">
-                                <div class="action light-style">
-                                    <a href="#"><i class="icons icons-bodered radius-x fa fa-twitter"></i></a>
-                                    <a href="#"><i class="icons icons-bodered radius-x fa fa fa-facebook"></i></a>
-                                    <a href="#"><i class="icons icons-bodered radius-x fa fa-skype"></i></a>
-                                    <a href="#"><i class="icons icons-bodered radius-x fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
+                            <p>MEGHAN TRAIMIE, este o autoare a multor cărți publicate în ultimi ani, însă a
+                            simțit că ceva lipsește până a descoperit o nouă pasiune de a fi fermier.</p>
                         </div>
                     </div>
                     <!-- End col-md-4 -->
@@ -302,16 +286,8 @@ include("../includes/auth_session.php");
                         </div>
                         <div class="banner-title">
                             <h3>MARK JEC</h3>
-                            <p>Richard McClintock, a Latin professor at words, consectetur, from a Lorem Ipsum passage,
-                                and literature, discovered the</p>
-                            <div class="interactive-banner-profile text-center">
-                                <div class="action light-style">
-                                    <a href="#"><i class="icons icons-bodered radius-x fa fa-twitter"></i></a>
-                                    <a href="#"><i class="icons icons-bodered radius-x fa fa fa-facebook"></i></a>
-                                    <a href="#"><i class="icons icons-bodered radius-x fa fa-skype"></i></a>
-                                    <a href="#"><i class="icons icons-bodered radius-x fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
+                            <p>MARK JEC, medic de meserie , în linia lui de muncă sănătatea și familia sunt pe
+                            primul plan, apucându-se de a-și crește singur legumele poate să ofere familiei lui o viață mai sănătoasă</p>
                         </div>
                     </div>
                     <!-- End col-md-4 -->
