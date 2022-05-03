@@ -172,9 +172,9 @@ $order_status = ['Inactiv','Activ'];
                         google.charts.setOnLoadCallback(drawStuff);
                         <?php
                         include "../../src/includes/db.php";
-                        $result = $con->query("SELECT DISTINCT category_id FROM anunturi");
+                        $result = $con->query("SELECT DISTINCT categorie_id FROM anunturi");
                         $row_cnt = $result->num_rows;
-                        $result1 = $con->query("SELECT DISTINCT sub_category_id FROM anunturi");
+                        $result1 = $con->query("SELECT DISTINCT sub_categorie_id FROM anunturi");
                         $row_cnt1 = $result1->num_rows;
                         $result2 = $con->query("SELECT DISTINCT id FROM anunturi");
                         $row_cnt2 = $result2->num_rows;?>

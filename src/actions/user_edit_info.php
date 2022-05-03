@@ -26,7 +26,7 @@
 
                         $id = $_SESSION['id'];
 
-                        $qry = mysqli_query($con, "select * from users where id='$id'"); // select query
+                        $qry = mysqli_query($con, "select * from utilizatori where id='$id'"); // select query
 
                         $row = mysqli_fetch_array($qry); // fetch data
 
@@ -36,7 +36,7 @@
                             $email = $_POST['email'];
                             $phone = $_POST['phone'];
                             $user_level_id = $_POST['user_level_id'];
-                            $edit = mysqli_query($con, "update users set username='{$username}', email='{$email}', phone='{$phone}', user_level_id='{$user_level_id}' where id='{$id}'");
+                            $edit = mysqli_query($con, "update utilizatori set username='{$username}', email='{$email}', telefon='{$phone}', user_level_id='{$user_level_id}' where id='{$id}'");
 
                             if ($edit) {
                                 mysqli_close($con); // Close connection
@@ -60,7 +60,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Phone number</label>
-                                <input type="number" class="form-control" name="phone" value="<?php echo $row['phone'] ?>" placeholder="Enter Phone" Required>
+                                <input type="number" class="form-control" name="phone" value="<?php echo $row['telefon'] ?>" placeholder="Enter Phone" Required>
                             </div>
                             <?php if($_SESSION['user_level_id'] == "3"): ?>
                             <div class="form-group">

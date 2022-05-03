@@ -15,7 +15,7 @@ function upload($files){
         $allowTypes = array('jpg','png','jpeg','gif');
         if(in_array($fileType, $allowTypes)){
             if(move_uploaded_file($files["tmp_name"], $targetFilePath)){
-                $insert = $con->query("INSERT into images (file_name, uploaded_on) VALUES ('".$fileName."', NOW())");
+                $insert = $con->query("INSERT into imagini (nume_fisier, incarcat) VALUES ('".$fileName."', NOW())");
                 if($insert){
                     return $con->insert_id;
                 }else{

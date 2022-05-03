@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
                     // Upload file to server
                     if (move_uploaded_file($files["tmp_name"], $targetFilePath)) {
                         // Insert image file name into database
-                        $insert = $con->query("INSERT into images (file_name, uploaded_on) VALUES ('" . $fileName . "', NOW())");
+                        $insert = $con->query("INSERT into imagini (nume_fisier, incarcat) VALUES ('" . $fileName . "', NOW())");
                         if ($insert) {
                             return $con->insert_id;
                             #return $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
@@ -104,7 +104,7 @@ if (isset($_POST['submit'])) {
         $image_id = upload($_FILES["file"]);
         $sub_category_id = $_POST['sub_category_id'];
         $user_id = $_SESSION['id'];
-        $sql = "INSERT INTO anunturi (titlu,telefon,adresa,pret,descriere,image_id,user_id,category_id,sub_category_id) VALUES ('{$titlu}','{$telefon}','{$adresa}','{$pret}','{$descriere}','{$image_id}','$user_id','$category_id','$sub_category_id')";
+        $sql = "INSERT INTO anunturi (titlu,telefon,adresa,pret,descriere,image_id,user_id,categorie_id,sub_categorie_id) VALUES ('{$titlu}','{$telefon}','{$adresa}','{$pret}','{$descriere}','{$image_id}','$user_id','$category_id','$sub_category_id')";
         if ($con->query($sql) === TRUE) {
             echo "";
         } else {
@@ -275,10 +275,10 @@ if (isset($_POST['submit'])) {
                                 </option>
                                 <?php
                                 require('../includes/db.php');
-                                $sql = "SELECT * FROM category";
+                                $sql = "SELECT * FROM categorii";
                                 $result = $con->query($sql);
                                 while ($row = $result->fetch_assoc()) {
-                                    echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                    echo "<option value='" . $row['id'] . "'>" . $row['nume'] . "</option>";
                                 }
                                 ?>
                             </select>

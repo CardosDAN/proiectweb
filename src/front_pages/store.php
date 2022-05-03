@@ -133,7 +133,7 @@ $next = $page + 1;
                     <div>
                         <?php
 
-                        $query = "SELECT DISTINCT(category_id),category.id,category.name FROM anunturi,category where anunturi.category_id = category.id and anunturi.status = 1";
+                        $query = "SELECT DISTINCT(categorie_id),categorii.id,categorii.nume FROM anunturi,categorii where anunturi.categorie_id = categorii.id and anunturi.status = 1";
                         $statement = $con->prepare($query);
                         $statement->execute();
                         $result = $statement->fetchAll();
@@ -141,7 +141,7 @@ $next = $page + 1;
                             ?>
                             <div class="p3">
                                 <label><input type="checkbox" class="common_selector category_id"
-                                              value="<?php echo $row['category_id']; ?>"> <?php echo $row['name']; ?>
+                                              value="<?php echo $row['categorie_id']; ?>"> <?php echo $row['nume']; ?>
                                 </label>
                             </div>
                             <?php
@@ -155,7 +155,7 @@ $next = $page + 1;
                     <div>
                         <?php
 
-                        $query = "SELECT DISTINCT(anunturi.sub_category_id),sub_category.id,sub_category.name FROM anunturi,sub_category WHERE status = 1 and anunturi.sub_category_id = sub_category.id";
+                        $query = "SELECT DISTINCT(anunturi.sub_categorie_id),sub_categori.id,sub_categori.nume FROM anunturi,sub_categori WHERE status = 1 and anunturi.sub_categorie_id = sub_categori.id";
                         $statement = $con->prepare($query);
                         $statement->execute();
                         $result = $statement->fetchAll();
@@ -163,7 +163,7 @@ $next = $page + 1;
                             ?>
                             <div class="p3">
                                 <label><input type="checkbox" class="common_selector sub_category_id"
-                                              value="<?php echo $row['sub_category_id']; ?>"> <?php echo $row['name']; ?>
+                                              value="<?php echo $row['sub_categorie_id']; ?>"> <?php echo $row['nume']; ?>
                                 </label>
                             </div>
                             <?php
@@ -177,11 +177,11 @@ $next = $page + 1;
                     <ul>
                         <?php include "../includes/db.php"; ?>
                         <?php
-                        $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status=1 limit 4");
+                        $query = $con->query("SELECT * FROM imagini,anunturi where imagini.id=anunturi.image_id and anunturi.status=1 limit 4");
                         while ($row = $query->fetch_assoc()) { ?>
                             <li>
                                 <a class="images" href="#" title="images">
-                                    <?php $imageURL = '../../uploads/' . $row["file_name"]; ?>
+                                    <?php $imageURL = '../../uploads/' . $row["nume_fisier"]; ?>
                                     <img class="img-responsive" src="<?php echo $imageURL; ?>" alt="images">
                                 </a>
                                 <div class=" align-right">

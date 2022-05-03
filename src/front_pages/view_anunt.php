@@ -3,16 +3,16 @@ $file_name = "view_anunt";
 
 include "../includes/auth_session.php";
 $product_id = $_GET['id'];
-$sql = "UPDATE anunturi SET visits = visits+1 WHERE anunturi.user_id != " . $_SESSION['id'] . " and id =" . $product_id;
+$sql = "UPDATE anunturi SET vizualizari = vizualizari+1 WHERE anunturi.user_id != " . $_SESSION['id'] . " and id =" . $product_id;
 
 $con->query($sql);
 
-$sql = "SELECT visits FROM anunturi WHERE id =" . $product_id;
+$sql = "SELECT vizualizari FROM anunturi WHERE id =" . $product_id;
 $result = $con->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $visits = $row["visits"];
+        $visits = $row["vizualizari"];
     }
 } else {
     echo "no results";
@@ -317,11 +317,11 @@ if ($result->num_rows > 0) {
                 <div class="card mb-lg-3">
                     <?php
 
-                    $query = $con->query("SELECT * FROM images,anunturi where  images.id=anunturi.image_id and anunturi.id=" . $product_id);
+                    $query = $con->query("SELECT * FROM imagini,anunturi where  imagini.id=anunturi.image_id and anunturi.id=" . $product_id);
 
                     if ($query->num_rows > 0) {
                         while ($row = $query->fetch_assoc()) {
-                            $imageURL = '../../../uploads/' . $row["file_name"];
+                            $imageURL = '../../../uploads/' . $row["nume_fisier"];
                             $user_id = $row["user_id"];
                             ?>
                             <img src="<?php echo $imageURL; ?>" style="height: 325px;"/>
@@ -334,11 +334,11 @@ if ($result->num_rows > 0) {
                             <div class="row">
                                 <div class="col-md-3">
                                     <?php
-                                    $query = $con->query("SELECT * FROM images,users where users.id='{$user_id}' and images.id=users.image_id ");
+                                    $query = $con->query("SELECT * FROM imagini,utilizatori where utilizatori.id='{$user_id}' and imagini.id=utilizatori.image_id ");
 
                                     if ($query->num_rows > 0) {
                                         while ($row = $query->fetch_assoc()) {
-                                            $imageURL = '../../../uploads/' . $row["file_name"];
+                                            $imageURL = '../../../uploads/' . $row["nume_fisier"];
                                             ?>
                                             <img class=" avatar" src="<?php echo $imageURL; ?>"
                                                  data-holder-rendered="true"/>
@@ -350,12 +350,12 @@ if ($result->num_rows > 0) {
                                 <div class="col">
                                     <?php $id_anunt = $_GET['id']; ?>
                                     <?php
-                                    $sql = "SELECT * FROM anunturi,users where anunturi.id='$id_anunt' and users.id=anunturi.user_id";
+                                    $sql = "SELECT * FROM anunturi,utilizatori where anunturi.id='$id_anunt' and utilizatori.id=anunturi.user_id";
                                     $result = mysqli_query($con, $sql);
                                     while ($row = mysqli_fetch_assoc($result)) { ?>
                                     <?php echo $row["username"]; ?>
                                     <p class="card-text"><small
-                                                class="text-muted"> <?php echo "Pe Fresh Food din " . $row["created_at"]; ?></small>
+                                                class="text-muted"> <?php echo "Pe Fresh Food din " . $row["creat"]; ?></small>
                                     </p>
                                 </div>
                             </div>
@@ -413,7 +413,7 @@ if ($result->num_rows > 0) {
                         $sql = "SELECT * FROM anunturi where  id=" . $product_id;
                         $result = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($result)) {
-                        $categorie = $row['category_id'];
+                        $categorie = $row['categorie_id'];
                         $proprietar_anunt = $row['user_id']
                         ?>
                         <h1><?php echo $row['titlu']; ?></h1>
@@ -488,13 +488,13 @@ if ($result->num_rows > 0) {
                         <div class="col-md-8">
                             <div class="d-flex flex-column comment-section">
                                 <?php
-                                $sql = "SELECT * FROM anunturi,product_rating  where anunturi.id=product_rating.product_id and product_rating.product_id= '$product_id' order by product_rating.id desc limit 4";
+                                $sql = "SELECT * FROM anunturi,pareri_produs,utilizatori  where anunturi.id=pareri_produs.product_id and pareri_produs.product_id= '$product_id' and pareri_produs.user_id = utilizatori.id order by pareri_produs.id desc limit 4";
                                 $result = mysqli_query($con, $sql);
                                 while ($row = mysqli_fetch_assoc($result)) { ?>
                                     <div class="bg-white p-2">
                                         <div class="d-flex flex-row user-info">
                                             <div class="d-flex flex-column justify-content-start ml-2">
-                                                <span class="d-block font-weight-bold name"><?php echo $row['name']; ?></span>
+                                                <span class="d-block font-weight-bold name"><?php echo $row['username']; ?></span>
                                                 <span class="date text-black-50"><?php echo $row['email']; ?></span>
                                             </div>
                                             <div class="rateyo" id="rating"
@@ -502,7 +502,7 @@ if ($result->num_rows > 0) {
                                             </div>
                                         </div>
                                         <div class="mt-2">
-                                            <p class="comment-text"><?php echo $row['review']; ?></p>
+                                            <p class="comment-text"><?php echo $row['mesaj']; ?></p>
                                         </div>
                                     </div>
                                 <?php } ?>
@@ -523,17 +523,6 @@ if ($result->num_rows > 0) {
                         <input type="hidden" name="rating">
                         <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
                         <input type="hidden" name="proprietar_anunt" value="<?php echo $proprietar_anunt ?>">
-
-                        <div class="row">
-                            <div class="col">
-                                <input type="text" disabled name="<?= $_SESSION['username']; ?>" class="form-control"
-                                       placeholder="<?= $_SESSION['username']; ?>" required>
-                            </div>
-                            <div class="col">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required>
-                            </div>
-
-                        </div>
                         <br>
 
                         <br>
@@ -542,7 +531,7 @@ if ($result->num_rows > 0) {
                                           id="exampleFormControlTextarea1" placeholder="Review" rows="3" required></textarea>
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-success" name="add">Post review</button>
+                        <button type="submit" class="btn btn-success float-right" name="add">Trimite</button>
                     </form>
                 </div>
             </div>
@@ -583,12 +572,12 @@ if ($result->num_rows > 0) {
         <div class="slider">
             <div class="owl-carousel">
                 <?php
-                $query = $con->query("SELECT distinct (anunturi.category_id),anunturi.*,images.* FROM images,anunturi where images.id=anunturi.image_id and anunturi.status=1 and anunturi.id != '$product_id'  and anunturi.category_id='$categorie'");
+                $query = $con->query("SELECT distinct (anunturi.categorie_id),anunturi.*,imagini.* FROM imagini,anunturi where imagini.id=anunturi.image_id and anunturi.status=1 and anunturi.id != '$product_id'  and anunturi.categorie_id='$categorie'");
                 while ($row = $query->fetch_assoc()) { ?>
                     <div class=" slider-card">
                         <div class="card h-100 shadow-sm">
                             <?php
-                            $imageURL = '../../../uploads/' . $row["file_name"]; ?>
+                            $imageURL = '../../../uploads/' . $row["nume_fisier"]; ?>
                             <img src="<?php echo $imageURL; ?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <div class="clearfix mb-3"><span

@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $user_id = $_POST["user_id"];
     $mesaj = $_POST["mesaj"];
-    $sql = "INSERT INTO applications (user_id, mesaj) VALUES ('$user_id','$mesaj')";
+    $sql = "INSERT INTO applicati (user_id, mesaj) VALUES ('$user_id','$mesaj')";
     if (mysqli_query($con, $sql)) {
         $message = "Cerere trimisa";
         $message1 = "Cererea ".$mesaj;

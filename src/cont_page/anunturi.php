@@ -81,7 +81,7 @@ $file_name = 'anunturi';
                         if (isset($_GET['search'])) {
                             $filtervalues = $_GET['search'];
                             $user_id = $_SESSION['id'];
-                            $query = "SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status=1 and anunturi.user_id = '$user_id' and CONCAT(titlu) LIKE '%$filtervalues%'";
+                            $query = "SELECT * FROM imagini,anunturi where imagini.id=anunturi.image_id and anunturi.status=1 and anunturi.user_id = '$user_id' and CONCAT(titlu) LIKE '%$filtervalues%'";
                             $query_run = mysqli_query($con, $query);
 
                             if (mysqli_num_rows($query_run)) {
@@ -93,7 +93,7 @@ $file_name = 'anunturi';
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                     <?php
-                                                    $imageURL = '../../../uploads/' . $row["file_name"]; ?>
+                                                    $imageURL = '../../../uploads/' . $row["nume_fisier"]; ?>
                                                     <img src="<?php echo $imageURL; ?>" class="img-fluid rounded-start"
                                                          alt="...">
                                                 </div>
@@ -142,7 +142,7 @@ $file_name = 'anunturi';
                         if (isset($_GET['search'])) {
                             $filtervalues = $_GET['search'];
                             $user_id = $_SESSION['id'];
-                            $query = "SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.status=0 and anunturi.user_id = '$user_id' and CONCAT(titlu) LIKE '%$filtervalues%'";
+                            $query = "SELECT * FROM imagini,anunturi where imagini.id=anunturi.image_id and anunturi.status=0 and anunturi.user_id = '$user_id' and CONCAT(titlu) LIKE '%$filtervalues%'";
                             $query_run = mysqli_query($con, $query);
 
                             if (mysqli_num_rows($query_run)) {
@@ -153,7 +153,7 @@ $file_name = 'anunturi';
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                     <?php
-                                                    $imageURL = '../../../uploads/' . $row["file_name"]; ?>
+                                                    $imageURL = '../../../uploads/' . $row["nume_fisier"]; ?>
                                                     <img src="<?php echo $imageURL; ?>" class="img-fluid rounded-start"
                                                          alt="...">
                                                 </div>

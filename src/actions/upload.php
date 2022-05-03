@@ -17,21 +17,21 @@ function upload($files)
 
             if (move_uploaded_file($files["tmp_name"], $targetFilePath)) {
 
-                $insert = $con->query("INSERT into images (file_name, uploaded_on) VALUES ('" . $fileName . "', NOW())");
+                $insert = $con->query("INSERT into imagini (nume_fisier, incarcat) VALUES ('" . $fileName . "', NOW())");
                 if ($insert) {
                     return $con->insert_id;
 
                 } else {
-                    $statusMsg = "File upload failed, please try again.";
+                    $statusMsg = "Imaginea nu a putut fi încărcată, încearcă din nou mai târziu.";
                 }
             } else {
-                $statusMsg = "Sorry, there was an error uploading your file.";
+                $statusMsg = "Scuze, a apărut o eroare.";
             }
         } else {
-            $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+            $statusMsg = 'Scuze, numai JPG, JPEG, PNG, GIF imagini pot fi puse.';
         }
     } else {
-        $statusMsg = 'Please select a file to upload.';
+        $statusMsg = 'Selectează un fișier pentru a fi încarcat.';
     }
 
 // Display status message
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $image_id = upload($_FILES["file"]);
     session_start();
     $user_id = $_SESSION['id'];
-    $sql = "UPDATE users set image_id='{$image_id}' where id='{$user_id}'";
+    $sql = "UPDATE utilizatori set image_id='{$image_id}' where id='{$user_id}'";
     if ($con->query($sql) === TRUE) {
         echo "Record updated successfully";
     } else {

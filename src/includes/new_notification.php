@@ -1,8 +1,8 @@
 <?php
 
-function new_notification ($user_id, $message, $link = null){
+function new_notification ($user_id, $mesaj, $link = null){
     include 'db.php';
-    $sql = "Insert into notifications (user_id,message,link)  values ('$user_id', '$message',  '"."http://".$_SERVER['HTTP_HOST'].$link."' ) ";
+    $sql = "Insert into notificari (user_id,mesaj,link)  values ('$user_id', '$mesaj',  '"."http://".$_SERVER['HTTP_HOST'].$link."' ) ";
     if ($con->query($sql) === TRUE) {
         echo "Record updated successfully";
     } else {

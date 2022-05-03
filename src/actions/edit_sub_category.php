@@ -54,7 +54,7 @@ include("../includes/db.php");
                 <div class="form-group col-md-12">
                     <?php $id = $_GET['id']; // get id through query string
 
-                    $qry = mysqli_query($con, "select * from sub_category where id='$id'"); // select query
+                    $qry = mysqli_query($con, "select * from sub_categori where id='$id'"); // select query
 
                     $row = mysqli_fetch_array($qry); // fetch data
 
@@ -62,7 +62,7 @@ include("../includes/db.php");
                     {
                         $name = $_POST['name'];
 
-                        $edit = mysqli_query($con, "update sub_category set name='{$name}' where id='{$id}'");
+                        $edit = mysqli_query($con, "update sub_categori set nume='{$name}' where id='{$id}'");
 
                         if ($edit) {
                             header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -80,7 +80,7 @@ include("../includes/db.php");
                                 <form method="POST" class="form-inline">
                                     <div class="form-group mx-sm-3 mb-2">
                                         <label for="exampleInputEmail1">Sub Categoria</label>
-                                        <input type="text" name="name" class="form-control" value="<?php echo $row['name'] ?>" placeholder="Enter Full Name" Required>
+                                        <input type="text" name="name" class="form-control" value="<?php echo $row['nume'] ?>" placeholder="Enter Full Name" Required>
                                     </div>
                                     <button class="btn btn-success mb-2"  type="submit" name="update" value="Update">Update</button>
                                 </form>
@@ -98,12 +98,12 @@ include("../includes/db.php");
                                         <?php
                                         include "../includes/db.php";
                                         $sub_category = $_GET["id"];
-                                        $sql = "Select * from sub_category where sub_category_id = '$sub_category'";
+                                        $sql = "Select * from sub_categori where categorie_id = '$sub_category'";
                                         $res = $con->query($sql);
                                         while ($row = $res->fetch_assoc()) {
                                             ?>
                                             <tr>
-                                                <td><?php echo $row["name"] ?></td>
+                                                <td><?php echo $row["nume"] ?></td>
                                                 <td>
                                                     <?php echo "<a onClick=\"javascript: return confirm('Vă rugăm să confirmați ștergerea');\" href='../actions/delete_sub_category.php?id=" . $row['id'] . "'><i class='bi bi-trash btn btn-outline-danger'></i></a>"; ?>
                                                 </td>

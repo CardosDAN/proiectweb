@@ -55,7 +55,7 @@ include("../includes/db.php");
                 <div class="form-group col-md-12">
                     <?php $id = $_GET['id']; // get id through query string
 
-                    $qry = mysqli_query($con, "select * from category where id='$id'"); // select query
+                    $qry = mysqli_query($con, "select * from categorii where id='$id'"); // select query
 
                     $row = mysqli_fetch_array($qry); // fetch data
 
@@ -63,7 +63,7 @@ include("../includes/db.php");
                     {
                         $name = $_POST['name'];
 
-                        $edit = mysqli_query($con, "update category set name='{$name}' where id='{$id}'");
+                        $edit = mysqli_query($con, "update categorii set nume='{$name}' where id='{$id}'");
 
                         if ($edit) {
                             header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -83,7 +83,7 @@ include("../includes/db.php");
                                     <div class="form-group mx-sm-3 mb-2">
                                         <label for="exampleInputEmail1">Categoria</label>
                                         <input type="text" name="username" class="form-control"
-                                               value="<?php echo $row['name'] ?>" placeholder="Enter Full Name"
+                                               value="<?php echo $row['nume'] ?>" placeholder="Enter Full Name"
                                                Required>
                                     </div>
 
@@ -105,14 +105,14 @@ include("../includes/db.php");
                                         <tbody>
                                         <?php
                                         include "../includes/db.php";
-                                        $sql = "Select * from category";
+                                        $sql = "Select * from categorii";
                                         $res = $con->query($sql);
                                         while ($row = $res->fetch_assoc()) {
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["id"] ?></td>
                                                 <td>
-                                                    <a href="../cont_page/sub_category.php?id=<?= $row['id'] ?>"><?php echo $row["name"] ?></a>
+                                                    <a href="../cont_page/sub_category.php?id=<?= $row['id'] ?>"><?php echo $row["nume"] ?></a>
                                                 </td>
                                                 <td>
 

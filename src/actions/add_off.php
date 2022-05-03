@@ -17,13 +17,13 @@ $on = mysqli_query($con, "UPDATE anunturi SET status = 0 where id= '$id'");
 if($on)
 {
     mysqli_close($con);
-    $message = "Anuntul a fost dezactivat";
+    $mesaj = "Anuntul a fost dezactivat";
     $link = "/src/front_pages/view_anunt.php?id=".$anunt_id;
-    $variabila = "/src/includes/new_notification.php?user_id=".$user_id."&message=".$message."&link=".$link;
+    $variabila = "/src/includes/new_notification.php?user_id=".$user_id."&mesaj=".$mesaj."&link=".$link;
 
     require __DIR__ . '/../includes/new_notification.php';
 
-    new_notification($user_id, $message, $link);
+    new_notification($user_id, $mesaj, $link);
 
     header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;

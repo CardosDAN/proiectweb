@@ -4,8 +4,8 @@
 require('../includes/db.php');
 
 
-$sql = "SELECT * FROM sub_category
-         WHERE sub_category_id LIKE '%".$_GET['id']."%'";
+$sql = "SELECT * FROM sub_categori
+         WHERE categorie_id LIKE '%".$_GET['id']."%'";
 
 
 $result = $con->query($sql);
@@ -13,7 +13,7 @@ $result = $con->query($sql);
 
 $json = [];
 while($row = $result->fetch_assoc()){
-    $json[$row['id']] = $row['name'];
+    $json[$row['id']] = $row['nume'];
 }
 
 

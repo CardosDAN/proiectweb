@@ -242,7 +242,7 @@ include "../actions/database_connection.php";
 
 if (isset($_POST["action"])) {
     $query = "
-		SELECT * FROM anunturi,images WHERE images.id=anunturi.image_id and anunturi.status=1 
+		SELECT * FROM anunturi,imagini WHERE imagini.id=anunturi.image_id and anunturi.status=1 
 	";
     if (isset($_POST["minimum_price"], $_POST["maximum_price"]) && !empty($_POST["minimum_price"]) && !empty($_POST["maximum_price"])) {
         $query .= "
@@ -252,14 +252,14 @@ if (isset($_POST["action"])) {
     if (isset($_POST["category_id"])) {
         $category_id_filter = implode("','", $_POST["category_id"]);
         $query .= "
-		 AND category_id IN('" . $category_id_filter . "')
+		 AND categorie_id IN('" . $category_id_filter . "')
 		";
     }
     if(isset($_POST["sub_category_id"]))
     {
         $sub_category_id_filter = implode("','", $_POST["sub_category_id"]);
         $query .= "
-		 AND sub_category_id IN('".$sub_category_id_filter."')
+		 AND sub_categorie_id IN('".$sub_category_id_filter."')
 		";
     }
     if(isset($_POST["record_limit"]))
@@ -286,7 +286,7 @@ if (isset($_POST["action"])) {
                     <div class="card h-100 shadow-sm">
                     
                    
-                        <img src="../../uploads/' . $row["file_name"] . '" class="card-img-top" alt="...">
+                        <img src="../../uploads/' . $row["nume_fisier"] . '" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="clearfix mb-3">
                             <span class="float-start badge rounded-pill bg-success">' . $row['titlu'] . '</span>

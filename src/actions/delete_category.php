@@ -3,7 +3,7 @@ include("../includes/db.php");
 
 $id = $_GET['id']; // get id through query string
 
-$del = mysqli_query($con,"delete from category where id = '$id'"); // delete query
+$del = mysqli_query($con,"delete from categorii where id = '$id'"); // delete query
 
 if($del)
 {

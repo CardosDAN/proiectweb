@@ -3,7 +3,7 @@ include("../includes/db.php");
 
 $id = $_GET['id'];
 $link = $_SERVER['HTTP_REFERER'];
-$sql = "Select link from notifications where id =".$id;
+$sql = "Select link from notificari where id =".$id;
 $result = mysqli_query($con, $sql);
 
 if ($row = mysqli_fetch_assoc($result)){
@@ -13,7 +13,7 @@ if ($row = mysqli_fetch_assoc($result)){
 }
 
 
-$del = mysqli_query($con, "delete from notifications where id = '$id'");
+$del = mysqli_query($con, "delete from notificari where id = '$id'");
 
 if ($del) {
     mysqli_close($con);

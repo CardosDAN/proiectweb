@@ -45,13 +45,13 @@ $file_name = 'users_table';
                             <div class="card-content">
                                 <div class="card-body">
                                     <?php
-                                    $result = $con->query("SELECT DISTINCT id FROM users ORDER BY id");
+                                    $result = $con->query("SELECT DISTINCT id FROM utilizatori ORDER BY id");
                                     $row_cnt = $result->num_rows;
                                     ?>
                                     <div class="media d-flex">
                                         <div class="media-body text-left">
                                             <h3 class="success"><?php printf($row_cnt); ?></h3>
-                                            <span>Users</span>
+                                            <span>Utilizatori</span>
                                         </div>
                                         <div class="align-self-center">
                                             <i class="icon-user success font-large-2 float-right"></i>
@@ -67,7 +67,7 @@ $file_name = 'users_table';
                                 <div class="card-body">
                                     <?php
 
-                                    $sql1 = "SELECT COUNT(user_level_id) FROM users where users.user_level_id = '3' ORDER BY id ";
+                                    $sql1 = "SELECT COUNT(user_level_id) FROM utilizatori where utilizatori.user_level_id = '3' ORDER BY id ";
                                     $result = $con->query($sql1);
 
                                     if ($result->num_rows > 0) {
@@ -79,7 +79,7 @@ $file_name = 'users_table';
                                         </div>
                                         <div class="media-body text-right">
                                             <h3><?php echo $row["COUNT(user_level_id)"]; ?></h3>
-                                            <span>Admini</span>
+                                            <span>Administratori</span>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@ $file_name = 'users_table';
                             <div class="card-content">
                                 <div class="card-body">
                                     <?php
-                                    $sql1 = "SELECT count(user_level_id) FROM users where user_level_id = 2";
+                                    $sql1 = "SELECT count(user_level_id) FROM utilizatori where user_level_id = 2";
                                     $result = $con->query($sql1);
                                     if ($result->num_rows > 0) {
                                     // output data of each row
@@ -101,7 +101,7 @@ $file_name = 'users_table';
                                     <div class="media d-flex">
                                         <div class="media-body text-left">
                                             <h3 class="warning"><?php echo $row["count(user_level_id)"]; ?></h3>
-                                            <span>Selleri</span>
+                                            <span>Vânzători</span>
                                         </div>
                                         <div class="align-self-center">
                                             <i class="icon-book-open primary font-large-2 float-right"></i>
@@ -146,13 +146,13 @@ $file_name = 'users_table';
                                 <tbody>
                                 <?php
                                 include "../includes/db.php";
-                                $sql = "Select * from users";
+                                $sql = "Select * from utilizatori";
                                 $res = $con->query($sql);
                                 while ($row = $res->fetch_assoc()) {
                                     ?>
                                     <tr>
                                         <td><?php echo $row["username"] ?></td>
-                                        <td><?php echo $row["phone"] ?></td>
+                                        <td><?php echo $row["telefon"] ?></td>
                                         <td><?php echo $row["email"] ?></td>
                                         <td><?php echo $row["user_level_id"] ?></td>
                                         <td>

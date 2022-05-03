@@ -16,11 +16,11 @@ include("auth_session.php");
             <div class="user-pic">
                 <?php
                 $user_id = $_SESSION['id'];
-                $query = $con->query("SELECT * FROM images,users where users.id='{$user_id}' and images.id=users.image_id ");
+                $query = $con->query("SELECT * FROM imagini,utilizatori where utilizatori.id='{$user_id}' and imagini.id=utilizatori.image_id ");
 
                 if($query->num_rows > 0){
                     while($row = $query->fetch_assoc()){
-                        $imageURL = '../../../uploads/'.$row["file_name"];
+                        $imageURL = '../../../uploads/'.$row["nume_fisier"];
                         ?>
                         <img src="<?php echo $imageURL; ?>" alt="" />
                     <?php }
@@ -32,7 +32,7 @@ include("auth_session.php");
                 <p>
                     <?php
                     $loged_id = $_SESSION['id'];
-                    $sql = "SELECT * FROM users where id=$loged_id";
+                    $sql = "SELECT * FROM utilizatori where id=$loged_id";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -55,7 +55,7 @@ include("auth_session.php");
                 <span class="user-role">
                         <?php
                         $loged_id = $_SESSION['id'];
-                        $sql = "SELECT * FROM users,user_levels where users.id='$loged_id' and users.user_level_id = user_levels.id";
+                        $sql = "SELECT * FROM utilizatori,nivele_utilizatori where utilizatori.id='$loged_id' and utilizatori.user_level_id = nivele_utilizatori.id";
                         $result = $con->query($sql);
 
                         if ($result->num_rows > 0) {
@@ -126,14 +126,14 @@ include("auth_session.php");
             <div class="dropdown-menu">
                 <div class="dropdown-item-text">
                     <?php
-                    $sql = "SELECT * FROM notifications where user_id=".$_SESSION['id'];
+                    $sql = "SELECT * FROM notificari where user_id=".$_SESSION['id'];
                     $result = $con->query($sql);
                     if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) { ?>
                     <li>
                         <a href="../includes/delete_notification.php?id=<?= $row['id'] ?> ">
-                        <strong><?php echo $row['message']; ?></strong><br/>
-                        <small><em> <?php echo $row['time']; ?></em></small>
+                        <strong><?php echo $row['mesaj']; ?></strong><br/>
+                        <small><em> <?php echo $row['timp']; ?></em></small>
                         </a>
                     </li>
                     <?php  } } ?>

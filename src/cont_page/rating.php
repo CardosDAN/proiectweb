@@ -28,28 +28,28 @@ $file_name = ' ';
                 <div class="col-md-10">
                     <?php
                     $user_id = $_SESSION['id'];
-                    $query = $con->query("SELECT * FROM images,anunturi where images.id=anunturi.image_id and anunturi.user_id = '$user_id' and anunturi.status=1");
+                    $query = $con->query("SELECT * FROM imagini,anunturi where imagini.id=anunturi.image_id and anunturi.user_id = '$user_id' and anunturi.status=1");
                     while ($row = $query->fetch_assoc()) { ?>
                         <div class="card mb-3">
                             <div class="row">
                                 <div class="col">
-                                    <?php $imageURL = '../../../uploads/' . $row["file_name"]; ?>
+                                    <?php $imageURL = '../../../uploads/' . $row["nume_fisier"]; ?>
                                     <img src="<?php echo $imageURL; ?>" class="card-img-top img-responsive" alt="...">
                                 </div>
                                 <div class="col">
                                     <div class="card-body">
-                                        <p class="float-right bi bi-eye"><?php echo ' '.$row['visits'] ?></p>
+                                        <p class="float-right bi bi-eye"><?php echo ' '.$row['vizualizari'] ?></p>
                                         <h5 class="card-title"><?php echo $row['titlu'] ?></h5>
 
                                         <hr>
                                         <p class="card-text">
                                         <?php
-                                        $query2 = $con->query("SELECT * FROM product_rating where product_rating.product_id =  ".$row['id']);
+                                        $query2 = $con->query("SELECT * FROM pareri_produs,utilizatori where  pareri_produs.user_id = utilizatori.id and pareri_produs.product_id =  ".$row['id']);
                                         while ($row2 = $query2->fetch_assoc()) { ?>
 
                                         <div class="row">
                                             <div class="col-md-auto">
-                                                <span class="d-block font-weight-bold name"><?php echo $row2['name']; ?></span>
+                                                <span class="d-block font-weight-bold name"><?php echo $row2['nume']; ?></span>
                                             </div>
                                             <div class="col">
                                                 <span class="date text-black-50"><?php echo $row2['email']; ?></span>
@@ -57,7 +57,7 @@ $file_name = ' ';
                                         </div>
                                         <div class="row">
                                             <div class="col-md-auto">
-                                                <p class="comment-text"><?php echo $row2['review']; ?></p>
+                                                <p class="comment-text"><?php echo $row2['mesaj']; ?></p>
 
                                             </div>
                                             <div class="col">

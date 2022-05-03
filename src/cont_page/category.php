@@ -78,13 +78,13 @@ $file_name = 'category';
                                         <tbody>
                                         <?php
                                         include "../includes/db.php";
-                                        $sql = "Select * from category";
+                                        $sql = "Select * from categorii";
                                         $res = $con->query($sql);
                                         while ($row = $res->fetch_assoc()) {
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["id"] ?></td>
-                                                <td><a href="sub_category.php?id=<?= $row['id'] ?>"><?php echo $row["name"] ?></a></td>
+                                                <td><a href="sub_category.php?id=<?= $row['id'] ?>"><?php echo $row["nume"] ?></a></td>
                                                 <td>
                                                     <?php echo "<a onClick=\"javascript: return confirm('Vă rugăm să confirmați ștergerea');\" href='../actions/delete_category.php?id=".$row['id']."'><i class='bi bi-trash btn btn-outline-danger'></i></a>"; ?>
                                                     <a class="btn btn-outline-primary"

@@ -26,7 +26,7 @@ include("../includes/db.php");
                 <div class="form-group col-md-12">
                     <?php $id = $_GET['id'];
 
-                    $qry = mysqli_query($con, "select * from users where id='$id'"); // select query
+                    $qry = mysqli_query($con, "select * from utilizatori where id='$id'"); // select query
 
                     $row = mysqli_fetch_array($qry);
 
@@ -37,7 +37,7 @@ include("../includes/db.php");
                         $phone = $_POST['phone'];
                         $user_level_id = $_POST['user_level_id'];
                         $blocat = $_POST['blocat'];
-                        $edit = mysqli_query($con, "update users set username='{$username}', email='{$email}', phone='{$phone}', user_level_id='{$user_level_id}', blocat = '{$blocat}' where id='{$id}'");
+                        $edit = mysqli_query($con, "update utilizatori set username='{$username}', email='{$email}', telefon='{$phone}', user_level_id='{$user_level_id}', blocat = '{$blocat}' where id='{$id}'");
 
                         if ($edit) {
                             header('Location: ../cont_page/users_table.php ');
@@ -64,7 +64,7 @@ include("../includes/db.php");
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Numarul de telefon</label>
-                                        <input type="number" class="form-control" name="phone" value="<?php echo $row['phone'] ?>" placeholder="Enter Phone" Required>
+                                        <input type="number" class="form-control" name="phone" value="<?php echo $row['telefon'] ?>" placeholder="Enter Phone" Required>
                                     </div>
                                     <?php if($_SESSION['user_level_id'] == "3"): ?>
                                     <div class="row">
@@ -109,11 +109,11 @@ include("../includes/db.php");
                                 <div class="card mb-3 shadow">
                                     <?php
                                     $user_id = $_GET['id'];
-                                    $query = $con->query("SELECT * FROM images,users where users.id='{$user_id}' and images.id=users.image_id ");
+                                    $query = $con->query("SELECT * FROM imagini,utilizatori where utilizatori.id='{$user_id}' and imagini.id=utilizatori.image_id ");
 
                                     if ($query->num_rows > 0) {
                                     while ($row = $query->fetch_assoc()) {
-                                    $imageURL = '../../../uploads/' . $row["file_name"];
+                                    $imageURL = '../../../uploads/' . $row["nume_fisier"];
                                     ?>
                                     <img src="<?php echo $imageURL; ?>" class="card-img" alt="...">
                                     <?php }
@@ -122,12 +122,12 @@ include("../includes/db.php");
                                     <?php } ?>
                                     <div class="card-body">
                                         <?php
-                                        $sql = "SELECT * FROM users where id = '$user_id'";
+                                        $sql = "SELECT * FROM utilizatori where id = '$user_id'";
                                         $result = mysqli_query($con, $sql);
                                         while ($row = mysqli_fetch_assoc($result)) { ?>
                                         <h5 class="card-title"><?php echo $row["username"]; ?></h5>
                                         <p class="card-text"></p>
-                                        <p class="card-text"><small class="text-muted"><?php echo "Pe Fresh Food din " . $row["created_at"]; ?></small></p>
+                                        <p class="card-text"><small class="text-muted"><?php echo "Pe Fresh Food din " . $row["creat"]; ?></small></p>
                                         <?php  }  ?>
                                     </div>
                                 </div>

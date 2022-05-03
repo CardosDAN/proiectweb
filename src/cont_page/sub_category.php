@@ -70,7 +70,7 @@ $file_name = 'sub_category';
                             </div>
                             <div class="col-md-12">
                                 <div class=" rounded my-2 py-2">
-                                    <div class=" bg-light rounded my-2 py-2">
+                                    <div class="rounded my-2 py-2">
                                         <table class="table table-bordered">
                                             <thead>
                                             <tr>
@@ -82,12 +82,12 @@ $file_name = 'sub_category';
                                             <?php
                                             $category_id = $_GET["id"];
                                             include "../includes/db.php";
-                                            $sql = "Select * from sub_category where sub_category_id = '$category_id'";
+                                            $sql = "Select * from sub_categori where categorie_id = '$category_id'";
                                             $res = $con->query($sql);
                                             while ($row = $res->fetch_assoc()) {
                                                 ?>
                                                 <tr>
-                                                    <td><?php echo $row["name"] ?></td>
+                                                    <td><?php echo $row["nume"] ?></td>
                                                     <td>
                                                         <?php echo "<a onClick=\"javascript: return confirm('Vă rugăm să confirmați ștergerea');\" href='../actions/delete_sub_category.php?id=" . $row['id'] . "'><i class='bi bi-trash btn btn-outline-danger'></i></a>"; ?>
                                                         <a class="btn btn-outline-primary"

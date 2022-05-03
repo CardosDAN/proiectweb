@@ -11,7 +11,7 @@ if (isset($_SESSION['user_level_id'])) {
 
     $p = "1";
     if(isset($file_name) ){
-        $qPermission = mysqli_query($con, "select min_user_level_id from pages WHERE nume='$file_name'");
+        $qPermission = mysqli_query($con, "select min_user_level_id from pagini WHERE nume='$file_name'");
         if ($permission = mysqli_fetch_assoc($qPermission)) {
             $p = $permission["min_user_level_id"];
         }
@@ -20,15 +20,13 @@ if (isset($_SESSION['user_level_id'])) {
 if (isset($_SESSION["id"])) {
     $user_id = $_SESSION["id"];
 
-    $result = mysqli_query($con, "SELECT blocat FROM users where id = " . $user_id);
+    $result = mysqli_query($con, "SELECT blocat FROM utilizatori where id = " . $user_id);
 
     while ($row = mysqli_fetch_array($result)) {
         $blocat = $row['blocat'];
     }
     if ($blocat == "1") {
         header("Location:../cont_page/login.php");
-        //    } else {
-        //        header("Location:banned.php");
     }
 }
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $p > $user_level_id) {

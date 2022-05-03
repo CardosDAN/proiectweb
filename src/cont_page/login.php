@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, username, password, user_level_id FROM users WHERE username = ?";
+        $sql = "SELECT id, username, parola, user_level_id FROM utilizatori WHERE username = ?";
 
         if($stmt = mysqli_prepare($con, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -81,11 +81,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         }
                     }
                 } else{
-                    // Username doesn't exist, display a generic error message
-                    $login_err = "Invalid username or password.";
+
+                    $login_err = "Invalid username sau parola.";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Hopa! Ceva n-a mers bine. Vă rugăm să încercați din nou mai târziu.";
             }
 
             // Close statement

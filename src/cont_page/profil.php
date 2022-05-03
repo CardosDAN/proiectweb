@@ -66,7 +66,7 @@ $file_name = 'profil';
                             </div>
                             <?php
                             $id = $_SESSION['id'];
-                            $sql = "select * from users,user_levels WHERE users.id = '$id' and users.user_level_id = user_levels.id LIMIT ".$id;
+                            $sql = "select * from utilizatori,nivele_utilizatori WHERE utilizatori.id = '$id' and utilizatori.user_level_id = nivele_utilizatori.id LIMIT ".$id;
                             $result = mysqli_query($con, $sql);
                             while ($data = mysqli_fetch_array($result)) { ?>
                                 <div class="row  flex-row-reverse">
@@ -85,7 +85,7 @@ $file_name = 'profil';
                                                     </div>
                                                     <div class="media">
                                                         <label>Numar de telefon</label>
-                                                        <p><?php echo $data["phone"] ?></p>
+                                                        <p><?php echo $data["telefon"] ?></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -95,7 +95,7 @@ $file_name = 'profil';
                                                     </div>
                                                     <div class="media">
                                                         <label>Pe Fresh Food</label>
-                                                        <p><?php echo $data["created_at"] ?></p>
+                                                        <p><?php echo $data["creat"] ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,11 +106,11 @@ $file_name = 'profil';
                                         <div class="about-avatar">
                                             <?php
                                             $user_id = $_SESSION["id"];
-                                            $query = $con->query("SELECT * FROM images,users where users.id='{$user_id}' and images.id=users.image_id ");
+                                            $query = $con->query("SELECT * FROM imagini,utilizatori where utilizatori.id='{$user_id}' and imagini.id=utilizatori.image_id ");
 
                                             if ($query->num_rows > 0) {
                                                 while ($row = $query->fetch_assoc()) {
-                                                    $imageURL = '../../../uploads/' . $row["file_name"];
+                                                    $imageURL = '../../../uploads/' . $row["nume_fisier"];
                                                     ?>
                                                     <img title="" alt="" src="<?php echo $imageURL; ?>"
                                                          data-holder-rendered="true"/>

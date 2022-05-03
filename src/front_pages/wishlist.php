@@ -157,13 +157,13 @@ include "../includes/auth_session.php";
             <tbody>
             <?php
             $user_id = $_SESSION["id"];
-            $sql = "SELECT wishlist.*,anunturi.titlu, anunturi.pret, images.file_name FROM wishlist,anunturi,images where wishlist.user_id='$user_id' and images.id=anunturi.image_id and anunturi.id=wishlist.product_id and anunturi.status=1;";
+            $sql = "SELECT wishlist.*,anunturi.titlu, anunturi.pret, imagini.nume_fisier FROM wishlist,anunturi,imagini where wishlist.user_id='$user_id' and imagini.id=anunturi.image_id and anunturi.id=wishlist.product_id and anunturi.status=1;";
             $result = $con->query($sql);
             if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) { ?>
             <tr class="item_cart">
-                <?php $imageURL = '../../../uploads/' . $row["file_name"]; ?>
+                <?php $imageURL = '../../../uploads/' . $row["nume_fisier"]; ?>
                 <td class="product-photo"><img src="<?php echo $imageURL; ?>" alt="Futurelife"></td>
                 <td class="produc-name"><a href="view_anunt.php?id=<?php echo $row['product_id']?>" title="">&ensp;&ensp;<?php echo $row['titlu']; ?></a></td>
                 <td class="produc-price"><input value="<?php echo $row['pret']; ?>" size="4" type="text"></td>

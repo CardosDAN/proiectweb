@@ -97,7 +97,7 @@ $order_status = ['Inactiv','Activ'];
                                 <div class="card-body">
                                     <?php
                                     $user_id = $_SESSION['id'];
-                                    $result = $con->query("SELECT DISTINCT category_id FROM anunturi where anunturi.user_id = '$user_id' ORDER BY category_id");
+                                    $result = $con->query("SELECT DISTINCT categorie_id FROM anunturi where anunturi.user_id = '$user_id' ORDER BY categorie_id");
                                     $row_cnt = $result->num_rows;
                                     ?>
                                     <div class="media d-flex">
@@ -119,7 +119,7 @@ $order_status = ['Inactiv','Activ'];
                                 <div class="card-body">
                                     <?php
                                     $user_id = $_SESSION['id'];
-                                    $sql1 = "SELECT visits FROM anunturi where  id=".$product_id;
+                                    $sql1 = "SELECT vizualizari FROM anunturi where  id=".$product_id;
                                     $result = $con->query($sql1);
 
                                     if ($result->num_rows > 0) {
@@ -130,7 +130,7 @@ $order_status = ['Inactiv','Activ'];
                                             <i class="icon-eye primary font-large-2 float-right"></i>
                                         </div>
                                         <div class="media-body text-right">
-                                            <h3><?php echo $row["visits"]; ?></h3>
+                                            <h3><?php echo $row["vizualizari"]; ?></h3>
                                             <span>Vizualizari </span>
                                         </div>
                                     </div>
@@ -154,11 +154,11 @@ $order_status = ['Inactiv','Activ'];
                                     <div class="card mb-lg-3">
                                         <?php
 
-                                        $query = $con->query("SELECT * FROM images,anunturi where  images.id=anunturi.image_id and anunturi.id=" . $product_id);
+                                        $query = $con->query("SELECT * FROM imagini,anunturi where  imagini.id=anunturi.image_id and anunturi.id=" . $product_id);
 
                                         if ($query->num_rows > 0) {
                                             while ($row = $query->fetch_assoc()) {
-                                                $imageURL = '../../../uploads/' . $row["file_name"];
+                                                $imageURL = '../../../uploads/' . $row["nume_fisier"];
                                                 $user_id = $row["user_id"];
                                                 ?>
                                                 <img src="<?php echo $imageURL; ?>" style="height: 325px;"/>
@@ -171,11 +171,11 @@ $order_status = ['Inactiv','Activ'];
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <?php
-                                                        $query = $con->query("SELECT * FROM images,users where users.id='{$user_id}' and images.id=users.image_id ");
+                                                        $query = $con->query("SELECT * FROM imagini,utilizatori where utilizatori.id='{$user_id}' and imagini.id=utilizatori.image_id ");
 
                                                         if ($query->num_rows > 0) {
                                                             while ($row = $query->fetch_assoc()) {
-                                                                $imageURL = '../../../uploads/' . $row["file_name"];
+                                                                $imageURL = '../../../uploads/' . $row["nume_fisier"];
                                                                 ?>
                                                                 <img class=" avatar" src="<?php echo $imageURL; ?>"
                                                                      data-holder-rendered="true"/>
@@ -187,12 +187,12 @@ $order_status = ['Inactiv','Activ'];
                                                     <div class="col">
                                                         <?php $id_anunt = $_GET['id']; ?>
                                                         <?php
-                                                        $sql = "SELECT * FROM anunturi,users where anunturi.id='$id_anunt' and users.id=anunturi.user_id";
+                                                        $sql = "SELECT * FROM anunturi,utilizatori where anunturi.id='$id_anunt' and utilizatori.id=anunturi.user_id";
                                                         $result = mysqli_query($con, $sql);
                                                         while ($row = mysqli_fetch_assoc($result)) { ?>
                                                         <?php echo $row["username"]; ?>
                                                         <p class="card-text"><small
-                                                                    class="text-muted"> <?php echo "Pe Fresh Food din " . $row["created_at"]; ?></small>
+                                                                    class="text-muted"> <?php echo "Pe Fresh Food din " . $row["creat"]; ?></small>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -244,7 +244,7 @@ $order_status = ['Inactiv','Activ'];
                                             </div>
                                             <div class="container-fluid">
                                                 <i class="bi bi-eye-fill">
-                                                    <?= $row['visits'].' Vizualizari'; ?>
+                                                    <?= $row['vizualizari'].' Vizualizari'; ?>
                                                 </i>
                                             </div>
 
