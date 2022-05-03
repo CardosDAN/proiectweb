@@ -36,6 +36,33 @@ function upload($files){
     return 0;
 }
 
+$id = $_GET['id'];
+
+$qry = mysqli_query($con, "select * from anunturi where id='$id'");
+
+$row = mysqli_fetch_array($qry);
+
+if (isset($_POST['update'])) {
+    $titlu = $_POST["titlu"];
+    $telefon = $_POST["telefon"];
+    $adresa = $_POST["adresa"];
+    $pret = $_POST["pret"];
+    $descriere = $_POST["descriere"];
+    $edit = mysqli_query($con, "Update anunturi set titlu='$titlu',telefon='$telefon',adresa='$adresa',pret='$pret',descriere='$descriere' where id='$id'");
+    if (isset($_FILES["file"])) {
+        $image_id = upload($_FILES["file"]);
+        $edit = mysqli_query($con, "Update anunturi set image_id='$image_id' where id='$id'");
+//                            header("Location: ../cont_page/orders_table.php");
+    }
+//                        if ($edit) {
+////                            header('Location: ' . $_SERVER['HTTP_REFERER']);
+//                            exit;
+//
+//                        } else {
+//                            echo mysqli_error();
+//                        }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,34 +82,7 @@ function upload($files){
         <div class="container-fluid">
             <div class="row">
                 <div class="form-group col-md-12">
-                    <?php $id = $_GET['id'];
 
-                    $qry = mysqli_query($con, "select * from anunturi where id='$id'");
-
-                    $row = mysqli_fetch_array($qry);
-
-                    if (isset($_POST['update']))
-                    {
-                        $titlu = $_POST["titlu"];
-                        $telefon = $_POST["telefon"];
-                        $adresa = $_POST["adresa"];
-                        $pret = $_POST["pret"];
-                        $descriere = $_POST["descriere"];
-                        $edit = mysqli_query($con, "Update anunturi set titlu='$titlu',telefon='$telefon',adresa='$adresa',pret='$pret',descriere='$descriere' where id='$id'");
-                        if(isset($_FILES["file"])){
-                            $image_id = upload($_FILES["file"]);
-                            $edit = mysqli_query($con, "Update anunturi set image_id='$image_id' where id='$id'");
-//                            header("Location: ../cont_page/orders_table.php");
-                        }
-//                        if ($edit) {
-////                            header('Location: ' . $_SERVER['HTTP_REFERER']);
-//                            exit;
-//
-//                        } else {
-//                            echo mysqli_error();
-//                        }
-                    }
-                    ?>
 
                     <div class="container">
                         <h3>Editează</h3>

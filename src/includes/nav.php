@@ -49,7 +49,7 @@ include("auth_session.php");
             ?>
             </div>
             <div class="user-info">
-                        <span class="user-name">Welcome
+                        <span class="user-name">Bine ai venit
                             <strong><?php echo $_SESSION['username']; ?></strong>
                         </span>
                 <span class="user-role">
@@ -126,17 +126,17 @@ include("auth_session.php");
             <div class="dropdown-menu">
                 <div class="dropdown-item-text">
                     <?php
-                    $sql = "SELECT * FROM notificari where user_id=".$_SESSION['id'];
-                    $result = $con->query($sql);
-                    if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) { ?>
+                    $sql2 = "SELECT * FROM notificari where user_id=".$_SESSION['id'];
+                    $result2 = $con->query($sql2);
+                    if ($result2->num_rows > 0) {
+                    while ($row2 = $result2->fetch_assoc()) { ?>
                     <li>
-                        <a href="../includes/delete_notification.php?id=<?= $row['id'] ?> ">
-                        <strong><?php echo $row['mesaj']; ?></strong><br/>
-                        <small><em> <?php echo $row['timp']; ?></em></small>
+                        <a href="../includes/delete_notification.php?id=<?= $row2['id'] ?> ">
+                        <strong><?php echo $row2['mesaj']; ?></strong><br/>
+                        <small><em> <?php echo $row2['timp']; ?></em></small>
                         </a>
                     </li>
-                    <?php  } } ?>
+                    <?php } } ?>
                 </div>
             </div>
         </div>

@@ -3,6 +3,27 @@ $file_name = 'edit_category';
 
 include("../includes/db.php");
 
+$id = $_GET['id']; // get id through query string
+
+$qry = mysqli_query($con, "select * from categorii where id='$id'"); // select query
+
+$row = mysqli_fetch_array($qry); // fetch data
+
+if (isset($_POST['update'])) // when click on Update button
+{
+    $name = $_POST['name'];
+
+    $edit = mysqli_query($con, "update categorii set nume='{$name}' where id='{$id}'");
+
+    if ($edit) {
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
+
+    } else {
+        echo mysqli_error();
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,27 +74,7 @@ include("../includes/db.php");
             <hr>
             <div class="row">
                 <div class="form-group col-md-12">
-                    <?php $id = $_GET['id']; // get id through query string
 
-                    $qry = mysqli_query($con, "select * from categorii where id='$id'"); // select query
-
-                    $row = mysqli_fetch_array($qry); // fetch data
-
-                    if (isset($_POST['update'])) // when click on Update button
-                    {
-                        $name = $_POST['name'];
-
-                        $edit = mysqli_query($con, "update categorii set nume='{$name}' where id='{$id}'");
-
-                        if ($edit) {
-                            header('Location: ' . $_SERVER['HTTP_REFERER']);
-                            exit;
-
-                        } else {
-                            echo mysqli_error();
-                        }
-                    }
-                    ?>
 
                     <div class="container">
                         <div class="row">

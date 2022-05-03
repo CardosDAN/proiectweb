@@ -25,13 +25,6 @@ $file_name = 'sub_category';
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-<style>
-    /*.grey-bg {*/
-    /*    background-color: #F5F7FA;*/
-    /*}*/
-
-
-</style>
 <?php include("../includes/head.php"); ?>
 
 <body>

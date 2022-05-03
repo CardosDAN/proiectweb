@@ -98,7 +98,7 @@ include("../includes/db.php");
                                         <?php
                                         include "../includes/db.php";
                                         $sub_category = $_GET["id"];
-                                        $sql = "Select * from sub_categori where categorie_id = '$sub_category'";
+                                        $sql = "Select * from sub_categori where id = '$sub_category'";
                                         $res = $con->query($sql);
                                         while ($row = $res->fetch_assoc()) {
                                             ?>

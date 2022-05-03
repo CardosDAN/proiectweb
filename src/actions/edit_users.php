@@ -1,8 +1,23 @@
 <?php
+
 $file_name = 'edit_users';
 
 include("../includes/db.php");
-
+$id = $_GET['id'];
+if (isset($_POST['update'])) {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $user_level_id = $_POST['user_level_id'];
+    $blocat = $_POST['blocat'];
+    $edit = mysqli_query($con, "update utilizatori set username='{$username}', email='{$email}', telefon='{$phone}', user_level_id='{$user_level_id}', blocat = '{$blocat}' where id='{$id}'");
+    if ($edit) {
+        header('Location: ../cont_page/users_table.php ');
+        exit();
+    } else {
+        echo mysqli_error();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,29 +39,11 @@ include("../includes/db.php");
         <div class="container col-md-12">
             <div class="row">
                 <div class="form-group col-md-12">
-                    <?php $id = $_GET['id'];
+                    <?php
 
                     $qry = mysqli_query($con, "select * from utilizatori where id='$id'"); // select query
-
                     $row = mysqli_fetch_array($qry);
 
-                    if (isset($_POST['update']))
-                    {
-                        $username = $_POST['username'];
-                        $email = $_POST['email'];
-                        $phone = $_POST['phone'];
-                        $user_level_id = $_POST['user_level_id'];
-                        $blocat = $_POST['blocat'];
-                        $edit = mysqli_query($con, "update utilizatori set username='{$username}', email='{$email}', telefon='{$phone}', user_level_id='{$user_level_id}', blocat = '{$blocat}' where id='{$id}'");
-
-                        if ($edit) {
-                            header('Location: ../cont_page/users_table.php ');
-                            exit;
-
-                        } else {
-                            echo mysqli_error();
-                        }
-                    }
                     ?>
 
                     <div class="container">
@@ -100,7 +97,7 @@ include("../includes/db.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <?php endif ?>
+                                    <?php endif; ?>
                                     <input class="btn btn-outline-success float-right"  type="submit" name="update" value="Update">
                                 </form>
                             </div>
@@ -128,7 +125,7 @@ include("../includes/db.php");
                                         <h5 class="card-title"><?php echo $row["username"]; ?></h5>
                                         <p class="card-text"></p>
                                         <p class="card-text"><small class="text-muted"><?php echo "Pe Fresh Food din " . $row["creat"]; ?></small></p>
-                                        <?php  }  ?>
+                                        <?php } ?>
                                     </div>
                                 </div>
                         </div>

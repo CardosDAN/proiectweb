@@ -6,7 +6,7 @@ session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     $user_level_id = $_SESSION['user_level_id'];
     if($user_level_id=='1')
-        header("location: home.php");
+        header("location: /src/front_pages/home.php");
     elseif ($user_level_id=='2')
         header("location: adauga.php");
     else
