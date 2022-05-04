@@ -122,11 +122,6 @@ $file_name = 'users_table';
                 <div class="col">
                     <h2 class="h4">Lista de utilizatori</h2>
                 </div>
-                <?php
-                function function_alert($message)
-                {
-                    echo "<script>alert('$message');</script>";
-                }?>
             </div>
             <hr>
             <div class="row justify-content-center">
@@ -139,7 +134,7 @@ $file_name = 'users_table';
                                     <th>Username</th>
                                     <th>Telefon</th>
                                     <th>Email</th>
-                                    <th>Level</th>
+                                    <th>Nivel</th>
                                     <th data-orderable="false"> </th>
                                 </tr>
                                 </thead>
@@ -149,6 +144,13 @@ $file_name = 'users_table';
                                 $sql = "Select * from utilizatori";
                                 $res = $con->query($sql);
                                 while ($row = $res->fetch_assoc()) {
+                                    if ($row['user_level_id'] === '1'){
+                                        $row['user_level_id'] = 'Utilizator';
+                                    }elseif ($row['user_level_id'] === '2'){
+                                        $row['user_level_id'] = 'Vânzător';
+                                    }else{
+                                        $row['user_level_id'] = 'Administrator';
+                                    }
                                     ?>
                                     <tr>
                                         <td><?php echo $row["username"] ?></td>

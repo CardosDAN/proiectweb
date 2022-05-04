@@ -10,7 +10,7 @@ if (isset($_POST['update'])) {
     $phone = $_POST['phone'];
     $user_level_id = $_POST['user_level_id'];
     $blocat = $_POST['blocat'];
-    $edit = mysqli_query($con, "update utilizatori set username='{$username}', email='{$email}', telefon='{$phone}', user_level_id='{$user_level_id}', blocat = '{$blocat}' where id='{$id}'");
+    $edit = mysqli_query($con, "update utilizatori set modificat= NOW() ,  username='{$username}', email='{$email}', telefon='{$phone}', user_level_id='{$user_level_id}', blocat = '{$blocat}' where id='{$id}'");
     if ($edit) {
         header('Location: ../cont_page/users_table.php ');
         exit();
