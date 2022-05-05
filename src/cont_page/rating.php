@@ -49,7 +49,7 @@ $file_name = ' ';
 
                                         <div class="row">
                                             <div class="col-md-auto">
-                                                <span class="d-block font-weight-bold name"><?php echo $row2['nume']; ?></span>
+                                                <span class="d-block font-weight-bold name"><?php echo $row2['username']; ?></span>
                                             </div>
                                             <div class="col">
                                                 <span class="date text-black-50"><?php echo $row2['email']; ?></span>

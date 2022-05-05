@@ -3,7 +3,7 @@ include "../includes/db.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $id = $_POST['user_id'];
-    $sql = "SELECT * FROM users where user_level_id = 3";
+    $sql = "SELECT * FROM utilizatori where user_level_id = 3";
     $result = $con->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {

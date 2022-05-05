@@ -1,33 +1,33 @@
-
 <?php
 $file_name = 'edit_orders';
 
 include("../includes/db.php");
-function upload($files){
+function upload($files)
+{
 
     global $con;
     $targetDir = "../../uploads/";
     $fileName = basename($files["name"]);
     $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
-    if(!empty($files["name"])){
-        $allowTypes = array('jpg','png','jpeg','gif');
-        if(in_array($fileType, $allowTypes)){
-            if(move_uploaded_file($files["tmp_name"], $targetFilePath)){
-                $insert = $con->query("INSERT into imagini (nume_fisier, incarcat) VALUES ('".$fileName."', NOW())");
-                if($insert){
+    if (!empty($files["name"])) {
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+        if (in_array($fileType, $allowTypes)) {
+            if (move_uploaded_file($files["tmp_name"], $targetFilePath)) {
+                $insert = $con->query("INSERT into imagini (nume_fisier, incarcat) VALUES ('" . $fileName . "', NOW())");
+                if ($insert) {
                     return $con->insert_id;
-                }else{
+                } else {
                     $statusMsg = "Imaginea incarcata a esuat, incearca din nou mai tarziu.";
                 }
-            }else{
+            } else {
                 $statusMsg = "Scuze, a aparut o eroare la incarcarea imagini.";
             }
-        }else{
+        } else {
             $statusMsg = 'Scuze, numai JPG, JPEG, PNG, pot fi puse.';
         }
-    }else{
+    } else {
         $statusMsg = 'Te rog sa selectezi o imagine';
     }
 
@@ -52,15 +52,8 @@ if (isset($_POST['update'])) {
     if (isset($_FILES["file"])) {
         $image_id = upload($_FILES["file"]);
         $edit = mysqli_query($con, "Update anunturi set image_id='$image_id' where id='$id'");
-//                            header("Location: ../cont_page/orders_table.php");
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
-//                        if ($edit) {
-////                            header('Location: ' . $_SERVER['HTTP_REFERER']);
-//                            exit;
-//
-//                        } else {
-//                            echo mysqli_error();
-//                        }
 }
 
 ?>
@@ -86,28 +79,34 @@ if (isset($_POST['update'])) {
 
                     <div class="container">
                         <h3>Editează</h3>
-                        <form method="POST" enctype="multipart/form-data" >
+                        <form method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Titlu</label>
-                                        <input type="text" name="titlu" class="form-control" value="<?php echo $row['titlu'] ?>" placeholder="Enter Full Name" Required>
+                                        <input type="text" name="titlu" class="form-control"
+                                               value="<?php echo $row['titlu'] ?>" placeholder="Enter Full Name"
+                                               Required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Telefon</label>
-                                        <input type="number" class="form-control" name="telefon" value="<?php echo $row['telefon'] ?>" placeholder="Enter Email" Required>
+                                        <input type="number" class="form-control" name="telefon"
+                                               value="<?php echo $row['telefon'] ?>" placeholder="Enter Email" Required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Pret</label>
-                                        <input type="number" class="form-control" name="pret" value="<?php echo $row['pret'] ?>" Required>
+                                        <input type="number" class="form-control" name="pret"
+                                               value="<?php echo $row['pret'] ?>" Required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Adresa</label>
-                                        <input type="text" class="form-control" name="adresa" value="<?php echo $row['adresa'] ?>"Required >
+                                        <input type="text" class="form-control" name="adresa"
+                                               value="<?php echo $row['adresa'] ?>" Required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Descriere</label>
-                                        <textarea type="text" class="form-control" name="descriere"><?php echo $row['descriere'] ?></textarea>
+                                        <textarea type="text" class="form-control"
+                                                  name="descriere"><?php echo $row['descriere'] ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -117,7 +116,8 @@ if (isset($_POST['update'])) {
                                                 <div class="preview">
                                                     <img id="file-ip-1-preview">
                                                     <label for="file-ip-1">Upload Image</label>
-                                                    <input type="file" id="file-ip-1" name="file"  accept="image/*" onchange="showPreview(event);">
+                                                    <input type="file" id="file-ip-1" name="file" accept="image/*"
+                                                           onchange="showPreview(event);">
                                                 </div>
                                             </div>
                                         </div>
@@ -126,7 +126,8 @@ if (isset($_POST['update'])) {
                             </div>
 
 
-                            <input class="btn btn-outline-success float-right" type="submit" name="update" value="Update">
+                            <input class="btn btn-outline-success float-right" type="submit" name="update"
+                                   value="Update">
                         </form>
 
                     </div>
@@ -139,13 +140,14 @@ if (isset($_POST['update'])) {
 </div>
 <style>
     .center {
-        height:50%;
-        display:flex;
-        align-items:center;
-        justify-content:center;
+        height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
     }
-    .form-input  {
+
+    .form-input {
         width: 350px;
         padding: 20px;
         background: #fff;

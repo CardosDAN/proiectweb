@@ -56,29 +56,25 @@ if (isset($_POST['submit'])) {
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
 
-        function upload($files)
-        {
-
+        function upload($files){
             global $con;
-            // File upload path
+            // Calea de încărcare a imagini
             $targetDir = "../../uploads/";
             $fileName = basename($files["name"]);
             $targetFilePath = $targetDir . $fileName;
             $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
             if (!empty($files["name"])) {
-                // Allow certain file formats
-                $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf');
+                // Permite anumite formate de imagini
+                $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
                 if (in_array($fileType, $allowTypes)) {
-                    // Upload file to server
                     if (move_uploaded_file($files["tmp_name"], $targetFilePath)) {
-                        // Insert image file name into database
+                        // incarca imaginea in baza de date
                         $insert = $con->query("INSERT into imagini (nume_fisier, incarcat) VALUES ('" . $fileName . "', NOW())");
                         if ($insert) {
                             return $con->insert_id;
-                            #return $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
                         } else {
-                            $statusMsg = "File upload failed, please try again.";
+                            $statusMsg = "Imaginea nu s-a putut încarca, încearcă mai tarziu din nou.";
                         }
                     } else {
                         $statusMsg = "Sorry, there was an error uploading your file.";
