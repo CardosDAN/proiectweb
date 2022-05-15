@@ -3,8 +3,6 @@ $file_name = "store";
 include ("../includes/auth_session.php");
 include('../actions/database_connection.php');
 
-// Set session
-//session_start();
 if(isset($_POST['records-limit'])){
     $_SESSION['records-limit'] = $_POST['records-limit'];
 }

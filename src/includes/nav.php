@@ -122,6 +122,13 @@ include("auth_session.php");
 
                 </span>
                 <span class="fa fa-bell" ></span>
+                <?php
+                $sql2 = "SELECT COUNT(id),user_id FROM notificari where user_id=".$_SESSION['id'];
+                $result2 = $con->query($sql2);
+                if ($result2->num_rows > 0) {
+                    while ($row2 = $result2->fetch_assoc()) { ?>
+                        <span class="badge badge-pill badge-warning notification float-right"> <?php echo $row2['COUNT(id)']; ?></span>
+                    <?php } } ?>
             </a>
             <div class="dropdown-menu">
                 <div class="dropdown-item-text">

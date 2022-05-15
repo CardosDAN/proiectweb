@@ -1,5 +1,5 @@
 <?php
-//include auth_session.php file on all user panel pages
+
 
 include "../includes/auth_session.php";
 
@@ -217,29 +217,7 @@ include "../includes/auth_session.php";
                         </div>
                     </div>
                 </blockquote>
-                <div class="shipping-v2 home3-shiping home2-shipping row justify-content-around">
-                    <div class="col-md-3 ">
-                        <div class="border container" style="width: 140%">
-                            <img src="../../assets/sty/images/icon-shipping-2.png" alt="images">
-                            <h3>Support</h3>
-                            <p>SUPPORT 24/7</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-                        <div class="border container" style="width: 140%">
-                            <img src="../../assets/sty/images/icon-shipping-3.png" alt="images">
-                            <h3>Help Partner</h3>
-                            <p>HELP ALL ASPECTS</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-                        <div class="border container" style="width: 140%">
-                            <img src="../../assets/sty/images/icon-shipping-4.png" alt="images">
-                            <h3>Contact With Us</h3>
-                            <p>+07 (0) 7782 9137</p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="col-md-5 order-md-1">
                 <img src="../../assets/sty/images/Hnet.com-image.jpg">
