@@ -283,7 +283,7 @@ $order_status = ['Inactiv','Activ'];
                                     <?php
                                     include "../includes/db.php";
 
-                                    $sql = "SELECT * FROM anunturi where anunturi.user_id = '$user_id'";
+                                    $sql = "SELECT * FROM anunturi where anunturi.user_id = '$user_id' and anunturi.id != '$product_id'";
                                     $res = $con->query($sql);
                                     while ($row = $res->fetch_assoc()) {
                                         ?>

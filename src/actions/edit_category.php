@@ -3,13 +3,13 @@ $file_name = 'edit_category';
 
 include("../includes/db.php");
 
-$id = $_GET['id']; // get id through query string
+$id = $_GET['id'];
 
-$qry = mysqli_query($con, "select * from categorii where id='$id'"); // select query
+$qry = mysqli_query($con, "select * from categorii where id='$id'");
 
-$row = mysqli_fetch_array($qry); // fetch data
+$row = mysqli_fetch_array($qry);
 
-if (isset($_POST['update'])) // when click on Update button
+if (isset($_POST['update']))
 {
     $name = $_POST['name'];
 
@@ -17,8 +17,6 @@ if (isset($_POST['update'])) // when click on Update button
 
     if ($edit) {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
-        exit;
-
     } else {
         echo mysqli_error();
     }
@@ -80,7 +78,13 @@ if (isset($_POST['update'])) // when click on Update button
                         <div class="row">
                             <div class="col-md-12">
                                 <form method="POST" class="form-inline">
+                                    <?php
+                                    $id = $_GET['id'];
 
+                                    $qry = mysqli_query($con, "select * from categorii where id='$id'");
+
+                                    $row = mysqli_fetch_array($qry);
+                                    ?>
                                     <div class="form-group mx-sm-3 mb-2">
                                         <label for="exampleInputEmail1">Categoria</label>
                                         <input type="text" name="username" class="form-control"

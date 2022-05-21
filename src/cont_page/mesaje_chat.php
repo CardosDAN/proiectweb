@@ -342,6 +342,7 @@ $id_client = $_GET['id_client'];
                                     <div class="media media-chat <?= $row['raspuns'] == 0 ? 'media-chat-reverse': '' ?> ">
                                        <p><?= $row['raspuns'] == 1 ? $row['username'] : $_SESSION['username'] ?></p>
 
+
                                         <div class="media-body">
                                             <p><?php echo $row['mesaj']; ?></p>
                                             <p class="meta">

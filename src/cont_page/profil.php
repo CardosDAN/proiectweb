@@ -39,12 +39,12 @@ $file_name = 'profil';
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdropLabel">Vrei să devi vânzător?</h5>
+                                                <h5 class="modal-title" id="staticBackdropLabel">Doriți să deveniți vânzător?</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                <form method="post" action="../actions/applications.php">
-                                                   <label for="exampleInputPassword1" class="form-label float-left">De ce dorești să devi vânzător?</label>
+                                                   <label for="exampleInputPassword1" class="form-label float-left">Detaliați motivația dumneavoastră.</label>
                                                    <textarea type="text" name="mesaj" class="form-control" id="exampleInputPassword1" required></textarea>
                                                    <input type="hidden" class="form-control" id="exampleInputPassword1" name="user_id" value="<?= $_SESSION['id'] ?>">
                                                    <hr>
