@@ -3,7 +3,21 @@
 $file_name = 'message';
 
 ?>
+<?php
+include "../includes/db.php";
 
+
+
+
+if (isset($_POST['chk_id'])) {
+    $arr = $_POST['chk_id'];
+    foreach ($arr as $id) {
+        @mysqli_query($con, "DELETE FROM mesaje WHERE id = " . $id);
+    }
+    $msg = "Mesaj sters!";
+    header("Location: message.php?msg=$msg");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,20 +40,8 @@ $file_name = 'message';
         <div class="container">
             <div class="col">
                 <?php
-                include "../includes/db.php";
-
                 $user_id = $_SESSION['id'];
                 $result = @mysqli_query($con, "SELECT utilizatori.username, anunturi.titlu, mesaje.id_anunt, mesaje.id_client FROM mesaje,anunturi,utilizatori where anunturi.id = mesaje.id_anunt and utilizatori.id=mesaje.id_client AND (id_client = '$user_id' OR anunturi.user_id = '$user_id') GROUP BY utilizatori.id, anunturi.id;") or die("Error: " . mysqli_error($con));
-
-
-                if (isset($_POST['chk_id'])) {
-                    $arr = $_POST['chk_id'];
-                    foreach ($arr as $id) {
-                        @mysqli_query($con, "DELETE FROM mesaje WHERE id = " . $id);
-                    }
-                    $msg = "Mesaj sters!";
-                    header("Location: message.php?msg=$msg");
-                }
                 ?>
                 <form action="message.php" method="post">
                     <?php if (isset($_GET['msg'])) { ?>
@@ -92,7 +94,7 @@ $file_name = 'message';
 
     $(document).ready(function () {
         $('#delete_form').submit(function (e) {
-            if (!confirm("Confirm Delete?")) {
+            if (!confirm("Dorești să ștergi mesagele? ?")) {
                 e.preventDefault();
             }
         });

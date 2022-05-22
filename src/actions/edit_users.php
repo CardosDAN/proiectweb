@@ -115,7 +115,7 @@ if (isset($_POST['update'])) {
                                     <img src="<?php echo $imageURL; ?>" class="card-img" alt="...">
                                     <?php }
                                     } else { ?>
-                                        <img src="https://www.pngitem.com/pimgs/m/551-5510463_default-user-image-png-transparent-png.png" alt="https://www.pngitem.com/pimgs/m/551-5510463_default-user-image-png-transparent-png.png" class="img-fluid">
+                                        <img src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" alt="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" class="img-fluid">
                                     <?php } ?>
                                     <div class="card-body">
                                         <?php

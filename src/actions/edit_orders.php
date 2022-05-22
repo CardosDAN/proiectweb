@@ -76,7 +76,14 @@ if (isset($_POST['update'])) {
             <div class="row">
                 <div class="form-group col-md-12">
 
+                    <?php
+                    $id = $_GET['id'];
 
+                    $qry = mysqli_query($con, "select * from anunturi where id='$id'");
+
+                    $row = mysqli_fetch_array($qry);
+
+                    ?>
                     <div class="container">
                         <h3>Editează</h3>
                         <form method="POST" enctype="multipart/form-data">

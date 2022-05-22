@@ -1,5 +1,5 @@
 <?php
-//include auth_session.php file on all user panel pages
+
 $file_name = 'users_table';
 
 ?>
@@ -39,7 +39,7 @@ $file_name = 'users_table';
         <br><br><br>
         <div class="grey-bg container-fluid">
             <section id="minimal-statistics">
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-xl-3 col-sm-6 col-12">
                         <div class="card">
                             <div class="card-content">

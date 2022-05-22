@@ -63,7 +63,7 @@ $order_status = ['Inactiv','Activ'];
         <br><br><br>
         <div class="grey-bg container-fluid">
             <section id="minimal-statistics">
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-xl-3 col-sm-6 col-12">
                         <div class="card">
                             <div class="card-content">
@@ -181,7 +181,7 @@ $order_status = ['Inactiv','Activ'];
                                                                      data-holder-rendered="true"/>
                                                             <?php }
                                                         } else { ?>
-                                                            <p>No image(s) found...</p>
+                                                            <img src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" alt="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" class="img-fluid">
                                                         <?php } ?>
                                                     </div>
                                                     <div class="col">

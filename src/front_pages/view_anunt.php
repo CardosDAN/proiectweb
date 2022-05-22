@@ -344,7 +344,7 @@ if ($result->num_rows > 0) {
                                                  data-holder-rendered="true"/>
                                         <?php }
                                     } else { ?>
-                                        <p>No image(s) found...</p>
+                                        <img class=" avatar" src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" alt="https://cdn.landesa.org/wp-content/uploads/default-user-image.png">
                                     <?php } ?>
                                 </div>
                                 <div class="col">

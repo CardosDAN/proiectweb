@@ -10,7 +10,7 @@ if(isset($_POST['records-limit'])){
 $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 9;
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) ) ? $_GET['page'] : 1;
 $paginationStart = ($page - 1) * $limit;
-$students = $con->query("SELECT * FROM anunturi where status = '1'  LIMIT $paginationStart, $limit")->fetchAll();
+$que = $con->query("SELECT * FROM anunturi where status = '1'  LIMIT $paginationStart, $limit")->fetchAll();
 
 
 $sql = $con->query("SELECT count(id) AS id FROM anunturi")->fetchAll();
@@ -263,7 +263,7 @@ $next = $page + 1;
             var sub_category_id = get_filter('sub_category_id');
             var record_limit = $('#records-limit').val();
             var page = <?= isset($_GET['page']) ? $_GET['page'] : 1  ?>
-            // var storage = get_filter('storage');
+
             $.ajax({
                 url: "../actions/fetch_data.php",
                 method: "POST",
