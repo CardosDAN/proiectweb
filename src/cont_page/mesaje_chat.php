@@ -335,12 +335,16 @@ $id_client = $_GET['id_client'];
                                  style="overflow-y: scroll !important; height:400px !important;">
                                 <?php
                                 $user_id = $_SESSION['id'];
-                                $sql = "SELECT DISTINCT (mesaje.id), mesaje.mesaj,mesaje.time,mesaje.raspuns,utilizatori.username,anunturi.user_id FROM mesaje,anunturi,utilizatori where mesaje.id_anunt = '$product_id' and mesaje.id_client = '$id_client'  AND utilizatori.id = mesaje.id_client  and anunturi.id = mesaje.id_anunt ORDER BY mesaje.id";
+                                $sql = "SELECT DISTINCT (mesaje.id), mesaje.mesaj,mesaje.time,mesaje.raspuns,c.username as client,v.username as vanzator FROM mesaje,anunturi,utilizatori c, utilizatori v where mesaje.id_anunt = '$product_id' and mesaje.id_client = '$id_client' AND c.id = mesaje.id_client and anunturi.id = mesaje.id_anunt and v.id = anunturi.user_id ORDER BY mesaje.id;";
 
                                 $result = mysqli_query($con, $sql);
-                                while ($row = mysqli_fetch_assoc($result)) { ?>
+                                while ($row = mysqli_fetch_assoc($result)) {
+
+                                    ?>
+
                                     <div class="media media-chat <?= $row['raspuns'] == 0 ? 'media-chat-reverse': '' ?> ">
-                                       <p><?= $row['raspuns'] == 1 ? $row['username'] : $_SESSION['username'] ?></p>
+                                       <p><?= $row['raspuns'] == 1 ? $row['client'] : $row['vanzator'] ?></p>
+
 
 
                                         <div class="media-body">

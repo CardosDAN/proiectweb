@@ -7,19 +7,19 @@ if(isset($_POST['records-limit'])){
     $_SESSION['records-limit'] = $_POST['records-limit'];
 }
 
-$limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10;
+$limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 9;
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) ) ? $_GET['page'] : 1;
 $paginationStart = ($page - 1) * $limit;
-$students = $con->query("SELECT * FROM anunturi LIMIT $paginationStart, $limit")->fetchAll();
+$students = $con->query("SELECT * FROM anunturi where status = '1'  LIMIT $paginationStart, $limit")->fetchAll();
 
-// Get total records
+
 $sql = $con->query("SELECT count(id) AS id FROM anunturi")->fetchAll();
 $allRecrods = $sql[0]['id'];
 
-// Calculate total pages
+
 $totoalPages = ceil($allRecrods / $limit);
 
-// Prev + Next
+
 $prev = $page - 1;
 $next = $page + 1;
 ?>
@@ -102,7 +102,7 @@ $next = $page + 1;
         <form action="store.php" method="post">
             <select name="records-limit" id="records-limit" class="custom-select">
 
-                <?php foreach([10,20,30,40] as $limit) : ?>
+                <?php foreach([9,18,27,45] as $limit) : ?>
                     <option
                         <?php if(isset($_SESSION['records-limit']) && $_SESSION['records-limit'] == $limit) echo 'selected'; ?>
                             value="<?= $limit; ?>">
