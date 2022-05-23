@@ -31,7 +31,7 @@ function upload($files)
         $statusMsg = 'Te rog sa selectezi o imagine';
     }
 
-// Display status message
+
     echo $statusMsg;
     return 0;
 }
@@ -65,7 +65,7 @@ if (isset($_POST['update'])) {
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
     <?php include("../includes/nav.php"); ?>
-    <!-- page-content  -->
+
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
         <a id="toggle-sidebar" class="btn btn-secondary rounded-0 sticky-top" href="#">

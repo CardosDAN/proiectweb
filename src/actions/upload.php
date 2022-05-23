@@ -2,9 +2,9 @@
 include("../includes/db.php");
 function upload($files)
 {
-    $statusMsg = '';
+
     global $con;
-// File upload path
+
     $targetDir = "../../uploads/";
     $fileName = basename($files["name"]);
     $targetFilePath = $targetDir . $fileName;
@@ -34,7 +34,7 @@ function upload($files)
         $statusMsg = 'Selectează un fișier pentru a fi încarcat.';
     }
 
-// Display status message
+
     echo $statusMsg;
     return 0;
 }

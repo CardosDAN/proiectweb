@@ -51,10 +51,10 @@ if (isset($_POST['update']))
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
     <?php include("../includes/nav.php"); ?>
-    <!-- CSS only -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- page-content  -->
+
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
         <a id="toggle-sidebar" class="btn btn-secondary rounded-0 sticky-top" href="#">

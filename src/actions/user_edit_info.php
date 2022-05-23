@@ -8,7 +8,7 @@
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
     <?php include("../includes/nav.php"); ?>
-    <!-- page-content  -->
+
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
         <a id="toggle-sidebar" class="btn btn-secondary rounded-0 sticky-top" href="#">
@@ -26,11 +26,11 @@
 
                         $id = $_SESSION['id'];
 
-                        $qry = mysqli_query($con, "select * from utilizatori where id='$id'"); // select query
+                        $qry = mysqli_query($con, "select * from utilizatori where id='$id'");
 
-                        $row = mysqli_fetch_array($qry); // fetch data
+                        $row = mysqli_fetch_array($qry);
 
-                        if (isset($_POST['update'])) // when click on Update button
+                        if (isset($_POST['update']))
                         {
                             $username = $_POST['username'];
                             $email = $_POST['email'];
@@ -39,7 +39,7 @@
                             $edit = mysqli_query($con, "update utilizatori set username='{$username}', email='{$email}', telefon='{$phone}', user_level_id='{$user_level_id}' where id='{$id}'");
 
                             if ($edit) {
-                                mysqli_close($con); // Close connection
+                                mysqli_close($con);
                                 header('Location: ' . $_SERVER['HTTP_REFERER']);
                                 exit;
                             } else {
@@ -125,11 +125,7 @@
         border-radius: 1rem
     }
 
-    .card-img,
-    .card-img-top {
-        border-top-left-radius: calc(1rem - 1px);
-        border-top-right-radius: calc(1rem - 1px)
-    }
+
 
     .card h5 {
         overflow: hidden;
@@ -138,12 +134,7 @@
         font-size: 1rem
     }
 
-    .card-img-top {
-        width: 100%;
-        max-height: 180px;
-        object-fit: contain;
-        padding: 30px
-    }
+
 
     .card h2 {
         font-size: 1rem
@@ -154,33 +145,7 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)
     }
 
-    .label-top {
-        position: absolute;
-        background-color: #8bc34a;
-        color: #fff;
-        top: 8px;
-        right: 8px;
-        padding: 5px 10px 5px 10px;
-        font-size: .7rem;
-        font-weight: 600;
-        border-radius: 3px;
-        text-transform: uppercase
-    }
 
-    .top-right {
-        position: absolute;
-        top: 24px;
-        left: 24px;
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        font-size: 1rem;
-        font-weight: 900;
-        background: #ff5722;
-        line-height: 90px;
-        text-align: center;
-        color: white
-    }
 
     .top-right span {
         display: inline-block;
@@ -193,13 +158,6 @@
         }
     }
 
-    .over-bg {
-        background: rgba(53, 53, 53, 0.85);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        backdrop-filter: blur(0.0px);
-        -webkit-backdrop-filter: blur(0.0px);
-        border-radius: 10px
-    }
 
     .btn {
         font-size: 1rem;
@@ -224,88 +182,7 @@
         }
     }
 
-    .btn-warning {
-        background: none #f7810a;
-        color: #ffffff;
-        fill: #ffffff;
-        border: none;
-        text-decoration: none;
-        outline: 0;
-        box-shadow: -1px 6px 19px rgba(247, 129, 10, 0.25);
-        border-radius: 100px
-    }
 
-    .btn-warning:hover {
-        background: none #ff962b;
-        color: #ffffff;
-        box-shadow: -1px 6px 13px rgba(255, 150, 43, 0.35)
-    }
-
-    .bg-success {
-        font-size: 1rem;
-        background-color: #f7810a !important
-    }
-
-    .bg-danger {
-        font-size: 1rem
-    }
-
-    .price-hp {
-        font-size: 1rem;
-        font-weight: 600;
-        color: darkgray
-    }
-
-    .amz-hp {
-        font-size: .7rem;
-        font-weight: 600;
-        color: darkgray
-    }
-
-    .fa-question-circle:before {
-        color: darkgray
-    }
-
-    .fa-plus:before {
-        color: darkgray
-    }
-
-    .box {
-        border-radius: 1rem;
-        background: #fff;
-        box-shadow: 0 6px 10px rgb(0 0 0 / 8%), 0 0 6px rgb(0 0 0 / 5%);
-        transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12)
-    }
-
-    .box-img {
-        max-width: 300px
-    }
-
-    .thumb-sec {
-        max-width: 300px
-    }
-
-    @media (max-width: 576px) {
-        .box-img {
-            max-width: 200px
-        }
-
-        .thumb-sec {
-            max-width: 200px
-        }
-    }
-
-    .inner-gallery {
-        width: 60px;
-        height: 60px;
-        border: 1px solid #ddd;
-        border-radius: 3px;
-        margin: 1px;
-        display: inline-block;
-        overflow: hidden;
-        -o-object-fit: cover;
-        object-fit: cover
-    }
 
     @media (max-width: 370px) {
         .box .btn {
@@ -314,10 +191,7 @@
         }
     }
 
-    .disclaimer {
-        font-size: .9rem;
-        color: darkgray
-    }
+
 
     .related h3 {
         font-weight: 900
@@ -334,14 +208,7 @@
         margin-top: 20px;
     }
 
-    .section {
-        padding: 100px 0;
-        position: relative;
-    }
 
-    .gray-bg {
-        background-color: #f5f5f5;
-    }
 
     img {
         max-width: 100%;
@@ -352,8 +219,7 @@
         border-style: none;
     }
 
-    /* About Me
-    ---------------------*/
+
     .about-text h3 {
         font-size: 45px;
         font-weight: 700;
@@ -387,9 +253,7 @@
         color: #20247b;
     }
 
-    .about-list {
-        padding-top: 10px;
-    }
+
 
     .about-list .media {
         padding: 5px 0;
@@ -465,13 +329,7 @@
         color: currentColor;
     }
 
-    .theme-color {
-        color: #fc5356;
-    }
 
-    .dark-color {
-        color: #20247b;
-    }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"

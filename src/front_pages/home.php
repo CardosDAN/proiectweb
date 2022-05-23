@@ -7,7 +7,7 @@ include "../includes/auth_session.php";
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -17,10 +17,10 @@ include "../includes/auth_session.php";
 
     <link rel="stylesheet" href="../../assets/sty/css/owl.carousel.min.css">
 
-    <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="../../assets/sty/css/bootstrap.min.css">
 
-    <!-- Style -->
+
     <link rel="stylesheet" href="../../assets/sty/css/style.css">
     <title>Home</title>
     <style>
@@ -49,19 +49,6 @@ include "../includes/auth_session.php";
         .align-center {
             text-align: center;
         }
-
-        .shipping-v2.home3-shiping.home2-shipping {
-            box-shadow: none;
-            margin-top: 30px;
-            padding: 0px;
-            background: none;
-        }
-
-        .bg-slider-one-item.bg-home2-slider {
-            padding: 30px 0px;
-            background: url(../../assets/sty/images/7.jpg) no-repeat;
-        }
-
         .bg-slider-one-item.bg-home2-slider .brand-content {
             margin-top: 30px;
         }
@@ -90,12 +77,6 @@ include "../includes/auth_session.php";
         ul.tabs.tabs-title li.active, ul.tabs.tabs-title li:hover {
             color: #80b435;
         }
-
-        element.style {
-            background-image: url(../../assets/sty/images/home1-banner1.jpg);
-            background-repeat: no-repeat;
-        }
-
         .special.special-v2 {
             padding-top: 75px;
         }
@@ -265,7 +246,7 @@ include "../includes/auth_session.php";
                                             class="float-start badge rounded-pill bg-success"><?php echo $row['titlu']?></span> <span
                                             class="float-end price-hp"><?php echo $row['pret']?></span></div>
                                 <h5 class="card-title"><?php echo $row['descriere']?></h5>
-                                <div class="container">
+                                <div class="container text-center">
                                     <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning ">Vezi oferta</a>
                                 </div>
                             </div>
@@ -289,8 +270,8 @@ include "../includes/auth_session.php";
                                             class="float-start badge rounded-pill bg-success"><?php echo $row['titlu']?></span> <span
                                             class="float-end price-hp"><?php echo $row['pret']?></span></div>
                                 <h5 class="card-title"><?php echo $row['descriere']?></h5>
-                                <div class="container">
-                                    <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning ">Check offer</a>
+                                <div class="container text-center">
+                                    <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning ">Vezi oferta</a>
                                 </div>
                             </div>
                         </div>
@@ -313,8 +294,8 @@ include "../includes/auth_session.php";
                                             class="float-start badge rounded-pill bg-success"><?php echo $row['titlu']?></span> <span
                                             class="float-end price-hp"><?php echo $row['pret']?></span></div>
                                 <h5 class="card-title"><?php echo $row['descriere']?></h5>
-                                <div class="container">
-                                    <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning ">Check offer</a>
+                                <div class="container text-center">
+                                    <a href="../front_pages/view_anunt.php?id=<?php echo $row['id']?>" class="btn btn-warning ">Vezi oferta</a>
                                 </div>
                             </div>
                         </div>

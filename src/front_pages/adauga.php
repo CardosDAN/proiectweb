@@ -1,6 +1,6 @@
 <?php
 $file_name = "adauga";
-//include auth_session.php file on all user panel pages
+
 include "../includes/auth_session.php";
 
 ?>
@@ -86,7 +86,6 @@ if (isset($_POST['submit'])) {
                 $statusMsg = 'Please select a file to upload.';
             }
 
-// Display status message
             echo $statusMsg;
             return 0;
         }
@@ -112,7 +111,7 @@ if (isset($_POST['submit'])) {
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -122,11 +121,11 @@ if (isset($_POST['submit'])) {
 
     <link rel="stylesheet" href="../../assets/sty/css/owl.carousel.min.css">
 
-    <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="../../assets/sty/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Style -->
+
     <link rel="stylesheet" href="../../assets/sty/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

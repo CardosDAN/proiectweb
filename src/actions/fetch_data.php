@@ -9,18 +9,12 @@
         --font3: 'Roboto', sans-serif
     }
 
-    /*body {*/
-    /*    font-family: var(--font3);*/
-    /*    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)*/
-    /*}*/
 
     h2 {
         font-weight: 900
     }
 
-    .container-fluid {
-        max-width: 1200px
-    }
+
 
     .card {
         background: #fff;
@@ -59,33 +53,7 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)
     }
 
-    .label-top {
-        position: absolute;
-        background-color: #8bc34a;
-        color: #fff;
-        top: 8px;
-        right: 8px;
-        padding: 5px 10px 5px 10px;
-        font-size: .7rem;
-        font-weight: 600;
-        border-radius: 3px;
-        text-transform: uppercase
-    }
 
-    .top-right {
-        position: absolute;
-        top: 24px;
-        left: 24px;
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        font-size: 1rem;
-        font-weight: 900;
-        background: #ff5722;
-        line-height: 90px;
-        text-align: center;
-        color: white
-    }
 
     .top-right span {
         display: inline-block;
@@ -98,13 +66,7 @@
         }
     }
 
-    .over-bg {
-        background: rgba(53, 53, 53, 0.85);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        backdrop-filter: blur(0.0px);
-        -webkit-backdrop-filter: blur(0.0px);
-        border-radius: 10px
-    }
+
 
     .btn {
         font-size: 1rem;
@@ -151,9 +113,7 @@
         background-color: #f7810a !important
     }
 
-    .bg-danger {
-        font-size: 1rem
-    }
+
 
     .price-hp {
         font-size: 1rem;
@@ -161,56 +121,9 @@
         color: darkgray
     }
 
-    .amz-hp {
-        font-size: .7rem;
-        font-weight: 600;
-        color: darkgray
-    }
 
-    .fa-question-circle:before {
-        color: darkgray
-    }
 
-    .fa-plus:before {
-        color: darkgray
-    }
 
-    .box {
-        border-radius: 1rem;
-        background: #fff;
-        box-shadow: 0 6px 10px rgb(0 0 0 / 8%), 0 0 6px rgb(0 0 0 / 5%);
-        transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12)
-    }
-
-    .box-img {
-        max-width: 300px
-    }
-
-    .thumb-sec {
-        max-width: 300px
-    }
-
-    @media (max-width: 576px) {
-        .box-img {
-            max-width: 200px
-        }
-
-        .thumb-sec {
-            max-width: 200px
-        }
-    }
-
-    .inner-gallery {
-        width: 60px;
-        height: 60px;
-        border: 1px solid #ddd;
-        border-radius: 3px;
-        margin: 1px;
-        display: inline-block;
-        overflow: hidden;
-        -o-object-fit: cover;
-        object-fit: cover
-    }
 
     @media (max-width: 370px) {
         .box .btn {
@@ -219,10 +132,7 @@
         }
     }
 
-    .disclaimer {
-        font-size: .9rem;
-        color: darkgray
-    }
+
 
     .related h3 {
         font-weight: 900

@@ -55,10 +55,7 @@ if ($result->num_rows > 0) {
             --font3: 'Roboto', sans-serif
         }
 
-        /*body {*/
-        /*    font-family: var(--font3);*/
-        /*    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)*/
-        /*}*/
+
 
         h2 {
             font-weight: 900
@@ -414,7 +411,7 @@ if ($result->num_rows > 0) {
                         $result = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($result)) {
                         $categorie = $row['categorie_id'];
-                        $proprietar_anunt = $row['user_id']
+
                         ?>
                         <h1><?php echo $row['titlu']; ?></h1>
 
@@ -446,9 +443,7 @@ if ($result->num_rows > 0) {
                                 <?php
                                 $address = $row['adresa'];;
                                 echo '<iframe frameborder="0" height="250" width="450"
-                                 src="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=' . str_replace(",", "", str_replace(" ", "+", $address)) . '&z=14&output=embed">
-                                 
-</iframe>'; ?>
+                                 src="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=' . str_replace(",", "", str_replace(" ", "+", $address)) . '&z=14&output=embed"></iframe>'; ?>
                             </div>
                             <div class="align-right">
                                 <div class="action">
@@ -525,7 +520,6 @@ if ($result->num_rows > 0) {
                         <span class='result'>Rating: 0</span>
                         <input type="hidden" name="rating">
                         <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
-                        <input type="hidden" name="proprietar_anunt" value="<?php echo $proprietar_anunt ?>">
                         <br>
 
                         <br>
