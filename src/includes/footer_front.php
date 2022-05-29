@@ -7,7 +7,7 @@
 </style>
 
 <footer style="background: gray" class="text-center text-lg-start bg-light text-muted">
-    <!-- Section: Social media -->
+
     <section class="footer-inner">
     </section>
     <section class="">
@@ -18,7 +18,7 @@
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        <i class=" me-3" style="color: limegreen">Fresh Food</i>
+                        <i class=" me-3" style="color: limegreen">Market</i>
                     </h6>
                     <p>
                         Cel mai bun site online pentru tine sa cumperi bio si produse 100% bio, si pentru cei care vor sa le vanda rapid si la un pret rezonabil
@@ -71,7 +71,7 @@
                     <p><i class=" me-3"></i> Jibou, Strada Garoafelor 234, Salaj</p>
                     <p>
                         <i class=" me-3"></i>
-                        info@FreshFood.com
+                        info@Market.com
                     </p>
                     <p><i class=" me-3"></i> + 01 234 567 88</p>
                     <p><i class=" me-3"></i> + 01 234 567 89</p>

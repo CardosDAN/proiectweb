@@ -14,7 +14,7 @@
                     <div class="d-flex mr-auto">
                         <a href="#" class="d-flex align-items-center mr-4">
                             <span class="icon-envelope mr-2"></span>
-                            <span class="d-none d-md-inline-block">info@FreshFood.com</span>
+                            <span class="d-none d-md-inline-block">info@Market.com</span>
                         </a>
                         <a href="#" class="d-flex align-items-center mr-auto">
                             <span class="icon-phone mr-2"></span>
@@ -41,7 +41,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-2">
-                    <h1 class="my-0 site-logo position-absolute"><a href="../front_pages/home.php"><span>Fresh</span>&nbspFood</a>
+                    <h1 class="my-0 site-logo position-absolute"><a href="../front_pages/home.php"><span>Market</span></a>
                     </h1>
 
                 </div>
@@ -72,8 +72,6 @@
                                     </ul>
                                 </li>
                                 <li><a href="store.php" class="nav-link">Magazin</a></li>
-<!--                                <li><a href="#events-section" class="nav-link">Blog</a></li>-->
-                                <!--                                <li><a href="#gallery-section" class="nav-link">Gallery</a></li>-->
                                 <li><a href="contact_us.php" class="nav-link">Contactează-ne </a></li>
                             </ul>
                         </div>

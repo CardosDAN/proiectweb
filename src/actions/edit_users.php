@@ -124,7 +124,7 @@ if (isset($_POST['update'])) {
                                         while ($row = mysqli_fetch_assoc($result)) { ?>
                                         <h5 class="card-title"><?php echo $row["username"]; ?></h5>
                                         <p class="card-text"></p>
-                                        <p class="card-text"><small class="text-muted"><?php echo "Pe Fresh Food din " . $row["creat"]; ?></small></p>
+                                        <p class="card-text"><small class="text-muted"><?php echo "Pe Market din " . $row["creat"]; ?></small></p>
                                         <?php } ?>
                                     </div>
                                 </div>

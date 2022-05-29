@@ -104,8 +104,8 @@ include ("../includes/auth_session.php");
                     <textarea placeholder="Comment" name="message" id="message" class="form-control"></textarea>
                 </div>
                 <div class="box align-left">
-<!--                    <a title="add tags" type="submit" name="submit" href="#" class="link-v1 rt">Trimite mesaj</a>-->
-                    <button type="submit" class="link-v1 rt" name="submit">Trimite</button>
+
+                    <button type="submit" class="btn btn-success float-right" name="submit">Trimite</button>
                 </div>
             </form>
         </div>

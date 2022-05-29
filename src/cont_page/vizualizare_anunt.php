@@ -192,7 +192,7 @@ $order_status = ['Inactiv','Activ'];
                                                         while ($row = mysqli_fetch_assoc($result)) { ?>
                                                         <?php echo $row["username"]; ?>
                                                         <p class="card-text"><small
-                                                                    class="text-muted"> <?php echo "Pe Fresh Food din " . $row["creat"]; ?></small>
+                                                                    class="text-muted"> <?php echo "Pe Market din " . $row["creat"]; ?></small>
                                                         </p>
                                                     </div>
                                                 </div>

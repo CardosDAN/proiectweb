@@ -37,7 +37,7 @@ include("../includes/auth_session.php");
         <div class="container container-ver2 space-100 head-about">
             <div class="choose-us">
                 <div class="title-choose align-center about">
-                    <h4>Bun venit la Fresh Food</h4>
+                    <h4>Bun venit pe Market</h4>
                     <h3>O MICĂ POVESTE DESPRE NOI</h3>
                     <div class="align-center border-choose">
                         <div class="images ">
@@ -51,7 +51,7 @@ include("../includes/auth_session.php");
 
             <div class="row">
                 <div class="col-md-6">
-                    <img class="img-responsive" src="../../assets/sty/images/about-head1.jpg" alt="images">
+                    <img class="img-responsive" src="../../assets/sty/images/seminte-rosii-t-151-indigo-rose_2216_570x428%20(1).jpeg" alt="images">
                 </div>
 
                 <div class="col-md-6 pd-left-10">
@@ -235,7 +235,7 @@ include("../includes/auth_session.php");
                 <div class="choose-us">
                     <div class="title-choose align-center about">
                         <h4>Noi suntem familie</h4>
-                        <h3>Fermieri FRESH FOOD</h3>
+                        <h3>Fermieri Market</h3>
                         <div class="align-center border-choose">
                             <div class="images">
                                 <img src="../../assets/sty/images/bg-border-center.png" alt="icon">

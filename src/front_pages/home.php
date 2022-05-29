@@ -128,26 +128,17 @@ include "../includes/auth_session.php";
             <div class="carousel-item active">
                 <img class="d-block w-100" src="../../assets/sty/images/home1-slideshow2.jpg"
                      alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1 style="margin-top: -35%">Alimente organice proaspete</h1>
-                    <p>Vă aducem fructe și legume organice de pe câmpurile noastre până acasă </p>
-                </div>
+
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100" src="../../assets/sty/images/2.jpg"
                      alt="Second slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>...</h5>
-                    <p>...</p>
-                </div>
+
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100" src="../../assets/sty/images/3.jpg"
                      alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5></h5>
-                    <p>...</p>
-                </div>
+
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -163,19 +154,19 @@ include "../includes/auth_session.php";
         <div class="row">
             <div class="col-md-4 col-sm-4">
                 <a class="hover-images" href="#" title="images">
-                    <img class="img-responsive" src="../../assets/sty/images/4.jpg" alt="banner">
+                    <img class="img-responsive" src="../../assets/sty/images/mere-rosii.jpg" alt="banner">
                 </a>
             </div>
 
             <div class="col-md-4 col-sm-4">
                 <a class="hover-images" href="#" title="images">
-                    <img class="img-responsive" src="../../assets/sty/images/sus1.jpg" alt="banner">
+                    <img class="img-responsive" src="../../assets/sty/images/morcovi_332x200.jpeg" alt="banner">
                 </a>
             </div>
 
             <div class="col-md-4 col-sm-4">
                 <a class="hover-images" href="#" title="images">
-                    <img class="img-responsive" src="../../assets/sty/images/sus2.jpg" alt="banner">
+                    <img class="img-responsive" src="../../assets/sty/images/iStock_61749842_MEDIUM_650_433_300x200.jpeg" alt="banner">
                 </a>
             </div>
 
@@ -187,7 +178,7 @@ include "../includes/auth_session.php";
             <div class="col-md-7 order-md-2">
                 <blockquote class="blockquote text-center">
                     <div class="title-choose align-center">
-                        <h3><span>Noi suntem </span>FRESH FOOD</h3>
+                        <h3><span>Noi suntem </span>Market</h3>
                         <footer class="blockquote footer">Inspirat  <cite title="Source Title">în natură</cite></footer>
                         <p>Adevărul este că știi cu adevărat că ceva este organic atunci când găsești bug-uri! evident că nu ar fi ajuns atât de departe într-un mediu de creștere non-organic, așa că mai bine decât orice certificare sau sigiliu pe un ambalaj, prezența unor creaturi vă permite să știți că planta este sănătoasă și 100% bio.
                            </p>

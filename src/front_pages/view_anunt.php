@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -54,7 +54,6 @@ if ($result->num_rows > 0) {
             --font2: 'Fira Sans Extra Condensed', sans-serif;
             --font3: 'Roboto', sans-serif
         }
-
 
 
         h2 {
@@ -341,7 +340,9 @@ if ($result->num_rows > 0) {
                                                  data-holder-rendered="true"/>
                                         <?php }
                                     } else { ?>
-                                        <img class=" avatar" src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" alt="https://cdn.landesa.org/wp-content/uploads/default-user-image.png">
+                                        <img class=" avatar"
+                                             src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png"
+                                             alt="https://cdn.landesa.org/wp-content/uploads/default-user-image.png">
                                     <?php } ?>
                                 </div>
                                 <div class="col">
@@ -352,7 +353,7 @@ if ($result->num_rows > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) { ?>
                                     <?php echo $row["username"]; ?>
                                     <p class="card-text"><small
-                                                class="text-muted"> <?php echo "Pe Fresh Food din " . $row["creat"]; ?></small>
+                                                class="text-muted"> <?php echo "Pe Market din " . $row["creat"]; ?></small>
                                     </p>
                                 </div>
                             </div>
@@ -448,8 +449,8 @@ if ($result->num_rows > 0) {
                             <div class="align-right">
                                 <div class="action">
 
-                                    <a href="#" onclick="wishlist_toggle()" class="link-v1 wish" title="Wishlist"><i
-                                                class="icon icon-heart"></i></a>
+                                    <a href="#" onclick="wishlist_toggle()" class="link-v1 wish" title="Wishlist">
+                                        <i class="icon icon-heart"></i></a>
 
                                 </div>
                             </div>
@@ -480,34 +481,33 @@ if ($result->num_rows > 0) {
                 <li class="item active" rel="customer">Recenzii</li>
 
             </ul>
+            <br><br> <br>
             <div id="customer" class=" container-fluid" style="display: block;">
-                <div class="box border">
-                    <div class="container">
-                        <div class="col-md-8">
-                            <div class="d-flex flex-column comment-section">
-                                <?php
-                                $sql = "SELECT * FROM anunturi,pareri_produs,utilizatori  where anunturi.id=pareri_produs.product_id and pareri_produs.product_id= '$product_id' and pareri_produs.user_id = utilizatori.id order by pareri_produs.id desc limit 4";
-                                $result = mysqli_query($con, $sql);
-                                while ($row = mysqli_fetch_assoc($result)) { ?>
-                                    <div class="bg-white p-2">
-                                        <div class="d-flex flex-row user-info">
-                                            <div class="d-flex flex-column justify-content-start ml-2">
-                                                <span class="d-block font-weight-bold name"><?php echo $row['username']; ?></span>
-                                                <span class="date text-black-50"><?php echo $row['email']; ?></span>
-                                            </div>
-                                            <div class="rateyo" id="rating"
-                                                 data-rateyo-rating="<?php echo $row['rate']; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="mt-2">
-                                            <p class="comment-text"><?php echo $row['mesaj']; ?></p>
-                                        </div>
+                <div class="box border justify-content-center">
+                    <div class=" flex-column ">
+                        <div class="bg-white p-2">
+                            <?php
+                            $sql = "SELECT * FROM anunturi,pareri_produs,utilizatori  where anunturi.id=pareri_produs.product_id and pareri_produs.product_id= '$product_id' and pareri_produs.user_id = utilizatori.id order by pareri_produs.id desc limit 4";
+                            $result = mysqli_query($con, $sql);
+                            while ($row = mysqli_fetch_assoc($result)) { ?>
+                                <div class="d-flex flex-row">
+                                    <div class="d-flex flex-column justify-content-start ml-2">
+                                        <span class="d-block font-weight-bold name"><?php echo $row['username']; ?></span>
+                                        <span class="date text-black-50"><?php echo $row['email']; ?></span>
                                     </div>
-                                <?php } ?>
-                            </div>
+                                    <div class="rateyo" id="rating"
+                                         data-rateyo-rating="<?php echo $row['rate']; ?>">
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <p class="comment-text"><?php echo $row['mesaj']; ?></p>
+                                </div>
+                            <?php } ?>
                         </div>
+
                     </div>
                 </div>
+
 
                 <div class="container ">
                     <form action="../actions/review.php" method="post">
@@ -525,7 +525,8 @@ if ($result->num_rows > 0) {
                         <br>
                         <div>
                                 <textarea class="form-control" type="text" name="review"
-                                          id="exampleFormControlTextarea1" placeholder="Review" rows="3" required></textarea>
+                                          id="exampleFormControlTextarea1" placeholder="Review" rows="3"
+                                          required></textarea>
                         </div>
                         <br>
                         <button type="submit" class="btn btn-success float-right" name="add">Trimite</button>
@@ -602,5 +603,6 @@ if ($result->num_rows > 0) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 <script src="../../assets/owlcarousel/js/owl.carousel.min.js"></script>
 <script src="../../assets/owlcarousel/js/script.js"></script>
+
 </body>
 </html>

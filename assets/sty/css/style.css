@@ -35,7 +35,7 @@ img {
 }
 
 .image-container{text-align:center}
-/* Bottom right text */
+
 .text-block {
 
   position: absolute;
@@ -46,7 +46,7 @@ img {
   padding-left: 20px;
   padding-right: 20px;
 }
-/* Clear floats after image containers */
+
 .row::after {
   content: "";
   clear: both;
@@ -403,6 +403,4 @@ a {
       .sticky-wrapper.is-sticky .site-navbar .site-navigation .site-menu > li.active a {
         color: #fff; }
 
-/*
-  * Carousel
- */
+

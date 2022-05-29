@@ -94,7 +94,7 @@ $file_name = 'profil';
                                                         <p><?php echo $data["nume"] ?></p>
                                                     </div>
                                                     <div class="media">
-                                                        <label>Pe Fresh Food</label>
+                                                        <label>Pe Market</label>
                                                         <p><?php echo $data["creat"] ?></p>
                                                     </div>
                                                 </div>

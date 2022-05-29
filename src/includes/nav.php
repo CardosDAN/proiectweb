@@ -9,7 +9,7 @@ include("auth_session.php");
     <div class="sidebar-content">
         <!-- sidebar-brand  -->
         <div class="sidebar-item sidebar-brand">
-            <a href="../front_pages/home.php">Fresh Food</a>
+            <a href="../front_pages/home.php">Market</a>
         </div>
         <!-- sidebar-header  -->
         <div class="sidebar-item sidebar-header d-flex flex-nowrap">
