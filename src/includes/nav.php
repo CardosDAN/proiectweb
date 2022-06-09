@@ -86,7 +86,7 @@ include("auth_session.php");
                     <div class="sidebar-submenu">
                         <ul>
                             <li>
-                                <a href="../cont_page/users_table.php">Users
+                                <a href="../cont_page/users_table.php">Utilizatori
 
                                 </a>
                             </li>
