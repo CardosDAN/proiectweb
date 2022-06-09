@@ -41,7 +41,7 @@ if (isset($_POST['update'])) {
                 <div class="form-group col-md-12">
                     <?php
 
-                    $qry = mysqli_query($con, "select * from utilizatori where id='$id'"); // select query
+                    $qry = mysqli_query($con, "select * from utilizatori where id='$id'");
                     $row = mysqli_fetch_array($qry);
 
                     ?>

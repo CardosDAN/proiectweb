@@ -7,7 +7,7 @@ $file_name = 'profil';
 
 
 <?php include("../includes/head.php"); ?>
-<!-- CSS only -->
+
 
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
@@ -15,7 +15,7 @@ $file_name = 'profil';
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <?php include("../includes/nav.php"); ?>
-    <!-- page-content  -->
+
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
         <a id="toggle-sidebar" class="btn btn-secondary rounded-0 sticky-top" href="#">
@@ -29,12 +29,12 @@ $file_name = 'profil';
                     <section class="section about-section gray-bg" id="about">
                         <div class="container">
                             <div class="text-right">
-                                <!-- Button trigger modal -->
+
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                    Aplică aici
                                 </button>
 
-                                <!-- Modal -->
+
                                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -413,7 +413,7 @@ $file_name = 'profil';
         color: #20247b;
     }
 </style>
-<!-- JavaScript Bundle with Popper -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"

@@ -31,7 +31,7 @@ $order_status = ['Inactiv','Activ'];
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
     <?php include("../includes/nav.php"); ?>
-    <!-- page-content  -->
+
     <style>
         a {
             -webkit-transition: color 2s;
@@ -74,7 +74,7 @@ $order_status = ['Inactiv','Activ'];
                                     $result = $con->query($sql1);
 
                                     if ($result->num_rows > 0) {
-                                    // output data of each row
+
                                     while ($row = $result->fetch_assoc()) { ?>
                                     <div class="media d-flex">
                                         <div class="align-self-center">
@@ -123,7 +123,7 @@ $order_status = ['Inactiv','Activ'];
                                     $result = $con->query($sql1);
 
                                     if ($result->num_rows > 0) {
-                                    // output data of each row
+
                                     while ($row = $result->fetch_assoc()) { ?>
                                     <div class="media d-flex">
                                         <div class="align-self-center">
@@ -210,22 +210,22 @@ $order_status = ['Inactiv','Activ'];
                                 $sql = "SELECT * FROM anunturi where  id=".$product_id;
                                 $result = mysqli_query($con, $sql);
                                 while ($row = mysqli_fetch_assoc($result)) {?>
-                                <!-- End col-md-6 -->
+
                                 <div class="col-md-6 ">
                                     <div class="box-details-info">
                                         <div class="product-name">
                                             <h1><?php echo $row['titlu']; ?></h1>
 
                                         </div>
-                                        <!-- End product-name -->
+
 
                                         <div class="wrap-price">
                                             <p class="price"><?php echo $row['pret']; ?></p>
                                         </div>
 
-                                        <!-- End Price -->
+
                                     </div>
-                                    <!-- End box details info -->
+
                                     <div class="options">
                                         <p><?php echo $row['descriere']; ?></p>
                                         <div class="description-lits align-self-auto ">
@@ -322,7 +322,6 @@ $order_status = ['Inactiv','Activ'];
         </div>
 </div>
 
-<!-- page-wrapper -->
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"

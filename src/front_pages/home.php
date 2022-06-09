@@ -315,7 +315,7 @@ include "../includes/auth_session.php";
                 <a class="btn btn-outline-success" href="#" title="shopnow">Vezi acum</a>
             </div>
         </div>
-        <!-- End col-md-5 -->
+
     </div>
 </div>
 

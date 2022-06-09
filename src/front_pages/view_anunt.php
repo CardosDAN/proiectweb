@@ -417,15 +417,15 @@ if ($result->num_rows > 0) {
                         <h1><?php echo $row['titlu']; ?></h1>
 
                     </div>
-                    <!-- End product-name -->
+
 
                     <div class="wrap-price">
                         <p class="price"><?php echo $row['pret']; ?></p>
                     </div>
 
-                    <!-- End Price -->
+
                 </div>
-                <!-- End box details info -->
+
                 <div class="options">
                     <p><?php echo $row['descriere']; ?></p>
                     <div class="description-lits align-self-auto ">

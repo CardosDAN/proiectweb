@@ -30,7 +30,7 @@ if($on)
 }
 else
 {
-    echo "Error deleting record";
+    echo "Eroare dezactivare anunt";
 }
 
 

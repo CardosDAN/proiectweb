@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="site-mobile-menu-body"></div>
-</div> <!-- .site-mobile-menu -->
+</div>
 <div class="site-navbar-wrap">
     <div class="site-navbar-top">
         <div class="container py-3">

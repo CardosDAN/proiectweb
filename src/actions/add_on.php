@@ -30,7 +30,7 @@ exit;
 }
 else
 {
-echo "Error deleting record";
+echo "Eroare activare anunt";
 }
 
 

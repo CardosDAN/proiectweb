@@ -109,7 +109,7 @@ include ("../includes/auth_session.php");
                 </div>
             </form>
         </div>
-        <!-- End content-text -->
+
     </div>
 </div>
 <?php  include "../includes/footer_front.php"?>

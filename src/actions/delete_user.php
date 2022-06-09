@@ -13,6 +13,6 @@ if($del)
 }
 else
 {
-    echo "Error deleting record";
+    echo "Eroare stergere utilizator";
 }
 ?>

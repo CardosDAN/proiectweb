@@ -1,5 +1,5 @@
 <?php
-//include auth_session.php file on all user panel pages
+
 $file_name = 'sub_category';
 
 ?>
@@ -116,7 +116,6 @@ $file_name = 'sub_category';
         </div>
 </div>
 
-<!-- page-wrapper -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
 </script>

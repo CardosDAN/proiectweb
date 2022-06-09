@@ -1,5 +1,5 @@
 <?php
-//include auth_session.php file on all user panel pages
+
 include("auth_session.php");
 
 ?>
@@ -7,11 +7,11 @@ include("auth_session.php");
 
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
-        <!-- sidebar-brand  -->
+
         <div class="sidebar-item sidebar-brand">
             <a href="../front_pages/home.php">Market</a>
         </div>
-        <!-- sidebar-header  -->
+
         <div class="sidebar-item sidebar-header d-flex flex-nowrap">
             <div class="user-pic">
                 <?php
@@ -59,7 +59,7 @@ include("auth_session.php");
                         $result = $con->query($sql);
 
                         if ($result->num_rows > 0) {
-                        // output data of each row
+
                         while ($row = $result->fetch_assoc()) { ?>
 
                         <?php echo "Status: ".$row["nume"]; ?>
@@ -73,7 +73,7 @@ include("auth_session.php");
             </div>
         </div>
 
-        <!-- sidebar-menu  -->
+
         <div class=" sidebar-item sidebar-menu">
             <ul>
                 <?php if($_SESSION['user_level_id'] == "3"): ?>
@@ -110,10 +110,10 @@ include("auth_session.php");
                 <?php endif ?>
             </ul>
         </div>
-        <!-- sidebar-menu  -->
+
 
     </div>
-    <!-- sidebar-footer  -->
+
 
     <div class="sidebar-footer">
         <div class="dropdown ">
@@ -171,7 +171,7 @@ include("auth_session.php");
             <div class="dropdown-menu" aria-labelledby="dropdownMenuMessage">
                 <a class="dropdown-item" href="../cont_page/anunturi.php?search=">Anunturi</a>
                 <a class="dropdown-item" href="../cont_page/profil.php">Profil</a>
-<!--                <a class="dropdown-item" href="../actions/user_edit_info.php">Editează profilul</a>-->
+
                 <a class="dropdown-item" href="../cont_page/settings.php">Setări</a>
 
             </div>

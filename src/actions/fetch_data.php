@@ -213,7 +213,7 @@ if (isset($_POST["action"])) {
 			';
         }
     } else {
-        $output = '<h3>No Data Found</h3>';
+        $output = '<h3>Nu ai selectat corect categoria sau subcategoria</h3>';
     }
     echo $output;
 }

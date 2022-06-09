@@ -16,7 +16,7 @@ $file_name = 'rating';
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <?php include("../includes/nav.php"); ?>
-    <!-- page-content  -->
+
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
         <a id="toggle-sidebar" class="btn btn-secondary rounded-0 sticky-top" href="#">

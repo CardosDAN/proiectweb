@@ -30,7 +30,7 @@ $file_name = 'users_table';
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
     <?php include("../includes/nav.php"); ?>
-    <!-- page-content  -->
+
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
         <a id="toggle-sidebar" class="btn btn-secondary rounded-0 sticky-top" href="#">
@@ -96,7 +96,7 @@ $file_name = 'users_table';
                                     $sql1 = "SELECT count(user_level_id) FROM utilizatori where user_level_id = 2";
                                     $result = $con->query($sql1);
                                     if ($result->num_rows > 0) {
-                                    // output data of each row
+
                                     while ($row = $result->fetch_assoc()) { ?>
                                     <div class="media d-flex">
                                         <div class="media-body text-left">
@@ -189,7 +189,7 @@ $file_name = 'users_table';
         </div>
 </div>
 
-<!-- page-wrapper -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
 </script>

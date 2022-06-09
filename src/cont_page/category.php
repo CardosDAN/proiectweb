@@ -1,5 +1,5 @@
 <?php
-//include auth_session.php file on all user panel pages
+
 $file_name = 'category';
 
 ?>
@@ -25,19 +25,13 @@ $file_name = 'category';
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-<style>
-    /*.grey-bg {*/
-    /*    background-color: #F5F7FA;*/
-    /*}*/
 
-
-</style>
 <?php include("../includes/head.php"); ?>
 
 <body>
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
     <?php include("../includes/nav.php"); ?>
-    <!-- page-content  -->
+
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
         <a id="toggle-sidebar" class="btn btn-secondary rounded-0 sticky-top" href="#">

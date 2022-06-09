@@ -52,13 +52,13 @@ include("../includes/db.php");
             <hr>
             <div class="row">
                 <div class="form-group col-md-12">
-                    <?php $id = $_GET['id']; // get id through query string
+                    <?php $id = $_GET['id'];
 
-                    $qry = mysqli_query($con, "select * from sub_categori where id='$id'"); // select query
+                    $qry = mysqli_query($con, "select * from sub_categori where id='$id'");
 
-                    $row = mysqli_fetch_array($qry); // fetch data
+                    $row = mysqli_fetch_array($qry);
 
-                    if (isset($_POST['update'])) // when click on Update button
+                    if (isset($_POST['update']))
                     {
                         $name = $_POST['name'];
 

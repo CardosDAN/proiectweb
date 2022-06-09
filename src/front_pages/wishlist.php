@@ -6,7 +6,7 @@ include "../includes/auth_session.php";
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -16,10 +16,10 @@ include "../includes/auth_session.php";
 
     <link rel="stylesheet" href="../../assets/sty/css/owl.carousel.min.css">
 
-    <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="../../assets/sty/css/bootstrap.min.css">
 
-    <!-- Style -->
+
     <link rel="stylesheet" href="../../assets/sty/css/style.css">
     <title>Wishlist</title>
     <style>
