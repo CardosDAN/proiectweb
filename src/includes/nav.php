@@ -153,12 +153,6 @@ include("auth_session.php");
                 <span class="badge badge-pill badge-success notification count_message"></span>
             </a>
             <div class="dropdown-menu messages" aria-labelledby="dropdownMenuMessage">
-                <a class="dropdown-item-message" href="#">
-                    <div class="content">
-                    </div>
-
-                </a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-center" href="../cont_page/message.php">Vezi toate mesajele</a>
 
             </div>

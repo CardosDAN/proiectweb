@@ -249,7 +249,7 @@ if (isset($_POST['submit'])) {
                         <div class="form-input">
                             <div class="preview">
                                 <img id="file-ip-1-preview">
-                                <label for="file-ip-1">Upload Image</label>
+                                <label for="file-ip-1">Imaginea</label>
                                 <input type="file" id="file-ip-1" name="file" accept="image/*"
                                        onchange="showPreview(event);">
                             </div>

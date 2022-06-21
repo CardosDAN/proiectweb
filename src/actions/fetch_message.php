@@ -7,31 +7,10 @@ if (isset($_POST['view'])) {
         $update_query = "UPDATE mesaje SET status = 1 WHERE status=0";
         mysqli_query($con, $update_query);
     }
-    $query = "SELECT DISTINCT mesaje.id, utilizatori.username, mesaje.mesaj FROM mesaje,anunturi,utilizatori where mesaje.id_anunt = anunturi.id and anunturi.user_id = '$user_id' and mesaje.status = 0 AND utilizatori.id = mesaje.id_client ORDER BY mesaje.id;";
-    $result = mysqli_query($con, $query);
-    $output = '';
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_array($result)) {
-            $output .= '
-   
-   <div class="message-title">
-   <strong> ' . $row["username"] . '</strong>
-   </div>
-   <div class="message-detail"> ' . $row["mesaj"] . '</div>
-   ';
-
-        }
-    } else {
-        $output .= '
-     <li><a href="#" class="text-bold text-italic">Nu ai nici un mesaj nou</a></li>';
-    }
-
-
-    $status_query = "SELECT * FROM mesaje,anunturi WHERE mesaje.status=0 and anunturi.id = mesaje.id_anunt and anunturi.user_id = '$user_id' ";
+    $status_query = "SELECT DISTINCT (mesaje.id), c.username as client,v.username as vanzator,mesaje.raspuns, mesaje.mesaj FROM mesaje,anunturi,utilizatori c, utilizatori v where mesaje.id_anunt = anunturi.id and mesaje.id_client = '$user_id' AND c.id = mesaje.id_client and anunturi.id = mesaje.id_anunt and v.id = anunturi.user_id and mesaje.status = 0 ORDER BY mesaje.id;";
     $result_query = mysqli_query($con, $status_query);
     $count = mysqli_num_rows($result_query);
     $data = array(
-        'message' => $output,
         'unseen_message' => $count
     );
 
